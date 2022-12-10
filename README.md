@@ -11,8 +11,8 @@
 > - Nerina Belén Cayo: 32 años, hobbies: Gamer, música, amante de la tecnología y el deporte.
 > - Silvia Cartasso: 31 años, hobbies: leer, escuchar música, aprender idiomas.
 > - Fabian Sosa: 25 años, hobbies: la lectura y los videojuegos.
-> - Dylan Ojeda: 20 años, hobbies: Dibujante, fan de la tecnología y el mundo IT.
-> - Luis Lopez: 31 años, hobbies: Videojuegos
+> - Dylan Ojeda: 19 años, hobbies: Dibujar, leer y escribir, fan del Anime.
+> - Luis Lopez: 31 años, hobbies: Videojuegos.
 >
 > ## **Páginas web de referencia**
 > 
@@ -23,6 +23,7 @@
 > - [SBS](https://www.sbs.com.ar)
 > - [Maximus](https://www.maximus.com.ar)
 > - [Entelequia](https://www.entelequia.com.ar)
+> - [Netflix](https://www.netflix.com)
 
 >Los sitios de referencia fueron elegidos principalmente
->por su funcionalidad y layout (**Mercado Libre, Maximus, SBS**), estética y público objetivo (**Mangadex, Entelequia, Tematika**).
+>por su funcionalidad y layout (**Mercado Libre, Maximus, SBS**), estética y público objetivo (**Mangadex, Entelequia, Netflix, Tematika**).
