@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const path = require("path");
-const port = 3030;
+const PORT = 3030;
 
 app.use(express.static(path.join(__dirname,"./public")));
 
@@ -31,6 +31,6 @@ app.get("/cart", (req, res) => {
 });
 
 
-app.listen(port, () => {
-    console.log(`The server is ON at the port http://localhost:${port}`)
+app.listen(PORT, () => {
+    console.log(`The server is ON at the port http://localhost:${PORT}`)
 });
