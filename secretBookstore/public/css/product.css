@@ -1,8 +1,17 @@
 /* Generales */
+
+:root {
+    --main-color: rgb(45, 3, 59);
+    --secondary: rgb(129, 12, 168);
+    --btn-color: rgb(193, 71, 233);
+    --text-color: rgb(229, 184, 244);
+}
+
 * {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    color: --text-color;
 }
 
 ul {
@@ -14,6 +23,10 @@ a {
     color: black;
 }
 
+h2, h3, h4, p {
+    color: var(--text-color);
+}
+
 img {
     width: 100%;
 }
@@ -21,6 +34,7 @@ img {
 /* Main */
 
 main {
+    background-color: var(--main-color);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -32,29 +46,60 @@ main section{
     padding: 8px;
     margin: 4px 8px;
     width:calc(100% - 16px);
+    background-color: var(--secondary);
 }
 
 /* Product box */
 
-main section.title-box {
+main div.product {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
 }
 
-main section div.photo-container {
-    width: 100px;
-    height: 141px;
+main div.product section.title-box {
     display: flex;
+    justify-content: center;
 }
 
-main section.title-box div.info {
+main div.product section div.photo-container {
+    width: 75%;
+    height: 75%;
+}
+
+main div.product section div.info {
     width: auto;
-    height: 141px;
+    height: 3rem;
     padding: 5px;
+    margin-bottom: 1rem;
 }
+
+main div.product section.description div.btn-container {
+    margin: 1rem;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+main div.product section.description div.btn-container div.btn {
+    width: 100px;
+    height: 40px;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--btn-color);
+}
+
+main div.product section.description div.btn-container div.btn:hover {
+    background-color: var(--main-color);
+    color: var(--text-color);
+}
+
+
+
+
 
 /* RELATED */
-
 
 section.related h3 {
     margin: 8px;
@@ -74,7 +119,6 @@ section.related div.product--container article {
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    border: 1px solid black;
     width: 144px;
     margin-bottom: 8px;
 }
@@ -129,4 +173,20 @@ main section form input div textarea {
     width: 100%;
     border: 1px solid black;
     border-radius: 7px;
+}
+
+
+
+/* MEDIA QUIERIES */
+
+@media (min-width: 576px) {
+    main div.product {
+        flex-direction: row;
+    }
+    main section.about {
+        display: flex;
+    }
+    main section.about div {
+        padding: 8px;
+    }
 }
