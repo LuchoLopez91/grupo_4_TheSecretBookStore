@@ -1,3 +1,132 @@
-body {
-    background-color: darkgoldenrod;
+/* Generales */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+img {
+    width: 100%;
+}
+
+/* Main */
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: stretch;
+}
+
+main section{
+    border: 1px solid black;
+    padding: 8px;
+    margin: 4px 8px;
+    width:calc(100% - 16px);
+}
+
+/* Product box */
+
+main section.title-box {
+    display: flex;
+    justify-content: space-between;
+}
+
+main section div.photo-container {
+    width: 100px;
+    height: 141px;
+    display: flex;
+}
+
+main section.title-box div.info {
+    width: auto;
+    height: 141px;
+    padding: 5px;
+}
+
+/* RELATED */
+
+
+section.related h3 {
+    margin: 8px;
+    text-align: center;
+}
+
+section.related div.product--container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+
+section.related div.product--container article {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid black;
+    width: 144px;
+    margin-bottom: 8px;
+}
+
+/* COMMENTARIES */
+
+main section.comments-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+main section.comments-box article.comment {
+    padding: 8px;
+}
+
+main section.comments-box article div.comment {
+    display: flex;
+    height: 30px;
+}
+
+main section.comments-box article div.comment img {
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+}
+
+main section.comments-box article div.comment div.name {
+    padding-left: 8px;
+}
+
+main section.comments-box article div.comment div.name p {
+    display: block;
+    width: auto;
+}
+
+main section.comments-box p.text {
+    margin: 8px;
+    padding: 8px;
+}
+
+
+/* COMMENTARY BOX */
+
+main section form div {
+    width: calc(100%-16px);
+}
+
+main section form input div textarea {
+    width: 100%;
+    border: 1px solid black;
+    border-radius: 7px;
 }
