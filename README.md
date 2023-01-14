@@ -27,3 +27,5 @@
 
 >Los sitios de referencia fueron elegidos principalmente
 >por su funcionalidad y layout (**Mercado Libre, Maximus, SBS**), estética y público objetivo (**Mangadex, Entelequia, Netflix, Tematika**).
+
+> [Enlace al tablero en la plataforma Trello](https://trello.com/b/2lJCW2MI)
