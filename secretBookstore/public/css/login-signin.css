@@ -1,0 +1,148 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap');
+@import url('registro.css');
+
+
+:root {
+    --violeta-oscuro: #2D033B;
+    --violeta-claro: #810CA8;
+    --rosa: #C147E9;
+    --rosa-claro: #E5B8F4;
+    --inter: 'Inter', sans-serif;
+    --garamond: 'EB Garamond', serif;
+}
+
+* {
+    box-sizing: border-box;
+
+}
+
+.register-login {
+    background-image: url("https://wallpapercave.com/wp/wp6547396.jpg");
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    }
+    
+
+.register-login .form-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    opacity: 0.95;
+    background-color: white;
+    max-width: 600px;
+    margin: 15px;
+    border: 2px solid var(--violeta-oscuro);
+    /*border-radius: 8%;*/  
+    padding: 10px 15px;
+    font-family: var(--garamond);
+    box-shadow: 5px 5px 5px black;
+
+}
+
+.register-login h2 {
+    text-align: center;
+    text-decoration: underline double;
+    
+}
+
+.register-login .input-container {
+    margin-bottom: 1rem;
+    position: relative;
+}
+
+.register-login .input-container input {
+    text-align: center;
+    border: 2px solid;
+
+}
+
+.register-login .input-container i {
+    position: absolute;
+    top: 75%;
+    transform: translateY(-125%);
+    left: 3%;
+    color: var(--violeta-oscuro)
+}
+
+.register-login .form button {
+    display: block;
+    color: white;
+    background-color: var(--violeta-oscuro);
+    padding: 0.6em 1.3em;
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 0.6rem;
+    border: var(--violeta-oscuro);
+    box-shadow: 1px 1px 3px;
+}
+
+.register-login a {
+    font-weight: bold;
+    color: var(--violeta-oscuro);
+}
+
+.register-login .error-message {
+    color: tomato;
+    font-size: 0.8rem
+}
+
+
+.register-login .google button {
+    background-color: red;
+    color: white;
+    font-weight: bold;
+    justify-items: left;
+    padding: 0.25rem 0.5rem;
+    margin-bottom: 0.25rem;
+    margin-left: 0;
+    margin-right: 0;
+    cursor: pointer;
+
+}
+
+.register-login .facebook button {
+    background-color: blue;
+    color: white;
+    font-weight: bold;
+    padding: 0.25rem 0.5rem;
+    cursor: pointer;
+}
+
+.register-login input.input-style {
+    background-color: whitesmoke;
+
+}
+
+.register-login input.input-style:hover {
+    box-shadow: 0 0 5px var(--violeta-oscuro);
+}
+
+@media (min-width:768px) {
+    .register-login .form-container {
+            width: 40vw;
+        }
+        .register-login .form {
+            display: flex;
+            flex-direction: column;
+            justify-content: stretch;
+            align-items: stretch;
+            
+        }
+        .register-login .input-container {
+        width: 15rem;
+        }
+
+        .register-login .input-style {
+            width: 100%;
+        }
+        .register-login .form button {
+            width: 100px;
+            padding: 6px 12px;
+        }
+}
