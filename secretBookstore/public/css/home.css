@@ -1,3 +1,7 @@
+*{
+     box-sizing: border-box;
+}
+
 /* HEADER */
 header div.header img{
      width: 100%;
@@ -5,22 +9,29 @@ header div.header img{
 
 /* MAIN */
 
-div.carrusel img {
-     width: 100%;
+main {
+     background-color: ;
 }
 
-div h3 {
+div.slideshow img {
+     width: 100%;
+
+}
+
+div.subtitles h3 {
      border-bottom: solid #2D033B 3px;
-     margin: 0 4%;
+     padding: 5px 15px;
+     margin: 1px 3px 11px 3px;
+     
 }
 
 article img {
-     width: 40%;
-     display: flex;
-     flex-direction: row;
-} 
+     height: 145px;
+     width: 100px; 
+}
 
-h3 {
-     padding: 5px 15px;
+section.books {
+     display: flex;
+     text-align: center;
 }
 
