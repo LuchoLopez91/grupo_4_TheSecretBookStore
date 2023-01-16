@@ -1,20 +1,47 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/login.css">
-    <title>Inicie sesión</title>
+    <title>Iniciar sesión</title>
+    <link rel="stylesheet" href="/css/login-signin.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+rel="stylesheet" />
 </head>
-<body>
-    <h1>Log In</h1>
-    <ul>
-        <li><a href="cart">Cart</a></li>
-        <li><a href="home">Home</a></li>
-        <li><a href="login">Log In</a></li>
-        <li><a href="product">Product</a></li>
-        <li><a href="signin">Sign In</a></li>
-    </ul>
+<body class="register-login">
+    <div class="form-container">
+        <h2>Ingresá a tu cuenta</h2>
+        <form action="" method="">
+        <div class="form">
+            <div class="input-container">
+                <label for="email">Dirección de e-mail</label><br>
+                <input class="input-style" type="email" name="email" id="email" placeholder="email@mail.com">
+                <i class="fa-regular fa-envelope"></i>
+                <div class="error-message">Debe ingresar su email</div>
+            </div>
+            <div class="input-container">
+                <label for="contraseña">Contraseña</label><br>
+                <input class="input-style" type="password" name="password" id="contraseña">
+                <i class="fa-solid fa-lock"></i>
+                <div class="error-message">Debe ingresar una contraseña válida</div>
+            </div>
+            <div>
+                <div class="input-container">
+                    <label for="recordarme"><input type="checkbox" name="recordarme" id="recordarme" value="recordarme">Recordarme</label>
+                </div>
+            </div>
+                <button type="submit">INGRESAR</button>
+        </div>
+        </form>
+        <p><a href="">¿Olvidaste tu contraseña?</a></p>
+        <div class="google">
+        <button type="button"><i class="fa-brands fa-google"></i>  Ingresar con Google</button>
+        </div>
+        <div class="facebook">
+        <button type="button"><i class="fa-brands fa-facebook-f"></i>  Ingresar con Facebook</button>
+        </div>
+        <p>¿No tienes una cuenta? <a href="/signin">Registrate</a></p>
+    </div>      
 </body>
 </html>
