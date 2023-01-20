@@ -1,37 +1,130 @@
-*{
-     box-sizing: border-box;
+/*  GENERALES  */
+
+:root {
+    --main-color: rgb(45, 3, 59);
+    --secondary: rgb(129, 12, 168);
+    --btn-color: rgb(193, 71, 233);
+    --text-color: rgb(229, 184, 244);
+}
+ 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-/* HEADER */
-header div.header img{
-     width: 100%;
+header img.header {
+    width: 100%;
 }
 
-/* MAIN */
+/*  MAIN  */
 
 main {
-     background-color: ;
+    width: 100%;
+    background-color: var(--secondary)
 }
 
-div.slideshow img {
-     width: 100%;
+main div img.banner {
+    width: 100%;
+    height: 170px;
+}
+
+div.container_subtitle {
+    border-bottom: 3px solid var(--main-color);
+    margin: 10px 16px 17px;
+    padding-bottom: 2px;
+}
+
+h4.subtitle {
+    margin-left: 8px;
+    color: var(--text-color);
+}
+
+section article a {
+    text-decoration: none;
+    color: black;
+}
+
+article img.image_book {
+    height: 160px;
+    width: 107px;
+}
+
+article.container_book {
+    display: inline-block;
+    text-align: center;
+    width: 40%;
+    margin: 7px;
+    
+}
+
+/*  FLEX BOX  */
+
+section.group {
+    display: flex;
+    flex-wrap: wrap; /*salto de linea*/
+    justify-content:space-evenly;
+    margin-bottom: 20px;
+}
+
+
+main section.group2 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:center;
+    margin-bottom: 22px;
+    
+}
+
+section article.container {
+    border: solid 2px var(--main-color);
+    height: 50px;
+    width: 150px;
+    margin: 6px;
+    background-color: var(--btn-color);
+}
+
+section.group3 {
+    margin-bottom: 30px;
+}
+
+section.group3 div.subscribe {
+    border: solid ;
+    background-color: var(--btn-color);
+    width: 400px;
+    height: 120px;
+    margin: auto;
+    padding: 17px;
+    text-align: center;
+}
+
+div.subscribe input.input-container {
+    width: 222px;
+    display: block;
+    margin: auto;
+    padding: 3px;
+}
+
+div.subscribe button.btn {
+    height: 27px;
+    width: 95px;
+    margin: 7px ;
+    border-radius: 17px;
+    background-color: var(--main-color);
+    color: var(--text-color);
+    font-weight: bold;
 
 }
 
-div.subtitles h3 {
-     border-bottom: solid #2D033B 3px;
-     padding: 5px 15px;
-     margin: 1px 3px 11px 3px;
-     
-}
 
-article img {
-     height: 145px;
-     width: 100px; 
-}
+@media (min-width:460px){
+    main {
+        background-color:aqua;
+    }
 
-section.books {
-     display: flex;
-     text-align: center;
-}
+    main div img.banner {
+        width: 100%;
+        height: 200px;
+    }
 
+}
