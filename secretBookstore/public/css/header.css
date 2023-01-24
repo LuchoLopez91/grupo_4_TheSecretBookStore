@@ -1,0 +1,93 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap');
+
+
+:root {
+    --violeta-oscuro: #2D033B;
+    --violeta-claro: #810CA8;
+    --rosa: #C147E9;
+    --rosa-claro: #E5B8F4;
+    --inter: 'Inter', sans-serif;
+    --garamond: 'EB Garamond', serif;
+}
+
+header {
+    background-color: white;
+    width: 100vw;
+    position: 0 0 fixed;
+
+}
+
+.header-logo {
+    text-align: center;
+    padding: 10px;
+    }
+
+.header-logo img{
+    width: 40vw;
+}
+
+header div.burger-menu i, 
+header div.cart-icon i,
+header div.signUp i {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    width: 30px;
+    height: 30px;
+    padding: 20px;
+    color: var(--violeta-oscuro);
+}
+header div.cart-icon i{
+    border: 3px solid var(--violeta-oscuro);
+    border-radius: 50%;
+    position: relative;
+    left: 10px;
+}
+
+header div.signUp i {
+    border: 3px solid var(--violeta-oscuro);
+    border-radius: 50%;
+    position: relative;
+    left: 20px;
+}
+
+header div.header-icons {
+    display: flex;
+    justify-content: space-around;
+
+}
+
+header div.burger-menu {
+    width: 50%;
+}
+
+header nav {
+    display: none;
+} 
+
+header .search-bar {
+    width: min-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    border: 2px solid var(--violeta-oscuro);
+    border-radius: 5%;
+    margin: 10px auto;
+}
+
+header .search-bar i {
+    position: absolute;
+    right: 15px;    
+}
+
+header .search-bar input {
+    width: 75vw;
+    height: 30px;
+    border: none;
+    text-align: left;
+}
+
+

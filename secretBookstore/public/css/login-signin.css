@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap');
-@import url('registro.css');
-
+@import url('header.css');
 
 :root {
     --violeta-oscuro: #2D033B;
@@ -16,11 +15,11 @@
     box-sizing: border-box;
 
 }
-
 .register-login {
     background-image: url("https://wallpapercave.com/wp/wp6547396.jpg");
     background-size: cover;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: 0;

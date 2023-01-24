@@ -1,3 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap');
+@import url('header.css');
+
 /*  GENERALES  */
 
 :root {
@@ -13,9 +17,6 @@
     box-sizing: border-box;
 }
 
-header img.header {
-    width: 100%;
-}
 
 /*  MAIN  */
 
