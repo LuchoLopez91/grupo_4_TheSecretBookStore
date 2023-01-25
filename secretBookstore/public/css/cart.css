@@ -1,60 +1,110 @@
-@media (min-width:240px) { 
+@import url('header.css');
+
+ 
 body {
-     background-image: url("/images/fondo.jpg") ;
-}}
-* {
-     padding: 0;
-     margin: 0;
+     background-color: rgb(45, 3, 59) ;
+}
+* { 
      box-sizing: border-box;
+     flex-wrap: wrap;
+
 }
 main {
      width: 80%;
      margin: 0 auto;
  }
  h1 {
-     background-color:rgba(138, 43, 227,0.5 );
-     color: white;
-     border-radius:12px;
-     text-align: center;
-     margin: 0.5rem 0.5rem 0.5rem;
+    text-align: center;
+    margin-left: 30%;
+    margin-right: 30%;
+    color: white;
+    font-size: 1.3rem;
+    border: 1px solid rgb(168, 85, 246) ;
+ }
+ section.container {
+     background-color:rgba(138, 43, 226,0.5 );
      border: 2px solid rgba(138, 43, 226, 0.5) ;
-     
- }
- section.productContainer {
+     border-radius:12px;
+     padding: 8px;
      display: flex;
-     flex-wrap:wrap-reverse;
-     background-color: rgba(138, 43, 226, 0.5);
-     border-radius: 12px;
+     flex-direction: row;
+     gap: 5px;
+     
      
  }
- section div.productCard {
+ section.container div.producto {
      display: flex;
-     flex-direction:row;
-     
- }
- section.productContainer article.productCard div.imageContainer{
+     flex-wrap:wrap;
      width: 100%;
-     margin: 0.5rem 0.5rem 0.5rem;
-     
+     align-items: center;
+     justify-content: space-between;
  }
- div.imageContainer img {
-      box-shadow: 2px 2px 10px white;
+ 
+ .imagen{
+     margin: 5px;
+     box-sizing: border-box;
+    box-shadow: 1px 1px white;
  }
 
- article.productCard h3 {
+
+ div.nombre {
      color:  rgb(247, 244, 248);
-     padding-bottom: 0.3rem;
-     margin-bottom: 0.5rem;
-     text-align:start;
- }
- article.productCard p {
-     color: white;
-     font-weight: 450;
+     align-items: center;
      font-size: 1.3rem;
-     margin-bottom: 0.5rem;
-     text-align:center;
+     display: flex;
+     flex-direction: column;
+ }
+ 
+ .masmenos {
+    color: white;
+    display: flex;
+    align-items:flex-end;
+ }
+ div.boton-precio span {
+    font-size: 1.3rem;
+    text-align: center;
+    color: white;
  }
  section.resumenCompra div.precioFinal {
      background-color: rgba(138, 43, 226, 0.5);
-     font-size: 12px;
+     font-size: 16px;
+     color: white;
+     text-align: center;
+     border-radius:  12px;
+     margin-left: 20%;
+     margin-right: 20%;
  }
+.btn {
+    color: white;
+    margin-left: 40%;
+    
+    margin-top: 10%;
+    border: 1px solid white;
+    text-align: center;
+    font-size: 0.9rem;
+    border-radius: 13px;
+    
+}
+
+@media ( max-width: 768px) {
+  .btn {
+    margin-left: 30%;
+    
+  }
+}
+@media (min-width: 769px) and (max-width: 1024px){
+    .btn {
+        font-size: 2.0rem;
+        margin-left: 35%;
+    }
+
+}
+@media (min-width: 1024px) {
+    .btn{
+        font-size: 2.3rem;
+        margin-left: 35%;   
+    }
+    .nombre {
+        font-size: 1.9rem;
+    }
+}
