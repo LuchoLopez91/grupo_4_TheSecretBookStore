@@ -12,7 +12,7 @@
 }
 
 header {
-    background-color: white;
+    background-color: var(--violeta-claro);
     width: 100vw;
     position: 0 0 fixed;
 
@@ -37,7 +37,7 @@ header div.signUp i {
     width: 30px;
     height: 30px;
     padding: 20px;
-    color: var(--violeta-oscuro);
+    color: var(--rosa-claro);
 }
 header div.cart-icon i{
     border: 3px solid var(--violeta-oscuro);
