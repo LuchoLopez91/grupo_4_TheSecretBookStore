@@ -17,17 +17,18 @@
     box-sizing: border-box;
 }
 
-
-/*  MAIN  */
-
-main {
-    width: 100%;
+body {
+    height: 100vh;
     background-color: var(--secondary)
 }
 
+/*  MAIN  */
+
+
 main div img.banner {
     width: 100%;
-    height: 170px;
+    height: 230px;
+   
 }
 
 div.container_subtitle {
@@ -72,60 +73,102 @@ section.group {
 main section.group2 {
     display: flex;
     flex-wrap: wrap;
-    justify-content:center;
+    justify-content: center;
     margin-bottom: 22px;
     
 }
 
 section article.container {
     border: solid 2px var(--main-color);
+    border-radius: 3px;
     height: 50px;
     width: 150px;
     margin: 6px;
     background-color: var(--btn-color);
+    text-align: center;
+    
 }
 
 section.group3 {
-    margin-bottom: 30px;
+    margin: auto;
 }
 
 section.group3 div.subscribe {
     border: solid ;
     background-color: var(--btn-color);
-    width: 400px;
-    height: 120px;
+    width: 80%;
+    height: 150px;
     margin: auto;
-    padding: 17px;
+    padding: 10px;
     text-align: center;
+}
+
+section.group3 div.subscribe p {
+    margin: 2px 3px 2px;
 }
 
 div.subscribe input.input-container {
     width: 222px;
     display: block;
-    margin: auto;
+    margin:  7px auto;
     padding: 3px;
 }
 
 div.subscribe button.btn {
     height: 27px;
     width: 95px;
-    margin: 7px ;
+    margin: 3px ;
     border-radius: 17px;
     background-color: var(--main-color);
     color: var(--text-color);
     font-weight: bold;
-
 }
+
+
+
 
 
 @media (min-width:460px){
-    main {
-        background-color:aqua;
-    }
 
     main div img.banner {
-        width: 100%;
-        height: 200px;
+        height: 275px;
     }
 
+    main section.group2 {
+        margin: 5px 20px;
+        border: solid 2px var(--main-color);
+        height: 50px;
+        background-color: var(--btn-color);
+        flex-wrap: nowrap;
+        justify-content: space-around;
+    }
+    
+    section article.container {
+        border: none;
+        height: 35px;
+        width: 115px;
+        margin: 6px;
+        background-color: var(--btn-color);
+    }
+
+    section article.container span {
+        display: block;
+        text-align: center;
+    }
+    
+    section article.container img {
+        display: inline-block;
+        text-align: center;
+    }
 }
+
+
+
+
+@media (min-width:768px) { /*PRUEBA*/
+    main {
+        background-color: greenyellow;
+    }
+}
+
+
