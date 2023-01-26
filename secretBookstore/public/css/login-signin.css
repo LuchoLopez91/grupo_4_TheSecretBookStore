@@ -81,7 +81,7 @@
     box-shadow: 1px 1px 3px;
 }
 
-.register-login a {
+.register-login p a {
     font-weight: bold;
     color: var(--violeta-oscuro);
 }

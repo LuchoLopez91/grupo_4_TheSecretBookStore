@@ -67,6 +67,68 @@ header nav {
     display: none;
 } 
 
+header nav.active {
+    z-index: 1;
+    background-color: var(--violeta-oscuro);
+    text-align: left;
+    width: 100vw;
+    height: max-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin-top: 15px;
+    
+}
+header nav .btn-close-container i {
+    font-size: 25px;
+    font-weight: bold;
+    width: 30px;
+    height: 30px;
+    padding: 20px;
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border: 3px solid white;
+    border-radius: 50%;
+    display:flex ;
+    justify-content: center;
+    align-items: center;
+ 
+}
+
+header nav ul.menu {
+
+    padding-left: 0;
+}
+
+
+header nav ul li {
+    list-style-type: none;
+    height: 45px;
+    margin-left: 15px;
+   
+}
+
+header nav ul li a {
+    color: var(--rosa-claro);
+    text-decoration: none;
+    font-size: 25px;
+    width: 100%;
+    text-align: left;
+
+}
+header nav .btn-close-container {
+    position: relative;
+    border: none;
+
+}
+
+
+
+
+
+
 header .search-bar {
     width: min-content;
     display: flex;

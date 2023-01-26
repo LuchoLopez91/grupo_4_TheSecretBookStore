@@ -14,34 +14,41 @@
 
 <body>
     <header>
-        <header>
-            <div class="header-logo">
-                <img src="/images/logo.png" alt="logo">
-            </div>
-            <div class="header-icons">
-            <div class="burger-menu">
-                <i class="fas fa-bars"></i>
-            </div>
-            <div class="signUp">
-                <i class="fas fa-user"></i>
-            </div>
-            <div class="cart-icon">
-                <i class="fa-solid fa-cart-shopping"></i>
-            </div>
+        <a href="home"><div class="header-logo">
+            <img src="/images/logo.png" alt="logo">
+        </div></a>
+        <div class="header-icons">
+        <div class="burger-menu">
+            <i class="fas fa-bars"></i>
         </div>
-            <nav>
-                <ul class="menu">
-                    <li><a href="">Categorías</a></li>
-                    <li><a href="">Géneros</a></li>
-                    <li><a href="">Recomendados</a></li>
-                </ul>
-            </nav>
-            
-            <div class="search-bar">
-                <input type="search" placeholder="Busca tu libro por titulo, autor, ISBN">
-                <i class="fa-solid fa-magnifying-glass"></i>
+        <a href="login"><div class="signUp">
+            <i class="fas fa-user"></i>
+        </div></a>
+        <a href="cart"><div class="cart-icon">
+            <i class="fa-solid fa-cart-shopping"></i>
+        </div></a>
+    </div>
+        <nav class="menu-container">
+            <div class="btn-close-container">
+                <i class="fa-regular fa-xmark"></i>
             </div>
-            </header>
+            <ul class="menu">
+                <li><a href="">Comic</a></li>
+                <li><a href="">Manga</a></li>
+                <li><a href="">Aventura</a></li>
+                <li><a href="">Ciencia Ficción</a></li>
+                <li><a href="">Clásicos</a></li>
+                <li><a href="">Drama</a></li>
+                <li><a href="">Terror</a></li>
+                <li><a href="">Infantil</a></li>
+            </ul>
+        </nav>
+        
+        <div class="search-bar">
+            <input type="search" placeholder="Busca tu libro por titulo, autor, ISBN">
+            <i class="fa-solid fa-magnifying-glass"></i>
+        </div>
+        </header>
     </header>
     <main>
         <!-- Barra navegación -->
@@ -213,6 +220,18 @@
             </form>
         </section>
     </main>
+    <script>
+        let burgerMenu = document.querySelector(".burger-menu");
+        let btnClose = document.querySelector(".btn-close-container");
+        let menuContainer= document.querySelector(".menu-container");
+        burgerMenu.addEventListener("click", () => {
+        menuContainer.classList.add("active");  
+    });
+        btnClose.addEventListener("click", ()=> {
+            menuContainer.classList.remove("active");
+        }
+        )
+        </script>
 </body>
 
 </html>
