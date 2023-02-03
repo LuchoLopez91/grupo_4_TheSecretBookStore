@@ -1,23 +1,5 @@
 {
-  "name": "grupo_4_thesecretbookstore",
-  "version": "1.0.0",
-  "description": "> **_The Secret BookStore_** es una librería y comiquería que cuenta con el más amplio catálogo de comics \r > nacionales e internacionales, manga, literatura \r > fantástica, de horror, ciencia ficción entre otros.\r >\r > Nuestra tienda apunta a todo tipo de público, hay libros e historietas para cada etapa de la vida y para todos los gustos.\r >\r > ## **Participantes**\r > El equipo está formado por 5 miembros, somos todos estudiantes de Programación Web, y trabajamos y desarrollamos la tienda en conjunto:\r > - Nerina Belén Cayo: 32 años, hobbies: Gamer, música, amante de la tecnología y el deporte.\r > - Silvia Cartasso: 31 años, hobbies: leer, escuchar música, aprender idiomas.\r > - Fabian Sosa: 25 años, hobbies: la lectura y los videojuegos.\r > - Dylan Ojeda: 19 años, hobbies: Dibujar, leer y escribir, fan del Anime.\r > - Luis Lopez: 31 años, hobbies: Videojuegos.\r >\r > ## **Páginas web de referencia**\r > \r > - [Tematika](https://www.tematika.com)\r > - [MangaDex](https://www.mangadex.org)\r > - [Cuspide](https://www.cuspide.com)\r > - [Mercado Libre](https://www.mercadolibre.com.ar)\r > - [SBS](https://www.sbs.com.ar)\r > - [Maximus](https://www.maximus.com.ar)\r > - [Entelequia](https://www.entelequia.com.ar)\r > - [Netflix](https://www.netflix.com)",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/LuchoLopez91/grupo_4_TheSecretBookStore.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/LuchoLopez91/grupo_4_TheSecretBookStore/issues"
-  },
-  "homepage": "https://github.com/LuchoLopez91/grupo_4_TheSecretBookStore#readme",
   "dependencies": {
-    "express": "^4.18.2"
+    "ejs": "^3.1.8"
   }
 }
