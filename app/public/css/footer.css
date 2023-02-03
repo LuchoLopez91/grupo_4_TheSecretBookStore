@@ -110,12 +110,18 @@ section.footer ul.active {
         width: 25%;
     }
 
-    span.more,
-    span.less {
+    span.more1,
+    span.more2,
+    span.more3,
+    span.less1,
+    span.less2,
+    span.less3 {
         display: none;
     }
 
-    ul.footer {
+    ul.lista1, 
+    ul.lista2, 
+    ul.lista3 {
         display: block;
     }
 }
