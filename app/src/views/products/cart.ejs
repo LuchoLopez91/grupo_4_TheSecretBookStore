@@ -4,16 +4,17 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Iniciar sesión</title>
-    <link rel="stylesheet" href="/css/login-signin.css" />
+    <link rel="stylesheet" href="/css/cart.css" />
     <link rel="stylesheet" href="/css/header.css" />
     <link rel="stylesheet" href="/css/footer.css" />
     <link
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
       rel="stylesheet"
     />
+    <title>Carrito</title>
   </head>
-  <body class="register-login">
+
+  <body>
     <header>
       <a href="home"
         ><div class="header-logo">
@@ -56,62 +57,93 @@
         <i class="fa-solid fa-magnifying-glass"></i>
       </div>
     </header>
+    <main>
+      <h1>Mi carrito</h1>
 
-    <div class="form-container">
-      <h2>Ingresá a tu cuenta</h2>
-      <form action="" method="">
-        <div class="form">
-          <div class="input-container">
-            <label for="email">Dirección de e-mail</label><br />
-            <input
-              class="input-style"
-              type="email"
-              name="email"
-              id="email"
-              placeholder="email@mail.com"
+      <section class="container">
+        <div class="producto">
+          <div class="imagen">
+            <img
+              src="/images/9788418174575.png"
+              alt=""
+              height="120px"
+              width="90px"
             />
-            <i class="fa-regular fa-envelope"></i>
-            <div class="error-message">Debe ingresar su email</div>
           </div>
-          <div class="input-container">
-            <label for="contraseña">Contraseña</label><br />
-            <input
-              class="input-style"
-              type="password"
-              name="password"
-              id="contraseña"
-            />
-            <i class="fa-solid fa-lock"></i>
-            <div class="error-message">Debe ingresar una contraseña válida</div>
-          </div>
-          <div>
-            <div class="input-container">
-              <label for="recordarme"
-                ><input
-                  type="checkbox"
-                  name="recordarme"
-                  id="recordarme"
-                  value="recordarme"
-                />Recordarme</label
-              >
+          <div class="nombre">
+            <span>Herry Potter y el caliz de fuego</span>
+            <div class="eliminar">
+              <button>Eliminar</button>
             </div>
           </div>
-          <button type="submit">INGRESAR</button>
+          <div class="boton-precio">
+            <span>$Xxxx</span>
+            <div class="masmenos">
+              <button>-</button>
+              <span>1</span>
+              <button>+</button>
+            </div>
+          </div>
         </div>
-      </form>
-      <p><a href="">¿Olvidaste tu contraseña?</a></p>
-      <div class="google">
-        <button type="button">
-          <i class="fa-brands fa-google"></i> Ingresar con Google
-        </button>
-      </div>
-      <div class="facebook">
-        <button type="button">
-          <i class="fa-brands fa-facebook-f"></i> Ingresar con Facebook
-        </button>
-      </div>
-      <p>¿No tienes una cuenta? <a href="/register">Registrate</a></p>
-    </div>
+
+        <div class="producto">
+          <div class="imagen">
+            <img
+              src="/images/Las crónicas de Narnia.jpg"
+              alt=""
+              height="120px"
+              width="90px"
+            />
+          </div>
+          <div class="nombre">
+            <span>Las cronicas de Narnia</span>
+            <div class="eliminar">
+              <button>Eliminar</button>
+            </div>
+          </div>
+          <div class="boton-precio">
+            <span>$Xxxx</span>
+            <div class="masmenos">
+              <button>-</button>
+              <span>1</span>
+              <button>+</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="producto">
+          <div class="imagen">
+            <img
+              src="/images/portada_luna-de-pluton_dross_201508312146.jpg"
+              alt=""
+              height="120px"
+              width="90px"
+            />
+          </div>
+          <div class="nombre">
+            <span>Luna de Pluton</span>
+            <div class="eliminar">
+              <button>Eliminar</button>
+            </div>
+          </div>
+          <div class="boton-precio">
+            <span>$Xxxx</span>
+            <div class="masmenos">
+              <button>-</button>
+              <span>1</span>
+              <button>+</button>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="resumenCompra">
+        <div class="precioFinal">
+          <h2>TOTAL A PAGAR: $xxXx</h2>
+        </div>
+      </section>
+
+      <a href="" class="btn">Finalizar compra</a>
+    </main>
     <footer>
       <div class="img-container footer">
         <img src="./images/main/logo.png" alt="Logo" class="footer" />
@@ -201,4 +233,12 @@
       });
     </script>
   </body>
-</html>
+  <!--
+    <ul>
+    <li><a href="cart">Cart</a></li>
+    <li><a href="home">Home</a></li>
+    <li><a href="login">Log In</a></li>
+    <li><a href="product">Product</a></li>
+    <li><a href="signin">Sign In</a></li>
+</ul>
+--></html>

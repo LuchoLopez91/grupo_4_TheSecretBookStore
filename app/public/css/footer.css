@@ -1,0 +1,121 @@
+/* Generales */
+
+:root {
+    --main-color: rgb(229, 184, 244);
+    --secondary: rgb(193, 71, 233);
+    --btn-color: rgb(129, 12, 168);
+    --text-color: rgb(45, 3, 59);
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    color: --text-color;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: var(--text-color);
+}
+
+h2, h3, h4, p, span {
+    color: var(--text-color);
+}
+
+img {
+    width: 100%;
+}
+
+/* Footer */
+
+footer {
+    width: 100%;
+    height: auto;
+    background-color: var(--main-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 25px 0 50px;
+}
+
+footer.active {
+    height: auto;
+}
+
+footer img.footer {
+    width: 65px;
+    height: 65px;
+}
+
+section.footer {
+    width: 100%;
+    max-width: 280px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+section.footer div.footer {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+
+div.footer span {
+    font-size: 1.5rem;
+}
+
+span.less1,
+.less2,
+.less3 {
+    display: none;
+}
+
+span.active{
+    display: inline;
+}
+
+span.inactive{
+    display: none;
+}
+
+
+
+section.footer ul {
+    display: none;
+}
+
+section.footer ul.active {
+    display: block;
+}
+
+
+
+
+
+/* Media */
+@media (min-width: 576px) {
+    footer.footer {
+        flex-direction: row;
+    }
+
+    section.footer {
+        width: 25%;
+    }
+
+    span.more,
+    span.less {
+        display: none;
+    }
+
+    ul.footer {
+        display: block;
+    }
+}

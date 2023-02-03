@@ -1,98 +1,212 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="/css/login-signin.css">
-    <link rel="stylesheet" href="/css/header.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
-rel="stylesheet" />
-</head>
-<body class="register-login">
+    <link rel="stylesheet" href="/css/login-signin.css" />
+    <link rel="stylesheet" href="/css/header.css" />
+    <link rel="stylesheet" href="/css/footer.css" />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="register-login">
     <header>
-        <a href="home"><div class="header-logo">
-            <img src="/images/logo.png" alt="logo">
-        </div></a>
-        <div class="header-icons">
+      <a href="home"
+        ><div class="header-logo">
+          <img src="/images/main/logo.png" alt="logo" /></div
+      ></a>
+      <div class="header-icons">
         <div class="burger-menu">
-            <i class="fas fa-bars"></i>
+          <i class="fas fa-bars"></i>
         </div>
-        <a href="login"><div class="signUp">
-            <i class="fas fa-user"></i>
-        </div></a>
-        <a href="cart"><div class="cart-icon">
-            <i class="fa-solid fa-cart-shopping"></i>
-        </div></a>
-    </div>
-        <nav class="menu-container">
-            <div class="btn-close-container">
-                <i class="fa-regular fa-xmark"></i>
-            </div>
-            <ul class="menu">
-                <li><a href="">Comic</a></li>
-                <li><a href="">Manga</a></li>
-                <li><a href="">Aventura</a></li>
-                <li><a href="">Ciencia Ficción</a></li>
-                <li><a href="">Clásicos</a></li>
-                <li><a href="">Drama</a></li>
-                <li><a href="">Terror</a></li>
-                <li><a href="">Infantil</a></li>
-            </ul>
-        </nav>
-        
-        <div class="search-bar">
-            <input type="search" placeholder="Busca tu libro por titulo, autor, ISBN">
-            <i class="fa-solid fa-magnifying-glass"></i>
+        <a href="login"
+          ><div class="signUp">
+            <i class="fas fa-user"></i></div
+        ></a>
+        <a href="cart"
+          ><div class="cart-icon">
+            <i class="fa-solid fa-cart-shopping"></i></div
+        ></a>
+      </div>
+      <nav class="menu-container">
+        <div class="btn-close-container">
+          <i class="fa-regular fa-xmark"></i>
         </div>
-        </header>
+        <ul class="menu">
+          <li><a href="">Comic</a></li>
+          <li><a href="">Manga</a></li>
+          <li><a href="">Aventura</a></li>
+          <li><a href="">Ciencia Ficción</a></li>
+          <li><a href="">Clásicos</a></li>
+          <li><a href="">Drama</a></li>
+          <li><a href="">Terror</a></li>
+          <li><a href="">Infantil</a></li>
+        </ul>
+      </nav>
+
+      <div class="search-bar">
+        <input
+          type="search"
+          placeholder="Busca tu libro por titulo, autor, ISBN"
+        />
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </div>
+    </header>
     <div class="form-container">
-        <h2>Registrarse</h2>
-        <form action="" method="">
+      <h2>Registrarse</h2>
+      <form action="" method="">
         <div class="form">
-            <div class="input-container">
-                <label for="nombre">Nombre</label><br>
-                <input class="input-style"  type="text" name="nombre" id="nombre" placeholder="Tu nombre">
-                <div class="error-message">Datos requeridos</div>
-            </div>
-            <div class="input-container">
-                <label for="apellido">Apellido</label><br>
-                <input class="input-style" type="text" name="apellido" id="apellido" placeholder="Tu apellido">
-                <div class="error-message">Datos requeridos</div>
-            </div>
-            <div class="input-container">
-                <label for="dni">DNI</label><br>
-                <input class="input-style" type="tel" name="dni" id="dni" placeholder="Tu DNI">
-                <div class="error-message">Datos requeridos</div>
-            </div>
-            <div class="input-container">
-                <label for="email">E-mail</label><br>
-                <input class="input-style" type="email" name="email" id="email" placeholder="Tu e-mail">
-                <div class="error-message">Datos requeridos</div>
-            </div>
-            <div class="input-container">
-                <label for="contraseña">Contraseña</label><br>
-                <input class="input-style" type="password" name="contraseña" id="contraseña">
-                <div class="error-message">Datos requeridos</div>
-            </div>
-            
-                <button type="submit">ENVIAR</button>
+          <div class="input-container">
+            <label for="nombre">Nombre</label><br />
+            <input
+              class="input-style"
+              type="text"
+              name="nombre"
+              id="nombre"
+              placeholder="Tu nombre"
+            />
+            <div class="error-message">Datos requeridos</div>
+          </div>
+          <div class="input-container">
+            <label for="apellido">Apellido</label><br />
+            <input
+              class="input-style"
+              type="text"
+              name="apellido"
+              id="apellido"
+              placeholder="Tu apellido"
+            />
+            <div class="error-message">Datos requeridos</div>
+          </div>
+          <div class="input-container">
+            <label for="dni">DNI</label><br />
+            <input
+              class="input-style"
+              type="tel"
+              name="dni"
+              id="dni"
+              placeholder="Tu DNI"
+            />
+            <div class="error-message">Datos requeridos</div>
+          </div>
+          <div class="input-container">
+            <label for="email">E-mail</label><br />
+            <input
+              class="input-style"
+              type="email"
+              name="email"
+              id="email"
+              placeholder="Tu e-mail"
+            />
+            <div class="error-message">Datos requeridos</div>
+          </div>
+          <div class="input-container">
+            <label for="contraseña">Contraseña</label><br />
+            <input
+              class="input-style"
+              type="password"
+              name="contraseña"
+              id="contraseña"
+            />
+            <div class="error-message">Datos requeridos</div>
+          </div>
+
+          <button type="submit">ENVIAR</button>
         </div>
-        </form>
-        <p>¿Ya tienes cuenta? <a href="/login">Iniciar sesión</a></p>
-    </div>      
+      </form>
+      <p>¿Ya tienes cuenta? <a href="/login">Iniciar sesión</a></p>
+    </div>
+    <footer>
+      <div class="img-container footer">
+        <img src="./images/main/logo.png" alt="Logo" class="footer" />
+      </div>
+      <section class="footer">
+        <div class="footer abrir1">
+          <span>Nosotros</span><span class="more1">+</span
+          ><span class="less1">-</span>
+        </div>
+        <ul class="footer lista1">
+          <li><a href="">Quienes somos</a></li>
+          <li><a href="">Contáctanos</a></li>
+          <li><a href="">Sucursales</a></li>
+          <li><a href="">Novedades</a></li>
+        </ul>
+      </section>
+      <section class="footer">
+        <div class="footer abrir2">
+          <span>Ayuda</span><span class="more2">+</span
+          ><span class="less2">-</span>
+        </div>
+        <ul class="footer lista2">
+          <li><a href="">F.A.Q.</a></li>
+          <li><a href="">Medios de pago</a></li>
+          <li><a href="">Promociones</a></li>
+        </ul>
+      </section>
+      <section class="footer">
+        <div class="footer abrir3">
+          <span>Atención al clinte</span><span class="more3">+</span
+          ><span class="less3">-</span>
+        </div>
+        <ul class="footer lista3">
+          <li><a href="">Nuestro teléfono</a></li>
+          <li><a href="">correo@mail.com</a></li>
+          <li><a href="">Dirección</a></li>
+        </ul>
+      </section>
+    </footer>
     <script>
-        let burgerMenu = document.querySelector(".burger-menu");
-        let btnClose = document.querySelector(".btn-close-container");
-        let menuContainer= document.querySelector(".menu-container");
-        burgerMenu.addEventListener("click", () => {
-        menuContainer.classList.add("active");  
-    });
-        btnClose.addEventListener("click", ()=> {
-            menuContainer.classList.remove("active");
-        }
-        )
-        </script>
-</body>
+      /* variables */
+      let burgerMenu = document.querySelector(".burger-menu");
+      let btnClose = document.querySelector(".btn-close-container");
+      let menuContainer = document.querySelector(".menu-container");
+      let abrir1 = document.querySelector(".abrir1");
+      let abrir2 = document.querySelector(".abrir2");
+      let abrir3 = document.querySelector(".abrir3");
+      let more1 = document.querySelector(".more1");
+      let less1 = document.querySelector(".less1");
+      let more2 = document.querySelector(".more2");
+      let less2 = document.querySelector(".less2");
+      let more3 = document.querySelector(".more3");
+      let less3 = document.querySelector(".less4");
+      let lista1 = document.querySelector(".lista1");
+      let lista2 = document.querySelector(".lista2");
+      let lista3 = document.querySelector(".lista3");
+
+      /* eventos */
+      /* header */
+      burgerMenu.addEventListener("click", () => {
+        menuContainer.classList.add("active");
+      });
+      btnClose.addEventListener("click", () => {
+        menuContainer.classList.remove("active");
+      });
+      /* footer */
+      abrir1.addEventListener("click", () => {
+        lista1.classList.add("active");
+        more1.classList.remove("active");
+        more1.classList.add("inactive");
+        less1.classList.add("active");
+        less1.classList.remove("inactive");
+      });
+      abrir2.addEventListener("click", () => {
+        lista2.classList.add("active");
+        more2.classList.remove("active");
+        more2.classList.add("inactive");
+        less2.classList.add("active");
+        less2.classList.remove("inactive");
+      });
+      abrir3.addEventListener("click", () => {
+        lista3.classList.add("active");
+        more3.classList.remove("active");
+        more3.classList.add("inactive");
+        less3.classList.add("active");
+        less3.classList.remove("inactive");
+      });
+    </script>
+  </body>
 </html>

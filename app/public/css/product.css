@@ -1,10 +1,10 @@
 /* Generales */
 
 :root {
-    --main-color: rgb(45, 3, 59);
-    --secondary: rgb(129, 12, 168);
-    --btn-color: rgb(193, 71, 233);
-    --text-color: rgb(229, 184, 244);
+    --main-color: rgb(229, 184, 244);
+    --secondary: rgb(193, 71, 233);
+    --btn-color: rgb(129, 12, 168);
+    --text-color: rgb(45, 3, 59);
 }
 
 * {
@@ -34,7 +34,7 @@ img {
 /* Main */
 
 main {
-    background-color: var(--main-color);
+    background-color: var(--text-color);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -46,7 +46,7 @@ main section{
     padding: 8px;
     margin: 4px 8px;
     width:calc(100% - 16px);
-    background-color: var(--secondary);
+    background-color: var(--main-color);
 }
 
 /* Product box */
