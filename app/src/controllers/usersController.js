@@ -1,11 +1,15 @@
 module.exports = {
     register: (req, res) => {
         res.render('./users/register', {
+            doctitle: "Registrate",
+            link: "/css/login-signin.css"
 
         });
     },
     login: (req, res) => {
         res.render('./users/login', {
+            doctitle: "Iniciar sesión",
+            link: "/css/login-signin.css"
 
         });
     },

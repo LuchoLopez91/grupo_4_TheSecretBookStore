@@ -13,9 +13,14 @@ module.exports = {
 
         res.render('products/product', {
             book,
+            doctitle: "Producto",
+            link: "/css/product.css"
         })
     },
     cart: (req, res) => {
-        res.render('products/cart')
+        res.render('products/cart', {
+        doctitle: "Mi carrito",
+        link: "/css/cart.css"    
+        })
     },
 }

@@ -6,6 +6,10 @@ const books = JSON.parse(fs.readFileSync(booksPathDB, "utf-8"));
 
 module.exports = {
     index: (req, res) => {
-        res.render('home',{books});
+        res.render('home',{
+            books,
+            doctitle: "Home",
+            link: "/css/home.css"
+        });
     },
 }
