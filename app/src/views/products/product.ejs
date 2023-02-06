@@ -1,29 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/css/product.css" />
-    <link rel="stylesheet" href="/css/header.css" />
-    <link rel="stylesheet" href="/css/footer.css" />
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
-      rel="stylesheet"
-    />
-    <title>El pibe Motosierra</title>
+    <%- include("../partials/head") %>
   </head>
 
   <body>
+    <%- include("../partials/header") %>
 
-    <%- include("../partials/header") %> 
-    
     <main>
       <!-- Barra navegación -->
       <section class="dir-bar">
         <div>
           <a href="home">Inicio</a> / <a href="">Categorías</a> /
-          <a href="">El Pibe Motosierra</a>
+          <a href=""><%= book.title %> </a>
         </div>
       </section>
       <div class="product">
@@ -32,8 +21,8 @@
           <!-- Foto -->
           <div class="photo-container">
             <img
-              src="./images/books/chainsaw-man-1.jpg"
-              alt="Chainsaw Man vol. 1"
+              src="./images/books/<% book.image %>"
+              alt="<%= book.title %>"
             />
           </div>
           <!-- Información -->
@@ -41,47 +30,28 @@
         <!-- Descripción -->
         <section class="description">
           <div class="info">
-            <h2>Chainsaw Man vol. 1</h2>
-            <h3>FUJIMOTO, Tatsumi</h3>
+            <h2><%= book.title %></h2>
+            <h3><%= book.autor %></h3>
           </div>
-          <div class="price">Precio: $ X.xxx</div>
+          <div class="price">Precio: $<%= book.price %></div>
           <div class="btn-container">
-            <div class="btn">Favorito</div>
-            <div class="btn">Comprar</div>
+            <div class="product-btn">Favorito</div>
+            <div class="product-btn">Comprar</div>
           </div>
-          <p>Editorial: Shueisha</p>
-          <p>I.S.B.N.:</p>
-          <p>Nro. de páginas: 201</p>
-          <p>Idiomas: Jpn, Eng, Esp</p>
-          <p>Formato: Digital</p>
-          <p>
-            Clasificación: <a href="">Acción</a> <a href="">Tragedia</a>
-            <a href="">Horror</a>
-          </p>
-          <p>Fecha de publicación:</p>
+          <p>Calificación: <%= book.calification %></p>
+          <p>Editorial: <%= book.editorial %></p>
+          <p>I.S.B.N.: <%= book.ISBN %></p>
+          <p>Nro. de páginas: <%= book.pages %></p>
+          <p>Idiomas: <%= book.languages %></p>
+          <p>Formato: <%= book.format %></p>
+          <p>Género: <a href=""><%= book.genre %></a></p>
+          <p>Fecha de publicación: <%= book.publication %></p>
         </section>
       </div>
       <section class="about">
         <div id="description">
           <h3>Descripción</h3>
-          <p>
-            Broke young man + chainsaw dog demon = Chainsaw Man! The name says
-            it all! Denji's life of poverty is changed forever when he merges
-            with his pet chainsaw dog, Pochita! Now he's living in the big city
-            and an official Devil Hunter. But he's got a lot to learn about his
-            new job and chainsaw powers
-          </p>
-        </div>
-        <div id="about">
-          <h3>Sobre FUJIMOTO, Tatsumi</h3>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus
-            natus repudiandae illo maxime repellat voluptas, cumque blanditiis
-            optio itaque quidem quaerat dignissimos doloribus quam accusantium
-            voluptatibus quasi sequi id quisquam totam ea fugit facere?
-            Consectetur eaque ab vero voluptatem ipsa porro sapiente repellat
-            fugit labore. Incidunt voluptas reiciendis necessitatibus tenetur.
-          </p>
+          <p><%- book.description %></p>
         </div>
       </section>
       <!-- Relacionados -->
@@ -91,53 +61,14 @@
           <article>
             <div class="photo-container">
               <img
-                src="https://http2.mlstatic.com/D_NQ_NP_880313-MLA48184342634_112021-O.jpg"
-                alt="Jujutsu Kaisen vol. 7"
+                src="./images/books/<%- book.image %>"
+                alt="<%- book.title %>"
               />
             </div>
             <div>
-              <h4>Jujutsu Kaisen vol. 7</h4>
-              <h4>Gege Akutami</h4>
-              <p>$X.xxx</p>
-            </div>
-          </article>
-          <article>
-            <div class="photo-container">
-              <img
-                src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1624976224l/58453610._SX318_.jpg"
-                alt="Jujutsu Kaisen vol. 8"
-              />
-            </div>
-            <div>
-              <h4>Jujutsu Kaisen vol. 8</h4>
-              <h4>Gege Akutami</h4>
-              <p>$X.xxx</p>
-            </div>
-          </article>
-          <article>
-            <div class="photo-container">
-              <img
-                src="https://images.cdn3.buscalibre.com/fit-in/360x360/24/67/2467b765276184f142d032247eefd135.jpg"
-                alt="Dandadan vol. 1"
-              />
-            </div>
-            <div>
-              <h4>Dandadan vol. 1</h4>
-              <h4>Yukinobu Tatsu</h4>
-              <p>$X.xxx</p>
-            </div>
-          </article>
-          <article>
-            <div class="photo-container">
-              <img
-                src="https://www.tebeosfera.com/T3content/img/T3_numeros/4/8/b1ae1d7b973046068515c2b703a4c448.jpg"
-                alt="Spy x Family vol. 1"
-              />
-            </div>
-            <div>
-              <h4>Spy x Family vol. 1</h4>
-              <h4>Tatsuya Endo</h4>
-              <p>$X.xxx</p>
+              <h4><%- book.title %></h4>
+              <h4><%- book.author %></h4>
+              <p>$<%- book.price %></p>
             </div>
           </article>
         </div>
@@ -230,8 +161,8 @@
         </form>
       </section>
     </main>
-    
-    <%- include("../partials/footer") %> 
+
+    <%- include("../partials/footer") %>
 
     <script>
       /* variables */

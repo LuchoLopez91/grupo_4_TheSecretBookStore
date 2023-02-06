@@ -80,7 +80,7 @@ main div.product section.description div.btn-container {
     flex-wrap: wrap;
 }
 
-main div.product section.description div.btn-container div.btn {
+main div.product section.description div.btn-container div.product-btn {
     width: 100px;
     height: 40px;
     border: 1px solid black;
@@ -90,7 +90,7 @@ main div.product section.description div.btn-container div.btn {
     background-color: var(--btn-color);
 }
 
-main div.product section.description div.btn-container div.btn:hover {
+main div.product section.description div.btn-container div.product-btn:hover {
     background-color: var(--main-color);
     color: var(--text-color);
 }
