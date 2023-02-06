@@ -11,7 +11,7 @@
 }
 
 header {
-  background-color: var(--violeta-claro);
+  background-color: #F0F0F5;  
   width: 100vw;
   position: 0 0 fixed;
 }
@@ -34,30 +34,46 @@ header div.signUp i {
   font-size: 20px;
   width: 30px;
   height: 30px;
-  padding: 20px;
-  color: var(--rosa-claro);
+  color: var(--violeta-oscuro);
 }
 header div.cart-icon i {
   border: 3px solid var(--violeta-oscuro);
   border-radius: 50%;
-  position: relative;
-  left: 10px;
+  padding: 20px;
+   left: 10px;
 }
 
 header div.signUp i {
   border: 3px solid var(--violeta-oscuro);
   border-radius: 50%;
-  position: relative;
+  padding: 20px;
   left: 20px;
+}
+
+header div.burger-menu i{
+  border: 3px solid var(--violeta-oscuro);
+  border-radius: 5px;  
+  padding: 15px;
+  font-size: 20px;
+
+
+}
+
+header div.header-elem {
+  display: flex;
+  flex-direction: row;
+
+
 }
 
 header div.header-icons {
   display: flex;
-  justify-content: space-around;
+  justify-content: flex-end;
 }
 
 header div.burger-menu {
   width: 50%;
+  cursor: pointer;
 }
 
 header nav {
@@ -91,10 +107,12 @@ header nav .btn-close-container i {
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
 
 header nav ul.menu {
   padding-left: 0;
+  border-bottom: 1px solid var(--violeta-claro) ;
 }
 
 header nav ul li {
@@ -122,9 +140,9 @@ header .search-bar {
   justify-content: center;
   align-items: center;
   position: relative;
-  border: 2px solid var(--violeta-oscuro);
   border-radius: 5%;
   margin: 10px auto;
+
 }
 
 header .search-bar i {
@@ -133,8 +151,82 @@ header .search-bar i {
 }
 
 header .search-bar input {
-  width: 75vw;
-  height: 30px;
+  width: 60vw;
+  height: 35px;
   border: none;
-  text-align: left;
+  text-align: center;
+  border-radius: 20px;
+  box-shadow: 1px 1px var(--violeta-oscuro) ;
+}
+
+@media screen and (min-width: 768px) {
+  header div.burger-menu {
+    display: none;
+  }
+
+  header div.btn-close-container {
+    display: none;
+  }
+
+  div.header-logo {
+    text-align: left;
+    width: 200px;
+  }
+
+  header div.header-icons {
+    justify-content: flex-end;
+    align-items: center;
+    gap: 30px;
+  margin-right: 30px;
+  }
+
+  header div.top-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  header .search-bar input {
+    width: 400px;
+    margin: 5px;
+  }
+  header div.search-bar {
+    padding: 5px;
+    margin: 0 5px;
+    border: none;
+  }
+  .header-logo img {
+    width: 180px;
+  }
+  header nav {
+    display: flex;
+    position: static;
+    margin-left: 0;
+    height: 100%;
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-evenly;
+    background: var(--violeta-oscuro);
+  }
+
+  header nav ul li {
+    display: inline-block;
+    padding: 2px;
+
+  }
+
+  header nav ul li:hover {
+    border: 2px solid var(--rosa-claro);
+    border-radius: 10px;
+    background-color: var(--rosa-claro);
+    box-shadow: 1px 1px ;
+  
+  
+  }
+
+  header nav ul li a:hover {
+    color: #2d033b;
+  }
 }
