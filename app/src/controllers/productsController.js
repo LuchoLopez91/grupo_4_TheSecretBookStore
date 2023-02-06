@@ -13,7 +13,6 @@ module.exports = {
 
         res.render('products/product', {
             book,
-            doctitle: "Producto",
             link: "/css/product.css"
         })
     },
