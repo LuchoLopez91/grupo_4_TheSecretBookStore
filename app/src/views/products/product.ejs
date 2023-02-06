@@ -1,16 +1,18 @@
 <!DOCTYPE html>
-<html lang="es">
-    <%- include("../partials/head") %>
-
+<html lang="en">
+  <head>
+    <%- include("../partials/head", {title: book.title}) %>
+  </head>
+>
 
   <body>
     <%- include("../partials/header") %>
 
-    <main>
+    <main class="product">
       <!-- Barra navegación -->
       <section class="dir-bar">
         <div>
-          <a href="home">Inicio</a> / <a href="">Categorías</a> /
+          <a href="/">Inicio</a> / <a href="">Categorías</a> /
           <a href=""><%= book.title %> </a>
         </div>
       </section>
@@ -20,7 +22,7 @@
           <!-- Foto -->
           <div class="photo-container">
             <img
-              src="./images/books/<% book.image %>"
+              src="./images/books/<%= book.image %>"
               alt="<%= book.title %>"
             />
           </div>
@@ -35,7 +37,7 @@
           <div class="price">Precio: $<%= book.price %></div>
           <div class="btn-container">
             <div class="product-btn">Favorito</div>
-            <div class="product-btn">Comprar</div>
+            <div class="product-btn"><a href="/cart">Comprar</a></div>
           </div>
           <p>Calificación: <%= book.calification %></p>
           <p>Editorial: <%= book.editorial %></p>
@@ -50,7 +52,7 @@
       <section class="about">
         <div id="description">
           <h3>Descripción</h3>
-          <p><%- book.description %></p>
+          <p><%= book.description %></p>
         </div>
       </section>
       <!-- Relacionados -->
@@ -60,14 +62,14 @@
           <article>
             <div class="photo-container">
               <img
-                src="./images/books/<%- book.image %>"
-                alt="<%- book.title %>"
+                src="./images/books/<%= book.image %>"
+                alt="<%= book.title %>"
               />
             </div>
             <div>
-              <h4><%- book.title %></h4>
-              <h4><%- book.author %></h4>
-              <p>$<%- book.price %></p>
+              <h4><%= book.title %></h4>
+              <h4><%= book.author %></h4>
+              <p>$<%= book.price %></p>
             </div>
           </article>
         </div>

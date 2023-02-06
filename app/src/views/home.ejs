@@ -2,13 +2,12 @@
 <html lang="es">
   <%- include("./partials/head") %>  
 
-
   <body>
 
     <%- include("./partials/header") %> 
     
     <!-- MAIN -->
-    <main>
+    <main class="home">
       <div>
         <img class="banner" src="/images/main/bannerIvrea.jpg" alt="Banner Ivrea" />
       </div>
@@ -24,102 +23,46 @@
                 src="./images/books/<%- book.image %>"
                 alt="<%- book.title %>"
               />
-              <p><%- book.title %></p></a
-            >
+              <p><%- book.title %></p>
+              </a>
           </article>
         <% }) %>
       </section>
 
       <div class="container_subtitle">
-        <h4 class="subtitle">Ofertas</h4>
+        <h4 class="subtitle">Nuestros libros digitales</h4>
       </div>
       <section class="group">
-        <article class="container_book">
-          <a href="/product"
-            ><img
-              class="image_book"
-              src="./images/books/harry-potter-4.jpg"
-              alt="Harry Potter y el cáliz de fuego"
-            />
-            <p>Harry Potter y el cáliz de fuego</p></a
-          >
-        </article>
-        <article class="container_book">
-          <a href="/product"
-            ><img
-              class="image_book"
-              src="./images/books/narnia-1.jpg"
-              alt="Las Crónicas De Narnia"
-            />
-            <p>Las Crónicas De Narnia</p></a
-          >
-        </article>
-        <article class="container_book">
-          <a href="/product"
-            ><img
-              class="image_book"
-              src="./images/books/luna-pluton.jpg"
-              alt="Luna De Plutón"
-            />
-            <p>Luna De Plutón</p></a
-          >
-        </article>
-        <article class="container_book">
-          <a href="/product"
-            ><img
-              class="image_book"
-              src="./images/books/slamdunk-4.jpg"
-              alt="Slam Dunk"
-            />
-            <p>Slam Dunk</p></a
-          >
-        </article>
+        <% digital.forEach(book => { %>
+          <article class="container_book">
+            <a href="/product/<%- book.id %>"
+              ><img
+                class="image_book"
+                src="./images/books/<%- book.image %>"
+                alt="<%- book.title %>"
+              />
+              <p><%- book.title %></p>
+              </a>
+          </article>
+        <% }) %>
       </section>
 
       <div class="container_subtitle">
-        <h4 class="subtitle">Mas Leídos</h4>
+        <h4 class="subtitle">En formato físico</h4>
       </div>
       <section class="group">
-        <article class="container_book">
-          <a href="/product"
-            ><img
-              class="image_book"
-              src="./images/books/harry-potter-4.jpg"
-              alt="Harry Potter y el cáliz de fuego"
-            />
-            <p>Harry Potter y el cáliz de fuego</p></a
-          >
-        </article>
-        <article class="container_book">
-          <a href="/product"
-            ><img
-              class="image_book"
-              src="./images/books/narnia-1.jpg"
-              alt="Las Crónicas De Narnia"
-            />
-            <p>Las Crónicas De Narnia</p></a
-          >
-        </article>
-        <article class="container_book">
-          <a href="/product"
-            ><img
-              class="image_book"
-              src="./images/books/luna-pluton.jpg"
-              alt="Luna De Plutón"
-            />
-            <p>Luna De Plutón</p></a
-          >
-        </article>
-        <article class="container_book">
-          <a href="/product"
-            ><img
-              class="image_book"
-              src="./images/books/slamdunk-4.jpg"
-              alt="Slam Dunk"
-            />
-            <p>Slam Dunk</p></a
-          >
-        </article>
+        <% paperback.forEach(book => { %>
+          <article class="container_book">
+            <a href="/product/<%- book.id %>"
+              ><img
+                class="image_book"
+                src="./images/books/<%- book.image %>"
+                alt="<%- book.title %>"
+              />
+              <p><%- book.title %></p>
+              </a>
+          </article>
+        <% }) %>
       </section>
 
       <section class="group2">

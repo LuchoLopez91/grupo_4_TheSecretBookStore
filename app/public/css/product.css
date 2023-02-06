@@ -18,13 +18,11 @@ ul {
     list-style: none;
 }
 
-a {
-    text-decoration: none;
-    color: black;
-}
 
-h2, h3, h4, p {
+
+h2, h3, h4, p, a {
     color: var(--text-color);
+    text-decoration: none;
 }
 
 img {
@@ -33,64 +31,65 @@ img {
 
 /* Main */
 
-main {
+main.product {
     background-color: var(--text-color);
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: stretch;
+    justify-content: center;
 }
 
-main section{
-    border: 1px solid black;
+main.product section{
     padding: 8px;
     margin: 4px 8px;
-    width:calc(100% - 16px);
+    width: 95%;
+    min-width: 324px;
     background-color: var(--main-color);
 }
 
 /* Product box */
 
-main div.product {
+main.product div.product {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    width: 100%;
 }
 
-main div.product section.title-box {
+main.product div.product section.title-box {
     display: flex;
     justify-content: center;
 }
 
-main div.product section div.photo-container {
+main.product div.product section div.photo-container {
     width: 75%;
     height: 75%;
 }
 
-main div.product section div.info {
+main.product div.product section div.info {
     width: auto;
     height: 3rem;
     padding: 5px;
     margin-bottom: 1rem;
 }
 
-main div.product section.description div.btn-container {
+main.product div.product section.description div.btn-container {
     margin: 1rem;
     display: flex;
     justify-content: space-evenly;
     flex-wrap: wrap;
 }
 
-main div.product section.description div.btn-container div.product-btn {
+main.product div.product section.description div.btn-container div.product-btn {
     width: 100px;
     height: 40px;
-    border: 1px solid black;
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: var(--btn-color);
 }
 
-main div.product section.description div.btn-container div.product-btn:hover {
+main.product div.product section.description div.btn-container div.product-btn:hover {
     background-color: var(--main-color);
     color: var(--text-color);
 }
@@ -125,7 +124,7 @@ section.related div.product--container article {
 
 /* COMMENTARIES */
 
-main section.comments-box {
+main.product section.comments-box {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -133,31 +132,31 @@ main section.comments-box {
     flex-wrap: wrap;
 }
 
-main section.comments-box article.comment {
+main.product section.comments-box article.comment {
     padding: 8px;
 }
 
-main section.comments-box article div.comment {
+main.product section.comments-box article div.comment {
     display: flex;
     height: 30px;
 }
 
-main section.comments-box article div.comment img {
+main.product section.comments-box article div.comment img {
     width: 30px;
     height: 30px;
     display: inline-block;
 }
 
-main section.comments-box article div.comment div.name {
+main.product section.comments-box article div.comment div.name {
     padding-left: 8px;
 }
 
-main section.comments-box article div.comment div.name p {
+main.product section.comments-box article div.comment div.name p {
     display: block;
     width: auto;
 }
 
-main section.comments-box p.text {
+main.product section.comments-box p.text {
     margin: 8px;
     padding: 8px;
 }
@@ -165,13 +164,12 @@ main section.comments-box p.text {
 
 /* COMMENTARY BOX */
 
-main section form div {
+main.product section form div {
     width: calc(100%-16px);
 }
 
-main section form input div textarea {
+main.product section form input div textarea {
     width: 100%;
-    border: 1px solid black;
     border-radius: 7px;
 }
 
@@ -179,14 +177,20 @@ main section form input div textarea {
 
 /* MEDIA QUIERIES */
 
-@media (min-width: 576px) {
-    main div.product {
+@media (min-width: 768px) {
+    main.product div.product {
         flex-direction: row;
+        width: 100%;
+        justify-content: space-between;
     }
-    main section.about {
+    main.product div.product section {
+        display: inline-block;
+        width: 47%;
+    }
+    main.product section.about {
         display: flex;
     }
-    main section.about div {
+    main.product section.about div {
         padding: 8px;
     }
 }

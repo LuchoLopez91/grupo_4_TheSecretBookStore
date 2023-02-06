@@ -6,10 +6,13 @@ const books = JSON.parse(fs.readFileSync(booksPathDB, "utf-8"));
 
 module.exports = {
     index: (req, res) => {
-        res.render('home',{
+        let digital = books.filter(libro => libro.format == 'Digital');
+        let paperback = books.filter(libro => libro.format == 'Físico');
+        res.render('home',{ 
             books,
+            digital,
+            paperback,
             doctitle: "Home",
-            link: "/css/home.css"
-        });
+            link: "/css/home.css" });
     },
-}
+};

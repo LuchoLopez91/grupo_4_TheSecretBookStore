@@ -4,11 +4,12 @@
 
 /*  GENERALES  */
 
+
 :root {
-    --main-color: rgb(45, 3, 59);
-    --secondary: rgb(129, 12, 168);
-    --btn-color: rgb(193, 71, 233);
-    --text-color: rgb(229, 184, 244);
+    --main-color: rgb(229, 184, 244);
+    --secondary: rgb(193, 71, 233);
+    --btn-color: rgb(129, 12, 168);
+    --text-color: rgb(45, 3, 59);
 }
  
 * {
@@ -22,8 +23,19 @@ body {
     background-color: var(--secondary)
 }
 
+h4 {
+    color: var(--main-color);
+}
+
 /*  MAIN  */
 
+main.home {
+    background-color: var(--text-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 
 main div img.banner {
     width: 100%;
@@ -39,12 +51,13 @@ div.container_subtitle {
 
 h4.subtitle {
     margin-left: 8px;
-    color: var(--text-color);
+    color: var(--main-color);
 }
 
-section article a {
+section article a p {
     text-decoration: none;
     color: black;
+    font-size: 1.5rem;
 }
 
 article img.image_book {
@@ -53,11 +66,13 @@ article img.image_book {
 }
 
 article.container_book {
-    display: inline-block;
+    display: flex;
+    flex-direction: column;
     text-align: center;
     width: 40%;
+    max-width: 240px;
     margin: 7px;
-    
+    background-color: var(--main-color);
 }
 
 /*  FLEX BOX  */
@@ -67,6 +82,8 @@ section.group {
     flex-wrap: wrap; /*salto de linea*/
     justify-content:space-evenly;
     margin-bottom: 20px;
+    background-color: var(--btn-color);
+    width: 92%;
 }
 
 
@@ -129,8 +146,12 @@ div.subscribe button.btn {
 
 
 @media (min-width:460px){
+    section.group {
+        display: flex;
+    }
 
-    main div img.banner {
+
+    /* main div img.banner {
         height: 275px;
     }
 
@@ -159,7 +180,7 @@ div.subscribe button.btn {
     section article.container img {
         display: inline-block;
         text-align: center;
-    }
+    } */
 }
 
 
