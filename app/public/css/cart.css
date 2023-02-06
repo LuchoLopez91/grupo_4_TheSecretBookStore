@@ -9,7 +9,7 @@ body {
      flex-wrap: wrap;
 
 }
-main {
+main.cart {
      width: 80%;
      margin: 0 auto;
  }
