@@ -22,4 +22,16 @@ module.exports = {
         link: "/css/cart.css"    
         })
     },
+
+    create: (req, res) => {
+        res.render("partials/product-create-form", {
+            doctitle: "Crear producto",
+        link: "/css/product-create-form.css" 
+    })
+    },
+
+    store: (req, res) => {
+        res.send(req.body)
+    },
+
 }

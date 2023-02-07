@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Includes head -->
+<%- include("../partials/head") %>
+<body>
+<!-- header -->
+<%- include("../partials/header") %>    
+<!-- header -->
+
+<div class="container-title">
+    <div class="row">
+        <div class="title-form">
+        <h2 class="title">Formulario de creacion</h2>
+        </div>    
+    </div>
+</div>
+<div class="container-form">
+    <form action="/products/" method="POST">
+    <div class="container-product">
+        <div class="form">
+        <label for="name" class="form-label">Nombre del producto</label>
+        <input type="text" id="name" name="title" placeholder="EJ: El numero cuatro" class="form-input">
+        </div> 
+        <div class="form">
+            <label for="text" class="form-label">Autor</label>
+            <input type="text" id="author" name="author" placeholder="EJ: J.K. Rowling" class="form-input">
+        </div>  
+        <div class="form">
+            <label for="price" class="form-label">Precio</label>
+            <input type="text" id="price" name="price" placeholder="EJ: 12345" class="form-input">
+        </div>  
+        <div class="form">
+            <label for="editorial" class="form-label">Editorial</label>
+            <input type="text" id="editorial" name="editorial" placeholder="EJ: IVREA" class="form-input">
+        </div>  
+        <div class="form-idioma">
+            <label for="lenguaje" class="form-label">Idioma</label>
+            <select name="lenguajes" id="lenguaje" class="form-input">
+                <option value="">Elegi</option>
+                <option value="Español-Argentina">Español Argentina</option>
+                <option value="Frances">Fraces</option>
+                <option value="Braille">Braille</option>
+                <option value="Español-España">Castellano</option>
+                <option value="Español-Mexico">Español Latino</option>
+                <option value="Ingles">Ingles</option>
+                <option value="Aleman">Aleman</option>
+                <option value="Italiano">Italiano</option>
+            </select>
+        </div>  
+        <div class="form">
+            <label for="formato" class="form-label">Formato</label>
+            <input type="text" id="formato" name="format" placeholder="EJ: Digital" class="form-input">
+        </div>
+        <div class="form-genero">
+        <label for="genero" class="form-label">Genero</label>
+        <select name="genre" id="genero" class="form-input">
+            <option value="">Elegi</option>
+            <option value="Accion">Accion</option>
+            <option value="Absurdo">Absurdo</option>
+            <option value="Gore">Gore</option>
+            <option value="Fantasia">Fantasia</option>
+            <option value="Policiales">Policiales</option>
+            <option value="Novela-Grafica">Novela Grafica</option>
+            <option value="ciencia-ficcion">Ciencia Ficcion</option>
+            <option value="Elegir-Otro">Elegir otro genero(PROXIMAMENTE)</option>
+        </select>
+        </div>
+        <div class="form-portada">
+            <label>Elegir imagen del producto</label>
+            <input type="file" name="image" accept=".jpg" multiple>
+        </div>
+        <div class="form-descripcion">
+            <label for="descripcion" class="form-label">Descripcion</label>
+            <textarea id="descripcion" name="description" placeholder="Maximo 200 caracteres" class="form-input"></textarea>
+        </div>
+        <div class="btn-save">
+            <button type="submit" class="save-product">Guardar Producto</button>
+        </div>
+    </div>
+    </form>
+</div>
+<!-- Includes footer -->
+<%- include("../partials/footer") %> 
+<!-- Includes footer -->
+
+</body>
+</html>
+    
