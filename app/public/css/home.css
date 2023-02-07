@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap');
-@import url('header.css');
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300&family=Raleway:wght@400;500;700&display=swap');
 
 /*  GENERALES  */
 
@@ -10,6 +10,8 @@
     --secondary: rgb(193, 71, 233);
     --btn-color: rgb(129, 12, 168);
     --text-color: rgb(45, 3, 59);
+    --font-kanit:  'Kanit', sans-serif;
+    --font-raleway: 'Raleway', sans-serif;
 }
  
 * {
@@ -20,17 +22,17 @@
 
 body {
     height: 100vh;
-    background-color: var(--secondary)
+    background-color: #f0f0f5
 }
 
 h4 {
-    color: var(--main-color);
+    color: #0f0c0c;
 }
 
 /*  MAIN  */
 
 main.home {
-    background-color: var(--text-color);
+    background-color: #f0f0f5;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -51,14 +53,42 @@ div.container_subtitle {
 
 h4.subtitle {
     margin-left: 8px;
-    color: var(--main-color);
+    color: #0f0c0c;
+    font-size: 1rem;
+    text-transform: uppercase;
 }
 
 section article a p {
     text-decoration: none;
     color: black;
-    font-size: 1.5rem;
+    font-family: var(--font-raleway);
+    text-transform: uppercase;
+    font-weight: 500;
 }
+
+main section article p.card-price {
+    font-size: 16px;
+    color: var(--text-color);
+
+}
+
+main button.home-buy {
+    color: white;
+    background-color: var(--btn-color);
+    padding: 0.7em 1.4em;
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 0.6rem;
+    border: var(--violeta-oscuro);
+    box-shadow: 1px 1px 3px;
+    margin-top: 8px;
+
+}
+
+main button.home-buy:focus {
+    border: 3px solid var(--text-color);
+}
+
 
 article img.image_book {
     height: 160px;
@@ -72,7 +102,12 @@ article.container_book {
     width: 40%;
     max-width: 240px;
     margin: 7px;
-    background-color: var(--main-color);
+    background-color: rgb(244, 226, 251);
+    border-radius: 15px;
+}
+
+article.container_book:hover {
+    box-shadow: 2px 1px 1px 1px gray
 }
 
 /*  FLEX BOX  */
@@ -82,7 +117,6 @@ section.group {
     flex-wrap: wrap; /*salto de linea*/
     justify-content:space-evenly;
     margin-bottom: 20px;
-    background-color: var(--btn-color);
     width: 92%;
 }
 

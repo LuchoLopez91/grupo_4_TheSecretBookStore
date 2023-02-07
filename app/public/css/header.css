@@ -230,3 +230,9 @@ header .search-bar input {
     color: #2d033b;
   }
 }
+
+@media screen and (min-width: 1024px) {
+  header .search-bar input  {
+    width: 700px;
+  }
+}
