@@ -1,5 +1,6 @@
 const fs = require("fs");
 const path = require("path");
+const { title } = require("process");
 
 const booksPathDB = path.join(__dirname, "../database/books.json");
 const books = JSON.parse(fs.readFileSync(booksPathDB, "utf-8"));
@@ -31,7 +32,23 @@ module.exports = {
     },
 
     store: (req, res) => {
-        res.send(req.body)
+        let lastId = products[products.length - 1].id;
+
+        let newProduct = {
+        id: lastId + 1,
+        title: req.body.title,
+        author: req.body.author,
+        price: req.body.price,
+        editorial: req.body.editorial,
+        languages: req.body.lenguages,
+        format: req.body.format,
+        genre: req.body.genre,
+        description: req.body.description,
+        image: "default-image.jpg",
+        }
+        products.push(newProduct);
+        writeJson(products);
+        res.redirect("/products/");
     },
 
     edit: (req, res) => {
@@ -40,6 +57,24 @@ module.exports = {
         res.render("product-edit-form", {
             productToEdit,
         })
+    },
+    update: (req, res) => {
+        let productId = Number(req.params.id);
+
+        products.forEach(product => {
+            if(product.id === productId){
+                product.name = req.body.title;
+                product.autor = req.body.author;
+                product.price = req.body.price;
+                product.editorial = req.body.editorial;
+                product.lenguages = req.body.lenguages;
+                product.format = req.body.format;
+                product.genre = req.body.genre;
+                product.description = req.body.description;
+            }
+        });
+        writeJson(products);
+        res.send("Producto editado")
     }
 
 }
