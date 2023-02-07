@@ -34,4 +34,12 @@ module.exports = {
         res.send(req.body)
     },
 
+    edit: (req, res) => {
+        let produtId = Number(req.params.id)
+        let productToEdit = products.find(product => product.id === productId)
+        res.render("product-edit-form", {
+            productToEdit,
+        })
+    }
+
 }

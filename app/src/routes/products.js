@@ -7,7 +7,11 @@ router.get("/product/:id", controller.product);
 router.get("/cart", controller.cart); 
 /* crear producto */
 router.get("/products/create", productsController.create);
-router.post("/products/", productsController.store);
+router.post("/products", productsController.store);
 /* crear producto */
+
+/* Editar producto */
+router.get("/edit/:id/" , productsController.edit);
+/* router.put("/:id" , productsController.update); */
 
 module.exports = router;
