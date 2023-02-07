@@ -8,38 +8,45 @@ const writeJSON = function (book) {
 };
 
 module.exports = {
-    product: (req, res) => {
-        let book = books.find(book => book.id == req.params.id);
+  product: (req, res) => {
+    let book = books.find((book) => book.id == req.params.id);
 
-        res.render('products/product', {
-            book,
-            link: "/css/product.css"
-        })
-    },
-    cart: (req, res) => {
-        res.render('products/cart', {
-        doctitle: "Mi carrito",
-        link: "/css/cart.css"    
-        })
-    },
+    res.render("products/product", {
+      book,
+      link: "/css/product.css",
+    });
+  },
+  cart: (req, res) => {
+    res.render("products/cart", {
+      doctitle: "Mi carrito",
+      link: "/css/cart.css",
+    });
+  },
 
-    create: (req, res) => {
-        res.render("partials/product-create-form", {
-            doctitle: "Crear producto",
-        link: "/css/product-create-form.css" 
-    })
-    },
+  create: (req, res) => {
+    res.render("products/product-create-form", {
+      doctitle: "Crear producto",
+      link: "/css/product-create-form.css",
+    });
+  },
 
-    store: (req, res) => {
+  /* store: (req, res) => {
         res.send(req.body)
-    },
+    }, */
 
-    edit: (req, res) => {
-        let produtId = Number(req.params.id)
-        let productToEdit = products.find(product => product.id === productId)
-        res.render("product-edit-form", {
-            productToEdit,
-        })
-    }
+  edit: (req, res) => {
+    let bookToEdit = books.find((book) => book.id == req.params.id);
+    res.render("products/product-edit-form.ejs", {
+      bookToEdit,
+      link: "css/product-edit-form.css",
+    });
+  },
 
-}
+  /* edit: (req, res) => {
+        let bookToEdit = books.find(book => book.id == req.params.id);
+        res.render("products/product-edit-form", {
+            bookToEdit,
+            //link: "css/product-edit-form.css",
+        });
+    }, */
+};
