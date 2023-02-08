@@ -1,3 +1,21 @@
+Retrospectiva Segundo Sprint
+Conclusiones - debemos:
+
+1. Comenzar a: Organizar nuestros horarios dedicados al proyecto para cumplir mejor los plazos de entrega. Al momento de la división de tareas evaluar mejor la dificultad de las mismas, para calcular mejor el tiempo y esfuerzo que requieren.
+
+2. Hacer más: reuniones por zoom, tanto dailys como reuniones para resolver problemas que pueda tener con sus tareas de cada miembro del grupo.
+
+3. Continuar haciendo: comunicación fluida, correcciones 
+en nuestro proyecto con el feedback recibido.
+
+4. Hacer menos: posponer reuniones.
+
+5. Dejar de hacer: procrastinar. 
+
+
+
+
+--------------------------------------------------------
 Trabajamos en la retrospectiva del primer sprint implementando la dinámica de *estrella de mar* y pudimos sacar varias conclusiones, debemos:
 
 1. Comenzar a:
