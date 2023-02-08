@@ -123,6 +123,7 @@ section.group {
 
 main section.group2 {
     display: flex;
+    flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
     margin-bottom: 22px;
@@ -130,23 +131,43 @@ main section.group2 {
 }
 
 section article.container {
-    border: solid 2px var(--main-color);
-    border-radius: 3px;
+    display: flex;
+    flex-direction: row;
+    border-radius: 5px;
+    border: 1px solid black;
+    border-image: linear-gradient(45deg, var(--main-color),var(--text-color)) 1;
     height: 50px;
-    width: 150px;
+    width: 160px;
     margin: 6px;
-    background-color: var(--btn-color);
     text-align: center;
+    align-self: center;
+    font-family: var(--font-kanit);
     
+}
+article img.home-logos{
+    width: 50%;
+    height: 80%;
+    align-self: center;
+}
+
+article.container span {
+    align-self: center;
+    width: 75% ;
+}
+article.container i {
+    width: 25%;
+    font-size: 1.5rem;
+    align-self: center;
+    color: var(--text-color);
 }
 
 section.group3 {
     margin: auto;
+    margin-bottom: 15px;
 }
 
 section.group3 div.subscribe {
-    border: solid ;
-    background-color: var(--btn-color);
+    background-color:var(--text-color);
     width: 80%;
     height: 150px;
     margin: auto;
@@ -156,6 +177,7 @@ section.group3 div.subscribe {
 
 section.group3 div.subscribe p {
     margin: 2px 3px 2px;
+    color: #f0f0f5;
 }
 
 div.subscribe input.input-container {
@@ -220,8 +242,37 @@ div.subscribe button.btn {
 
 
 
-@media (min-width:768px) { /*PRUEBA*/
+@media (min-width:768px) { 
+    main section.group2 {
+        border: 1px solid black;
+        border-radius: 15px;
+        gap: 5px;
+        border-image: linear-gradient(45deg, var(--main-color),var(--text-color)) 1;
+       
+        }
+            
+    section article.container {
+        border-radius: none;
+        border: none;
+ 
+    }
+    article img.home-logos{
+        width: 50%;
+        height: 80%;
+        align-self: center;
+    }
+    
+    article.container span {
+        align-self: center;
+        width: 75% ;
+    }
+    article.container i {
+        width: 25%;
+        font-size: 1.5rem;
+        align-self: center;
+        color: var(--text-color);
+    }
+
     
 }
-
 
