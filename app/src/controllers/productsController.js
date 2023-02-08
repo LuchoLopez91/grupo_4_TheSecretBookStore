@@ -17,12 +17,7 @@ module.exports = {
       link: "/css/product.css",
     });
   },
-  cart: (req, res) => {
-    res.render("products/cart", {
-      doctitle: "Mi carrito",
-      link: "/css/cart.css",
-    });
-  },
+  
 
   create: (req, res) => {
     res.render("products/product-create-form", {

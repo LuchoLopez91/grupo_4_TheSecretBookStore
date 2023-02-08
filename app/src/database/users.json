@@ -1,0 +1,23 @@
+[
+    {
+        "id": 1,
+        "mail": "mail@mail.com",
+        "username": "Fabián",
+        "password": "lacucaracha",
+        "profilePic": "foto-1.jpg"
+    },
+    {
+        "id": 2,
+        "mail": "mail@mail.com",
+        "username": "Luis",
+        "password": "focaccia",
+        "profilePic": "foto-2.jpg"
+    },
+    {
+        "id": 3,
+        "mail": "mail@mail.com",
+        "username": "Mónica",
+        "password": "callefalsa123",
+        "profilePic": "foto-3.jpg"
+    }
+]

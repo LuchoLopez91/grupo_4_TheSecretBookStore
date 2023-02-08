@@ -1,4 +1,18 @@
+const fs = require("fs");
+const path = require("path");
+const { title } = require("process");
+
+const usersPathDB = path.join(__dirname, "../database/users.json");
+const users = JSON.parse(fs.readFileSync(usersPathDB, "utf-8"));
+const writeJSON = function (user) {
+  fs.writeFileSync(usersPathDB, JSON.stringify(user), "utf-8");
+};
+
 module.exports = {
+    user: (req, res) => {
+        let user = users.find(user => users.id == req.res.params);
+        res.send(user);
+    },
     register: (req, res) => {
         res.render('./users/register', {
             doctitle: "Registrate",
@@ -13,17 +27,11 @@ module.exports = {
 
         });
     },
+    cart: (req, res) => {
+        res.render("products/cart", {
+          doctitle: "Mi carrito",
+          link: "/css/cart.css",
+        });
+      },
 }
 
-
-/* app.get("/register", (req, res) => {
-    res.render(path.join(__dirname, "/views/users/register.ejs"))
-});
-
-app.get("/login", (req, res) => {
-    res.render(path.join(__dirname, "/views/users/login.ejs"))
-});
-
-app.get("/cart", (req, res) => {
-    res.render(path.join(__dirname, "/views/users/cart.ejs"))
-}); */

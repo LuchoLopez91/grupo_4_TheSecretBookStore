@@ -12,14 +12,14 @@ app.set('views', 'src/views');
 
 /* Router */
 const indexRouter = require("./routes/main");
-const productsRouter = require("./routes/products");
+const catalogRouter = require("./routes/products");
 const usersRouter = require("./routes/users");
 /* /Router */
 
 /* Routes */
 app.use("/", indexRouter);
-app.use("/", productsRouter);
-app.use("/", usersRouter);
+app.use("/store", catalogRouter);
+app.use("/users", usersRouter);
 /* /Routes */
 
 
