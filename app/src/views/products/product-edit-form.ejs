@@ -19,23 +19,23 @@
     <div class="container-product">
         <div class="form">
         <label for="name" class="form-label">Nombre del producto</label>
-        <input type="text" id="name" name="title" placeholder="EJ: El numero cuatro" value="<%= productToEdit.title %> " class="form-input">
+        <input type="text" id="name" name="title" placeholder="EJ: El numero cuatro" value="<%= bookToEdit.title %> " class="form-input">
         </div> 
         <div class="form">
             <label for="text" class="form-label">Autor</label>
-            <input type="text" id="author" name="author" placeholder="EJ: J.K. Rowling" value="<%= productToEdit.author %>" class="form-input">
+            <input type="text" id="author" name="author" placeholder="EJ: J.K. Rowling" value="<%= bookToEdit.author %>" class="form-input">
         </div>  
         <div class="form">
             <label for="price" class="form-label">Precio</label>
-            <input type="text" id="price" name="price" placeholder="EJ: 12345" value="<%= productToEdit.price %>" class="form-input">
+            <input type="text" id="price" name="price" placeholder="EJ: 12345" value="<%= bookToEdit.price %>" class="form-input">
         </div>  
         <div class="form">
             <label for="editorial" class="form-label">Editorial</label>
-            <input type="text" id="editorial" name="editorial" placeholder="EJ: IVREA" value="<%= productToEdit.editorial %>" class="form-input">
+            <input type="text" id="editorial" name="editorial" placeholder="EJ: IVREA" value="<%= bookToEdit.editorial %>" class="form-input">
         </div>  
         <div class="form-idioma">
             <label for="lenguaje" class="form-label">Idioma</label>
-            <select name="lenguajes" id="lenguaje"  value="<%= productToEdit.lenguaje %>" class="form-input">
+            <select name="lenguajes" id="lenguaje"  value="<%= bookToEdit.lenguaje %>" class="form-input">
                 <option value="">Elegi</option>
                 <option value="Español-Argentina">Español Argentina</option>
                 <option value="Frances">Fraces</option>
@@ -49,11 +49,11 @@
         </div>  
         <div class="form">
             <label for="formato" class="form-label">Formato</label>
-            <input type="text" id="formato" name="format" placeholder="EJ: Digital" value="<%= productToEdit.format %>" class="form-input">
+            <input type="text" id="formato" name="format" placeholder="EJ: Digital" value="<%= bookToEdit.format %>" class="form-input">
         </div>
         <div class="form-genero">
         <label for="genero" class="form-label">Genero</label>
-        <select name="genre" id="genero" value="<%= productToEdit.genre %>" class="form-input">
+        <select name="genre" id="genero" value="<%= bookToEdit.genre %>" class="form-input">
             <option value="">Elegi</option>
             <option value="Accion">Accion</option>
             <option value="Absurdo">Absurdo</option>
@@ -66,12 +66,12 @@
         </select>
         </div>
         <div class="form-portada">
-            <label>Elegir imagen del producto</label>
-            <input type="file" name="image" value="<%= productToEdit.image %>" accept=".jpg" multiple>
+            <label>Elegir imagen del libro</label>
+            <input type="file" name="image" value="<%= bookToEdit.image %>" accept=".jpg" multiple>
         </div>
         <div class="form-descripcion">
             <label for="descripcion" class="form-label">Descripcion</label>
-            <textarea id="descripcion" name="description" placeholder="Maximo 200 caracteres" class="form-input"><%= productToEdit.description %></textarea>
+            <textarea id="descripcion" name="description" placeholder="Maximo 200 caracteres" class="form-input"><%= bookToEdit.description %></textarea>
         </div>
         <div class="btn-save">
             <button type="submit" class="save-product">Guardar Producto</button>

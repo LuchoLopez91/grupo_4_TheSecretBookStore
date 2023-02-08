@@ -38,15 +38,9 @@ module.exports = {
     let bookToEdit = books.find((book) => book.id == req.params.id);
     res.render("products/product-edit-form.ejs", {
       bookToEdit,
-      link: "css/product-edit-form.css",
+      doctitle: bookToEdit.title,
+      link: "/css/product-edit-form.css",
     });
   },
 
-  /* edit: (req, res) => {
-        let bookToEdit = books.find(book => book.id == req.params.id);
-        res.render("products/product-edit-form", {
-            bookToEdit,
-            //link: "css/product-edit-form.css",
-        });
-    }, */
 };
