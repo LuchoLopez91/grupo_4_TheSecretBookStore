@@ -1,0 +1,16 @@
+[
+  { "id": 1, "genre": "Acción" },
+  { "id": 2, "genre": "Absurdo" },
+  { "id": 3, "genre": "Gore" },
+  { "id": 4, "genre": "Fantasía" },
+  { "id": 5, "genre": "Policiales" },
+  { "id": 6, "genre": "Novelas gráficas" },
+  { "id": 7, "genre": "Ciencia Ficción" },
+  { "id": 8, "genre": "Comedia" },
+  { "id": 9, "genre": "Infantil" },
+  { "id": 10, "genre": "Ciencias" },
+  { "id": 11, "genre": "Romance" },
+  { "id": 12, "genre": "Aventura" },
+  { "id": 13, "genre": "Drama" },
+  { "id": 14, "genre": "Terror" }
+]

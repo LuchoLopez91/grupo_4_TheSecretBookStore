@@ -3,7 +3,11 @@ const path = require("path");
 const { title } = require("process");
 
 const booksPathDB = path.join(__dirname, "../database/books.json");
+const genresPathDB = path.join(__dirname, "../database/genres.json");
+const languagesPathDB = path.join(__dirname, "../database/languages.json");
 const books = JSON.parse(fs.readFileSync(booksPathDB, "utf-8"));
+const genres = JSON.parse(fs.readFileSync(genresPathDB, "utf-8"));
+const languages = JSON.parse(fs.readFileSync(languagesPathDB, "utf-8"));
 const writeJSON = function (book) {
   fs.writeFileSync(booksPathDB, JSON.stringify(book), "utf-8");
 };
@@ -23,6 +27,8 @@ module.exports = {
     res.render("products/product-create-form", {
       doctitle: "Crear producto",
       link: "/css/product-create-form.css",
+      genres,
+      languages,
     });
   },
 
