@@ -116,6 +116,8 @@ div.form .form-input {
     /* Caja */
     .container-form { 
         height: 750px; 
+        width: 50%;
+        margin-left: 25%; 
     }
    /* Titulo */
    .title-form {
@@ -123,6 +125,6 @@ div.form .form-input {
 }
   /* Boton guardar producto */
     .btn-save .save-product {
-        margin-left: 41%;
+        margin-left: 38%;
         margin-top: 20px;
 }}
