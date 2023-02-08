@@ -36,15 +36,9 @@
         <div class="form-idioma">
             <label for="lenguaje" class="form-label">Idioma</label>
             <select name="lenguajes" id="lenguaje" class="form-input">
-                <option value="">Elegi</option>
-                <option value="Español-Argentina" <%= bookToEdit.lenguajes === "Español-Argentina" && "selected"%> >Español Argentina</option>
-                <option value="Frances" <%= bookToEdit.lenguajes === "Frances" && "selected"%> >Fraces</option>
-                <option value="Braille" <%= bookToEdit.lenguajes === "Braille" && "selected"%> >Braille</option>
-                <option value="Español-España" <%= bookToEdit.lenguajes === "Español-España" && "selected"%>  >Castellano</option>
-                <option value="Español-Mexico" <%= bookToEdit.lenguajes === "Español-Mexico" && "selected"%> >Español Latino</option>
-                <option value="Ingles" <%= bookToEdit.lenguajes === "Ingles" && "selected"%> >Ingles</option>
-                <option value="Aleman" <%= bookToEdit.lenguajes === "Aleman" && "selected"%> >Aleman</option>
-                <option value="Italiano" <%= bookToEdit.lenguajes === "Italiano" && "selected"%> >Italiano</option>
+                <% languages.forEach(language => { %>
+                    <option value="<%- language.id %> selected="<%- bookToEdit.language %>"><%- language.language %></option>
+                <% }) %>
             </select>
         </div>  
         <div class="form">
@@ -54,15 +48,9 @@
         <div class="form-genero">
         <label for="genero" class="form-label">Genero</label>
         <select name="genre" id="genero" value="<%= bookToEdit.genre %>" class="form-input">
-            <option value="">Elegi</option>
-            <option value="Accion" <%= bookToEdit.genre === "Accion" && "selected"%> >Accion</option>
-            <option value="Absurdo" <%= bookToEdit.genre === "Absurdo" && "selected"%> >Absurdo</option>
-            <option value="Gore" <%= bookToEdit.genre === "Gore" && "selected"%> >Gore</option>
-            <option value="Fantasia" <%= bookToEdit.genre === "Fantasia" && "selected"%> >Fantasia</option>
-            <option value="Policiales" <%= bookToEdit.genre === "Policiales" && "selected"%> >Policiales</option>
-            <option value="Novela-Grafica" <%= bookToEdit.genre === "Novela-Grafica" && "selected"%> >Novela Grafica</option>
-            <option value="ciencia-ficcion" <%= bookToEdit.genre === "ciencia-ficcion" && "selected"%>>Ciencia Ficcion</option>
-            <option value="Elegir-Otro">Elegir otro genero(PROXIMAMENTE)</option>
+            <% genres.forEach(genre => { %>
+                <option value="<%- genre.id %>" selected="<%- bookToEdit.genre %>"><%- genre.genre %></option>
+                <% }) %>
         </select>
         </div>
         <div class="form-portada">

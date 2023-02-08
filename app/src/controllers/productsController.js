@@ -58,6 +58,8 @@ module.exports = {
         bookToEdit,
         doctitle: bookToEdit.title,
         link: "/css/product-edit-form.css",
+        genres,
+        languages,
       });
     },
     update: (req, res) => {
