@@ -4,7 +4,6 @@
     <%- include("../partials/head", {doctitle: book.title}) %>
   </head>
 
-
   <body>
     <%- include("../partials/header") %>
 
@@ -21,10 +20,10 @@
         <section class="title-box">
           <!-- Foto -->
           <div class="photo-container">
-            <img 
-                src="/images/books/<%- book.image %>"
-                alt="<%- book.title %>"
-              />
+            <img
+              src="/images/books/<%- book.image %>"
+              alt="<%- book.title %>"
+            />
           </div>
           <!-- Información -->
         </section>
@@ -38,6 +37,16 @@
           <div class="btn-container">
             <div class="product-btn">Favorito</div>
             <div class="product-btn"><a href="/cart">Comprar</a></div>
+            <div class="product-btn">
+              <form
+                action="/store/delete/<%- book.id %>?_method=DELETE"
+                method="POST"
+              >
+                <button type="submit" class="action-button delete">
+                  ELIMINAR
+                </button>
+              </form>
+            </div>
           </div>
           <p>Calificación: <%= book.calification %></p>
           <p>Editorial: <%= book.editorial %></p>

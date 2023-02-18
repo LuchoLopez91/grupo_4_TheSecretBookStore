@@ -3,6 +3,12 @@ const app = express();
 const path = require("path");
 const PORT = 3030;
 
+/* Method Override */
+const methodOverride = require('method-override');
+app.use(methodOverride('_method'));
+/* /Method Override */
+
+
 /* Templeta Engine */
 app.use(express.static(path.join(__dirname,"../public")));
 app.set('view engine', 'ejs');

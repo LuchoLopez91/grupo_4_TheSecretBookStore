@@ -21,7 +21,6 @@ module.exports = {
       link: "/css/product.css",
     });
   },
-  
 
   create: (req, res) => {
     res.render("products/product-create-form", {
@@ -32,57 +31,62 @@ module.exports = {
     });
   },
 
-    store: (req, res) => {
-        let lastId = products[products.length - 1].id;
+  store: (req, res) => {
+    let lastId = books[books.length - 1].id;
 
-        let newProduct = {
-        id: lastId + 1,
-        title: req.body.title,
-        author: req.body.author,
-        price: req.body.price,
-        editorial: req.body.editorial,
-        languages: req.body.lenguages,
-        format: req.body.format,
-        genre: req.body.genre,
-        description: req.body.description,
-        image: "default-image.jpg",
-        }
-        products.push(newProduct);
-        writeJson(products);
-        res.redirect("/products/");
-    },
+    let newBook = {
+      id: lastId + 1,
+      title: req.body.title,
+      author: req.body.author,
+      price: req.body.price,
+      editorial: req.body.editorial,
+      languages: req.body.lenguages,
+      format: req.body.format,
+      genre: req.body.genre,
+      description: req.body.description,
+      image: "default-image.jpg",
+    };
+    books.push(newBook);
+    writeJSON(books);
+    res.redirect("/");
+  },
 
-    edit: (req, res) => {
-      let bookToEdit = books.find((book) => book.id == req.params.id);
-      res.render("products/product-edit-form.ejs", {
-        bookToEdit,
-        doctitle: bookToEdit.title,
-        link: "/css/product-edit-form.css",
-        genres,
-        languages,
-      });
-    },
-    update: (req, res) => {
-        let productId = Number(req.params.id);
+  edit: (req, res) => {
+    let bookToEdit = books.find((book) => book.id == req.params.id);
+    res.render("products/product-edit-form.ejs", {
+      bookToEdit,
+      doctitle: bookToEdit.title,
+      link: "/css/product-edit-form.css",
+      genres,
+      languages,
+    });
+  },
 
-        products.forEach(product => {
-            if(product.id === productId){
-                product.name = req.body.title;
-                product.autor = req.body.author;
-                product.price = req.body.price;
-                product.editorial = req.body.editorial;
-                product.lenguages = req.body.lenguages;
-                product.format = req.body.format;
-                product.genre = req.body.genre;
-                product.description = req.body.description;
-            }
-        });
-        writeJson(products);
-        res.send("Producto editado")
-    },
-  /* store: (req, res) => {
-        res.send(req.body)
-    }, */
+  update: (req, res) => {
+    let bookID = Number(req.params.id);
 
+    books.forEach((book) => {
+      if (book.id === bookID) {
+        book.title = req.body.title;
+        book.author = req.body.author;
+        book.price = req.body.price;
+        book.editorial = req.body.editorial;
+        book.lenguages = req.body.lenguages;
+        book.format = req.body.format;
+        book.genre = req.body.genre;
+        book.description = req.body.description;
+      }
+    });
+    writeJSON(books);
+    res.redirect(`/details/${bookID}`);
+  },
 
+  burn: (req, res) => {
+    let bookID = Number(req.params.id);
+
+    let newInventory = bookd.filter((book) => book.id !== bookID);
+
+    writeJSON(newInventory);
+    res.redirect("/");
+  },
 };
