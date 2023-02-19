@@ -1,6 +1,6 @@
 const fs = require("fs");
 const path = require("path");
-const { title } = require("process");
+/*const { title } = require("process");*/
 
 const booksPathDB = path.join(__dirname, "../database/books.json");
 const genresPathDB = path.join(__dirname, "../database/genres.json");
@@ -52,7 +52,8 @@ module.exports = {
   },
 
   edit: (req, res) => {
-    let bookToEdit = books.find((book) => book.id == req.params.id);
+    let bookToEdit = books.find(book => book.id == req.params.id);
+   
     res.render("products/product-edit-form.ejs", {
       bookToEdit,
       doctitle: bookToEdit.title,
@@ -63,10 +64,12 @@ module.exports = {
   },
 
   update: (req, res) => {
+    console.log(req.body)
     let bookID = Number(req.params.id);
-
-    books.forEach((book) => {
-      if (book.id === bookID) {
+  
+    
+   books.forEach( (book) => {
+      if (book.id == bookID) {
         book.title = req.body.title;
         book.author = req.body.author;
         book.price = req.body.price;
@@ -78,13 +81,13 @@ module.exports = {
       }
     });
     writeJSON(books);
-    res.redirect(`/details/${bookID}`);
+    res.redirect(`/store/details/${bookID}`);
   },
 
   burn: (req, res) => {
     let bookID = Number(req.params.id);
 
-    let newInventory = bookd.filter((book) => book.id !== bookID);
+    let newInventory = books.filter((book) => book.id !== bookID);
 
     writeJSON(newInventory);
     res.redirect("/");
