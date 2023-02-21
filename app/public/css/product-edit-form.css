@@ -8,7 +8,7 @@
 .container-form {
     border: 3px solid var(--text-color);
     margin: 3%;
-    height: 480px;
+    /*height: 480px;*/
     border-radius: 10%;
 }
 /* Contenido Caja */
@@ -71,9 +71,9 @@ div.form .form-input {
     font-size: 30px;
 }
     /* Caja */
-.container-form { 
+/*.container-form { 
     height: 700px; 
-}
+}*/
     /* Contenido de caja */
 div.form .form-input {
     width: 50%;
@@ -115,7 +115,7 @@ div.form .form-input {
 
     /* Caja */
     .container-form { 
-        height: 750px; 
+        /*height: 750px;*/ 
         width: 50%;
         margin-left: 25%;
     }

@@ -1,0 +1,57 @@
+/* Generales */
+
+:root {
+    --main-color: rgb(229, 184, 244);
+    --secondary: rgb(193, 71, 233);
+    --btn-color: rgb(129, 12, 168);
+    --text-color: rgb(45, 3, 59);
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+footer {
+    background-color: var(--main-color);
+    width: 100vw;
+    color: black;
+}
+
+footer a {
+    text-decoration: none;
+}
+
+footer h6 {
+    color:var(--text-color) ;
+}
+div.col-md-3.col-lg-4.col-xl-3{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 5px 5px;
+    padding: 5px 5px;
+}
+
+@media (max-width:767px) {
+    div.listado1, div.listado2 {
+        display: none;
+    }
+    div.listado1.active, div.listado2.active{
+        display: inherit;
+    }  
+
+}
+@media (max-width: 768px){
+    div.col-md-3.col-lg-4.col-xl-3 {
+        display: none;
+     }
+}
+
+@media (min-width:1024px){
+    div.col-md-3.col-lg-4.col-xl-3 img {
+        width: 200px;
+        margin: 0;
+        }
+}
