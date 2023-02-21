@@ -304,5 +304,16 @@
         "calification": "10/10",
         "description": "Broke young man + chainsaw dog demon = Chainsaw Man! The name says it all! Denji's life of poverty is changed forever when he merges with his pet chainsaw dog, Pochita! Now he's living in the big city and an official Devil Hunter. But he's got a lot to learn about his new job and chainsaw powers.",
         "image": "percy-jackson-1.jpg"
+    },
+    {
+        "id": 19,
+        "title": "Entrevista con el vampiro    ",
+        "author": "Anne Rice",
+        "price": "6500",
+        "editorial": "B de bolsillo",
+        "format": "Físico",
+        "genre": "14",
+        "description": "Posiblemente la más original historia de vampiros jamás escrita, Entrevista con el vampiro, primer volumen de la serie «Crónicas Vampíricas», es ya un clásico de nuestro tiempo.Esta es la historia de Louis, un joven de Nueva Orleans que, atormentado por un sentimiento de culpabilidad por la muerte de su hermano menor, se convierte en eterno habitante de la noche. Pero desde el comienzo de su nueva vida los sentimientos más humanos salen a su paso..., en especial el amor.",
+        "image": "entrevista-con-el-vampiro.jpg"
     }
 ]

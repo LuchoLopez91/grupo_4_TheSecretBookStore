@@ -40,14 +40,17 @@ module.exports = {
       author: req.body.author,
       price: req.body.price,
       editorial: req.body.editorial,
-      languages: req.body.lenguages,
+      languages: req.body.languages,
       format: req.body.format,
       genre: req.body.genre,
       description: req.body.description,
-      image: "default-image.jpg",
+      image: req.file.filename,
     };
+
     books.push(newBook);
+
     writeJSON(books);
+
     res.redirect("/");
   },
 
@@ -74,10 +77,11 @@ module.exports = {
         book.author = req.body.author;
         book.price = req.body.price;
         book.editorial = req.body.editorial;
-        book.lenguages = req.body.lenguages;
+        book.languages = req.body.languages;
         book.format = req.body.format;
         book.genre = req.body.genre;
         book.description = req.body.description;
+        book.image = req.file.filename;
       }
     });
     writeJSON(books);
