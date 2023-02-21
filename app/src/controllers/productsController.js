@@ -1,6 +1,6 @@
 const fs = require("fs");
 const path = require("path");
-/*const { title } = require("process");*/
+
 
 const booksPathDB = path.join(__dirname, "../database/books.json");
 const genresPathDB = path.join(__dirname, "../database/genres.json");
@@ -87,7 +87,7 @@ module.exports = {
   burn: (req, res) => {
     let bookID = Number(req.params.id);
 
-    let newInventory = books.filter((book) => book.id !== bookID);
+    let newInventory = books.filter(book => book.id !== bookID);
 
     writeJSON(newInventory);
     res.redirect("/");

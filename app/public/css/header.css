@@ -217,17 +217,12 @@ header .search-bar input {
 
   }
 
-  header nav ul li:hover {
-    border: 2px solid var(--rosa-claro);
-    border-radius: 10px;
-    background-color: var(--rosa-claro);
-    box-shadow: 1px 1px ;
-  
-  
-  }
 
   header nav ul li a:hover {
-    color: #2d033b;
+    text-decoration: underline ;
+    font-weight: 500;
+
+    
   }
 }
 

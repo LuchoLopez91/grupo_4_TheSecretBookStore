@@ -14,6 +14,6 @@ router.get("/edit/:id" , productsController.edit);
 router.put("/edit/:id" , productsController.update);
 
 /* Quemar libro */
-router.delete("delete/:id", productsController.burn)
+router.delete("/delete/:id", productsController.burn)
 
 module.exports = router;

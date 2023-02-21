@@ -35,14 +35,11 @@
           </div>
           <div class="price">Precio: $<%= book.price %></div>
           <div class="btn-container">
-            <div class="product-btn">Favorito</div>
-            <div class="product-btn"><a href="/cart">Comprar</a></div>
-            <div class="product-btn">
-              <form
-                action="/store/delete/<%- book.id %>?_method=DELETE"
-                method="POST"
-              >
-                <button type="submit" class="action-button delete">
+            <div class="product-btn">FAVORITO</div>
+            <div class="product-btn">COMPRAR</div>
+            <div class="product-btna">
+              <form action="/store/delete/<%- book.id %>?_method=DELETE" method="POST">
+                <button type="submit">
                   ELIMINAR
                 </button>
               </form>
