@@ -35,9 +35,9 @@
         </div>  
         <div class="form-idioma">
             <label for="lenguaje" class="form-label">Idioma</label>
-            <select name="languajes" id="lenguaje" class="form-input">
+            <select name="languajes" id="lenguaje" value="<%- bookToEdit.languages %>" class="form-input">
                 <% languages.forEach(language => { %>
-                    <option value="<%- language.id %> selected="<%- bookToEdit.language %>"><%- language.language %></option>
+                    <option value="<%- language.language %> selected="<%- bookToEdit.languages %>"><%- language.language %></option>
                 <% }) %>
             </select>
         </div>  
@@ -49,8 +49,8 @@
         <label for="genero" class="form-label">Genero</label>
         <select name="genre" id="genero" value="<%= bookToEdit.genre %>" class="form-input">
             <% genres.forEach(genre => { %>
-                <option value="<%- genre.id %>" selected="<%- bookToEdit.genre %>"><%- genre.genre %></option>
-                <% }) %>
+                <option value="<%- genre.genre %>" selected="<%- bookToEdit.genre %>"><%- genre.genre %></option>
+            <% }) %>
         </select>
         </div>
         <div class="form-portada">
