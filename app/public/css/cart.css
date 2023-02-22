@@ -4,11 +4,11 @@
 body {
      background-color: rgb(45, 3, 59) ;
 }
-* { 
+/* * { 
      box-sizing: border-box;
      flex-wrap: wrap;
 
-}
+} */
 main.cart {
      width: 80%;
      margin: 0 auto;
@@ -19,15 +19,11 @@ main.cart {
     margin-right: 30%;
     color: white;
     font-size: 1.3rem;
-    border: 1px solid rgb(168, 85, 246) ;
+    padding: 20px 20px 20px;
  }
  section.container {
      background-color:rgba(138, 43, 226,0.5 );
      border: 2px solid rgba(138, 43, 226, 0.5) ;
-     border-radius:12px;
-     padding: 8px;
-     display: flex;
-     flex-direction: row;
      gap: 5px;
      
      

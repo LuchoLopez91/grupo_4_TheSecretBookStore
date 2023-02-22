@@ -17,7 +17,7 @@ module.exports = {
     },
     search: (req, res) => {
 		const {keywords} = req.query;
-		const results = books.filter((book) =>book.title.toLowerCase() == keywords.toLowerCase())
+		const results = books.filter((book) =>book.title.toLowerCase().includes(keywords.toLowerCase()))
 					
 		res.render ("results", {
 		results,
