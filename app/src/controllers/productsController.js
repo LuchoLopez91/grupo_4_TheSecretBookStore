@@ -106,4 +106,15 @@ module.exports = {
     writeJSON(newInventory);
     res.redirect("/");
   },
+
+  booksByGenres: (req, res) => {
+    let genre = req.params.category;
+    let inventory = books.filter(book => book.genre == genre);
+    res.render('./products/booksByGenres', {
+      inventory,
+      genre,
+      doctitle: genre,
+      link: '/css/home.css',
+    });
+  },
 };

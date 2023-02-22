@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include("../partials/head") %>
+  </head>
+
+  <body>
+    <%- include("../partials/header") %>
+    
+          <h4 class="subtitle">Estos son nuestros libros de <%- genre %></h4>
+
+          <section class="group">
+            <% inventory.forEach(book => { %>
+              <article class="container_book">
+                <a href="/store/details/<%- book.id %>"
+                  ><img
+                    class="image_book"
+                    src="/images/books/<%- book.image %>"
+                    alt="<%- book.title %>"
+                  />
+                  <p><%- book.title %> </p>
+                  <p class="card-price">$ <%- book.price %> </p>
+                  <button class="home-buy" id="boton-compra">AGREGAR AL CARRITO</button>  
+                  </a>
+              </article>
+            <% }) %>
+          </section>
+    
+
+    <%- include("../partials/footer2") %>
+
+    <%- include("../partials/scripts")  %>
+  </body>
+</html>

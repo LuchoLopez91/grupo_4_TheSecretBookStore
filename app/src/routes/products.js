@@ -18,8 +18,11 @@ const storage = multer.diskStorage(
 
 const controller = require("../controllers/productsController");
 
+router.get('/category/:category', controller.booksByGenres);
+
 router.get("/", controller.list);
 router.get("/details/:id", controller.product); 
+
 /* crear producto */
 router.get("/create", productsController.create);
 router.post("/create", uploadFile.single("image"), productsController.store);
