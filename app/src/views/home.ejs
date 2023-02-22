@@ -11,26 +11,7 @@
       <div>
         <img class="banner" src="/images/main/bannerIvrea.jpg" alt="Banner Ivrea" />
       </div>
-      <div class="container_subtitle">
-        <h4 class="subtitle">Añadidos recientemente</h4>
-      </div>
-      <section class="group">
-        <% books.forEach(book => { %>
-          <article class="container_book" id="tarjeta">
-            <a href="/store/details/<%- book.id %>"
-              ><img
-                class="image_book"
-                src="./images/books/<%- book.image %>"
-                alt="<%- book.title %>"
-              />
-              <p><%- book.title %></p>
-              <p class="card-price">$ <%- book.price %> </p>
-              <button class="home-buy" id="boton-compra">AGREGAR AL CARRITO</button>  
-            </a>
-          </article>
-        <% }) %>
-      </section>
-
+      
       <div class="container_subtitle">
         <h4 class="subtitle">Nuestros libros digitales</h4>
       </div>
