@@ -29,6 +29,7 @@ header div.burger-menu i,
 header div.cart-icon i,
 header div.signUp i {
   display: flex;
+  flex-wrap: nowrap;
   justify-content: center;
   align-items: center;
   font-size: 20px;
@@ -62,12 +63,14 @@ header div.burger-menu i{
 header div.header-elem {
   display: flex;
   flex-direction: row;
+  flex-wrap: nowrap;
 
 
 }
 
 header div.header-icons {
   display: flex;
+  flex-wrap: nowrap;
   justify-content: flex-end;
 }
 
@@ -182,8 +185,9 @@ header .search-bar input {
 
   header div.top-header {
     display: flex;
+    flex-wrap: nowrap;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-evenly;
   }
 
   header .search-bar input {

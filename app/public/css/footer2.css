@@ -7,18 +7,24 @@
     --text-color: rgb(45, 3, 59);
 }
 
-* {
+/** {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-}
+}*/
 
 footer {
+    padding-top: 5px;
     background-color: var(--main-color);
     width: 100vw;
     color: black;
 }
 
+footer section {
+    margin-top: 5px;
+    background-color: var(--main-color);
+
+}
 footer a {
     text-decoration: none;
 }

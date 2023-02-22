@@ -125,8 +125,9 @@ main section.group2 {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-around;
     margin-bottom: 22px;
+    width: 80vw;
     
 }
 
@@ -136,8 +137,8 @@ section article.container {
     border-radius: 5px;
     border: 1px solid black;
     border-image: linear-gradient(45deg, var(--main-color),var(--text-color)) 1;
-    height: 50px;
-    width: 160px;
+    height: 60px;
+    width: 180px;
     margin: 6px;
     text-align: center;
     align-self: center;
@@ -169,7 +170,6 @@ section.group3 {
 section.group3 div.subscribe {
     background-color:var(--text-color);
     width: 80%;
-    height: 150px;
     margin: auto;
     padding: 10px;
     text-align: center;
@@ -188,13 +188,14 @@ div.subscribe input.input-container {
 }
 
 div.subscribe button.btn {
-    height: 27px;
-    width: 95px;
+    /*height: 27px;
+    width: 95px;*/
     margin: 3px ;
-    border-radius: 17px;
+    border-radius: 5px;
     background-color: var(--main-color);
     color: var(--text-color);
     font-weight: bold;
+    text-align: center;
 }
 
 
@@ -242,7 +243,7 @@ div.subscribe button.btn {
 
 
 
-@media (min-width:768px) { 
+@media (min-width:1000px) { 
     main section.group2 {
         border: 1px solid black;
         border-radius: 15px;

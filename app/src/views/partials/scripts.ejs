@@ -4,25 +4,16 @@
   let burgerMenu = document.querySelector(".burger-menu");
   let btnClose = document.querySelector(".btn-close-container");
   let menuContainer = document.querySelector(".menu-container");
-  /*let abrir1 = document.querySelector(".abrir1");
-  let abrir2 = document.querySelector(".abrir2");
-  let abrir3 = document.querySelector(".abrir3");
-  let more1 = document.querySelector(".more1");
-  let less1 = document.querySelector(".less1");
-  let more2 = document.querySelector(".more2");
-  let less2 = document.querySelector(".less2");
-  let more3 = document.querySelector(".more3");
-  let less3 = document.querySelector(".less4");
-  let lista1 = document.querySelector(".lista1");
-  let lista2 = document.querySelector(".lista2");
-  let lista3 = document.querySelector(".lista3");*/
+  
   let footerLista1 = document.querySelector(".paraclickear");
   let listado1 = document.querySelector(".listado1");
+  
   let footerLista2 = document.querySelector(".paraclickear2");
   let listado2 = document.querySelector(".listado2");
   
   /* eventos */
-  /* header */
+
+  /*footer*/
   footerLista1.addEventListener("click", ()=>{
     listado1.classList.toggle("active");
   });
@@ -30,33 +21,11 @@
     listado2.classList.toggle("active");
   });
  
-
+  /* header */
   burgerMenu.addEventListener("click", () => {
     menuContainer.classList.toggle("active");
   });
   btnClose.addEventListener("click", () => {
     menuContainer.classList.remove("active");
   });
-  /* footer */
- /* abrir1.addEventListener("click", () => {
-    lista1.classList.add("active");
-    more1.classList.remove("active");
-    more1.classList.add("inactive");
-    less1.classList.add("active");
-    less1.classList.remove("inactive");
-  });
-  abrir2.addEventListener("click", () => {
-    lista2.classList.add("active");
-    more2.classList.remove("active");
-    more2.classList.add("inactive");
-    less2.classList.add("active");
-    less2.classList.remove("inactive");
-  });
-  abrir3.addEventListener("click", () => {
-    lista3.classList.add("active");
-    more3.classList.remove("active");
-    more3.classList.add("inactive");
-    less3.classList.add("active");
-    less3.classList.remove("inactive");
-  });*/
 </script>
