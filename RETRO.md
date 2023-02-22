@@ -1,3 +1,19 @@
+Retrospectiva Tercer Sprint
+Conclusiones - debemos:
+
+1. Comenzar a: prestar más atención a los detalles, prolijidad tanto en la parte visual de la página como en el código
+
+2. Hacer más: reuniones grupales para compartir los problemas que cada uno tiene con sus tareas.
+
+3. Continuar haciendo: mantener la comunicación fluida diaria respecto a las responsabilidades de cada uno.
+
+4. Hacer menos: dejar correcciones pendientes que luego quedan como errores al momento de la corrección.
+
+5. Dejar de hacer: esperar al último día de plazo para realizar la entrega.
+
+
+
+--------------------------------------------------------
 Retrospectiva Segundo Sprint
 Conclusiones - debemos:
 
