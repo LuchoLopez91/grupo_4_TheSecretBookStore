@@ -11,8 +11,7 @@
       <!-- Barra navegación -->
       <section class="dir-bar">
         <div>
-          <a href="/">Inicio</a> / <a href="">Categorías</a> /
-          <a href=""><%= book.title %> </a>
+          <a href="/">Inicio</a>/<a href="/store/">Categorías</a>/<a href="/store/category/<%= book.genre %>"><%= book.genre %></a>/<%= book.title %>
         </div>
       </section>
       <div class="product">
@@ -58,7 +57,7 @@
           <p>Nro. de páginas: <%= book.pages %></p>
           <p>Idiomas: <%= book.languages %></p>
           <p>Formato: <%= book.format %></p>
-          <p>Género: <a href=""><%= book.genre %></a></p>
+          <p>Género: <a href="/store/category/<%= book.genre %>"><%= book.genre %></a></p>
           <p>Fecha de publicación: <%= book.publication %></p>
         </section>
       </div>
