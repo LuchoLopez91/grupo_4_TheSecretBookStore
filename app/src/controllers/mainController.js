@@ -15,4 +15,15 @@ module.exports = {
             doctitle: "Home",
             link: "/css/home.css" });
     },
+    search: (req, res) => {
+		const {keywords} = req.query;
+		const results = books.filter((book) =>book.title.toLowerCase() == keywords.toLowerCase())
+					
+		res.render ("results", {
+		results,
+        doctitle: "Resultados de tu búsqueda",
+        link: "/css/home.css",
+		})
+	},
+    
 };

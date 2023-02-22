@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include("./partials/head") %>
+  </head>
+
+  <body>
+    <%- include("./partials/header") %>
+    
+          <h4 class="subtitle">Resultado de tu búsqueda</h4>
+
+        <section class="group">
+            <% if (results.length != 0) { %>
+          <% results.forEach(book => { %>
+            <article class="container_book" id="tarjeta">
+              <a href="/store/details/<%- book.id %>"
+                ><img
+                  class="image_book"
+                  src="./images/books/<%- book.image %>"
+                  alt="<%- book.title %>"
+                />
+                <p><%- book.title %></p>
+                <p class="card-price">$ <%- book.price %> </p>
+                <button class="home-buy" id="boton-compra">AGREGAR AL CARRITO</button>  
+              </a>
+            </article>
+          <% }) %>			
+			<% } else { %>
+				<div>
+					<h2 class="products-title" style="color: red">No hay libros que coincidan con esa búsqueda</h2>
+				</div>
+	
+				<% } %>
+        </section>
+    
+
+    <%- include("./partials/footer2") %>
+
+    <%- include("./partials/scripts")  %>
+  </body>
+</html>
