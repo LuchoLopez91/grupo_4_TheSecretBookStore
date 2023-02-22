@@ -18,6 +18,7 @@ const storage = multer.diskStorage(
 
 const controller = require("../controllers/productsController");
 
+router.get("/", controller.list);
 router.get("/details/:id", controller.product); 
 /* crear producto */
 router.get("/create", productsController.create);

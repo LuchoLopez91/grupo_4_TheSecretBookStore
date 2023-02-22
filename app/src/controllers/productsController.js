@@ -22,6 +22,16 @@ module.exports = {
     });
   },
 
+  list: (req, res) => {
+    res.render("products/all-products",{
+      doctitle: "Todos los productos",
+      link: "/css/home.css",
+      books,
+      genres,
+      languages,
+    })
+  },
+
   create: (req, res) => {
     res.render("products/product-create-form", {
       doctitle: "Crear producto",
