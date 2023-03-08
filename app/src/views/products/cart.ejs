@@ -1,17 +1,18 @@
 <!DOCTYPE html>
-<html lang="es">
-<%- include("../partials/head") %>  
-
+<html lang="en">
+  <!-- Includes head -->
+  <%- include("../partials/head", {doctitle}) %>
   <body>
-    
-    <%- include("../partials/header") %> 
- 
-    <main class="cart">
-      <h1>Mi carrito</h1>
+    <!-- header -->
+    <%- include("../partials/header") %>
+    <!-- header -->
+    <h1>Mi carrito:</h1>
 
-      <section class="container">
-        <div class="producto">
-          <div class="imagen">
+    <main>
+      
+        <section class="full-container">
+        <div class="product-container">
+          <div class="img">
             <img
               src="/images/books/harry-potter-4.jpg"
               alt=""
@@ -19,24 +20,23 @@
               width="90px"
             />
           </div>
-          <div class="nombre">
+          <div class="name">
             <span>Herry Potter y el caliz de fuego</span>
-            <div class="eliminar">
-              <button>Eliminar</button>
+            <div class="delete">
+              <span>Eliminar</span>
             </div>
           </div>
-          <div class="boton-precio">
+          <div class="price">
             <span>$Xxxx</span>
-            <div class="masmenos">
-              <button>-</button>
-              <span>1</span>
-              <button>+</button>
-            </div>
+          </div>
+          <div class="button-masmenos">
+            <input id="menos" type="button" value="-">
+            <input id="contador" type="number" value="1">
+            <input id="mas" type="button" value="+">
           </div>
         </div>
-
-        <div class="producto">
-          <div class="imagen">
+        <div class="product-container">
+          <div class="img">
             <img
               src="/images/books/narnia-1.jpg"
               alt=""
@@ -44,24 +44,23 @@
               width="90px"
             />
           </div>
-          <div class="nombre">
+          <div class="name">
             <span>Las cronicas de Narnia</span>
-            <div class="eliminar">
-              <button>Eliminar</button>
+            <div class="delete-1">
+              <span>Eliminar</span>
             </div>
           </div>
-          <div class="boton-precio">
+          <div class="price">
             <span>$Xxxx</span>
-            <div class="masmenos">
-              <button>-</button>
-              <span>1</span>
-              <button>+</button>
-            </div>
+          </div>
+          <div class="button-masmenos">
+            <input id="menos" type="button" value="-">
+            <input id="contador" type="number" value="1">
+            <input id="mas" type="button" value="+">
           </div>
         </div>
-
-        <div class="producto">
-          <div class="imagen">
+        <div class="product-container">
+          <div class="img">
             <img
               src="/images/books/luna-pluton.jpg"
               alt=""
@@ -69,31 +68,33 @@
               width="90px"
             />
           </div>
-          <div class="nombre">
+          <div class="name">
             <span>Luna de Pluton</span>
-            <div class="eliminar">
-              <button>Eliminar</button>
+            <div class="delete-2">
+              <span>Eliminar</span>
             </div>
           </div>
-          <div class="boton-precio">
+          <div class="price">
             <span>$Xxxx</span>
-            <div class="masmenos">
-              <button>-</button>
-              <span>1</span>
-              <button>+</button>
-            </div>
+          </div>
+          <div class="button-masmenos">
+            <input id="menos" type="button" value="-">
+            <input id="contador" type="number" value="1">
+            <input id="mas" type="button" value="+">
           </div>
         </div>
-      </section>
-      <section class="resumenCompra">
-        <div class="precioFinal">
-          <h2>TOTAL A PAGAR: $xxXx</h2>
-        </div>
-      </section>
-
-      <a href="" class="btn">Finalizar compra</a>
+        </section>
+        <section class="resumenCompra">
+          <div class="price-env">
+            <p id="env">ENVIO: </p>
+            <p id="price">TOTAL A PAGAR: </p>
+          </div>
+        </section>
+        <section class="finish-btn">
+          <input id="btn" type="submit" value="Finalizar compra">
+        </section>
     </main>
-    
+
     <%- include("../partials/footer2") %> 
 
     <%- include("../partials/scripts")  %>
