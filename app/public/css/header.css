@@ -10,8 +10,9 @@
   --garamond: "EB Garamond", serif;
 }
 
+
 header {
-  background-color: #F0F0F5;  
+  background-color: #F0F0F5; 
   width: 100vw;
   position: 0 0 fixed;
 }
