@@ -19,5 +19,61 @@
         "username": "Mónica",
         "pass": "callefalsa123",
         "profilePic": "foto-3.jpg"
+    },
+    {
+        "id": 7,
+        "name": "Primera",
+        "last_name": "Prueba",
+        "email": "prueba@mail.com",
+        "pass1": "123456",
+        "avatar": "default-image.png",
+        "rol": "USER",
+        "tel": "",
+        "address": "",
+        "postal_code": "",
+        "province": "",
+        "city": ""
+    },
+    {
+        "id": 8,
+        "name": "Juan",
+        "last_name": "Paez",
+        "email": "mail@mail.com.ar",
+        "pass": "1234567",
+        "avatar": "default-image.png",
+        "rol": "USER",
+        "tel": "",
+        "address": "",
+        "postal_code": "",
+        "province": "",
+        "city": ""
+    },
+    {
+        "id": 9,
+        "name": "Pedro",
+        "last_name": "Martinez",
+        "email": "pedro@pedro.com",
+        "pass": "123456",
+        "avatar": "1678640859303_img.jpg",
+        "rol": "USER",
+        "tel": "",
+        "address": "",
+        "postal_code": "",
+        "province": "",
+        "city": ""
+    },
+    {
+        "id": 10,
+        "name": "Abi",
+        "last_name": "Perez",
+        "email": "abi@mail.com",
+        "pass": "123456",
+        "avatar": "default-image.png",
+        "rol": "USER",
+        "tel": "",
+        "address": "",
+        "postal_code": "",
+        "province": "",
+        "city": ""
     }
 ]

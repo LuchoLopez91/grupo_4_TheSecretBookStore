@@ -110,7 +110,7 @@ module.exports = {
   booksByGenres: (req, res) => {
     let genre = req.params.category;
     let inventory = books.filter(book => book.genre == genre);
-    res.render('./products/books-by-genres', {
+    res.render('./products/booksByGenres', {
       inventory,
       genre,
       doctitle: genre,

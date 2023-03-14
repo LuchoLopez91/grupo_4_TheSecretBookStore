@@ -7,30 +7,37 @@
     <%- include("../partials/header") %> 
 
     <div class="form-container">
-      <h2>Registrarse</h2>
-      <form action="" method="">
+      <h1>Bienvenidos a </h1>
+      <h1 class="web_name">The Secret Bookstore</h1>
+      <h2>Crea tu cuenta</h2>
+        <form action="/users/register" method="post" enctype="multipart/form-data">
         <div class="form">
           <div class="input-container">
-            <label for="nombre">Nombre</label><br />
+            <label for="name">Nombre</label><br />
             <input
               class="input-style"
               type="text"
-              name="nombre"
-              id="nombre"
-              placeholder="Tu nombre"
+              name="name"
+              id="name"
+              placeholder="" 
+              value="<%= locals.old && old.name %>"
             />
-            <div class="error-message">Datos requeridos</div>
+            <% if (locals.errors && errors.name) { %>
+              <small class="text-danger"><%= errors.name.msg %> </small>
+          <% } %>
           </div>
           <div class="input-container">
-            <label for="apellido">Apellido</label><br />
+            <label for="last_name">Apellido</label><br />
             <input
               class="input-style"
               type="text"
-              name="apellido"
-              id="apellido"
-              placeholder="Tu apellido"
+              name="last_name"
+              id="last_name"
+              placeholder=""value="<%= locals.old && old.last_name %>"
             />
-            <div class="error-message">Datos requeridos</div>
+            <% if (locals.errors && errors.last_name) { %>
+              <small class="text-danger"><%= errors.last_name.msg %> </small>
+          <% } %>
           </div>
 
           <div class="input-container">
@@ -40,32 +47,31 @@
               type="email"
               name="email"
               id="email"
-              placeholder="Tu e-mail"
+              placeholder=""
             />
-            <div class="error-message">Datos requeridos</div>
+            <% if (locals.errors && errors.email) { %>
+              <small class="text-danger"><%= errors.email.msg %> </small>
+          <% } %>
           </div>
           <div class="input-container">
-            <label for="contraseña">Contraseña</label><br />
-            <input
-              class="input-style"
-              type="password"
-              name="contraseña"
-              id="contraseña"
-            />
-            <div class="error-message">Datos requeridos</div>
+            <label for="pass1">Contraseña</label><br />
+            <input class="input-style" type="password" name="pass1" id="pass1" />
+            <% if (locals.errors && errors.pass1) { %>
+              <small class="text-danger"><%= errors.pass1.msg %> </small>
+          <% } %>
           </div>
           <div class="input-container">
-            <label for="contraseña">Repetir contraseña</label><br />
-            <input
-              class="input-style"
-              type="password"
-              name="contraseña"
-              id="contraseña"
-            />
-            <div class="error-message">Datos requeridos</div>
+            <label for="pass2">Repetir contraseña</label><br />
+            <input class="input-style" type="password" name="pass2" id="pass2" />
+            <% if (locals.errors && errors.pass2) { %>
+              <small class="text-danger"><%= errors.pass2.msg %> </small>
+          <% } %>
           </div>
-
-          <button type="submit">ENVIAR</button>
+          <div class="input-file">
+            <label for="avatar"></label>
+            <input type="file" name="avatar" id="avatar" accept=".jpg, .png" class="avatar_img" />
+          </div>
+          <button type="submit">CREAR NUEVO USUARIO</button>
         </div>
       </form>
       <p>¿Ya tienes cuenta? <a href="/login">Iniciar sesión</a></p>
