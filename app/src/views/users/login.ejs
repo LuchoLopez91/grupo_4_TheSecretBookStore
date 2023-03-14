@@ -8,7 +8,7 @@
 
     <div class="form-container">
       <h2>Ingresá a tu cuenta</h2>
-      <form action="" method="">
+      <form action="/users/login" method="POST">
         <div class="form">
           <div class="input-container">
             <label for="email">Dirección de e-mail</label><br />
@@ -17,10 +17,12 @@
               type="email"
               name="email"
               id="email"
-              placeholder="email@mail.com"
-            />
+            >
+            <% if (locals.errors && errors.email) { %>
+              <small class="text-danger"><%= errors.email.msg %> </small>
+            <% } %>
             <i class="fa-regular fa-envelope"></i>
-            <div class="error-message">Debe ingresar su email</div>
+            <!-- <div class="error-message">Debe ingresar su email</div> -->
           </div>
           <div class="input-container">
             <label for="contraseña">Contraseña</label><br />
@@ -29,9 +31,12 @@
               type="password"
               name="password"
               id="contraseña"
-            />
+            >
+            <% if (locals.errors && errors.pass) { %>
+              <small class="text-danger"><%= errors.pass.msg %> </small>
+            <% } %>
             <i class="fa-solid fa-lock"></i>
-            <div class="error-message">Debe ingresar una contraseña válida</div>
+           <!--  <div class="error-message">Debe ingresar una contraseña válida</div> -->
           </div>
           <div>
             <div class="input-container">
@@ -44,6 +49,9 @@
                 />Recordarme</label
               >
             </div>
+            <% if (locals.errorMsg ) { %>
+              <small class="text-danger"><%= errorMsg %> </small>
+            <% } %>
           </div>
           <button type="submit">INGRESAR</button>
         </div>

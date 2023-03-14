@@ -1,12 +1,7 @@
-const fs = require("fs");
-const path = require("path");
-const { title } = require("process");
+const { users } = require("../database")
+const {validationResult} = require("express-validator")
 
-const usersPathDB = path.join(__dirname, "../database/users.json");
-const users = JSON.parse(fs.readFileSync(usersPathDB, "utf-8"));
-const writeJSON = function (user) {
-  fs.writeFileSync(usersPathDB, JSON.stringify(user), "utf-8");
-};
+
 
 module.exports = {
     user: (req, res) => {
@@ -21,11 +16,22 @@ module.exports = {
         });
     },
     login: (req, res) => {
-        res.render('./users/login', {
-            doctitle: "Iniciar sesión",
-            link: "/css/login-signin.css"
-
+        res.render('./users/login',{
+            doctitle: "LOGIN",
+          link: "/css/login-signin.css",
         });
+    },
+    processLogin: (req,res) => {
+        let errors = validationResult(req);
+        if (errors.isEmpty()) {
+            res.send("Usuario logueado")
+        } else {
+            return res.render("./users/login", {
+                doctitle: "LOGIN",
+                link:"/css/login-signin.css",
+                errors: errors.mapped()
+            })
+        }
     },
     cart: (req, res) => {
         res.render("products/cart", {
