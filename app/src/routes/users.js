@@ -1,17 +1,17 @@
 const express = require('express');
-const { login, register , processLogin } = require('../controllers/usersController');
+const { login, register , processRegister, processLogin } = require('../controllers/usersController');
 const router = express.Router();
-const path = require('path');
-
-const registerValidator = require("../validations/registerValidator");
-
+/* const path = require('path'); */
 const controller = require('../controllers/usersController');
+const registerValidator = require("../validations/registerValidator");
 const loginValidator = require('../validations/loginValidator')
+
+
 
 router.get('/user/:id', controller.user);
 router.get("/cart", controller.cart); 
 
-router.get("/register", register);
+
 const multer = require("multer");
 
 
@@ -33,11 +33,12 @@ router.get('/user/:id', controller.user);
 router.get("/cart", controller.cart); 
 
 
-router.get("/register", controller.register);
-router.post("/register", uploadFile.single("avatar"), registerValidator,controller.processRegister);
+router.get("/register", register);
+router.post("/register", uploadFile.single("avatar"), registerValidator, processRegister);
 
 /* GET - login form */
 router.get("/login", login);
-/* GET - login form */
+/* POST - login form */
 router.post("/login", loginValidator, processLogin);
+
 module.exports = router;

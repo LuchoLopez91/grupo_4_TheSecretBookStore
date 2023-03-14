@@ -1,9 +1,14 @@
 const { users } = require("../database")
 const {validationResult} = require("express-validator")
+/* const fs = require("fs");
+const path = require("path");
+const { title } = require("process");
 
-
-
-const {validationResult} = require("express-validator")
+const usersPathDB = path.join(__dirname, "../database/users.json");
+const users = JSON.parse(fs.readFileSync(usersPathDB, "utf-8"));
+const writeJSON = function (user) {
+  fs.writeFileSync(usersPathDB, JSON.stringify(user), "utf-8");
+}; */
 
 module.exports = {
     user: (req, res) => {

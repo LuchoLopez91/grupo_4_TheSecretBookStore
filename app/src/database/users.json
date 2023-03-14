@@ -75,5 +75,47 @@
         "postal_code": "",
         "province": "",
         "city": ""
+    },
+    {
+        "id": 11,
+        "name": "Ernesto",
+        "last_name": "Gomez",
+        "email": "ernestoGomez@mail.com",
+        "pass": "123456789",
+        "avatar": "default-image.png",
+        "rol": "USER",
+        "tel": "",
+        "address": "",
+        "postal_code": "",
+        "province": "",
+        "city": ""
+    },
+    {
+        "id": 12,
+        "name": "Ernesto",
+        "last_name": "Gomez",
+        "email": "ernesto@mail.com",
+        "pass": "123456789",
+        "avatar": "default-image.png",
+        "rol": "USER",
+        "tel": "",
+        "address": "",
+        "postal_code": "",
+        "province": "",
+        "city": ""
+    },
+    {
+        "id": 13,
+        "name": "master",
+        "last_name": "ofthesopas",
+        "email": "master@mail.com",
+        "pass": "12345678",
+        "avatar": "default-image.png",
+        "rol": "USER",
+        "tel": "",
+        "address": "",
+        "postal_code": "",
+        "province": "",
+        "city": ""
     }
 ]
