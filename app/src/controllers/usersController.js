@@ -1,14 +1,14 @@
 const { users } = require("../database")
 const {validationResult} = require("express-validator")
-/* const fs = require("fs");
+const fs = require("fs");
 const path = require("path");
 const { title } = require("process");
 
 const usersPathDB = path.join(__dirname, "../database/users.json");
-const users = JSON.parse(fs.readFileSync(usersPathDB, "utf-8"));
+/*const users = JSON.parse(fs.readFileSync(usersPathDB, "utf-8"));*/
 const writeJSON = function (user) {
   fs.writeFileSync(usersPathDB, JSON.stringify(user), "utf-8");
-}; */
+}; 
 
 module.exports = {
     user: (req, res) => {
@@ -39,7 +39,7 @@ module.exports = {
              name: req.body.name,
              last_name: req.body.last_name,
              email: req.body.email,
-             pass: req.body.pass1/*bcrypt.hashSync(req.body.pass1, 12)*/,
+             pass: req.body.pass1,/*bcrypt.hashSync(req.body.pass1, 12)*/
              avatar: req.file ? req.file.filename : "default-image.png",
              rol: "USER",
              tel: "",

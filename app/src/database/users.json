@@ -117,5 +117,19 @@
         "postal_code": "",
         "province": "",
         "city": ""
+    },
+    {
+        "id": 14,
+        "name": "Miguel",
+        "last_name": "Andrada",
+        "email": "miguel@mail.com",
+        "pass": "123456",
+        "avatar": "default-image.png",
+        "rol": "USER",
+        "tel": "",
+        "address": "",
+        "postal_code": "",
+        "province": "",
+        "city": ""
     }
 ]
