@@ -1,7 +1,7 @@
 const express = require('express');
 const { login, register , processRegister, processLogin } = require('../controllers/usersController');
 const router = express.Router();
-/* const path = require('path'); */
+const path = require('path'); 
 const controller = require('../controllers/usersController');
 const registerValidator = require("../validations/registerValidator");
 const loginValidator = require('../validations/loginValidator')
