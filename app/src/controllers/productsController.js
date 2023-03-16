@@ -54,7 +54,7 @@ module.exports = {
       format: req.body.format,
       genre: req.body.genre,
       description: req.body.description,
-      image: req.file.filename,
+      image: req.file ? req.file.filename : "book-default-cover.jpg",
     };
 
     books.push(newBook);
@@ -91,7 +91,7 @@ module.exports = {
         book.format = req.body.format;
         book.genre = req.body.genre;
         book.description = req.body.description;
-        book.image = req.file.filename;
+        book.image = req.file ? req.file.filename : "book-default-cover.jpg";
       }
     });
     writeJSON(books);
