@@ -77,9 +77,10 @@ module.exports = {
   },
 
   update: (req, res) => {
-    console.log(req.body)
+    
     let bookID = Number(req.params.id);
-  
+    /*const files = req.files.map(file => file.filename);*/
+
     
    books.forEach( (book) => {
       if (book.id == bookID) {
@@ -91,7 +92,7 @@ module.exports = {
         book.format = req.body.format;
         book.genre = req.body.genre;
         book.description = req.body.description;
-        book.image = req.file ? req.file.filename : "book-default-cover.jpg";
+        book.image = !req.file ? book.image : req.file.filename;
       }
     });
     writeJSON(books);
