@@ -74,7 +74,10 @@ module.exports = {
     processLogin: (req,res) => {
         let errors = validationResult(req);
         if (errors.isEmpty()) {
-            res.send("Usuario logueado")
+          res.render("./users/perfil",{
+                doctitle: "Perfil",
+                link: "/css/perfil.css"
+            })
         } else {
             return res.render("./users/login", {
                 doctitle: "LOGIN",
