@@ -75,9 +75,9 @@ module.exports = {
     processLogin: (req,res) => {
         let errors = validationResult(req);
         if (errors.isEmpty()) {
-          res.render("./users/perfil",{
+          res.render("./users/profile",{
                 doctitle: "Perfil",
-                link: "/css/perfil.css"
+                link: "/css/profile.css"
             })
         } else {
             return res.render("./users/login", {
