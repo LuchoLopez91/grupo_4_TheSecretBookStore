@@ -13,8 +13,13 @@ const writeJSON = function (user) {
 
 module.exports = {
     user: (req, res) => {
-        let user = users.find(user => users.id == req.res.params);
-        res.send(user);
+        req.session.user.id;
+        //let user = users.find(user => users.id == req.res.params);
+
+        res.render('users/profile', {
+            doctitle: req.session.user.name,
+            link: "/css/profile.css",
+        });
     },
     register: (req, res) => {
         res.render('./users/register', {
@@ -75,7 +80,30 @@ module.exports = {
     processLogin: (req,res) => {
         let errors = validationResult(req);
         if (errors.isEmpty()) {
-            res.send("Usuario logueado")
+            let user = users.find(user => user.email === req.body.email);
+
+            req.session.user = {
+                id: user.id,
+                name: user.name,
+                avatar: user.avatar,
+                rol: user.rol
+            }
+
+            let tiempoDeVidaCookie = new Date(Date.now() + 1800000);
+
+            if(req.body.remember) {
+                res.cookie(
+                    "userBookstore", 
+                    req.session.user, 
+                    {
+                        expires: tiempoDeVidaCookie,
+                        httpOnly: true
+                    })
+            }
+
+            res.locals.user = req.session.user;
+
+            res.redirect("/");
         } else {
             return res.render("./users/login", {
                 doctitle: "LOGIN",
