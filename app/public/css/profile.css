@@ -1,0 +1,11 @@
+*{
+    box-sizing: border-box;
+}
+.menu-perfil {
+
+    background-color: var(--violeta-oscuro);
+    height: 200px;
+    width: 80%;
+    margin: 30px 33px;
+    border: 2px solid var(--rosa);
+}
