@@ -9,68 +9,76 @@
 
     <main class="product">
       <!-- Barra navegación -->
-      <section class="dir-bar">
-        <div>
-          <a href="/">Inicio</a>/<a href="/store/">Categorías</a>/<a href="/store/category/<%= book.genre %>"><%= book.genre %></a>/<%= book.title %>
-        </div>
-      </section>
-      <div class="product">
-        <!-- Título -->
-        <section class="title-box">
-          <!-- Foto -->
-          <div class="photo-container">
-            <img
-              src="/images/books/<%- book.image %>"
-              alt="<%- book.title %>"
-            />
-          </div>
-          <!-- Información -->
-        </section>
-        <!-- Descripción -->
-        <section class="description">
-          <div class="info">
-            <h2><%= book.title %></h2>
-            <h3><%= book.author %></h3>
-          </div>
-          <div class="price">Precio: $<%= book.price %></div>
-          <div class="btn-container">
-            <div class="product-btn">FAVORITO</div>
-            <div class="product-btn">COMPRAR</div>
-            <div class="product-btna">
-              <form action="/store/delete/<%- book.id %>?_method=DELETE" method="POST">
-                <button type="submit">
-                  ELIMINAR
-                </button>
-              </form>
-            </div>
-            <div class="product-btna">
-              <form action="/store/edit/<%- book.id %>" method="GET">
-                <button type="submit">
-                  Editar
-                </button>
-              </form>
-            </div>
-          </div>
-          <p>Calificación: <%= book.calification %></p>
-          <p>Editorial: <%= book.editorial %></p>
-          <p>I.S.B.N.: <%= book.ISBN %></p>
-          <p>Nro. de páginas: <%= book.pages %></p>
-          <p>Idiomas: <%= book.languages %></p>
-          <p>Formato: <%= book.format %></p>
-          <p>Género: <a href="/store/category/<%= book.genre %>"><%= book.genre %></a></p>
-          <p>Fecha de publicación: <%= book.publication %></p>
-        </section>
+      <div class="dir-bar">
+        <a href="/">Inicio</a> / <a href="">Categorías</a> /
+        <a href="">Spy X Family</a>
       </div>
-      <section class="about">
-        <div id="description">
-          <h3>Descripción</h3>
-          <p><%= book.description %></p>
+      <!-- Libro -->
+    <article class="product"> 
+        <!-- Foto -->
+        <div class="photo-container">
+          <img
+            src="/images/books/<%- book.image %>"
+            alt="<%- book.title %>"
+          />
         </div>
+      <!-- Descripción -->
+      <section class="description">
+          <div class="info-container">
+              <div class="info">
+                <h2><%= book.title %></h2>
+                <h3><%= book.author %></h3>
+              </div>
+              <div class="price">Precio: $<%= book.price %><</div>
+              <div class="btn-container">
+                <div class="product-btn">Favorito</div>
+                <div class="product-btn"><a href="/cart">Comprar</a></div>
+                <div class="product-btna">
+                  <form action="/store/delete/<%- book.id %>?_method=DELETE" method="POST">
+                    <button type="submit">
+                      ELIMINAR
+                    </button>
+                  </form>
+                </div>
+                <div class="product-btna">
+                  <form action="/store/edit/<%- book.id %>" method="GET">
+                    <button type="submit">
+                      Editar
+                    </button>
+                  </form>
+                </div>
+              </div>
+              <p>Calificación: <%= book.calification %></p>
+              <p>Editorial: <%= book.editorial %></p>
+              <p>I.S.B.N.: <%= book.ISBN %></p>
+              <p>Nro. de páginas: <%= book.pages %></p>
+              <p>Idiomas: <%= book.languages %></p>
+              <p>Formato: <%= book.format %></p>
+              <p>Género: <a href="/store/category/<%= book.genre %>"><%= book.genre %></a></p>
+              <p>Fecha de publicación: <%= book.publication %></p>
+          </div>
+          <div class="description-container">
+              <p><%= book.description %></p>
+          </div>
       </section>
+  </article>
       <!-- Relacionados -->
       <section class="related">
         <h3>También te puede interesar</h3>
         <div class="product--container">
+          <article>
+            <div class="photo-container">
+              <img
+                src="/images/books/<%= book.image %>"
+                alt="<%= book.title %>"
+              />
+            </div>
+            <div>
+              <h4><%= book.title %></h4>
+              <h4><%= book.author %></h4>
+              <p>$<%= book.price %></p>
+            </div>
+          </article>
           <article>
             <div class="photo-container">
               <img

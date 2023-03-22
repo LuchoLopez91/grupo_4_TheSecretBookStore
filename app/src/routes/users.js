@@ -25,6 +25,7 @@ const storage = multer.diskStorage(
 router.get('/user/:id', controller.user);
 router.get("/cart", controller.cart); 
 router.get("/login", controller.login);
+router.post("/login", controller.processLogin);
 
 router.get("/register", controller.register);
 router.post("/register", uploadFile.single("avatar"), registerValidator,controller.processRegister);

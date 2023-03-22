@@ -1,6 +1,7 @@
 const fs = require("fs");
 const path = require("path");
 const { title } = require("process");
+const bcrypt = require("bcrypt");
 
 const usersPathDB = path.join(__dirname, "../database/users.json");
 const users = JSON.parse(fs.readFileSync(usersPathDB, "utf-8"));
@@ -39,7 +40,7 @@ module.exports = {
              name: req.body.name,
              last_name: req.body.last_name,
              email: req.body.email,
-             pass: req.body.pass1/*bcrypt.hashSync(req.body.pass1, 12)*/,
+             pass: bcrypt.hashSync(req.body.pass1, 12),
              avatar: req.file ? req.file.filename : "default-image.png",
              rol: "USER",
              tel: "",
@@ -71,6 +72,42 @@ module.exports = {
             link: "/css/login-signin.css"
 
         });
+    },
+    processLogin: (req, res) => {
+        let errors = validationResult(req);
+
+        if (errors.isEmpty()) {
+
+            let user = users.find(user => user.email === req.body.email);
+
+            req.session.user = {
+                id: user.id,
+                name: user.name,
+                avatar: user.avatar,
+                rol: user.rol
+            }
+
+            let tiempoDeVidaCookie = new Date(Date.now() + 1800000);
+
+            if(req.body.remember) {
+                res.cookie(
+                    "userBookstore", 
+                    req.session.user, 
+                    {
+                        expires: tiempoDeVidaCookie,
+                        httpOnly: true
+                    })
+            }
+
+            res.locals.user = req.session.user;
+
+            res.redirect("/");
+        } else {
+            return res.render("users/login", {
+                errors: errors.mapped(),
+                session: req.session
+            })
+        }
     },
     cart: (req, res) => {
         res.render("products/cart", {
