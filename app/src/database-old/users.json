@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "name": "Fabián",
+    "last_name": "Sosa",
+    "email": "fabi@mail.com",
+    "pass": "$2a$12$qXlzeZJhtY4Ju2PlmdLNZ./v7FywrjfXI1lr.xGoctC4yzP8NRA5C",
+    "avatar": "default-image.png",
+    "rol": "USER",
+    "tel": "",
+    "address": "",
+    "postal_code": "",
+    "province": "",
+    "city": ""
+  },
+  {
+    "id": 2,
+    "name": "Moni",
+    "last_name": "Cartasso",
+    "email": "moni@mail.com",
+    "pass": "$2a$12$v.WN62KBMMy/BO4gWayPPOMrsZJWw7vfRS3MNbjxpPjsLWbp/xL.6",
+    "avatar": "default-image.png",
+    "rol": "ADMIN",
+    "tel": "",
+    "address": "",
+    "postal_code": "",
+    "province": "",
+    "city": ""
+  },
+  {
+    "id": 3,
+    "name": "Luis",
+    "last_name": "Lopez",
+    "email": "luis@mail.com",
+    "pass": "$2a$12$9OX1Njg3j.QkgOBJRYCTuuHTn5SgAd0gmgQKvrU445OvsfZdZFb56",
+    "avatar": "default-image.png",
+    "rol": "USER",
+    "tel": "",
+    "address": "",
+    "postal_code": "",
+    "province": "",
+    "city": ""
+  }
+]
