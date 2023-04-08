@@ -1,10 +1,21 @@
 const express = require('express');
+const { login, register , processRegister, processLogin } = require('../controllers/usersController');
 const router = express.Router();
-const path = require('path');
-
-const registerValidator = require("../validations/registerValidator");
-
+const path = require('path'); 
 const controller = require('../controllers/usersController');
+const registerValidator = require("../validations/registerValidator");
+const loginValidator = require('../validations/loginValidator');
+/* devuelve al inicio si el user inició sessión */
+const sessionUserCheck = require('../middlewares/sessionUserCheck');
+/* sigue si el use no inició sesión */
+const userInSessionCheck = require('../middlewares/userInSessionCheck');
+
+
+
+router.get('/user/', controller.user);
+router.get("/cart", controller.cart); 
+
+
 const multer = require("multer");
 
 
@@ -22,12 +33,14 @@ const storage = multer.diskStorage(
     const uploadFile = multer({storage});
 
 
-router.get('/user/:id', controller.user);
+router.get('/user/:id', userInSessionCheck, controller.user);
 router.get("/cart", controller.cart); 
-router.get("/login", controller.login);
-router.post("/login", controller.processLogin);
+router.get("/register", sessionUserCheck, register);
+router.post("/register", uploadFile.single("avatar"), registerValidator, processRegister);
 
-router.get("/register", controller.register);
-router.post("/register", uploadFile.single("avatar"), registerValidator,controller.processRegister);
+/* GET - login form */
+router.get("/login", sessionUserCheck, login);
+/* POST - login form */
+router.post("/login", loginValidator, processLogin);
 
 module.exports = router;

@@ -2,14 +2,22 @@ const express = require("express");
 const app = express();
 const path = require("path");
 const PORT = 3030;
+const session = require("express-session")
 
 /* Method Override */
 const methodOverride = require('method-override');
-app.use(methodOverride('_method'));
 /* /Method Override */
 
+/* Middlewares */
 app.use(express.urlencoded({extended:false}));
 app.use(express.json());
+app.use(methodOverride('_method'));
+app.use(session({
+    secret: "theSecretBookStore",
+    resave: false,
+    saveUninitialized: true
+}))
+/* Middleware */
 
 /* Templeta Engine */
 app.use(express.static(path.join(__dirname,"../public")));
@@ -24,11 +32,11 @@ const catalogRouter = require("./routes/products");
 const usersRouter = require("./routes/users");
 /* /Router */
 
-/* Routes */
+/* Routes middlewares */
 app.use("/", indexRouter);
 app.use("/store", catalogRouter);
 app.use("/users", usersRouter);
-/* /Routes */
+/* Routes middlewares */
 
 
 

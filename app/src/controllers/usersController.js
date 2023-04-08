@@ -1,20 +1,26 @@
+const { users } = require("../database")
+const {validationResult} = require("express-validator")
 const fs = require("fs");
 const path = require("path");
 const { title } = require("process");
 const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 
 const usersPathDB = path.join(__dirname, "../database/users.json");
-const users = JSON.parse(fs.readFileSync(usersPathDB, "utf-8"));
+/*const users = JSON.parse(fs.readFileSync(usersPathDB, "utf-8"));*/
 const writeJSON = function (user) {
   fs.writeFileSync(usersPathDB, JSON.stringify(user), "utf-8");
-};
-
-const {validationResult} = require("express-validator")
+}; 
 
 module.exports = {
     user: (req, res) => {
-        let user = users.find(user => users.id == req.res.params);
-        res.send(user);
+        req.session.user.id;
+        //let user = users.find(user => users.id == req.res.params);
+
+        res.render('users/profile', {
+            doctitle: req.session.user.name,
+            link: "/css/profile.css",
+        });
     },
     register: (req, res) => {
         res.render('./users/register', {
@@ -67,17 +73,14 @@ module.exports = {
       
     },
     login: (req, res) => {
-        res.render('./users/login', {
-            doctitle: "Iniciar sesión",
-            link: "/css/login-signin.css"
-
+        res.render('./users/login',{
+            doctitle: "LOGIN",
+          link: "/css/login-signin.css",
         });
     },
-    processLogin: (req, res) => {
+    processLogin: (req,res) => {
         let errors = validationResult(req);
-
         if (errors.isEmpty()) {
-
             let user = users.find(user => user.email === req.body.email);
 
             req.session.user = {
@@ -105,7 +108,9 @@ module.exports = {
         } else {
             return res.render("users/login", {
                 errors: errors.mapped(),
-                session: req.session
+                session: req.session,
+                doctitle: "LOGIN",
+                link:"/css/login-signin.css",
             })
         }
     },
