@@ -48,17 +48,17 @@ DROP TABLE IF EXISTS `books`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `books` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `isbn` bigint(13) NOT NULL,
+  `isbn13` bigint(13) NOT NULL,
   `title` varchar(100) NOT NULL,
   `cover` varchar(100) DEFAULT NULL,
   `genre` int(11) DEFAULT NULL,
-  `language` varchar(100) DEFAULT NULL,
+  `language` int(11) DEFAULT NULL,
   `format` int(11) DEFAULT NULL,
   `pageCount` int(11) DEFAULT NULL,
   `authorID` int(11) DEFAULT NULL,
-  `calification` varchar(100) DEFAULT NULL,
+  `calification` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `bookrs_un` (`isbn`),
+  UNIQUE KEY `bookrs_un` (`isbn13`),
   CONSTRAINT `books_FK_author` FOREIGN KEY (`id`) REFERENCES `authors` (`id`),
   CONSTRAINT `books_FK_format` FOREIGN KEY (`id`) REFERENCES `formats` (`id`),
   CONSTRAINT `books_FK_genre` FOREIGN KEY (`id`) REFERENCES `genres` (`id`),
@@ -135,7 +135,7 @@ DROP TABLE IF EXISTS `genres`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `genres` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `genre` varchar(100) NOT NULL,
+  `genre` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -238,4 +238,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-04-06 15:04:50
+-- Dump completed on 2023-04-08 13:01:29
