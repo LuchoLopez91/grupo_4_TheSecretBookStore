@@ -1,25 +1,32 @@
 module.exports = (sequelize, dataTypes) => {
 
-    const alias = "Language";
+    const ALIAS = "Language";
 
-    const cols = {
+    const COLES = {
         id: {
             type: dataTypes.INTEGER(10).UNSIGNED,
             primaryKey: true,
             autoIncrement: true,
             allowNull: false,
         },
-        rol: {
+        language: {
             type: dataTypes.STRING(100),
         },
     };
 
-    const config = {
+    const CONFIG = {
         tableName: "languages",
         timestamps: false,
     };
     
-    const Language = sequelize.define(alias, cols, config);
+    const LANGUAGE = sequelize.define(ALIAS, COLES, CONFIG);
 
-    return Language;
+    LANGUAGE.associate = (models) => {
+        LANGUAGE.hasMany(models.Book, {
+            as: "books",
+            foreignKey: "language",
+        });
+    };
+
+    return LANGUAGE;
 };

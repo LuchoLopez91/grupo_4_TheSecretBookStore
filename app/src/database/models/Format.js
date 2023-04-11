@@ -1,8 +1,8 @@
 module.exports = (sequelize, dataTypes) => {
 
-    const alias = "Format";
+    const ALIAS = "Format";
 
-    const cols = {
+    const COLS = {
         id: {
             type: dataTypes.INTEGER(10).UNSIGNED,
             primaryKey: true,
@@ -14,12 +14,19 @@ module.exports = (sequelize, dataTypes) => {
         },
     };
 
-    const config = {
+    const CONFIG = {
         tableName: "formats",
         timestamps: false,
     };
     
-    const Format = sequelize.define(alias, cols, config);
+    const FORMAT = sequelize.define(ALIAS, COLS, CONFIG);
 
-    return Format;
+    FORMAT.associate = (models) => {
+        FORMAT.hasMany(models.Book, {
+            as: "books",
+            foreignKey: "format",
+        });
+    };
+
+    return FORMAT;
 };

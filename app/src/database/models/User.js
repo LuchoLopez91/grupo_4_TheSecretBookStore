@@ -1,8 +1,8 @@
 module.exports = (sequelize, dataTypes) => {
 
-    const alias = "User";
+    const ALIAS = "User";
 
-    const cols = {
+    const COLS = {
         id: {
             type: dataTypes.INTEGER(10).UNSIGNED,
             primaryKey: true,
@@ -22,9 +22,10 @@ module.exports = (sequelize, dataTypes) => {
             allowNull: false,
         },
         avatar: {
-            type: dataTypes.STRING(100),
+            type: dataTypes.INTEGER(10).UNSIGNED,
+            allowNull: true,
         },
-        rol: {
+        role: {
             type: dataTypes.INTEGER(10).UNSIGNED,
             allowNull: false,
         },
@@ -34,12 +35,28 @@ module.exports = (sequelize, dataTypes) => {
         },
     };
 
-    const config = {
+    const CONFIG = {
         tableName: "users",
         timestamps: false,
     };
     
-    const User = sequelize.define(alias, cols, config);
+    const USER = sequelize.define(ALIAS, COLS, CONFIG);
 
-    return User;
+    USER.associate = (models) => {
+        USER.belongsTo(models.Role, {
+            as: "role",
+            foreignKey: "id",
+        });
+        USER.belongsTo(models.Avatar, {
+            as: "avatar",
+            foreignKey: "id",
+        });
+
+        USER.hasMany(models.Commentary, {
+            as: "commentaries",
+            foreignKey: "id",
+        })
+    };
+
+    return USER;
 };

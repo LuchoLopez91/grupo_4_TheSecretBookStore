@@ -1,8 +1,8 @@
 module.exports = (sequelize, dataTypes) => {
 
-    const alias = "Commentary";
+    const ALIAS = "Commentary";
 
-    const cols = {
+    const COLS = {
         id: {
             type: dataTypes.INTEGER(10).UNSIGNED,
             primaryKey: true,
@@ -17,21 +17,32 @@ module.exports = (sequelize, dataTypes) => {
             type: dataTypes.INTEGER(1).UNSIGNED,
             allowNull: false,
         },
-        bookID: {
+        book: {
             type: dataTypes.INTEGER(10).UNSIGNED,
             allowNull: false,
         },
-        userID: {
+        user: {
             type: dataTypes.INTEGER(10).UNSIGNED,
         },
     };
 
-    const config = {
+    const CONFIG = {
         tableName: "commentaries",
         timestamps: false,
     };
     
-    const Commentary = sequelize.define(alias, cols, config);
+    const COMMENTARY = sequelize.define(ALIAS, COLS, CONFIG);
 
-    return Commentary;
+    COMMENTARY.associate = (models) => {
+        COMMENTARY.belongsTo(models.Book, {
+            as: "book",
+            foreignKey: "id",
+        });
+        COMMENTARY.belongsTo(models.User, {
+            as: "user",
+            foreignKey: "id",
+        });
+    };
+
+    return COMMENTARY;
 };

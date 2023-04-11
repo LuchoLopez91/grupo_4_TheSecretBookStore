@@ -1,8 +1,8 @@
 module.exports = (sequelize, dataTypes) => {
 
-    const alias = "Genres";
+    const ALIAS = "Genres";
 
-    const cols = {
+    const COLS = {
         id: {
             type: dataTypes.INTEGER(10).UNSIGNED,
             primaryKey: true,
@@ -14,12 +14,19 @@ module.exports = (sequelize, dataTypes) => {
         },
     };
 
-    const config = {
+    const CONFIG = {
         tableName: "genres",
         timestamps: false,
     };
     
-    const Genre = sequelize.define(alias, cols, config);
+    const GENRE = sequelize.define(ALIAS, COLS, CONFIG);
 
-    return Genre;
+    GENRE.associate = (models) => {
+        GENRE.hasMany(models.Book, {
+            as: "books",
+            foreignKey: "genre",
+        });
+    };
+
+    return GENRE;
 };

@@ -1,8 +1,8 @@
 module.exports = (sequelize, dataTypes) => {
 
-    const alias = "Book";
+    const ALIAS = "Book";
 
-    const cols = {
+    const COLS = {
         id: {
             type: dataTypes.INTEGER(10).UNSIGNED,
             primaryKey: true,
@@ -36,7 +36,7 @@ module.exports = (sequelize, dataTypes) => {
             type: dataTypes.INTEGER(10).UNSIGNED,
 
         },
-        authorID: {
+        author: {
             type: dataTypes.INTEGER(10).UNSIGNED,
 
         },
@@ -46,12 +46,40 @@ module.exports = (sequelize, dataTypes) => {
         },
     };
 
-    const config = {
+    const CONFIG = {
         tableName: "books",
         timestamps: false,
     };
     
-    const Book = sequelize.define(alias, cols, config);
+    const BOOK = sequelize.define(ALIAS, COLS, CONFIG);
 
-    return Book;
+    BOOK.associate = (models) => {
+        BOOK.belongsTo(models.Author, {
+            as: "author",
+            foreignKey: "id",
+        });
+        BOOK.belongsTo(models.Format, {
+            as: "format",
+            foreignKey: "id",
+        });
+        BOOK.belongsTo(models.Genre, {
+            as: "genre",
+            foreignKey: "id",
+        });
+        BOOK.belongsTo(models.Language, {
+            as: "language",
+            foreignKey: "id",
+        });
+        BOOK.belongsTo(models.Cover, {
+            as: "cover",
+            foreignKey: "id",
+        });
+
+        BOOK.hasMany(models.Commentary, {
+            as: "commentaries",
+            foreignKey: "id",
+        })
+    };
+
+    return BOOK;
 };
