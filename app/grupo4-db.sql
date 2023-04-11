@@ -40,6 +40,31 @@ LOCK TABLES `authors` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `avatars`
+--
+
+DROP TABLE IF EXISTS `avatars`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `avatars` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `route` varchar(100) NOT NULL,
+  `user` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  CONSTRAINT `avatars_FK` FOREIGN KEY (`id`) REFERENCES `users` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `avatars`
+--
+
+LOCK TABLES `avatars` WRITE;
+/*!40000 ALTER TABLE `avatars` DISABLE KEYS */;
+/*!40000 ALTER TABLE `avatars` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `books`
 --
 
@@ -55,14 +80,18 @@ CREATE TABLE `books` (
   `language` int(11) DEFAULT NULL,
   `format` int(11) DEFAULT NULL,
   `pageCount` int(11) DEFAULT NULL,
-  `authorID` int(11) DEFAULT NULL,
+  `author` int(11) DEFAULT NULL,
   `calification` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `bookrs_un` (`isbn13`),
-  CONSTRAINT `books_FK_author` FOREIGN KEY (`id`) REFERENCES `authors` (`id`),
-  CONSTRAINT `books_FK_format` FOREIGN KEY (`id`) REFERENCES `formats` (`id`),
-  CONSTRAINT `books_FK_genre` FOREIGN KEY (`id`) REFERENCES `genres` (`id`),
-  CONSTRAINT `books_FK_language` FOREIGN KEY (`id`) REFERENCES `languages` (`id`)
+  KEY `books_FK_author` (`author`),
+  KEY `books_FK_format` (`format`),
+  KEY `books_FK_genre` (`genre`),
+  KEY `books_FK_language` (`language`),
+  CONSTRAINT `books_FK_author` FOREIGN KEY (`author`) REFERENCES `authors` (`id`),
+  CONSTRAINT `books_FK_format` FOREIGN KEY (`format`) REFERENCES `formats` (`id`),
+  CONSTRAINT `books_FK_genre` FOREIGN KEY (`genre`) REFERENCES `genres` (`id`),
+  CONSTRAINT `books_FK_language` FOREIGN KEY (`language`) REFERENCES `languages` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -86,11 +115,13 @@ CREATE TABLE `commentaries` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `commentary` text NOT NULL,
   `calification` tinyint(4) NOT NULL,
-  `bookID` int(11) NOT NULL,
-  `userID` int(11) DEFAULT NULL,
+  `book` int(11) NOT NULL,
+  `user` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
-  CONSTRAINT `commentaries_FK` FOREIGN KEY (`id`) REFERENCES `users` (`id`),
-  CONSTRAINT `commentaries_FK_1` FOREIGN KEY (`id`) REFERENCES `books` (`id`)
+  KEY `commentaries_FK_book` (`book`),
+  KEY `commentaries_FK_user` (`user`),
+  CONSTRAINT `commentaries_FK_book` FOREIGN KEY (`book`) REFERENCES `books` (`id`),
+  CONSTRAINT `commentaries_FK_user` FOREIGN KEY (`user`) REFERENCES `users` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -101,6 +132,32 @@ CREATE TABLE `commentaries` (
 LOCK TABLES `commentaries` WRITE;
 /*!40000 ALTER TABLE `commentaries` DISABLE KEYS */;
 /*!40000 ALTER TABLE `commentaries` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `covers`
+--
+
+DROP TABLE IF EXISTS `covers`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `covers` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `route` varchar(100) NOT NULL,
+  `book` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `covers_FK` (`book`),
+  CONSTRAINT `covers_FK` FOREIGN KEY (`book`) REFERENCES `books` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `covers`
+--
+
+LOCK TABLES `covers` WRITE;
+/*!40000 ALTER TABLE `covers` DISABLE KEYS */;
+/*!40000 ALTER TABLE `covers` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -181,7 +238,7 @@ DROP TABLE IF EXISTS `roles`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `roles` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `rol` varchar(100) DEFAULT NULL,
+  `role` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -207,12 +264,15 @@ CREATE TABLE `users` (
   `firstName` varchar(100) NOT NULL,
   `lastName` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
-  `avatar` varchar(100) DEFAULT NULL,
-  `rol` int(11) NOT NULL,
+  `avatar` int(11) DEFAULT NULL,
+  `role` int(11) NOT NULL,
   `password` varchar(100) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `users_un` (`email`),
-  CONSTRAINT `users_FK` FOREIGN KEY (`id`) REFERENCES `roles` (`id`)
+  KEY `users_FK` (`avatar`),
+  KEY `users_FK_role` (`role`),
+  CONSTRAINT `users_FK` FOREIGN KEY (`avatar`) REFERENCES `avatars` (`id`),
+  CONSTRAINT `users_FK_role` FOREIGN KEY (`role`) REFERENCES `roles` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -238,4 +298,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-04-08 13:01:29
+-- Dump completed on 2023-04-11 14:51:00
