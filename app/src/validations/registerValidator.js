@@ -1,7 +1,7 @@
 const {body, check} = require("express-validator");
 const path = require('path');
 const fs = require("fs");
-const usersPathDB = path.join(__dirname, "../database/users.json");
+const usersPathDB = path.join(__dirname, "../database-old/users.json");
 const users = JSON.parse(fs.readFileSync(usersPathDB, "utf-8"));
 
 

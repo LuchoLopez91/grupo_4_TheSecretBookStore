@@ -1,4 +1,4 @@
-const { users } = require("../database")
+const { users } = require("../database-old")
 const {validationResult} = require("express-validator")
 const fs = require("fs");
 const path = require("path");
@@ -6,7 +6,7 @@ const { title } = require("process");
 const bcrypt = require("bcrypt");
 const bcrypt = require("bcryptjs");
 
-const usersPathDB = path.join(__dirname, "../database/users.json");
+const usersPathDB = path.join(__dirname, "../database-old/users.json");
 /*const users = JSON.parse(fs.readFileSync(usersPathDB, "utf-8"));*/
 const writeJSON = function (user) {
   fs.writeFileSync(usersPathDB, JSON.stringify(user), "utf-8");

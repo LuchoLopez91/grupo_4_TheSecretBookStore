@@ -2,9 +2,9 @@ const fs = require("fs");
 const path = require("path");
 
 
-const booksPathDB = path.join(__dirname, "../database/books.json");
-const genresPathDB = path.join(__dirname, "../database/genres.json");
-const languagesPathDB = path.join(__dirname, "../database/languages.json");
+const booksPathDB = path.join(__dirname, "../database-old/books.json");
+const genresPathDB = path.join(__dirname, "../database-old/genres.json");
+const languagesPathDB = path.join(__dirname, "../database-old/languages.json");
 const books = JSON.parse(fs.readFileSync(booksPathDB, "utf-8"));
 const genres = JSON.parse(fs.readFileSync(genresPathDB, "utf-8"));
 const languages = JSON.parse(fs.readFileSync(languagesPathDB, "utf-8"));
