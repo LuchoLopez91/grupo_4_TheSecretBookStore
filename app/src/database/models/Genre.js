@@ -16,7 +16,7 @@ module.exports = (sequelize, dataTypes) => {
 
     const CONFIG = {
         tableName: "genres",
-        timestamps: false,
+        timestamps: true,
     };
     
     const GENRE = sequelize.define(ALIAS, COLS, CONFIG);

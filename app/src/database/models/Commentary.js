@@ -28,7 +28,7 @@ module.exports = (sequelize, dataTypes) => {
 
     const CONFIG = {
         tableName: "commentaries",
-        timestamps: false,
+        timestamps: true,
     };
     
     const COMMENTARY = sequelize.define(ALIAS, COLS, CONFIG);

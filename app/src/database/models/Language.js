@@ -16,7 +16,7 @@ module.exports = (sequelize, dataTypes) => {
 
     const CONFIG = {
         tableName: "languages",
-        timestamps: false,
+        timestamps: true,
     };
     
     const LANGUAGE = sequelize.define(ALIAS, COLES, CONFIG);

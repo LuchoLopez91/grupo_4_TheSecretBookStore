@@ -19,7 +19,7 @@ module.exports = (sequelize, dataTypes) => {
 
     const CONFIG = {
         tableName: "covers",
-        timestamps: false,
+        timestamps: true,
     };
     
     const AVATAR = sequelize.define(ALIAS, COLS, CONFIG);

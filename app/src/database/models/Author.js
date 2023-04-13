@@ -19,7 +19,7 @@ module.exports = (sequelize, dataTypes) => {
 
     const CONFIG = {
         tableName: "authors",
-        timestamps: false,
+        timestamps: true,
     };
     
     const AUTHOR = sequelize.define(ALIAS, COLS, CONFIG);

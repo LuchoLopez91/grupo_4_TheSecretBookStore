@@ -16,7 +16,7 @@ module.exports = (sequelize, dataTypes) => {
 
     const CONFIG = {
         tableName: "formats",
-        timestamps: false,
+        timestamps: true,
     };
     
     const FORMAT = sequelize.define(ALIAS, COLS, CONFIG);
