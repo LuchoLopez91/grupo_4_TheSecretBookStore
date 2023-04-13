@@ -26,8 +26,10 @@ CREATE TABLE `authors` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `firstName` varchar(100) DEFAULT NULL,
   `lastName` varchar(100) DEFAULT NULL,
+  `createdAt` timestamp NULL DEFAULT NULL,
+  `updatedAt` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -36,6 +38,7 @@ CREATE TABLE `authors` (
 
 LOCK TABLES `authors` WRITE;
 /*!40000 ALTER TABLE `authors` DISABLE KEYS */;
+INSERT INTO `authors` VALUES (1,'Patrick','Rothfuss',NULL,NULL),(2,'J.R.R.','Tolkien',NULL,NULL);
 /*!40000 ALTER TABLE `authors` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -50,6 +53,8 @@ CREATE TABLE `avatars` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `route` varchar(100) NOT NULL,
   `user` int(11) DEFAULT NULL,
+  `createdAt` timestamp NULL DEFAULT NULL,
+  `updatedAt` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   CONSTRAINT `avatars_FK` FOREIGN KEY (`id`) REFERENCES `users` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -82,17 +87,22 @@ CREATE TABLE `books` (
   `pageCount` int(11) DEFAULT NULL,
   `author` int(11) DEFAULT NULL,
   `calification` int(11) DEFAULT NULL,
+  `createdAt` timestamp NULL DEFAULT NULL,
+  `updatedAt` timestamp NULL DEFAULT NULL,
+  `editorial` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `bookrs_un` (`isbn13`),
   KEY `books_FK_author` (`author`),
   KEY `books_FK_format` (`format`),
   KEY `books_FK_genre` (`genre`),
   KEY `books_FK_language` (`language`),
+  KEY `books_FK_editorial` (`editorial`),
   CONSTRAINT `books_FK_author` FOREIGN KEY (`author`) REFERENCES `authors` (`id`),
+  CONSTRAINT `books_FK_editorial` FOREIGN KEY (`editorial`) REFERENCES `editorials` (`id`),
   CONSTRAINT `books_FK_format` FOREIGN KEY (`format`) REFERENCES `formats` (`id`),
   CONSTRAINT `books_FK_genre` FOREIGN KEY (`genre`) REFERENCES `genres` (`id`),
   CONSTRAINT `books_FK_language` FOREIGN KEY (`language`) REFERENCES `languages` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -101,6 +111,7 @@ CREATE TABLE `books` (
 
 LOCK TABLES `books` WRITE;
 /*!40000 ALTER TABLE `books` DISABLE KEYS */;
+INSERT INTO `books` VALUES (1,9789506442941,'El temor de un hombre sabio',NULL,4,1,2,1200,1,NULL,NULL,NULL,1),(2,97899505470679,'El señor de los anillos la comunidad del anillo',NULL,4,1,2,560,2,NULL,NULL,NULL,2),(3,9789505471546,'El señor de los anillos las dos torres',NULL,4,1,2,480,2,NULL,NULL,NULL,3),(4,9789505471553,'El señor de los anillos el retorno del rey',NULL,4,1,2,608,2,NULL,NULL,NULL,3);
 /*!40000 ALTER TABLE `books` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -117,6 +128,8 @@ CREATE TABLE `commentaries` (
   `calification` tinyint(4) NOT NULL,
   `book` int(11) NOT NULL,
   `user` int(11) DEFAULT NULL,
+  `createdAt` timestamp NULL DEFAULT NULL,
+  `updatedAt` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `commentaries_FK_book` (`book`),
   KEY `commentaries_FK_user` (`user`),
@@ -145,6 +158,8 @@ CREATE TABLE `covers` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `route` varchar(100) NOT NULL,
   `book` int(11) NOT NULL,
+  `createdAt` timestamp NULL DEFAULT NULL,
+  `updatedAt` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `covers_FK` (`book`),
   CONSTRAINT `covers_FK` FOREIGN KEY (`book`) REFERENCES `books` (`id`)
@@ -161,6 +176,32 @@ LOCK TABLES `covers` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `editorials`
+--
+
+DROP TABLE IF EXISTS `editorials`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `editorials` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `editorial` varchar(255) DEFAULT NULL,
+  `createdAt` timestamp NULL DEFAULT NULL,
+  `updatedAt` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `editorials`
+--
+
+LOCK TABLES `editorials` WRITE;
+/*!40000 ALTER TABLE `editorials` DISABLE KEYS */;
+INSERT INTO `editorials` VALUES (1,'Penguin Random House Editorial',NULL,NULL),(2,'Minotauro',NULL,NULL),(3,'Grupo Editorial Planeta S.A.I.C.',NULL,NULL);
+/*!40000 ALTER TABLE `editorials` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `formats`
 --
 
@@ -170,8 +211,10 @@ DROP TABLE IF EXISTS `formats`;
 CREATE TABLE `formats` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `format` varchar(100) DEFAULT NULL,
+  `createdAt` timestamp NULL DEFAULT NULL,
+  `updatedAt` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -180,6 +223,7 @@ CREATE TABLE `formats` (
 
 LOCK TABLES `formats` WRITE;
 /*!40000 ALTER TABLE `formats` DISABLE KEYS */;
+INSERT INTO `formats` VALUES (1,'Físico tapa dura',NULL,NULL),(2,'Físico tapa blanda',NULL,NULL),(3,'eBook',NULL,NULL);
 /*!40000 ALTER TABLE `formats` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -193,8 +237,10 @@ DROP TABLE IF EXISTS `genres`;
 CREATE TABLE `genres` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `genre` varchar(100) DEFAULT NULL,
+  `createdAt` timestamp NULL DEFAULT NULL,
+  `updatedAt` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -203,6 +249,7 @@ CREATE TABLE `genres` (
 
 LOCK TABLES `genres` WRITE;
 /*!40000 ALTER TABLE `genres` DISABLE KEYS */;
+INSERT INTO `genres` VALUES (1,'Acción',NULL,NULL),(2,'Absurdo',NULL,NULL),(3,'Gore',NULL,NULL),(4,'Fantasía',NULL,NULL),(5,'Policial',NULL,NULL),(6,'Novelas gráficas',NULL,NULL),(7,'Ciencia ficción',NULL,NULL),(8,'Comedia',NULL,NULL),(9,'Infantil',NULL,NULL),(10,'Ciencias',NULL,NULL),(11,'Romance',NULL,NULL),(12,'Aventura',NULL,NULL),(13,'Drama',NULL,NULL),(14,'Terror',NULL,NULL);
 /*!40000 ALTER TABLE `genres` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -216,8 +263,10 @@ DROP TABLE IF EXISTS `languages`;
 CREATE TABLE `languages` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `language` varchar(100) DEFAULT NULL,
+  `createdAt` timestamp NULL DEFAULT NULL,
+  `updatedAt` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -226,6 +275,7 @@ CREATE TABLE `languages` (
 
 LOCK TABLES `languages` WRITE;
 /*!40000 ALTER TABLE `languages` DISABLE KEYS */;
+INSERT INTO `languages` VALUES (1,'Español',NULL,NULL),(2,'Inglés',NULL,NULL),(3,'Francés',NULL,NULL),(4,'Italiano',NULL,NULL),(5,'Japonés',NULL,NULL),(6,'Alemán',NULL,NULL),(7,'Braile',NULL,NULL);
 /*!40000 ALTER TABLE `languages` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -239,8 +289,10 @@ DROP TABLE IF EXISTS `roles`;
 CREATE TABLE `roles` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `role` varchar(100) DEFAULT NULL,
+  `createdAt` timestamp NULL DEFAULT NULL,
+  `updatedAt` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -249,6 +301,7 @@ CREATE TABLE `roles` (
 
 LOCK TABLES `roles` WRITE;
 /*!40000 ALTER TABLE `roles` DISABLE KEYS */;
+INSERT INTO `roles` VALUES (0,'user',NULL,NULL),(1,'admin',NULL,NULL);
 /*!40000 ALTER TABLE `roles` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -267,13 +320,15 @@ CREATE TABLE `users` (
   `avatar` int(11) DEFAULT NULL,
   `role` int(11) NOT NULL,
   `password` varchar(100) NOT NULL,
+  `createdAt` timestamp NULL DEFAULT NULL,
+  `updatedAt` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `users_un` (`email`),
   KEY `users_FK` (`avatar`),
   KEY `users_FK_role` (`role`),
   CONSTRAINT `users_FK` FOREIGN KEY (`avatar`) REFERENCES `avatars` (`id`),
   CONSTRAINT `users_FK_role` FOREIGN KEY (`role`) REFERENCES `roles` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -282,6 +337,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
+INSERT INTO `users` VALUES (1,'admin','admin','admin@mail.com',NULL,1,'$2a$12$v.WN62KBMMy/BO4gWayPPOMrsZJWw7vfRS3MNbjxpPjsLWbp/xL.6',NULL,NULL),(2,'user','user','user@mail.com',NULL,0,'$2a$12$9OX1Njg3j.QkgOBJRYCTuuHTn5SgAd0gmgQKvrU445OvsfZdZFb56',NULL,NULL);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -298,4 +354,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-04-11 14:51:00
+-- Dump completed on 2023-04-12 23:27:52
