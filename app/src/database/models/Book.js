@@ -44,6 +44,10 @@ module.exports = (sequelize, dataTypes) => {
             type: dataTypes.INTEGER(10).UNSIGNED,
 
         },
+        editorial: {
+            type: dataTypes.INTEGER(10).UNSIGNED,
+
+        },
     };
 
     const CONFIG = {
@@ -72,6 +76,10 @@ module.exports = (sequelize, dataTypes) => {
         });
         BOOK.belongsTo(models.Cover, {
             as: "cover",
+            foreignKey: "id",
+        });
+        BOOK.belongsTo(models.Editorial, {
+            as: "editorial",
             foreignKey: "id",
         });
 
