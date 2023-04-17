@@ -17,13 +17,15 @@ module.exports = {
     let book = books.find((book) => book.id == req.params.id);
 
     res.render("products/product", {
+      session: req.session,
       book,
       link: "/css/product.css",
     });
   },
 
   list: (req, res) => {
-    res.render("products/all-products",{
+    res.render("products/all-products", {
+      session: req.session,
       doctitle: "Todos los productos",
       link: "/css/home.css",
       books,
@@ -34,6 +36,7 @@ module.exports = {
 
   create: (req, res) => {
     res.render("products/product-create-form", {
+      session: req.session,
       doctitle: "Crear producto",
       link: "/css/product-create-form.css",
       genres,
@@ -66,8 +69,9 @@ module.exports = {
 
   edit: (req, res) => {
     let bookToEdit = books.find(book => book.id == req.params.id);
-   
+
     res.render("products/product-edit-form.ejs", {
+      session: req.session,
       bookToEdit,
       doctitle: bookToEdit.title,
       link: "/css/product-edit-form.css",
@@ -77,12 +81,12 @@ module.exports = {
   },
 
   update: (req, res) => {
-    
+
     let bookID = Number(req.params.id);
     /*const files = req.files.map(file => file.filename);*/
 
-    
-   books.forEach( (book) => {
+
+    books.forEach((book) => {
       if (book.id == bookID) {
         book.title = req.body.title;
         book.author = req.body.author;
@@ -112,6 +116,7 @@ module.exports = {
     let genre = req.params.category;
     let inventory = books.filter(book => book.genre == genre);
     res.render('./products/booksByGenres', {
+      session: req.session,
       inventory,
       genre,
       doctitle: genre,

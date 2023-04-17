@@ -8,22 +8,25 @@ module.exports = {
     index: (req, res) => {
         let digital = books.filter(libro => libro.format == 'Digital');
         let paperback = books.filter(libro => libro.format == 'Físico');
-        res.render('home',{ 
+        res.render('home', {
+            session: req.session,
             books,
             digital,
             paperback,
             doctitle: "Home",
-            link: "/css/home.css" });
+            link: "/css/home.css"
+        });
     },
     search: (req, res) => {
-		const {keywords} = req.query;
-		const results = books.filter((book) =>book.title.toLowerCase().includes(keywords.toLowerCase()))
-					
-		res.render ("results", {
-		results,
-        doctitle: "Resultados de tu búsqueda",
-        link: "/css/home.css",
-		})
-	},
-    
+        const { keywords } = req.query;
+        const results = books.filter((book) => book.title.toLowerCase().includes(keywords.toLowerCase()))
+
+        res.render("results", {
+            session: req.session,
+            results,
+            doctitle: "Resultados de tu búsqueda",
+            link: "/css/home.css",
+        })
+    },
+
 };
