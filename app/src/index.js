@@ -2,7 +2,9 @@ const express = require("express");
 const app = express();
 const path = require("path");
 const PORT = 3030;
-const session = require("express-session")
+const session = require("express-session");
+const cookieParser = require("cookie-parser");
+const cookieCheck = require("./middlewares/cookieCheck");
 
 /* Method Override */
 const methodOverride = require('method-override');
@@ -16,7 +18,9 @@ app.use(session({
     secret: "theSecretBookStore",
     resave: false,
     saveUninitialized: true
-}))
+}));
+app.use(cookieParser());
+app.use(cookieCheck);
 /* Middleware */
 
 /* Templeta Engine */
