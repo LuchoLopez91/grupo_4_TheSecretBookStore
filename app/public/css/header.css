@@ -52,6 +52,13 @@ header div.signUp i {
   left: 20px;
 }
 
+header div.user i {
+  border: 3px solid var(green);
+  border-radius: 50%;
+  padding: 20px;
+  left: 20px;
+}
+
 header div.burger-menu i{
   border: 3px solid var(--violeta-oscuro);
   border-radius: 5px;  

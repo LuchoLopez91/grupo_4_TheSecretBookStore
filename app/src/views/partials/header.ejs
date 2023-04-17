@@ -1,45 +1,55 @@
 <header>
-    <div class="top-header"><a href="/"
-      ><div class="header-logo">
-        <img src="/images/main/logo.png" alt="logo" /></div
-    ></a>
-    <div class="header-elem">
-    <div class="search-bar">
-      <form action="/search" method="get" class="search-form" >
-        <input type="text" name="keywords" placeholder="Busca tu libro por titulo, autor, ISBN" class="search-form_input"/>
-        <button type="submit" class="search-form_button"><i class="fa-solid fa-magnifying-glass"></i></button>
-    </form>
-    </div>
-    <div class="header-icons">
-      <a href="/users/login"
-        ><div class="signUp">
-          <i class="fas fa-user"></i></div
-      ></a>
-      <a href="/users/cart"
-        ><div class="cart-icon">
-          <i class="fa-solid fa-cart-shopping"></i></div
-      ></a>
-    </div>
-  </div>
-  </div>
-    <div class="burger-menu">
-      <i class="fas fa-bars"></i>
-    </div>
-    <nav class="menu-container">
-      <div class="btn-close-container">
-        <i class="fa-regular fa-xmark"></i>
+  <div class="top-header"><a href="/">
+      <div class="header-logo">
+        <img src="/images/main/logo.png" alt="logo" />
       </div>
-      <ul class="menu">
-        <li><a href="/store/">Nuestra colección</a></li>
-        <li><a href="/store/category/Acción">Acción</a></li>
-        <li><a href="/store/category/Épico">Épico</a></li>
-        <li><a href="/store/category/Comedia">Comedia</a></li>
-        <li><a href="/store/category/Adolescentes">Adolescentes</a></li>
-        <li><a href="/store/category/Histórico">Histórico</a></li>
-        <li><a href="/store/category/Infantil">Infantil</a></li>
-        <li><a href="/store/create">Vender</a></li>
-      </ul>
-    </nav>
+    </a>
+    <div class="header-elem">
+      <div class="search-bar">
+        <form action="/search" method="get" class="search-form">
+          <input type="text" name="keywords" placeholder="Busca tu libro por titulo, autor, ISBN"
+            class="search-form_input" />
+          <button type="submit" class="search-form_button"><i class="fa-solid fa-magnifying-glass"></i></button>
+        </form>
+      </div>
+      <div class="header-icons">
+        <a href="/users/profile">
+          <% if (typeof session.user == "undefined") { %>
+            <div class="signUp">
+              <i class="fas fa-user"></i>
+            </div>
+            <% } else { %>
+              <div class="user">
+                <i class="fas fa-user"></i>
+              </div>
+            <% } %>
+        </a>
+        <a href="/users/cart">
+          <div class="cart-icon">
+            <i class="fa-solid fa-cart-shopping"></i>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="burger-menu">
+    <i class="fas fa-bars"></i>
+  </div>
+  <nav class="menu-container">
+    <div class="btn-close-container">
+      <i class="fa-regular fa-xmark"></i>
+    </div>
+    <ul class="menu">
+      <li><a href="/store/">Nuestra colección</a></li>
+      <li><a href="/store/category/Acción">Acción</a></li>
+      <li><a href="/store/category/Épico">Épico</a></li>
+      <li><a href="/store/category/Comedia">Comedia</a></li>
+      <li><a href="/store/category/Adolescentes">Adolescentes</a></li>
+      <li><a href="/store/category/Histórico">Histórico</a></li>
+      <li><a href="/store/category/Infantil">Infantil</a></li>
+      <li><a href="/store/create">Vender</a></li>
+    </ul>
+  </nav>
 
 
-  </header>
+</header>

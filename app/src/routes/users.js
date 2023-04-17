@@ -1,8 +1,14 @@
 const express = require('express');
-const { login, register , processRegister, processLogin } = require('../controllers/usersController');
+const {
+    profile,
+    login,
+    register,
+    processRegister,
+    processLogin,
+    cart,
+} = require('../controllers/usersController');
 const router = express.Router();
-const path = require('path'); 
-const controller = require('../controllers/usersController');
+const path = require('path');
 const registerValidator = require("../validations/registerValidator");
 const loginValidator = require('../validations/loginValidator');
 /* devuelve al inicio si el user inició sessión */
@@ -10,32 +16,30 @@ const sessionUserCheck = require('../middlewares/sessionUserCheck');
 /* sigue si el use no inició sesión */
 const userInSessionCheck = require('../middlewares/userInSessionCheck');
 
-
-
-router.get('/user/', controller.user);
-router.get("/cart", controller.cart); 
-
-
 const multer = require("multer");
-
 
 const storage = multer.diskStorage(
     {
-        destination: function (req, file, cb){
-            cb(null,"./public/images/avatars");
+        destination: function (req, file, cb) {
+            cb(null, "./public/images/avatars");
         },
-        filename: function(req, file, cb){
+        filename: function (req, file, cb) {
             let filename = `${Date.now()}_img${path.extname(file.originalname)}`
-            cb(null, filename );
+            cb(null, filename);
         }
     })
 
-    const uploadFile = multer({storage});
+const uploadFile = multer({ storage });
 
 
-router.get('/user/:id', userInSessionCheck, controller.user);
-router.get("/cart", controller.cart); 
+
+/* GET - profile */
+router.get('/profile', userInSessionCheck, profile);
+/* GET - cart */
+router.get("/cart", cart);
+/* GET - register form */
 router.get("/register", sessionUserCheck, register);
+/* POST - register form */
 router.post("/register", uploadFile.single("avatar"), registerValidator, processRegister);
 
 /* GET - login form */
