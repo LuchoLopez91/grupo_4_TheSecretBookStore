@@ -22,6 +22,22 @@ module.exports = {
             link: "/css/profile.css",
         });
     },
+    editProfile: (req, res) => {
+        db.User.update({
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
+            email: req.body.email,
+            password: bcrypt.hashSync(req.body.password, 12),
+            avatar: req.file ? req.file.filename : "default-image.png",
+             rol: "USER",
+             tel: "",
+             address: "",
+             postal_code: "",
+             province: "",
+             city: ""
+        })
+
+    },
     register: (req, res) => {
         res.render('./users/register', {
             doctitle: "Registrate",

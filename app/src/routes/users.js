@@ -34,9 +34,11 @@ const storage = multer.diskStorage(
 
 
 router.get('/user/:id', userInSessionCheck, controller.user);
+router.put('/edit/:id', controller.editProfile);
 router.get("/cart", controller.cart); 
 router.get("/register", sessionUserCheck, register);
 router.post("/register", uploadFile.single("avatar"), registerValidator, processRegister);
+
 
 /* GET - login form */
 router.get("/login", sessionUserCheck, login);
