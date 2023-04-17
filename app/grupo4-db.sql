@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 8.0.19, for Win64 (x86_64)
 --
--- Host: localhost    Database: grupo4
+-- Host: localhost    Database: grupo4-db
 -- ------------------------------------------------------
 -- Server version	5.5.5-10.4.27-MariaDB
 
@@ -322,6 +322,11 @@ CREATE TABLE `users` (
   `password` varchar(100) NOT NULL,
   `createdAt` timestamp NULL DEFAULT NULL,
   `updatedAt` timestamp NULL DEFAULT NULL,
+  `phone` varchar(30) DEFAULT NULL,
+  `adress` varchar(100) DEFAULT NULL,
+  `postalCode` varchar(20) DEFAULT NULL,
+  `city` varchar(100) DEFAULT NULL,
+  `province` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `users_un` (`email`),
   KEY `users_FK` (`avatar`),
@@ -337,12 +342,12 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'admin','admin','admin@mail.com',NULL,1,'$2a$12$v.WN62KBMMy/BO4gWayPPOMrsZJWw7vfRS3MNbjxpPjsLWbp/xL.6',NULL,NULL),(2,'user','user','user@mail.com',NULL,0,'$2a$12$9OX1Njg3j.QkgOBJRYCTuuHTn5SgAd0gmgQKvrU445OvsfZdZFb56',NULL,NULL);
+INSERT INTO `users` VALUES (1,'admin','admin','admin@mail.com',NULL,1,'$2a$12$v.WN62KBMMy/BO4gWayPPOMrsZJWw7vfRS3MNbjxpPjsLWbp/xL.6',NULL,NULL,NULL,NULL,NULL,NULL,NULL),(2,'user','user','user@mail.com',NULL,0,'$2a$12$9OX1Njg3j.QkgOBJRYCTuuHTn5SgAd0gmgQKvrU445OvsfZdZFb56',NULL,NULL,NULL,NULL,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Dumping routines for database 'grupo4'
+-- Dumping routines for database 'grupo4-db'
 --
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -354,4 +359,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-04-12 23:27:52
+-- Dump completed on 2023-04-17 20:23:34
