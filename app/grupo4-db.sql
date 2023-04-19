@@ -56,7 +56,8 @@ CREATE TABLE `avatars` (
   `createdAt` timestamp NULL DEFAULT NULL,
   `updatedAt` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
-  CONSTRAINT `avatars_FK` FOREIGN KEY (`id`) REFERENCES `users` (`id`)
+  KEY `avatars_FK_user` (`user`),
+  CONSTRAINT `avatars_FK_user` FOREIGN KEY (`user`) REFERENCES `users` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -80,7 +81,7 @@ CREATE TABLE `books` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `isbn13` bigint(13) NOT NULL,
   `title` varchar(100) NOT NULL,
-  `cover` varchar(100) DEFAULT NULL,
+  `cover` int(11) DEFAULT NULL,
   `genre` int(11) DEFAULT NULL,
   `language` int(11) DEFAULT NULL,
   `format` int(11) DEFAULT NULL,
@@ -97,6 +98,8 @@ CREATE TABLE `books` (
   KEY `books_FK_genre` (`genre`),
   KEY `books_FK_language` (`language`),
   KEY `books_FK_editorial` (`editorial`),
+  KEY `books_FK` (`cover`),
+  CONSTRAINT `books_FK` FOREIGN KEY (`cover`) REFERENCES `covers` (`id`),
   CONSTRAINT `books_FK_author` FOREIGN KEY (`author`) REFERENCES `authors` (`id`),
   CONSTRAINT `books_FK_editorial` FOREIGN KEY (`editorial`) REFERENCES `editorials` (`id`),
   CONSTRAINT `books_FK_format` FOREIGN KEY (`format`) REFERENCES `formats` (`id`),
@@ -111,7 +114,7 @@ CREATE TABLE `books` (
 
 LOCK TABLES `books` WRITE;
 /*!40000 ALTER TABLE `books` DISABLE KEYS */;
-INSERT INTO `books` VALUES (1,9789506442941,'El temor de un hombre sabio',NULL,4,1,2,1200,1,NULL,NULL,NULL,1),(2,97899505470679,'El señor de los anillos la comunidad del anillo',NULL,4,1,2,560,2,NULL,NULL,NULL,2),(3,9789505471546,'El señor de los anillos las dos torres',NULL,4,1,2,480,2,NULL,NULL,NULL,3),(4,9789505471553,'El señor de los anillos el retorno del rey',NULL,4,1,2,608,2,NULL,NULL,NULL,3);
+INSERT INTO `books` VALUES (1,9789506442941,'El temor de un hombre sabio',NULL,4,1,2,1200,1,NULL,NULL,NULL,1),(2,9789505470679,'El señor de los anillos la comunidad del anillo',NULL,4,1,2,560,2,NULL,NULL,NULL,2),(3,9789505471546,'El señor de los anillos las dos torres',NULL,4,1,2,480,2,NULL,NULL,NULL,3),(4,9789505471553,'El señor de los anillos el retorno del rey',NULL,4,1,2,608,2,NULL,NULL,NULL,3);
 /*!40000 ALTER TABLE `books` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -359,4 +362,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-04-17 20:23:34
+-- Dump completed on 2023-04-19 13:25:14
