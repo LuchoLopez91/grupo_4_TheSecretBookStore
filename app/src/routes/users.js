@@ -1,7 +1,6 @@
 const express = require('express');
 const {
     profile,
-    editProfile,
     login,
     register,
     processRegister,

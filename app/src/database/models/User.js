@@ -44,11 +44,11 @@ module.exports = (sequelize, dataTypes) => {
 
     USER.associate = (models) => {
         USER.belongsTo(models.Role, {
-            as: "role",
+            as: "roles",
             foreignKey: "id",
         });
         USER.belongsTo(models.Avatar, {
-            as: "avatar",
+            as: "avatars",
             foreignKey: "id",
         });
 

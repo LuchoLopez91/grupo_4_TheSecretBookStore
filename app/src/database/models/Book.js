@@ -59,27 +59,27 @@ module.exports = (sequelize, dataTypes) => {
 
     BOOK.associate = (models) => {
         BOOK.belongsTo(models.Author, {
-            as: "author",
+            as: "authors",
             foreignKey: "id",
         });
         BOOK.belongsTo(models.Format, {
-            as: "format",
+            as: "formats",
             foreignKey: "id",
         });
-        BOOK.belongsTo(models.Genre, {
-            as: "genre",
+        /*BOOK.belongsTo(models.Genre, {
+            as: "genres",
             foreignKey: "id",
-        });
+        });*/
         BOOK.belongsTo(models.Language, {
-            as: "language",
+            as: "languages",
             foreignKey: "id",
         });
         BOOK.belongsTo(models.Cover, {
-            as: "cover",
+            as: "covers",
             foreignKey: "id",
         });
         BOOK.belongsTo(models.Editorial, {
-            as: "editorial",
+            as: "editorials",
             foreignKey: "id",
         });
 
