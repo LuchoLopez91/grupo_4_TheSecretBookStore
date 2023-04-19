@@ -1,6 +1,7 @@
 const { check, body } = require("express-validator");
 const { users } = require("../database-old/");
 const bcrypt = require("bcryptjs");
+const { User } = require("../database/models");
 
 module.exports = [
     check("email")
@@ -13,19 +14,35 @@ module.exports = [
     .custom(value => {
         let user = users.find(user => user.email === value)
 
-        return user !== undefined;
+        return User.findOne({
+            where: {
+                email: value,
+            },
+        })
+        .then(
+            user !== undefined
+        )
+        .catch(err => console.log(err))
+
     })
     .withMessage("Email no registrado"),
 
-    check('pass')
+    check('password')
     .notEmpty()
     .withMessage('Debes escribir tu contraseña'),
 
-    body("pass")
+    body("password")
     .custom((value, { req }) => {
-        let user = users.find(user => user.email === req.body.email);
-
-        return bcrypt.compareSync(value, user.pass);
-    })
-    .withMessage("Contraseña inválida")
+        return User.findOne({
+            where: {
+                email: req.body.email,
+            }
+        })
+        .then((user) => {
+            if(!bcrypt.compareSync(value, user.dataValues.password)) {
+                return Promise.reject();
+            }
+        })
+        .catch(() => Promise.reject("Credenciales inválidas"));
+    }),
 ]

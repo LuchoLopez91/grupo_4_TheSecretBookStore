@@ -18,7 +18,7 @@ module.exports = (sequelize, dataTypes) => {
     };
 
     const CONFIG = {
-        tableName: "covers",
+        tableName: "avatars",
         timestamps: true,
     };
     

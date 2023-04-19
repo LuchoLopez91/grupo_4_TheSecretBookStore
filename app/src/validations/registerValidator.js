@@ -3,14 +3,15 @@ const path = require('path');
 const fs = require("fs");
 const usersPathDB = path.join(__dirname, "../database-old/users.json");
 const users = JSON.parse(fs.readFileSync(usersPathDB, "utf-8"));
+const { User } = require("../database/models");
 
 
 module.exports = [
-    check("name")
+    check("firstName")
     .notEmpty()
     .withMessage("El nombre es obligatorio"),
 
-    check("last_name")
+    check("lastName")
     .notEmpty()
     .withMessage("El apellido es obligatorio"),
 
@@ -22,13 +23,19 @@ module.exports = [
 
     body("email")
     .custom((value) => {
-        let user = users.find(user => user.email === value);
-
-        return user === undefined;
+        return User.findOne({
+            where: {
+                email: value,
+            },
+        })
+        .then(user => {
+            if(user) return Promise.reject("Ya existe un usuario asociado e este email")
+        })
+        .catch(err => console.log(err));
     })
     .withMessage("Email ya registrado"),
 
-    check('pass1')
+    check('password')
     .notEmpty()
     .withMessage('Debes escribir tu contraseña').bail()
     .isLength({
@@ -40,7 +47,4 @@ module.exports = [
     .custom((value, {req}) => value !== req.body.pass1 ? false : true)
     .withMessage('Las contraseñas no coinciden'),
 
-    /*check('terms')
-    .isString('on')
-    .withMessage('Debes aceptar los términos y condiciones')*/
 ]
