@@ -6,6 +6,7 @@ const {
     processRegister,
     processLogin,
     cart,
+    editProfile,
 } = require('../controllers/usersController');
 const router = express.Router();
 const path = require('path');
@@ -36,7 +37,7 @@ const uploadFile = multer({ storage });
 /* GET - profile */
 router.get('/profile', userInSessionCheck, profile);
 /*PUT - edit profile */
-router.put('/edit/:id', controller.editProfile);
+router.put('/edit/:id', editProfile);
 
 /* GET - cart */
 router.get("/cart", cart);

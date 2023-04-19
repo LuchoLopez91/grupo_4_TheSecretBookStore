@@ -115,7 +115,7 @@ module.exports = {
   booksByGenres: (req, res) => {
     let genre = req.params.category;
     let inventory = books.filter(book => book.genre == genre);
-    res.render('./products/booksByGenres', {
+    res.render('./products/books-By-Genres', {
       session: req.session,
       inventory,
       genre,
