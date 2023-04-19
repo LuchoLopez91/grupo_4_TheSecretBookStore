@@ -25,15 +25,15 @@
             <!-- <div class="error-message">Debe ingresar su email</div> -->
           </div>
           <div class="input-container">
-            <label for="pass">Contraseña</label><br />
+            <label for="password">Contraseña</label><br />
             <input
               class="input-style"
               type="password"
-              name="pass"
-              id="pass"
+              name="password"
+              id="password"
             >
-            <% if (locals.errors && errors.pass) { %>
-              <small class="text-danger"><%= errors.pass.msg %> </small>
+            <% if (locals.errors && errors.password) { %>
+              <small class="text-danger"><%= errors.password.msg %> </small>
             <% } %>
             <i class="fa-solid fa-lock"></i>
            <!--  <div class="error-message">Debe ingresar una contraseña válida</div> -->
