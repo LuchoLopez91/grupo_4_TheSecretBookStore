@@ -27,11 +27,11 @@ module.exports = [
     })
     .withMessage("Email no registrado"),
 
-    check('pass')
+    check('password')
     .notEmpty()
     .withMessage('Debes escribir tu contraseña'),
 
-    body("pass")
+    body("password")
     .custom((value, { req }) => {
         return User.findOne({
             where: {
@@ -39,7 +39,7 @@ module.exports = [
             }
         })
         .then((user) => {
-            if(!bcrypt.compareSync(value, user.dataValues.pass)) {
+            if(!bcrypt.compareSync(value, user.dataValues.password)) {
                 return Promise.reject();
             }
         })

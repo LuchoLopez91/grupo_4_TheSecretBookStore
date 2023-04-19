@@ -7,11 +7,11 @@ const { User } = require("../database/models");
 
 
 module.exports = [
-    check("name")
+    check("firstName")
     .notEmpty()
     .withMessage("El nombre es obligatorio"),
 
-    check("last_name")
+    check("lastName")
     .notEmpty()
     .withMessage("El apellido es obligatorio"),
 
@@ -35,7 +35,7 @@ module.exports = [
     })
     .withMessage("Email ya registrado"),
 
-    check('pass1')
+    check('password')
     .notEmpty()
     .withMessage('Debes escribir tu contraseña').bail()
     .isLength({
