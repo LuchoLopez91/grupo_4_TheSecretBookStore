@@ -26,7 +26,8 @@ router.get("/details/:id", controller.product);
 
 /* crear producto */
 //router.get('/product-create-form/add', productsController.add)
-router.get('/product-create-form/create',  productsController.create)
+router.get('/add', add);
+router.get('/product-create-form/create', productValidator,  productsController.create)
 router.get("/create", adminCheck, productsController.create);
 router.post("/create", uploadFile.single("image"), productsController.store);
 /* crear producto */
