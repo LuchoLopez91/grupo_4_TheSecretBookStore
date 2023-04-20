@@ -4,6 +4,30 @@
 <body>
     <%- include("../partials/header") %>
     <main>
+        <main class="userProfile">
+            <h1 style="text-align: center">Mi Perfil</h1>
+
+            <div class="avatar" style="text-align: center; margin-bottom: 10px;">
+                <img class="rounded-circle mt-5" width="150px" src="/images/avatars/default-image.png">
+            </div>
+              <div class="userProfile-container">
+                  <div class="userProfile_box">
+                      <p class="userProfile_item">Nombre: </p><p><%= user.firstName + " " + user.lastName %></p> <br>
+                      <p class="userProfile_item">Email: </p><p><%= user.email %></p> <br>
+                  </div>
+                  <div class="userProfile_box">
+                      <h1 class="userProfile_title">Datos de contacto</h1>
+                      <p class="userProfile_item">Teléfono: </p><p><%= user.phone ? user.phone : "------" %></p> <br>
+                      <p class="userProfile_item">Dirección: </p><p><%= user.address ? user.address : "------" %></p> <br>
+                      <p class="userProfile_item">Código postal: </p><p><%= user.postal_code ? user.postal_code : "------" %></p> <br>
+                      <p class="userProfile_item">Provincia: </p><p><%= user.province ? user.province : "------" %></p> <br>
+                      <p class="userProfile_item">Localidad: </p><p><%= user.city ? user.city : "------" %></p> <br>
+                  </div>
+                  <a href="/users/profile/edit" > <button class="btn_edit">EDITAR DATOS</button> </a>
+              </div> 
+          </main>
+      
+
         <section class="menu-perfil">
 
         </section>

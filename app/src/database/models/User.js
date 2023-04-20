@@ -47,10 +47,10 @@ module.exports = (sequelize, dataTypes) => {
             as: "roles",
             foreignKey: "id",
         });
-        USER.belongsTo(models.Avatar, {
+        /*USER.hasMany(models.Avatar, {
             as: "avatars",
             foreignKey: "id",
-        });
+        });*/
 
         USER.hasMany(models.Commentary, {
             as: "commentaries",

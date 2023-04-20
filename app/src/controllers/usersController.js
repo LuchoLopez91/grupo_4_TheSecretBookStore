@@ -15,14 +15,18 @@ const writeJSON = function (user) {
 
 module.exports = {
     profile: (req, res) => {
-        //req.session.user.id;
-        //let user = users.find(user => users.id == req.res.params);
+        let userInSessionId = req.session.user.id;
 
-        res.render('users/profile', {
-            doctitle: req.session.user.name,
-            session: req.session,
-            link: "/css/profile.css",
-        });
+        User.findByPk(userInSessionId)
+        .then((user) => {
+            res.render("users/profile", {
+                user,
+                session: req.session,
+                doctitle: "Mi Perfil",
+                link: "/css/profile.css",
+            })
+        })
+        .catch(error => console.log(error))
     },
     editProfile: (req, res) => {
         db.User.update({
@@ -60,13 +64,13 @@ module.exports = {
             lastName: req.body.lastName,
             email: req.body.email,
             password: bcrypt.hashSync(req.body.password, 12),
-            avatar: req.file ? req.file.filename : "default-image.png",
+            /*avatar: req.file ? req.file.filename : "default-image.png",*/
             phone: req.body.phone,
             address: req.body.address,
             postal_code: req.body.postal_code,
             province: req.body.province,
             city: req.body.city,
-            rol: "USER",
+            role: "USER",
          }; 
          
          User.create(newUser)
@@ -75,7 +79,7 @@ module.exports = {
             })
             .catch(error => console.log(error))
         } else {
-            res.render("user/register", {
+            res.render("users/register", {
                 errors: errors.mapped(),
                 old: req.body,
                 session: req.session,

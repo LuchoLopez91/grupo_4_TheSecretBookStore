@@ -1,11 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300&family=Raleway:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Special+Elite&display=swap');
+
+:root {
+    --violeta-oscuro: #2D033B;
+    --violeta-claro: #810CA8;
+    --rosa: #C147E9;
+    --rosa-claro: #E5B8F4;
+    --inter: 'Inter', sans-serif;
+    --garamond: 'EB Garamond', serif;
+    --font-kanit:  'Kanit', sans-serif;
+    --font-raleway: 'Raleway', sans-serif;
+    --font-specialElite: 'Special Elite', cursive;
+}
+
 *{
     box-sizing: border-box;
 }
-.menu-perfil {
 
+main {
+    margin-bottom: 30px;
+}
+h1 {
+    font-family: var(--font-raleway);
+    text-decoration: underline;
+}
+
+.userProfile_box {
+    text-align: center;
+    font-family: var(--font-raleway);
+    font-size: 2rem;
+    margin: 0;
+}
+
+.btn_edit {
+    display: block;
+    color: white;
     background-color: var(--violeta-oscuro);
-    height: 200px;
-    width: 80%;
-    margin: 30px 33px;
-    border: 2px solid var(--rosa);
+    padding: 0.6em 1.3em;
+    cursor: pointer;
+    font-weight: bold;
+    width: 200px;
+    border-radius: 0.6rem;
+    border: var(--violeta-oscuro);
+    box-shadow: 1px 1px 3px;
+    margin: auto;
+}
+
+.userProfile_item {
+    font-weight: bold;
+}
+p {
+    display: inline-block;
 }

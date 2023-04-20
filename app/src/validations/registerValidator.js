@@ -44,7 +44,7 @@ module.exports = [
     .withMessage('La contraseña debe tener como mínimo 6 caracteres'),
 
     body('pass2')
-    .custom((value, {req}) => value !== req.body.pass1 ? false : true)
+    .custom((value, {req}) => value !== req.body.password ? false : true)
     .withMessage('Las contraseñas no coinciden'),
 
 ]

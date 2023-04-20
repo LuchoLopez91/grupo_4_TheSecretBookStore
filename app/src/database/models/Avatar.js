@@ -24,12 +24,12 @@ module.exports = (sequelize, dataTypes) => {
     
     const AVATAR = sequelize.define(ALIAS, COLS, CONFIG);
 
-    AVATAR.associate = (models) => {
+   /* AVATAR.associate = (models) => {
         AVATAR.belongsTo(models.User, {
             as: "users",
-            foreignKey: "avatar",
+            foreignKey: "id",
         });
     };
-
+*/
     return AVATAR;
 };
