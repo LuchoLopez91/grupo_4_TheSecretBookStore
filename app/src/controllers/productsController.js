@@ -1,25 +1,27 @@
 const { validationResult } = require("express-validator");
-const { Products, Sequelize } = require("../database/models");
+const { Book, Sequelize } = require("../database/models");
 const { Op } = Sequelize;
 
 const productsController = {
-    'list': (req,res) => {
-        Product.findAll()
-        .then(products => {
-            res.render('all-products.ejs', {Products})
+    list: (req,res) => {
+        Book.findAll()
+        .then(book => {
+            res.render('all-products.ejs', {book})
         })
+        .catch(err => console.log(err))
     },
-    'ByGenres': (req,res) => {
-        Product.findByPk(req.params.id)
-        .then(product => {
-            res.render('books-by-genres.ejs', {product})
+    bookDetail: (req,res) => {
+        Book.findByPk(req.params.id)
+        .then(book => {
+            res.render('books-by-genres.ejs', {book})
         })
+        .catch(err => console.log(err))
     },
  
-    add: function (req,res) {
+    addNewBook: function (req,res) {
         return res.render('product-create-formAdd')
     },
-    create: function (req,res){
+    store: function (req,res){
         const errors = validationResult(req);
         if(errors.isEmpty()){
             const { title,
@@ -30,7 +32,7 @@ const productsController = {
                     languages,
                     format} = req.body;
 
-            Product.create({
+                    Book.create({
                     title,
                     genre,
                     author,
@@ -44,12 +46,12 @@ const productsController = {
             })
             .catch((error) => console.log(error))
         } else {
-            return res.render('product-create-formAdd', {erorrs: errors.mapped()})
+            return res.render('product-create-formAdd', {errors: errors.mapped()})
         }
     },
     edit: function (req,res) {
         const PRODUCT_ID = req.params.id;
-        Product.findByPk(PRODUCT_ID)
+        Book.findByPk(PRODUCT_ID)
         .then(Product => {
             return res.render('product-edit-form', {Product})
         })
@@ -68,7 +70,7 @@ const productsController = {
                 languages,
                 format} = req.body;
 
-            Product.update({
+                Book.update({
                 title,
                 genre,
                 author,
@@ -92,31 +94,31 @@ const productsController = {
             })
             .catch(error => console.log(error))
         } else {
-            Product.findByPk(PRODUCT_ID)
-            .then(Product => {
+            Book.findByPk(PRODUCT_ID)
+            .then(book => {
                 return res.render('product-edit-form', {
-                    Product,
+                    book,
                     errors: errors.mapped})
             })
             .catch(error => console.log(error));
         }
     },
-    delete: function (req,res) {
+    erase: function (req,res) {
         const PRODUCT_ID = req.params.id;
 
-        Product.findByPk(PRODUCT_ID)
+        Book.findByPk(PRODUCT_ID)
         .then(productToDelete => 
             res.render(
                 "productDelete",
-                {Product: producToDelete}
+                {Product: productToDelete}
 
             ))
             .catch(error => console.log(error));
     },
-    destroy: function (req,res) {
+    burn: function (req,res) {
         const PRODUCT_ID = req.params.id;
 
-        Product.destroy({
+        Book.destroy({
             where: {
                 id: PRODUCT_ID
             }
