@@ -13,6 +13,8 @@ const path = require ("path");
 const router = express.Router();
 const multer = require ("multer");
 const adminCheck = require('../middlewares/adminCheck')
+const productValidator = require("../validations/productValidator");
+
 
 const storage = multer.diskStorage(
     {
@@ -33,9 +35,9 @@ router.get("/details/:id", bookDetail);
 
 /* crear producto */
 //router.get('/product-create-form/add', add)
-router.get('/add', add);
-router.get('/product-create-form/create', productValidator,  create)
-router.get("/create", adminCheck, create);
+router.get('/add', addNewBook);
+//router.get('/product-create-form/create', productValidator,  create)
+//router.get("/create", adminCheck, create);
 router.post("/create", uploadFile.single("image"), store);
 /* crear producto */
 

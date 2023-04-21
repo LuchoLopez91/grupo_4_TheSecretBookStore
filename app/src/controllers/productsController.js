@@ -128,4 +128,6 @@ const productsController = {
         })
         .catch(error => console.log(error))
     }
-}
+};
+
+module.exports = productsController;
