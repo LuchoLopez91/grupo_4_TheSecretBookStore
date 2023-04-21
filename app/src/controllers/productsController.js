@@ -1,126 +1,131 @@
-const fs = require("fs");
-const path = require("path");
+const { validationResult } = require("express-validator");
+const { Book, Sequelize } = require("../database/models");
+const { Op } = Sequelize;
 
+const productsController = {
+    list: (req,res) => {
+        Book.findAll()
+        .then(book => {
+            res.render('all-products.ejs', {book})
+        })
+        .catch(err => console.log(err))
+    },
+    bookDetail: (req,res) => {
+        Book.findByPk(req.params.id)
+        .then(book => {
+            res.render('books-by-genres.ejs', {book})
+        })
+        .catch(err => console.log(err))
+    },
+ 
+    addNewBook: function (req,res) {
+        return res.render('product-create-formAdd')
+    },
+    store: function (req,res){
+        const errors = validationResult(req);
+        if(errors.isEmpty()){
+            const { title,
+                    genre,
+                    author,
+                    price,
+                    editorial,
+                    languages,
+                    format} = req.body;
 
-const booksPathDB = path.join(__dirname, "../database-old/books.json");
-const genresPathDB = path.join(__dirname, "../database-old/genres.json");
-const languagesPathDB = path.join(__dirname, "../database-old/languages.json");
-const books = JSON.parse(fs.readFileSync(booksPathDB, "utf-8"));
-const genres = JSON.parse(fs.readFileSync(genresPathDB, "utf-8"));
-const languages = JSON.parse(fs.readFileSync(languagesPathDB, "utf-8"));
-const writeJSON = function (book) {
-  fs.writeFileSync(booksPathDB, JSON.stringify(book), "utf-8");
-};
+                    Book.create({
+                    title,
+                    genre,
+                    author,
+                    price,
+                    editorial,
+                    languages,
+                    format
+            })
+            .then((product) => {
+                res.send(product)
+            })
+            .catch((error) => console.log(error))
+        } else {
+            return res.render('product-create-formAdd', {errors: errors.mapped()})
+        }
+    },
+    edit: function (req,res) {
+        const PRODUCT_ID = req.params.id;
+        Book.findByPk(PRODUCT_ID)
+        .then(Product => {
+            return res.render('product-edit-form', {Product})
+        })
+        .catch(error => console.log(error));
+    },
+    update: function (req,res) {
+        const errors = validationResult(req)
+        const PRODUCT_ID = req.params.id;
 
-module.exports = {
-  product: (req, res) => {
-    let book = books.find((book) => book.id == req.params.id);
+        if (errors.isEmpty()){
+            const { title,
+                genre,
+                author,
+                price,
+                editorial,
+                languages,
+                format} = req.body;
 
-    res.render("products/product", {
-      session: req.session,
-      book,
-      link: "/css/product.css",
-    });
-  },
+                Book.update({
+                title,
+                genre,
+                author,
+                price,
+                editorial,
+                languages,
+                format
+        }),{
+            where: {
+                id : PRODUCT_ID,
+            }}
+            .then((response) => {
+                if (response){
+                   return res.redirect("/all-product");
+                } else {
+                    throw new Error( 
+                        "No se pudo editar el producto"
+                    )
+                    //proximamente..
+                }
+            })
+            .catch(error => console.log(error))
+        } else {
+            Book.findByPk(PRODUCT_ID)
+            .then(book => {
+                return res.render('product-edit-form', {
+                    book,
+                    errors: errors.mapped})
+            })
+            .catch(error => console.log(error));
+        }
+    },
+    erase: function (req,res) {
+        const PRODUCT_ID = req.params.id;
 
-  list: (req, res) => {
-    res.render("products/all-products", {
-      session: req.session,
-      doctitle: "Todos los productos",
-      link: "/css/home.css",
-      books,
-      genres,
-      languages,
-    })
-  },
+        Book.findByPk(PRODUCT_ID)
+        .then(productToDelete => 
+            res.render(
+                "productDelete",
+                {Product: productToDelete}
 
-  create: (req, res) => {
-    res.render("products/product-create-form", {
-      session: req.session,
-      doctitle: "Crear producto",
-      link: "/css/product-create-form.css",
-      genres,
-      languages,
-    });
-  },
+            ))
+            .catch(error => console.log(error));
+    },
+    burn: function (req,res) {
+        const PRODUCT_ID = req.params.id;
 
-  store: (req, res) => {
-    let lastId = books[books.length - 1].id;
-
-    let newBook = {
-      id: lastId + 1,
-      title: req.body.title,
-      author: req.body.author,
-      price: req.body.price,
-      editorial: req.body.editorial,
-      languages: req.body.languages,
-      format: req.body.format,
-      genre: req.body.genre,
-      description: req.body.description,
-      image: req.file ? req.file.filename : "book-default-cover.jpg",
-    };
-
-    books.push(newBook);
-
-    writeJSON(books);
-
-    res.redirect("/");
-  },
-
-  edit: (req, res) => {
-    let bookToEdit = books.find(book => book.id == req.params.id);
-
-    res.render("products/product-edit-form.ejs", {
-      session: req.session,
-      bookToEdit,
-      doctitle: bookToEdit.title,
-      link: "/css/product-edit-form.css",
-      genres,
-      languages,
-    });
-  },
-
-  update: (req, res) => {
-
-    let bookID = Number(req.params.id);
-    /*const files = req.files.map(file => file.filename);*/
-
-
-    books.forEach((book) => {
-      if (book.id == bookID) {
-        book.title = req.body.title;
-        book.author = req.body.author;
-        book.price = req.body.price;
-        book.editorial = req.body.editorial;
-        book.languages = req.body.languages;
-        book.format = req.body.format;
-        book.genre = req.body.genre;
-        book.description = req.body.description;
-        book.image = !req.file ? book.image : req.file.filename;
-      }
-    });
-    writeJSON(books);
-    res.redirect(`/store/details/${bookID}`);
-  },
-
-  burn: (req, res) => {
-    let bookID = Number(req.params.id);
-
-    let newInventory = books.filter(book => book.id !== bookID);
-
-    writeJSON(newInventory);
-    res.redirect("/");
-  },
-
-  booksByGenres: (req, res) => {
-    let genre = req.params.category;
-    let inventory = books.filter(book => book.genre == genre);
-    res.render('./products/books-By-Genres', {
-      session: req.session,
-      inventory,
-      genre,
-      doctitle: genre,
-      link: '/css/home.css',
-    });
-  },
-};
+        Book.destroy({
+            where: {
+                id: PRODUCT_ID
+            }
+        })
+        .then(() =>{
+            return res.redirect("/all-products")
+        })
+        .catch(error => console.log(error))
+    }
+}

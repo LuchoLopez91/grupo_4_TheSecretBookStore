@@ -1,5 +1,14 @@
 const express = require("express");
-const productsController = require("../controllers/productsController");
+const {
+    list,
+    bookDetail,
+    addNewBook,
+    store,
+    edit,
+    update,
+    erase,
+    burn,
+} = require("../controllers/productsController");
 const path = require ("path");
 const router = express.Router();
 const multer = require ("multer");
@@ -14,28 +23,27 @@ const storage = multer.diskStorage(
             cb(null, file.originalname );
         }
     })
+const uploadFile = multer({storage});
 
-    const uploadFile = multer({storage});
 
-const controller = require("../controllers/productsController");
+//router.get('/category/:category', productsController.booksByGenres);
 
-router.get('/category/:category', controller.booksByGenres);
-
-router.get("/", controller.list);
-router.get("/details/:id", controller.product); 
+router.get("/", list);
+router.get("/details/:id", bookDetail);
 
 /* crear producto */
-//router.get('/product-create-form/add', productsController.add)
-router.get('/product-create-form/create',  productsController.create)
-router.get("/create", adminCheck, productsController.create);
-router.post("/create", uploadFile.single("image"), productsController.store);
+//router.get('/product-create-form/add', add)
+router.get('/add', add);
+router.get('/product-create-form/create', productValidator,  create)
+router.get("/create", adminCheck, create);
+router.post("/create", uploadFile.single("image"), store);
 /* crear producto */
 
 /* Editar producto */
-router.get("/edit/:id", adminCheck, productsController.edit);
-router.put("/edit/:id", uploadFile.single("image"), productsController.update);
+router.get("/edit/:id", adminCheck, edit);
+router.put("/edit/:id", uploadFile.single("image"), update);
 
 /* Quemar libro */
-router.delete("/delete/:id", adminCheck, productsController.burn)
+router.delete("/delete/:id", adminCheck, burn)
 
 module.exports = router;
