@@ -12,7 +12,7 @@ module.exports = (sequelize, dataTypes) => {
         route: {
             type: dataTypes.STRING(100),
         },
-        user: {
+        user_id: {
             type: dataTypes.STRING(100),
         },
     };
@@ -24,12 +24,12 @@ module.exports = (sequelize, dataTypes) => {
     
     const AVATAR = sequelize.define(ALIAS, COLS, CONFIG);
 
-   /* AVATAR.associate = (models) => {
+    AVATAR.associate = (models) => {
         AVATAR.belongsTo(models.User, {
             as: "users",
-            foreignKey: "id",
+            foreignKey: "user_id",
         });
     };
-*/
+
     return AVATAR;
 };

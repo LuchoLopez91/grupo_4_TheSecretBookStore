@@ -21,10 +21,10 @@ module.exports = (sequelize, dataTypes) => {
             type: dataTypes.STRING(100),
             allowNull: false,
         },
-        avatar: {
+        /*avatar: {
             type: dataTypes.INTEGER(10).UNSIGNED,
             allowNull: true,
-        },
+        },*/
         role: {
             type: dataTypes.INTEGER(10).UNSIGNED,
             allowNull: false,
@@ -47,10 +47,10 @@ module.exports = (sequelize, dataTypes) => {
             as: "roles",
             foreignKey: "id",
         });
-        /*USER.hasMany(models.Avatar, {
+        USER.hasOne(models.Avatar, {
             as: "avatars",
-            foreignKey: "id",
-        });*/
+            foreignKey: "user_id",
+        });
 
         USER.hasMany(models.Commentary, {
             as: "commentaries",

@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 8.0.19, for Win64 (x86_64)
 --
--- Host: localhost    Database: grupo4-db
+-- Host: localhost    Database: grupo4db
 -- ------------------------------------------------------
 -- Server version	5.5.5-10.4.27-MariaDB
 
@@ -52,13 +52,13 @@ DROP TABLE IF EXISTS `avatars`;
 CREATE TABLE `avatars` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `route` varchar(100) NOT NULL,
-  `user` int(11) DEFAULT NULL,
+  `user_id` int(11) DEFAULT NULL,
   `createdAt` timestamp NULL DEFAULT NULL,
   `updatedAt` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `avatars_FK_user` (`user`),
-  CONSTRAINT `avatars_FK_user` FOREIGN KEY (`user`) REFERENCES `users` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  KEY `avatars_FK_user` (`user_id`),
+  CONSTRAINT `avatars_FK_user` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -67,6 +67,7 @@ CREATE TABLE `avatars` (
 
 LOCK TABLES `avatars` WRITE;
 /*!40000 ALTER TABLE `avatars` DISABLE KEYS */;
+INSERT INTO `avatars` VALUES (1,'default-image.png',NULL,'2023-04-21 01:48:26','2023-04-21 01:48:26'),(2,'1682043435169_img.jpg',NULL,'2023-04-21 02:17:15','2023-04-21 02:17:15'),(3,'1682043482364_img.jpg',NULL,'2023-04-21 02:18:02','2023-04-21 02:18:02'),(4,'1682045559684_img.jpg',29,'2023-04-21 02:52:40','2023-04-21 02:52:40');
 /*!40000 ALTER TABLE `avatars` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -336,7 +337,7 @@ CREATE TABLE `users` (
   KEY `users_FK_role` (`role`),
   CONSTRAINT `users_FK` FOREIGN KEY (`avatar`) REFERENCES `avatars` (`id`),
   CONSTRAINT `users_FK_role` FOREIGN KEY (`role`) REFERENCES `roles` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -345,12 +346,12 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'admin','admin','admin@mail.com',NULL,1,'$2a$12$v.WN62KBMMy/BO4gWayPPOMrsZJWw7vfRS3MNbjxpPjsLWbp/xL.6',NULL,NULL,NULL,NULL,NULL,NULL,NULL),(2,'user','user','user@mail.com',NULL,0,'$2a$12$9OX1Njg3j.QkgOBJRYCTuuHTn5SgAd0gmgQKvrU445OvsfZdZFb56',NULL,NULL,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO `users` VALUES (1,'admin','admin','admin@mail.com',NULL,1,'$2a$12$v.WN62KBMMy/BO4gWayPPOMrsZJWw7vfRS3MNbjxpPjsLWbp/xL.6',NULL,NULL,NULL,NULL,NULL,NULL,NULL),(2,'user','user','user@mail.com',NULL,0,'$2a$12$9OX1Njg3j.QkgOBJRYCTuuHTn5SgAd0gmgQKvrU445OvsfZdZFb56',NULL,NULL,NULL,NULL,NULL,NULL,NULL),(14,'Prueba','prueba','prueba@mail.com',NULL,0,'$2a$12$VbgT7Yk5v5SgIWx379HvauCkJ94u5XNlKPDJCGpvLZRggyZxt3sNK','2023-04-20 01:24:03','2023-04-20 01:24:03',NULL,NULL,NULL,NULL,NULL),(18,'Juan','Perez','juan@mail.com',NULL,0,'$2a$12$uVieM9HnuElDjBC.CuO2q.vc.ndxGsE3f2pYgEf86vJopOBZK/nZK','2023-04-21 01:48:26','2023-04-21 01:48:26',NULL,NULL,NULL,NULL,NULL),(19,'Marcos','Perez','marcos@mail.com',NULL,0,'$2a$12$oMrVg4fdbcVKPa6Aps3dN.AIKqzS0PBzO.3tXUk9hlvd6kmwUJkLG','2023-04-21 02:10:03','2023-04-21 02:10:03',NULL,NULL,NULL,NULL,NULL),(20,'Andrea','Prueba','andrea@mail.com',NULL,0,'$2a$12$TajnKCoWtPZjuc61Yv42me220rRDYxbqgfDAlqY20dHWAjXk4OlEG','2023-04-21 02:13:46','2023-04-21 02:13:46',NULL,NULL,NULL,NULL,NULL),(21,'Hugo','prueba','hugo@mail.com',NULL,0,'$2a$12$ng4mpTatpoy5Ig4mYkn0Den6Ed4jQyFTTGo4/a0adRxa/eXEqcR6i','2023-04-21 02:18:02','2023-04-21 02:18:02',NULL,NULL,NULL,NULL,NULL),(22,'nueva','prueba','nueva@mail.com',NULL,0,'$2a$12$E815FioIID4BwBBdxt0KQuVo6RvYDI.sOkSeq56./eDC325TVJdYe','2023-04-21 02:37:57','2023-04-21 02:37:57',NULL,NULL,NULL,NULL,NULL),(23,'Andres','Andres','andres@mail.com',NULL,0,'$2a$12$KqGHRIbPRhtEyRAZmM.cSuF7CYG/Cujgkj9b.PBXM.VeRyqnV2gDa','2023-04-21 02:42:18','2023-04-21 02:42:18',NULL,NULL,NULL,NULL,NULL),(25,'Andres','Andres','andy@mail.com',NULL,0,'$2a$12$eNzNL5SxAjmhsrc063gEluvsJnv7WX2Y8Ti6T5yNMx.b0v0oI/5Fq','2023-04-21 02:44:44','2023-04-21 02:44:44',NULL,NULL,NULL,NULL,NULL),(27,'Thelma','prueba','thelma@mail.com',NULL,0,'$2a$12$iG4.38wpsXTHCOWzHFFogOJdXy4xOwZXFWXC1ba.KoAJYKiESkvwW','2023-04-21 02:49:05','2023-04-21 02:49:05',NULL,NULL,NULL,NULL,NULL),(29,'Karen','Perez','karen@mail.com',NULL,0,'$2a$12$gAZdTbxzMjzS8IloyHp2yuu8eCbl2ZxCGX.Zh0kYWyNHc9nYVztEa','2023-04-21 02:52:40','2023-04-21 02:52:40',NULL,NULL,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Dumping routines for database 'grupo4-db'
+-- Dumping routines for database 'grupo4db'
 --
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -362,4 +363,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-04-19 13:25:14
+-- Dump completed on 2023-04-21  0:16:19

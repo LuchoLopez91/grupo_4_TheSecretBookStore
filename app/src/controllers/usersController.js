@@ -4,7 +4,7 @@ const fs = require("fs");
 const path = require("path");
 const { title } = require("process");
 const bcrypt = require("bcryptjs");
-const { User } = require("../database/models");
+const { User, Avatar } = require("../database/models");
 
 
 const usersPathDB = path.join(__dirname, "../database-old/users.json");
@@ -17,7 +17,7 @@ module.exports = {
     profile: (req, res) => {
         let userInSessionId = req.session.user.id;
 
-        User.findByPk(userInSessionId)
+        User.findByPk(userInSessionId, {include: [{association: "avatars"}]})
         .then((user) => {
             res.render("users/profile", {
                 user,
@@ -64,20 +64,33 @@ module.exports = {
             lastName: req.body.lastName,
             email: req.body.email,
             password: bcrypt.hashSync(req.body.password, 12),
-            /*avatar: req.file ? req.file.filename : "default-image.png",*/
             phone: req.body.phone,
             address: req.body.address,
             postal_code: req.body.postal_code,
             province: req.body.province,
             city: req.body.city,
-            role: "USER",
+            role: 0,
          }; 
          
          User.create(newUser)
-            .then(() => {
-               return res.redirect("/users/login");
-            })
-            .catch(error => console.log(error))
+            .then((user) => {
+                if (req.file.length === 0) {
+                    Avatar.create({
+                      route: "default-image.png",
+                      user_id: user.id,
+                    }).then(() => {
+                      return res.redirect("/");
+                    });
+                  }else {
+                    Avatar.create({
+                        route: req.file.filename,
+                        user_id: user.id})
+                        .then(() => {
+                      return res.redirect("/users/login");
+                    });
+                  }
+                })
+                .catch((error) => console.log(error))
         } else {
             res.render("users/register", {
                 errors: errors.mapped(),
