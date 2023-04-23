@@ -23,7 +23,10 @@ const productsController = {
             },
             {
                 association: "editorials"
-            }
+            },
+            {
+                association: "authors"
+            },
         ] })
         .then((book) => {
             res.render('products/product', {
