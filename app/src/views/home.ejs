@@ -33,7 +33,27 @@
       </section>
 
       <div class="container_subtitle">
-        <h4 class="subtitle">En formato físico</h4>
+        <h4 class="subtitle">En formato físico de tapa blanda</h4>
+      </div>
+      <section class="group">
+        <% paperback.forEach(book => { %>
+          <article class="container_book">
+            <a href="/store/details/<%- book.id %>"
+              ><img
+                class="image_book"
+                src="./images/books/<%- book.image %>"
+                alt="<%- book.title %>"
+              />
+              <p><%- book.title %></p>
+              <p class="card-price">$ <%- book.price %> </p>
+              <button class="home-buy" id="boton-compra">AGREGAR AL CARRITO</button>  
+            </a>
+          </article>
+        <% }) %>
+      </section>
+
+      <div class="container_subtitle">
+        <h4 class="subtitle">En formato físico de tapa dura</h4>
       </div>
       <section class="group">
         <% paperback.forEach(book => { %>
