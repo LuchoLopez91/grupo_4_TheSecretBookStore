@@ -42,8 +42,7 @@ const productsController = {
             res.render('books-by-genres.ejs', {book})
         })
         .catch(err => console.log(err))
-    },
- */
+    },*/
     addNewBook: function (req,res) {
         return res.render('product-create-formAdd')
     },

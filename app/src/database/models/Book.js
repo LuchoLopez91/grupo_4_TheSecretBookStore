@@ -53,7 +53,8 @@ module.exports = (sequelize, dataTypes) => {
         price: {
             type: dataTypes.MEDIUMINT(9).UNSIGNED,
             allowNull: false
-        }
+        },
+        description: dataTypes.STRING(),
     };
 
     const CONFIG = {

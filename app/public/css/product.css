@@ -73,6 +73,10 @@ div.info-container {
     padding: 10px;
 }
 
+div.description-container {
+    display: block;
+    background-color: var(--main-color);
+}
 
 
 @media (min-width: 768px) {

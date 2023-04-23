@@ -57,11 +57,12 @@
               <p>Género: <a href="/store/category/<%= book.genre %>"><%= book.genre %></a></p>
               <p>Fecha de publicación: <%= book.publication_date %></p>
           </div>
-          <div class="description-container">
-              <p><%= book.description %></p>
-          </div>
+          
       </section>
   </article>
+  <div class="description-container">
+    <p><%= book.description %></p>
+</div>
       <!-- Relacionados -->
       <section class="related">
         <h3>También te puede interesar</h3>
@@ -69,7 +70,7 @@
           <article>
             <div class="photo-container">
               <img
-                src="/images/books/<%= book.image %>"
+                src="/images/books/<%= book.covers.route %>"
                 alt="<%= book.title %>"
               />
             </div>
@@ -82,7 +83,7 @@
           <article>
             <div class="photo-container">
               <img
-                src="/images/books/<%= book.image %>"
+                src="/images/books/<%= book.covers.route %>"
                 alt="<%= book.title %>"
               />
             </div>
