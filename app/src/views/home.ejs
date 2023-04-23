@@ -21,7 +21,7 @@
             <a href="/store/details/<%- book.id %>"
               ><img
                 class="image_book"
-                src="./images/books/<%- book.image %>"
+                src="./images/books/<%- book.covers.route %>"
                 alt="<%- book.title %>"
               />
               <p><%- book.title %> </p>
@@ -41,7 +41,7 @@
             <a href="/store/details/<%- book.id %>"
               ><img
                 class="image_book"
-                src="./images/books/<%- book.image %>"
+                src="./images/books/<%- book.covers.route %>"
                 alt="<%- book.title %>"
               />
               <p><%- book.title %></p>
@@ -56,12 +56,12 @@
         <h4 class="subtitle">En formato físico de tapa dura</h4>
       </div>
       <section class="group">
-        <% paperback.forEach(book => { %>
+        <% hardback.forEach(book => { %>
           <article class="container_book">
             <a href="/store/details/<%- book.id %>"
               ><img
                 class="image_book"
-                src="./images/books/<%- book.image %>"
+                src="./images/books/<%- book.covers.route %>"
                 alt="<%- book.title %>"
               />
               <p><%- book.title %></p>

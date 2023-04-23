@@ -10,22 +10,32 @@ module.exports = {
     index: (req, res) => {
         const HARDBACK_PROMISE = Book.findAll({
             where: {
-                format_id: 0,
+                format_id: 1,
             },
+            include: [{
+                association: "covers",
+            }],
         });
         const PAPERBACK_PROMISE = Book.findAll({
             where: {
-                format_id: 1,
+                format_id: 2,
             },
+            include: [{
+                association: "covers",
+            }],
         });
         const DIGITAL_PROMISE = Book.findAll({
             where: {
-                format_id: 2,
+                format_id: 3,
             },
+            include: [{
+                association: "covers",
+            }],
         });
 
         Promise.all([HARDBACK_PROMISE, PAPERBACK_PROMISE, DIGITAL_PROMISE])
         .then(([hardback, paperback, digital]) => {
+            // return res.send(hardback);
             return res.render('home', {
                 session: req.session,
                 digital,
@@ -43,8 +53,11 @@ module.exports = {
         //const results = books.filter((book) => book.title.toLowerCase().includes(keywords.toLowerCase()))
         Book.findAll({
             where: {
-                title: {[Op.like]: `%${keywords}%`}
-            }
+                title: {[Op.like]: `%${keywords}%`},
+            },
+            include: {
+                association: "covers",
+            },
         })
         .then((searchResults) => {
             // return res.send(searchResult);
