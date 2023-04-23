@@ -33,7 +33,22 @@ module.exports = (sequelize, dataTypes) => {
             type: dataTypes.STRING(100),
             allowNull: false,
         },
-    };
+        phone: {
+            type: dataTypes.STRING(30),
+        },
+        adress: {
+            type: dataTypes.STRING(100),
+        },
+        postalCode: {
+            type: dataTypes.STRING(20),
+        },
+        city: {
+            type: dataTypes.STRING(100),
+        },
+        province: {
+            type: dataTypes.STRING(100),
+        },
+        };
 
     const CONFIG = {
         tableName: "users",

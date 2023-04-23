@@ -350,6 +350,16 @@ INSERT INTO `users` VALUES (1,'admin','admin','admin@mail.com',NULL,1,'$2a$12$v.
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
+DELETE FROM users WHERE id=14;
+DELETE FROM users WHERE id=18;
+DELETE FROM users WHERE id=19;
+DELETE FROM users WHERE id=20;
+DELETE FROM users WHERE id=21;
+DELETE FROM users WHERE id=22;
+DELETE FROM users WHERE id=23;
+DELETE FROM users WHERE id=25;
+DELETE FROM users WHERE id=27;
+
 --
 -- Dumping routines for database 'grupo4db'
 --

@@ -53,11 +53,25 @@ header div.signUp i {
 }
 
 header div.user i {
-  border: 3px solid var(green);
+  border: 3px solid lightseagreen;
   border-radius: 50%;
-  padding: 20px;
+  padding: 10px;
   left: 20px;
 }
+
+header div.user {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-evenly;
+  align-items: center;
+  font-size: 20px;
+  width: 70px;
+  height: 30px;
+  color: lightseagreen;
+}
+
+
 
 header div.burger-menu i{
   border: 3px solid var(--violeta-oscuro);
