@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 8.0.19, for Win64 (x86_64)
 --
--- Host: localhost    Database: grupo4db
+-- Host: localhost    Database: grupo4-db
 -- ------------------------------------------------------
 -- Server version	5.5.5-10.4.27-MariaDB
 
@@ -58,7 +58,7 @@ CREATE TABLE `avatars` (
   PRIMARY KEY (`id`),
   KEY `avatars_FK_user` (`user_id`),
   CONSTRAINT `avatars_FK_user` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -67,7 +67,7 @@ CREATE TABLE `avatars` (
 
 LOCK TABLES `avatars` WRITE;
 /*!40000 ALTER TABLE `avatars` DISABLE KEYS */;
-INSERT INTO `avatars` VALUES (1,'default-image.png',NULL,'2023-04-21 01:48:26','2023-04-21 01:48:26'),(2,'1682043435169_img.jpg',NULL,'2023-04-21 02:17:15','2023-04-21 02:17:15'),(3,'1682043482364_img.jpg',NULL,'2023-04-21 02:18:02','2023-04-21 02:18:02'),(4,'1682045559684_img.jpg',29,'2023-04-21 02:52:40','2023-04-21 02:52:40');
+INSERT INTO `avatars` VALUES (1,'default-image.png',2,'2023-04-21 01:48:26','2023-04-21 01:48:26'),(8,'1682224389899_img.jpg',29,'2023-04-23 04:33:09','2023-04-23 04:33:09'),(10,'1682224706037_img.jpg',34,'2023-04-23 04:38:26','2023-04-23 04:38:26');
 /*!40000 ALTER TABLE `avatars` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -82,30 +82,29 @@ CREATE TABLE `books` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `isbn13` bigint(13) NOT NULL,
   `title` varchar(100) NOT NULL,
-  `cover` int(11) DEFAULT NULL,
-  `genre` int(11) DEFAULT NULL,
-  `language` int(11) DEFAULT NULL,
-  `format` int(11) DEFAULT NULL,
+  `genre_id` int(11) DEFAULT NULL,
+  `language_id` int(11) DEFAULT NULL,
+  `format_id` int(11) DEFAULT NULL,
   `pageCount` int(11) DEFAULT NULL,
-  `author` int(11) DEFAULT NULL,
+  `author_id` int(11) DEFAULT NULL,
   `calification` int(11) DEFAULT NULL,
   `createdAt` timestamp NULL DEFAULT NULL,
   `updatedAt` timestamp NULL DEFAULT NULL,
-  `editorial` int(11) DEFAULT NULL,
+  `editorial_id` int(11) DEFAULT NULL,
+  `publication_date` date DEFAULT NULL,
+  `price` mediumint(9) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `bookrs_un` (`isbn13`),
-  KEY `books_FK_author` (`author`),
-  KEY `books_FK_format` (`format`),
-  KEY `books_FK_genre` (`genre`),
-  KEY `books_FK_language` (`language`),
-  KEY `books_FK_editorial` (`editorial`),
-  KEY `books_FK` (`cover`),
-  CONSTRAINT `books_FK` FOREIGN KEY (`cover`) REFERENCES `covers` (`id`),
-  CONSTRAINT `books_FK_author` FOREIGN KEY (`author`) REFERENCES `authors` (`id`),
-  CONSTRAINT `books_FK_editorial` FOREIGN KEY (`editorial`) REFERENCES `editorials` (`id`),
-  CONSTRAINT `books_FK_format` FOREIGN KEY (`format`) REFERENCES `formats` (`id`),
-  CONSTRAINT `books_FK_genre` FOREIGN KEY (`genre`) REFERENCES `genres` (`id`),
-  CONSTRAINT `books_FK_language` FOREIGN KEY (`language`) REFERENCES `languages` (`id`)
+  KEY `books_FK_author` (`author_id`),
+  KEY `books_FK_format` (`format_id`),
+  KEY `books_FK_genre` (`genre_id`),
+  KEY `books_FK_language` (`language_id`),
+  KEY `books_FK_editorial` (`editorial_id`),
+  CONSTRAINT `books_FK_author` FOREIGN KEY (`author_id`) REFERENCES `authors` (`id`),
+  CONSTRAINT `books_FK_editorial` FOREIGN KEY (`editorial_id`) REFERENCES `editorials` (`id`),
+  CONSTRAINT `books_FK_format` FOREIGN KEY (`format_id`) REFERENCES `formats` (`id`),
+  CONSTRAINT `books_FK_genre` FOREIGN KEY (`genre_id`) REFERENCES `genres` (`id`),
+  CONSTRAINT `books_FK_language` FOREIGN KEY (`language_id`) REFERENCES `languages` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -115,7 +114,7 @@ CREATE TABLE `books` (
 
 LOCK TABLES `books` WRITE;
 /*!40000 ALTER TABLE `books` DISABLE KEYS */;
-INSERT INTO `books` VALUES (1,9789506442941,'El temor de un hombre sabio',NULL,4,1,2,1200,1,NULL,NULL,NULL,1),(2,9789505470679,'El señor de los anillos la comunidad del anillo',NULL,4,1,2,560,2,NULL,NULL,NULL,2),(3,9789505471546,'El señor de los anillos las dos torres',NULL,4,1,2,480,2,NULL,NULL,NULL,3),(4,9789505471553,'El señor de los anillos el retorno del rey',NULL,4,1,2,608,2,NULL,NULL,NULL,3);
+INSERT INTO `books` VALUES (1,9789506442941,'El temor de un hombre sabio',4,1,2,1200,1,NULL,NULL,NULL,1,NULL,5000),(2,9789505470679,'El señor de los anillos la comunidad del anillo',4,1,2,560,2,10,NULL,NULL,2,'1954-06-29',6000),(3,9789505471546,'El señor de los anillos las dos torres',4,1,2,480,2,NULL,NULL,NULL,3,NULL,6500),(4,9789505471553,'El señor de los anillos el retorno del rey',4,1,2,608,2,NULL,NULL,NULL,3,NULL,8000);
 /*!40000 ALTER TABLE `books` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -161,13 +160,13 @@ DROP TABLE IF EXISTS `covers`;
 CREATE TABLE `covers` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `route` varchar(100) NOT NULL,
-  `book` int(11) NOT NULL,
+  `book_id` int(11) NOT NULL,
   `createdAt` timestamp NULL DEFAULT NULL,
   `updatedAt` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `covers_FK` (`book`),
-  CONSTRAINT `covers_FK` FOREIGN KEY (`book`) REFERENCES `books` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  KEY `covers_FK` (`book_id`),
+  CONSTRAINT `covers_FK` FOREIGN KEY (`book_id`) REFERENCES `books` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -176,6 +175,7 @@ CREATE TABLE `covers` (
 
 LOCK TABLES `covers` WRITE;
 /*!40000 ALTER TABLE `covers` DISABLE KEYS */;
+INSERT INTO `covers` VALUES (1,'lotr-1.jpg',2,NULL,NULL);
 /*!40000 ALTER TABLE `covers` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -337,7 +337,7 @@ CREATE TABLE `users` (
   KEY `users_FK_role` (`role`),
   CONSTRAINT `users_FK` FOREIGN KEY (`avatar`) REFERENCES `avatars` (`id`),
   CONSTRAINT `users_FK_role` FOREIGN KEY (`role`) REFERENCES `roles` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -346,22 +346,12 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'admin','admin','admin@mail.com',NULL,1,'$2a$12$v.WN62KBMMy/BO4gWayPPOMrsZJWw7vfRS3MNbjxpPjsLWbp/xL.6',NULL,NULL,NULL,NULL,NULL,NULL,NULL),(2,'user','user','user@mail.com',NULL,0,'$2a$12$9OX1Njg3j.QkgOBJRYCTuuHTn5SgAd0gmgQKvrU445OvsfZdZFb56',NULL,NULL,NULL,NULL,NULL,NULL,NULL),(14,'Prueba','prueba','prueba@mail.com',NULL,0,'$2a$12$VbgT7Yk5v5SgIWx379HvauCkJ94u5XNlKPDJCGpvLZRggyZxt3sNK','2023-04-20 01:24:03','2023-04-20 01:24:03',NULL,NULL,NULL,NULL,NULL),(18,'Juan','Perez','juan@mail.com',NULL,0,'$2a$12$uVieM9HnuElDjBC.CuO2q.vc.ndxGsE3f2pYgEf86vJopOBZK/nZK','2023-04-21 01:48:26','2023-04-21 01:48:26',NULL,NULL,NULL,NULL,NULL),(19,'Marcos','Perez','marcos@mail.com',NULL,0,'$2a$12$oMrVg4fdbcVKPa6Aps3dN.AIKqzS0PBzO.3tXUk9hlvd6kmwUJkLG','2023-04-21 02:10:03','2023-04-21 02:10:03',NULL,NULL,NULL,NULL,NULL),(20,'Andrea','Prueba','andrea@mail.com',NULL,0,'$2a$12$TajnKCoWtPZjuc61Yv42me220rRDYxbqgfDAlqY20dHWAjXk4OlEG','2023-04-21 02:13:46','2023-04-21 02:13:46',NULL,NULL,NULL,NULL,NULL),(21,'Hugo','prueba','hugo@mail.com',NULL,0,'$2a$12$ng4mpTatpoy5Ig4mYkn0Den6Ed4jQyFTTGo4/a0adRxa/eXEqcR6i','2023-04-21 02:18:02','2023-04-21 02:18:02',NULL,NULL,NULL,NULL,NULL),(22,'nueva','prueba','nueva@mail.com',NULL,0,'$2a$12$E815FioIID4BwBBdxt0KQuVo6RvYDI.sOkSeq56./eDC325TVJdYe','2023-04-21 02:37:57','2023-04-21 02:37:57',NULL,NULL,NULL,NULL,NULL),(23,'Andres','Andres','andres@mail.com',NULL,0,'$2a$12$KqGHRIbPRhtEyRAZmM.cSuF7CYG/Cujgkj9b.PBXM.VeRyqnV2gDa','2023-04-21 02:42:18','2023-04-21 02:42:18',NULL,NULL,NULL,NULL,NULL),(25,'Andres','Andres','andy@mail.com',NULL,0,'$2a$12$eNzNL5SxAjmhsrc063gEluvsJnv7WX2Y8Ti6T5yNMx.b0v0oI/5Fq','2023-04-21 02:44:44','2023-04-21 02:44:44',NULL,NULL,NULL,NULL,NULL),(27,'Thelma','prueba','thelma@mail.com',NULL,0,'$2a$12$iG4.38wpsXTHCOWzHFFogOJdXy4xOwZXFWXC1ba.KoAJYKiESkvwW','2023-04-21 02:49:05','2023-04-21 02:49:05',NULL,NULL,NULL,NULL,NULL),(29,'Karen','Perez','karen@mail.com',NULL,0,'$2a$12$gAZdTbxzMjzS8IloyHp2yuu8eCbl2ZxCGX.Zh0kYWyNHc9nYVztEa','2023-04-21 02:52:40','2023-04-21 02:52:40',NULL,NULL,NULL,NULL,NULL);
+INSERT INTO `users` VALUES (1,'admin','admin','admin@mail.com',NULL,1,'$2a$12$v.WN62KBMMy/BO4gWayPPOMrsZJWw7vfRS3MNbjxpPjsLWbp/xL.6',NULL,NULL,NULL,NULL,NULL,NULL,NULL),(2,'user','user','user@mail.com',NULL,0,'$2a$12$9OX1Njg3j.QkgOBJRYCTuuHTn5SgAd0gmgQKvrU445OvsfZdZFb56',NULL,NULL,NULL,NULL,NULL,NULL,NULL),(29,'Karen','Perez','karen@mail.com',NULL,0,'$2a$12$gAZdTbxzMjzS8IloyHp2yuu8eCbl2ZxCGX.Zh0kYWyNHc9nYVztEa','2023-04-21 02:52:40','2023-04-23 04:52:27','123456789','calle123','1825','',''),(30,'Juan','Gomez','juan@mail.com',NULL,0,'$2a$12$.3SgOLfLOyIUGdCqA26BuOv/KC92YQvnY/g8U5qmQcASmst0od0H.','2023-04-23 04:34:20','2023-04-23 04:34:20',NULL,NULL,NULL,NULL,NULL),(32,'Juan','Gomez','juan2@mail.com',NULL,0,'$2a$12$suG1FFbRNvaal8bBzfIVj.JmxClBtVdLQnWj4.7doyD.vC1kvdntm','2023-04-23 04:36:05','2023-04-23 04:36:05',NULL,NULL,NULL,NULL,NULL),(34,'Juan','Gomez','juan3@mail.com',NULL,0,'$2a$12$xk6voED4PZPrkJ3XG6AoD.MnK.9BlzURU0d9VaEfuqcRV9W29MKTi','2023-04-23 04:37:49','2023-04-23 04:38:26','','','','','');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
-DELETE FROM users WHERE id=14;
-DELETE FROM users WHERE id=18;
-DELETE FROM users WHERE id=19;
-DELETE FROM users WHERE id=20;
-DELETE FROM users WHERE id=21;
-DELETE FROM users WHERE id=22;
-DELETE FROM users WHERE id=23;
-DELETE FROM users WHERE id=25;
-DELETE FROM users WHERE id=27;
-
 --
--- Dumping routines for database 'grupo4db'
+-- Dumping routines for database 'grupo4-db'
 --
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -373,4 +363,4 @@ DELETE FROM users WHERE id=27;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-04-21  0:16:19
+-- Dump completed on 2023-04-23 10:11:23

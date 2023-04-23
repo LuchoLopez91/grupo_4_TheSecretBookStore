@@ -35,8 +35,8 @@ module.exports = (sequelize, dataTypes) => {
 
     COMMENTARY.associate = (models) => {
         COMMENTARY.belongsTo(models.Book, {
-            as: "books",
-            foreignKey: "id",
+            as: "commentaries",
+            foreignKey: "commentaries_id",
         });
         COMMENTARY.belongsTo(models.User, {
             as: "users",

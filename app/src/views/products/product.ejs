@@ -18,7 +18,7 @@
         <!-- Foto -->
         <div class="photo-container">
           <img
-            src="/images/books/<%- book.image %>"
+            src="/images/books/<%- book.covers.route %>"
             alt="<%- book.title %>"
           />
         </div>
@@ -29,7 +29,7 @@
                 <h2><%= book.title %></h2>
                 <h3><%= book.author %></h3>
               </div>
-              <div class="price">Precio: $<%= book.price %><</div>
+              <div class="price">Precio: $<%= book.price %></div>
               <div class="btn-container">
                 <div class="product-btn">Favorito</div>
                 <div class="product-btn"><a href="/cart">Comprar</a></div>
@@ -48,14 +48,14 @@
                   </form>
                 </div>
               </div>
-              <p>Calificación: <%= book.calification %></p>
-              <p>Editorial: <%= book.editorial %></p>
-              <p>I.S.B.N.: <%= book.ISBN %></p>
-              <p>Nro. de páginas: <%= book.pages %></p>
-              <p>Idiomas: <%= book.languages %></p>
-              <p>Formato: <%= book.format %></p>
+              <p>Calificación: <%= book.calification %>/10</p>
+              <p>Editorial: <%= book.editorials.editorial %></p>
+              <p>I.S.B.N.: <%= book.isbn13 %></p>
+              <p>Nro. de páginas: <%= book.pageCount %></p>
+              <p>Idiomas: <%= book.languages.language %></p>
+              <p>Formato: <%= book.formats.format %></p>
               <p>Género: <a href="/store/category/<%= book.genre %>"><%= book.genre %></a></p>
-              <p>Fecha de publicación: <%= book.publication %></p>
+              <p>Fecha de publicación: <%= book.publication_date %></p>
           </div>
           <div class="description-container">
               <p><%= book.description %></p>

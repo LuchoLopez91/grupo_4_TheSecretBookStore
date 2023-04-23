@@ -12,7 +12,7 @@ module.exports = (sequelize, dataTypes) => {
         route: {
             type: dataTypes.STRING(100),
         },
-        book: {
+        book_id: {
             type: dataTypes.STRING(100),
         },
     };
@@ -26,8 +26,8 @@ module.exports = (sequelize, dataTypes) => {
 
     COVER.associate = (models) => {
         COVER.belongsTo(models.Book, {
-            as: "books",
-            foreignKey: "cover",
+            as: "covers",
+            foreignKey: "book_id",
         });
     };
 

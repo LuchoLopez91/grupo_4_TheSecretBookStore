@@ -60,7 +60,7 @@ module.exports = (sequelize, dataTypes) => {
     USER.associate = (models) => {
         USER.belongsTo(models.Role, {
             as: "roles",
-            foreignKey: "id",
+            foreignKey: "role_id",
         });
         USER.hasOne(models.Avatar, {
             as: "avatars",

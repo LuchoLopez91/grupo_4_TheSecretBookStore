@@ -17,18 +17,18 @@ module.exports = (sequelize, dataTypes) => {
             type: dataTypes.STRING(100),
             allowNull: false,
         },
-        cover: {
+        /*cover: {
             type: dataTypes.STRING(100),
+        },*/
+        genre_id: {
+            type: dataTypes.INTEGER(11).UNSIGNED,
+
         },
-        genre: {
+        language_id: {
             type: dataTypes.INTEGER(10).UNSIGNED,
 
         },
-        language: {
-            type: dataTypes.INTEGER(10).UNSIGNED,
-
-        },
-        format: {
+        format_id: {
             type: dataTypes.INTEGER(10).UNSIGNED,
 
         },
@@ -36,7 +36,7 @@ module.exports = (sequelize, dataTypes) => {
             type: dataTypes.INTEGER(10).UNSIGNED,
 
         },
-        author: {
+        author_id: {
             type: dataTypes.INTEGER(10).UNSIGNED,
 
         },
@@ -44,10 +44,16 @@ module.exports = (sequelize, dataTypes) => {
             type: dataTypes.INTEGER(10).UNSIGNED,
 
         },
-        editorial: {
+        editorial_id: {
             type: dataTypes.INTEGER(10).UNSIGNED,
-
         },
+        publication_date: {
+            type: dataTypes.DATEONLY,
+        },
+        price: {
+            type: dataTypes.MEDIUMINT(9).UNSIGNED,
+            allowNull: false
+        }
     };
 
     const CONFIG = {
@@ -60,32 +66,32 @@ module.exports = (sequelize, dataTypes) => {
     BOOK.associate = (models) => {
         BOOK.belongsTo(models.Author, {
             as: "authors",
-            foreignKey: "id",
+            foreignKey: "author_id",
         });
         BOOK.belongsTo(models.Format, {
             as: "formats",
-            foreignKey: "id",
+            foreignKey: "format_id",
         });
-        /*BOOK.belongsTo(models.Genre, {
+/*        BOOK.belongsTo(models.Genre, {
             as: "genres",
-            foreignKey: "id",
+            foreignKey: "genre_id",
         });*/
         BOOK.belongsTo(models.Language, {
             as: "languages",
-            foreignKey: "id",
+            foreignKey: "language_id",
         });
-        BOOK.belongsTo(models.Cover, {
+        BOOK.hasOne(models.Cover, {
             as: "covers",
-            foreignKey: "id",
+            foreignKey: "book_id",
         });
         BOOK.belongsTo(models.Editorial, {
             as: "editorials",
-            foreignKey: "id",
+            foreignKey: "editorial_id",
         });
 
         BOOK.hasMany(models.Commentary, {
             as: "commentaries",
-            foreignKey: "id",
+            foreignKey: "book_id",
         })
     };
 

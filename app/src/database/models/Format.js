@@ -23,8 +23,8 @@ module.exports = (sequelize, dataTypes) => {
 
     FORMAT.associate = (models) => {
         FORMAT.hasMany(models.Book, {
-            as: "books",
-            foreignKey: "format",
+            as: "formats",
+            foreignKey: "format_id",
         });
     };
 

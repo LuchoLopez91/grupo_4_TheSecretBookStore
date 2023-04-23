@@ -4,7 +4,7 @@ module.exports = (sequelize, dataTypes) => {
 
     const COLS = {
         id: {
-            type: dataTypes.INTEGER(10).UNSIGNED,
+            type: dataTypes.INTEGER(11).UNSIGNED,
             primaryKey: true,
             autoIncrement: true,
             allowNull: false,
@@ -23,8 +23,8 @@ module.exports = (sequelize, dataTypes) => {
 
     GENRE.associate = (models) => {
         GENRE.hasMany(models.Book, {
-            as: "books",
-            foreignKey: "genre",
+            as: "genres",
+            foreignKey: "genre_id",
         });
     };
 

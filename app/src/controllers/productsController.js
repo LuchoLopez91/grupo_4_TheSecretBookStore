@@ -11,13 +11,39 @@ const productsController = {
         .catch(err => console.log(err))
     },
     bookDetail: (req,res) => {
+        Book.findByPk(req.params.id, { include: [
+            {
+                association: "covers"
+            },
+            {
+                association: "formats"
+            },
+            {
+                association: "languages"
+            },
+            {
+                association: "editorials"
+            }
+        ] })
+        .then((book) => {
+            res.render('products/product', {
+                book,
+                session: req.session,
+                doctitle: "Detalle del libro",
+                link: "/css/product.css"
+          })
+        })
+        .catch(err => console.log(err))
+    },
+    /*  ASI ESTABA, LO DEJO COMENTADO */
+    /*bookDetail: (req,res) => {
         Book.findByPk(req.params.id)
         .then(book => {
             res.render('books-by-genres.ejs', {book})
         })
         .catch(err => console.log(err))
     },
- 
+ */
     addNewBook: function (req,res) {
         return res.render('product-create-formAdd')
     },

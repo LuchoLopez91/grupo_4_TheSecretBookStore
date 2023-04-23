@@ -27,7 +27,7 @@ module.exports = (sequelize, dataTypes) => {
     AUTHOR.associate = (models) => {
         AUTHOR.hasMany(models.Book, {
             as: "books",
-            foreignKey: "author",
+            foreignKey: "author_id",
         });
     };
 
