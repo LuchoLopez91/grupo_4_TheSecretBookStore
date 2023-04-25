@@ -4,9 +4,30 @@ const { Op } = Sequelize;
 
 const productsController = {
     list: (req,res) => {
-        Book.findAll()
+        Book.findAll({ include: [
+            {
+                association: "covers"
+            },
+            {
+                association: "formats"
+            },
+            {
+                association: "languages"
+            },
+            {
+                association: "editorials"
+            },
+            {
+                association: "authors"
+            },
+        ] })
         .then(book => {
-            res.render('all-products.ejs', {book})
+            res.render('products/all-products', {
+                book,
+                session: req.session,
+                doctitle: "Detalle del libro",
+                link: "/css/home.css"
+})
         })
         .catch(err => console.log(err))
     },
