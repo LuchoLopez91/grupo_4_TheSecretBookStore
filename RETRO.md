@@ -1,3 +1,19 @@
+Retrospectiva Sexto Sprint
+Conclusiones - debemos:
+
+1. Comenzar a: poner nombres mas descriptivos a variables y funciones.
+
+2. Hacer más: Practicar nuevas formas de resolver las tareas, comunicarnos como equipo cuando no podemos resolver algo.
+
+3. Continuar haciendo: reportes regulares del avance de las tareas.
+
+4. Hacer menos: perder tiempo destinado al proyecto más aún cuando los plazos son acotados.
+
+5. Dejar de hacer: procrastinar, incumplir plazos de entregas.
+
+
+
+--------------------------------------------------------
 Retrospectiva Tercer Sprint
 Conclusiones - debemos:
 
