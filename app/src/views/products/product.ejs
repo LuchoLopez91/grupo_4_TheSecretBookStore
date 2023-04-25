@@ -27,7 +27,7 @@
           <div class="info-container">
               <div class="info">
                 <h2><%= book.title %></h2>
-                <h3><%= book.authors.firstName + " " + book.authors.lastName %></h3>
+                <h3><%= book.author %></h3>
               </div>
               <div class="price">Precio: $<%= book.price %></div>
               <div class="btn-container">
@@ -82,7 +82,7 @@
             </div>
             <div>
               <h4><%= book.title %></h4>
-              <h4><%= book.authors.author %></h4>
+              <h4><%= book.author %></h4>
               <p>$<%= book.price %></p>
             </div>
           </article>

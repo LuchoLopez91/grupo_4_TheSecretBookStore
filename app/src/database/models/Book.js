@@ -36,9 +36,8 @@ module.exports = (sequelize, dataTypes) => {
             type: dataTypes.INTEGER(10).UNSIGNED,
 
         },
-        author_id: {
-            type: dataTypes.INTEGER(10).UNSIGNED,
-
+        author: {
+            type: dataTypes.STRING(100),
         },
         calification: {
             type: dataTypes.INTEGER(10).UNSIGNED,
@@ -65,10 +64,10 @@ module.exports = (sequelize, dataTypes) => {
     const BOOK = sequelize.define(ALIAS, COLS, CONFIG);
 
     BOOK.associate = (models) => {
-        BOOK.belongsTo(models.Author, {
+        /* BOOK.belongsTo(models.Author, {
             as: "authors",
             foreignKey: "author_id",
-        });
+        }); */
         BOOK.belongsTo(models.Format, {
             as: "formats",
             foreignKey: "format_id",

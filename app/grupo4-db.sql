@@ -86,7 +86,7 @@ CREATE TABLE `books` (
   `language_id` int(11) DEFAULT NULL,
   `format_id` int(11) DEFAULT NULL,
   `pageCount` int(11) DEFAULT NULL,
-  `author_id` int(11) DEFAULT NULL,
+  `author` varchar(100) DEFAULT NULL,
   `calification` int(11) DEFAULT NULL,
   `createdAt` timestamp NULL DEFAULT NULL,
   `updatedAt` timestamp NULL DEFAULT NULL,
@@ -96,12 +96,11 @@ CREATE TABLE `books` (
   `description` longtext DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `bookrs_un` (`isbn13`),
-  KEY `books_FK_author` (`author_id`),
+  KEY `books_FK_author` (`author`),
   KEY `books_FK_format` (`format_id`),
   KEY `books_FK_genre` (`genre_id`),
   KEY `books_FK_language` (`language_id`),
   KEY `books_FK_editorial` (`editorial_id`),
-  CONSTRAINT `books_FK_author` FOREIGN KEY (`author_id`) REFERENCES `authors` (`id`),
   CONSTRAINT `books_FK_editorial` FOREIGN KEY (`editorial_id`) REFERENCES `editorials` (`id`),
   CONSTRAINT `books_FK_format` FOREIGN KEY (`format_id`) REFERENCES `formats` (`id`),
   CONSTRAINT `books_FK_genre` FOREIGN KEY (`genre_id`) REFERENCES `genres` (`id`),
@@ -115,7 +114,7 @@ CREATE TABLE `books` (
 
 LOCK TABLES `books` WRITE;
 /*!40000 ALTER TABLE `books` DISABLE KEYS */;
-INSERT INTO `books` VALUES (1,9789506442941,'El temor de un hombre sabio',4,1,1,1200,1,NULL,NULL,NULL,1,NULL,5000,NULL),(2,9789505470679,'El señor de los anillos la comunidad del anillo',4,1,2,560,2,10,NULL,NULL,2,'1954-06-29',6000,'En la adormecida e idílica Comarca, un joven hobbit recibe un encargo: custodiar el Anillo Único y emprender el viaje para su destrucción en las Grietas del Destino. Acompañado por magos, hombres, elfos y enanos, atravesará la Tierra Media y se internará en las sombras del País Oscuro, perseguido siempre por las huestes de Sauron, el Señor Oscuro, dispuesto a recuperar su creación para establecer el dominio definitivo del Mal. Los Anillos del Poder fueron forjados en antiguos tiempos por los herreros Elfos, y Sauron, el Señor Oscuro, forjó el Anillo Unico (\"para gobernarlos a todos. Un anillo para encontrarlos. Un Anillo para atraerlos a todos y atarlos en las tinieblas...\"). Pero en una ocasión se lo quitaron, y aunque lo buscó por toda la Tierra Media nunca pudo encontrarlo. Al cabo de muchos años fue a caer casualmente en manos de Bilbo Bolsón. Desde la Torre Oscura de Mordor, el poder de Sauron se extendió alrededor. Llegó a reunir todos los Grandes Anillos, pero continuaba buscando el Anillo Unico que completaría el dominio de Mordor. Bilbo desapareció durante la celebración de su centesimodecimoprimer cumpleaños, y dejó a Frodo a cargo del Anillo, y con una peligrosa misión por delante: atravesar la Tierra Media, internarse en las Sombras del País Oscuro y destruir el Anillo arrojandoló en las Grietas del Destino. Este volumen es la primera parte de \"LA GUERRA DEL ANILLO\", una maravillosa historia de valor, traición, aventuras y magia.'),(3,9789505471546,'El señor de los anillos las dos torres',4,1,3,480,2,NULL,NULL,NULL,3,NULL,6500,NULL),(4,9789505471553,'El señor de los anillos el retorno del rey',4,1,3,608,2,NULL,NULL,NULL,3,NULL,8000,NULL);
+INSERT INTO `books` VALUES (1,9789506442941,'El temor de un hombre sabio',4,1,1,1200,'Patrick Rothfuss',NULL,NULL,NULL,1,NULL,5000,NULL),(2,9789505470679,'El señor de los anillos la comunidad del anillo',4,1,2,560,'J.R.R. Tolkien',10,NULL,NULL,2,'1954-06-29',6000,'En la adormecida e idílica Comarca, un joven hobbit recibe un encargo: custodiar el Anillo Único y emprender el viaje para su destrucción en las Grietas del Destino. Acompañado por magos, hombres, elfos y enanos, atravesará la Tierra Media y se internará en las sombras del País Oscuro, perseguido siempre por las huestes de Sauron, el Señor Oscuro, dispuesto a recuperar su creación para establecer el dominio definitivo del Mal. Los Anillos del Poder fueron forjados en antiguos tiempos por los herreros Elfos, y Sauron, el Señor Oscuro, forjó el Anillo Unico (\"para gobernarlos a todos. Un anillo para encontrarlos. Un Anillo para atraerlos a todos y atarlos en las tinieblas...\"). Pero en una ocasión se lo quitaron, y aunque lo buscó por toda la Tierra Media nunca pudo encontrarlo. Al cabo de muchos años fue a caer casualmente en manos de Bilbo Bolsón. Desde la Torre Oscura de Mordor, el poder de Sauron se extendió alrededor. Llegó a reunir todos los Grandes Anillos, pero continuaba buscando el Anillo Unico que completaría el dominio de Mordor. Bilbo desapareció durante la celebración de su centesimodecimoprimer cumpleaños, y dejó a Frodo a cargo del Anillo, y con una peligrosa misión por delante: atravesar la Tierra Media, internarse en las Sombras del País Oscuro y destruir el Anillo arrojandoló en las Grietas del Destino. Este volumen es la primera parte de \"LA GUERRA DEL ANILLO\", una maravillosa historia de valor, traición, aventuras y magia.'),(3,9789505471546,'El señor de los anillos las dos torres',4,1,3,480,'J.R.R. Tolkien',NULL,NULL,NULL,3,NULL,6500,NULL),(4,9789505471553,'El señor de los anillos el retorno del rey',4,1,3,608,'J.R.R. Tolkien',NULL,NULL,NULL,3,NULL,8000,NULL);
 /*!40000 ALTER TABLE `books` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -285,6 +284,32 @@ INSERT INTO `languages` VALUES (1,'Español',NULL,NULL),(2,'Inglés',NULL,NULL),
 UNLOCK TABLES;
 
 --
+-- Table structure for table `roles`
+--
+
+DROP TABLE IF EXISTS `roles`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `roles` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `role` varchar(100) DEFAULT NULL,
+  `createdAt` timestamp NULL DEFAULT NULL,
+  `updatedAt` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `roles`
+--
+
+LOCK TABLES `roles` WRITE;
+/*!40000 ALTER TABLE `roles` DISABLE KEYS */;
+INSERT INTO `roles` VALUES (0,'user',NULL,NULL),(1,'admin',NULL,NULL);
+/*!40000 ALTER TABLE `roles` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `users`
 --
 
@@ -337,4 +362,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-04-25  0:40:45
+-- Dump completed on 2023-04-25 13:44:24

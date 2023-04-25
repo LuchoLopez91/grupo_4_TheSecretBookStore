@@ -67,26 +67,24 @@
           <div class="form-idioma">
             <label for="lenguaje" class="form-label">Idioma</label>
             <select name="languages" id="lenguaje" class="form-input">
-              <% languages.forEach(idioma => { %>
+              <% LANGUAGES.forEach(idioma => { %>
               <option value="<%- idioma.language %>"><%- idioma.language %></option>
               <% }) %>
             </select>
           </div>
           <div class="form">
             <label for="formato" class="form-label">Formato</label>
-            <input
-              type="text"
-              id="formato"
-              name="format"
-              placeholder="EJ: Digital"
-              class="form-input"
-            />
+            <select name="formato" id="formato" class="form-input">
+              <% FORMATS.forEach(formato => { %>
+              <option value="<%- formato.format %>"><%- formato.format %></option>
+              <% }) %>
+            </select>
           </div>
           <div class="form-genero">
             <label for="genero" class="form-label">Genero</label>
             <select name="genre" id="genero" class="form-input">
-              <% genres.forEach(genre => { %>
-              <option value="<%- genre.genre %>"><%- genre.genre %></option>
+              <% GENRES.forEach(genero => { %>
+                <option value="<%- genero.genre %>"><%- genero.genre %></option>
               <% }) %>
             </select>
           </div>

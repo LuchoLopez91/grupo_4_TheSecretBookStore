@@ -1,6 +1,6 @@
 module.exports = (sequelize, dataTypes) => {
 
-    const ALIAS = "Genres";
+    const ALIAS = "Genre";
 
     const COLS = {
         id: {
