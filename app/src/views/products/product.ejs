@@ -33,20 +33,26 @@
               <div class="btn-container">
                 <div class="product-btn">Favorito</div>
                 <div class="product-btn"><a href="/cart">Comprar</a></div>
-                <div class="product-btna">
-                  <form action="/store/delete/<%- book.id %>?_method=DELETE" method="POST">
-                    <button type="submit">
-                      ELIMINAR
-                    </button>
-                  </form>
-                </div>
-                <div class="product-btna">
-                  <form action="/store/edit/<%- book.id %>" method="GET">
-                    <button type="submit">
-                      Editar
-                    </button>
-                  </form>
-                </div>
+                <% if (typeof session.user == "undefined") { %>
+                  
+                  <%}%>
+                <% if (typeof session.user != "undefined" && session.user.role) { %>
+                   <div class="product-btna">                  
+                      <form action="/store/delete/<%- book.id %>?_method=DELETE" method="POST">
+                        <button type="submit">
+                          ELIMINAR
+                        </button>
+                      </form>
+                    </div>
+                    <div class="product-btna">
+                      <form action="/store/edit/<%- book.id %>" method="GET">
+                        <button type="submit">
+                          Editar
+                        </button>
+                      </form>
+                    </div>
+    
+                  <% } %>
               </div>
               <p>Calificación: <%= book.calification %>/10</p>
               <p>Editorial: <%= book.editorials.editorial %></p>

@@ -51,7 +51,12 @@
       <li><a href="/store/category/Adolescentes">Adolescentes</a></li>
       <li><a href="/store/category/Histórico">Histórico</a></li>
       <li><a href="/store/category/Infantil">Infantil</a></li>
-      <li><a href="/store/create">Vender</a></li>
+      <% if (typeof session.user == "undefined") { %>
+        
+        <%}%>
+      <% if (typeof session.user != "undefined" && session.user.role) { %>
+        <li><a href="/store/create">Vender</a></li>
+      <% } %>
     </ul>
   </nav>
 

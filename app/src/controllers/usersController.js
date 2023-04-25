@@ -240,7 +240,7 @@ module.exports = {
             id: user.id,
             name: user.name,
             avatar: user.avatar,
-            rol: user.rol
+            role: user.role
           }
 
 
@@ -273,7 +273,7 @@ module.exports = {
   logout: (req, res) => {
 
     req.session.destroy();
-    if(req.cookies.userArtisticaDali){
+    if(req.cookies.userBookstore){
         res.cookie("userBookstore", "", {maxAge: -1})
     }
 

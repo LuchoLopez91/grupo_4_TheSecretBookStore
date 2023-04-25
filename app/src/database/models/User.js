@@ -25,9 +25,14 @@ module.exports = (sequelize, dataTypes) => {
             type: dataTypes.INTEGER(10).UNSIGNED,
             allowNull: true,
         },*/
-        role_id: {
+        /*role_id: {
             type: dataTypes.INTEGER(10).UNSIGNED,
             allowNull: false,
+        },*/
+        role: {
+            type: dataTypes.INTEGER(2),
+            allowNull: false,
+            defaultValue: 0
         },
         password: {
             type: dataTypes.STRING(100),
@@ -58,10 +63,10 @@ module.exports = (sequelize, dataTypes) => {
     const USER = sequelize.define(ALIAS, COLS, CONFIG);
 
     USER.associate = (models) => {
-        USER.belongsTo(models.Role, {
+        /*USER.belongsTo(models.Role, {
             as: "roles",
             foreignKey: "role_id",
-        });
+        });*/
         USER.hasOne(models.Avatar, {
             as: "avatars",
             foreignKey: "user_id",
