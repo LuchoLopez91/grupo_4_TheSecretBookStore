@@ -41,7 +41,7 @@ const uploadFile = multer({ storage });
 router.get('/profile', userInSessionCheck, profile);
 
 /*GET - edit Profile */
-router.get('/profile/edit', editProfile);
+router.get('/profile/edit', userInSessionCheck, editProfile);
 /* PUT - update Profile*/
 router.put("/profile/edit", uploadFile.single("avatar"), updateUserValidator, updateProfile);
 
