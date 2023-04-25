@@ -40,15 +40,9 @@
           </div>
           <div>
             <div class="input-container">
-              <label for="recordarme"
-                ><input
-                  type="checkbox"
-                  name="recordarme"
-                  id="recordarme"
-                  value="recordarme"
-                />Recordarme</label
-              >
-            </div>
+              <input type="checkbox" name="remember" id="check">
+              <label for="check">Recordarme</label>
+          </div>
             <% if (locals.errorMsg ) { %>
               <small class="text-danger"><%= errorMsg %> </small>
             <% } %>

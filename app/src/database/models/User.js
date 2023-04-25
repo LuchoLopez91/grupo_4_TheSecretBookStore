@@ -25,7 +25,7 @@ module.exports = (sequelize, dataTypes) => {
             type: dataTypes.INTEGER(10).UNSIGNED,
             allowNull: true,
         },*/
-        role: {
+        role_id: {
             type: dataTypes.INTEGER(10).UNSIGNED,
             allowNull: false,
         },
