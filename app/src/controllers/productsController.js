@@ -25,7 +25,7 @@ const productsController = {
             res.render('products/all-products', {
                 book,
                 session: req.session,
-                doctitle: "Detalle del libro",
+                doctitle: "Nuestra colección completa",
                 link: "/css/home.css"
 })
         })
@@ -68,7 +68,13 @@ const productsController = {
         .catch(err => console.log(err))
     },*/
     addNewBook: function (req,res) {
-        return res.render('product-create-formAdd')
+        return res.render('products/product-create-form', {
+            session: req.session,
+            doctitle: "Crear libro",
+            link: "/css/product-create-form.css"
+
+/*para terminar */
+        })
     },
     store: function (req,res){
         const errors = validationResult(req);

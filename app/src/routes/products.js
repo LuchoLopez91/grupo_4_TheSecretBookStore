@@ -35,7 +35,7 @@ router.get("/details/:id", bookDetail);
 
 /* crear producto */
 //router.get('/product-create-form/add', add)
-router.get('/add', addNewBook);
+router.get('/create', addNewBook);
 //router.get('/product-create-form/create', productValidator,  create)
 //router.get("/create", adminCheck, create);
 router.post("/create", uploadFile.single("image"), store);
