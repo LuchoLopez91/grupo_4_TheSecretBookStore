@@ -105,7 +105,7 @@ CREATE TABLE `books` (
   CONSTRAINT `books_FK_format` FOREIGN KEY (`format_id`) REFERENCES `formats` (`id`),
   CONSTRAINT `books_FK_genre` FOREIGN KEY (`genre_id`) REFERENCES `genres` (`id`),
   CONSTRAINT `books_FK_language` FOREIGN KEY (`language_id`) REFERENCES `languages` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -114,7 +114,7 @@ CREATE TABLE `books` (
 
 LOCK TABLES `books` WRITE;
 /*!40000 ALTER TABLE `books` DISABLE KEYS */;
-INSERT INTO `books` VALUES (1,9789506442941,'El temor de un hombre sabio',4,1,1,1200,'Patrick Rothfuss',NULL,NULL,NULL,1,NULL,5000,NULL),(2,9789505470679,'El señor de los anillos la comunidad del anillo',4,1,2,560,'J.R.R. Tolkien',10,NULL,NULL,2,'1954-06-29',6000,'En la adormecida e idílica Comarca, un joven hobbit recibe un encargo: custodiar el Anillo Único y emprender el viaje para su destrucción en las Grietas del Destino. Acompañado por magos, hombres, elfos y enanos, atravesará la Tierra Media y se internará en las sombras del País Oscuro, perseguido siempre por las huestes de Sauron, el Señor Oscuro, dispuesto a recuperar su creación para establecer el dominio definitivo del Mal. Los Anillos del Poder fueron forjados en antiguos tiempos por los herreros Elfos, y Sauron, el Señor Oscuro, forjó el Anillo Unico (\"para gobernarlos a todos. Un anillo para encontrarlos. Un Anillo para atraerlos a todos y atarlos en las tinieblas...\"). Pero en una ocasión se lo quitaron, y aunque lo buscó por toda la Tierra Media nunca pudo encontrarlo. Al cabo de muchos años fue a caer casualmente en manos de Bilbo Bolsón. Desde la Torre Oscura de Mordor, el poder de Sauron se extendió alrededor. Llegó a reunir todos los Grandes Anillos, pero continuaba buscando el Anillo Unico que completaría el dominio de Mordor. Bilbo desapareció durante la celebración de su centesimodecimoprimer cumpleaños, y dejó a Frodo a cargo del Anillo, y con una peligrosa misión por delante: atravesar la Tierra Media, internarse en las Sombras del País Oscuro y destruir el Anillo arrojandoló en las Grietas del Destino. Este volumen es la primera parte de \"LA GUERRA DEL ANILLO\", una maravillosa historia de valor, traición, aventuras y magia.'),(3,9789505471546,'El señor de los anillos las dos torres',4,1,3,480,'J.R.R. Tolkien',NULL,NULL,NULL,3,NULL,6500,NULL),(4,9789505471553,'El señor de los anillos el retorno del rey',4,1,3,608,'J.R.R. Tolkien',NULL,NULL,NULL,3,NULL,8000,NULL);
+INSERT INTO `books` VALUES (1,9789506442941,'El temor de un hombre sabio',4,1,1,1200,'Patrick Rothfuss',NULL,NULL,NULL,1,NULL,5000,NULL),(2,9789505470679,'El señor de los anillos la comunidad del anillo',4,1,2,560,'J.R.R. Tolkien',10,NULL,NULL,2,'1954-06-29',6000,'En la adormecida e idílica Comarca, un joven hobbit recibe un encargo: custodiar el Anillo Único y emprender el viaje para su destrucción en las Grietas del Destino. Acompañado por magos, hombres, elfos y enanos, atravesará la Tierra Media y se internará en las sombras del País Oscuro, perseguido siempre por las huestes de Sauron, el Señor Oscuro, dispuesto a recuperar su creación para establecer el dominio definitivo del Mal. Los Anillos del Poder fueron forjados en antiguos tiempos por los herreros Elfos, y Sauron, el Señor Oscuro, forjó el Anillo Unico (\"para gobernarlos a todos. Un anillo para encontrarlos. Un Anillo para atraerlos a todos y atarlos en las tinieblas...\"). Pero en una ocasión se lo quitaron, y aunque lo buscó por toda la Tierra Media nunca pudo encontrarlo. Al cabo de muchos años fue a caer casualmente en manos de Bilbo Bolsón. Desde la Torre Oscura de Mordor, el poder de Sauron se extendió alrededor. Llegó a reunir todos los Grandes Anillos, pero continuaba buscando el Anillo Unico que completaría el dominio de Mordor. Bilbo desapareció durante la celebración de su centesimodecimoprimer cumpleaños, y dejó a Frodo a cargo del Anillo, y con una peligrosa misión por delante: atravesar la Tierra Media, internarse en las Sombras del País Oscuro y destruir el Anillo arrojandoló en las Grietas del Destino. Este volumen es la primera parte de \"LA GUERRA DEL ANILLO\", una maravillosa historia de valor, traición, aventuras y magia.'),(3,9789505471546,'El señor de los anillos las dos torres',4,1,3,480,'J.R.R. Tolkien',NULL,NULL,NULL,3,NULL,6500,NULL),(4,9789505471553,'El señor de los anillos el retorno del rey',4,1,3,608,'J.R.R. Tolkien',NULL,NULL,NULL,3,NULL,8000,NULL),(11,5645233221321,'Prueba10',14,8,2,100,'Prueba autor',NULL,'2023-04-26 02:13:57','2023-04-26 02:13:57',2,NULL,23111,'descripcion prueba 10'),(12,9786073198929,'Entrevista con el vampiro',14,1,2,384,'Anne Rice',NULL,'2023-04-26 02:47:00','2023-04-26 02:47:00',1,NULL,6800,'En su primera novela, Anne Rice narra la conversión de un joven de Nueva Orleans convertido en eterno habitante de la noche. El protagonista, llevado por el sentimiento de culpabilidad que le ha causado la muerte de su hermano menor, anhela transformarse en un ser maldito. Sin embargo, ya desde el inicio de su vida sobrenatural se siente invadido por una pasión muy humana');
 /*!40000 ALTER TABLE `books` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -166,7 +166,7 @@ CREATE TABLE `covers` (
   PRIMARY KEY (`id`),
   KEY `covers_FK` (`book_id`),
   CONSTRAINT `covers_FK` FOREIGN KEY (`book_id`) REFERENCES `books` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -175,7 +175,7 @@ CREATE TABLE `covers` (
 
 LOCK TABLES `covers` WRITE;
 /*!40000 ALTER TABLE `covers` DISABLE KEYS */;
-INSERT INTO `covers` VALUES (1,'lotr-1.jpg',2,NULL,NULL),(2,'lotr-2.jpg',3,NULL,NULL),(3,'lotr-3.jpg',4,NULL,NULL),(4,'wise-man.fear.jpg',1,NULL,NULL);
+INSERT INTO `covers` VALUES (1,'lotr-1.jpg',2,NULL,NULL),(2,'lotr-2.jpg',3,NULL,NULL),(3,'lotr-3.jpg',4,NULL,NULL),(4,'wise-man.fear.jpg',1,NULL,NULL),(5,'perfil-del-gato-13763235.jpg',11,'2023-04-26 02:13:57','2023-04-26 02:13:57'),(6,'9786073198929.jpg',12,'2023-04-26 02:47:00','2023-04-26 02:47:00');
 /*!40000 ALTER TABLE `covers` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -270,7 +270,7 @@ CREATE TABLE `languages` (
   `createdAt` timestamp NULL DEFAULT NULL,
   `updatedAt` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -279,7 +279,7 @@ CREATE TABLE `languages` (
 
 LOCK TABLES `languages` WRITE;
 /*!40000 ALTER TABLE `languages` DISABLE KEYS */;
-INSERT INTO `languages` VALUES (1,'Español',NULL,NULL),(2,'Inglés',NULL,NULL),(3,'Francés',NULL,NULL),(4,'Italiano',NULL,NULL),(5,'Japonés',NULL,NULL),(6,'Alemán',NULL,NULL),(7,'Braile',NULL,NULL);
+INSERT INTO `languages` VALUES (1,'Español',NULL,NULL),(2,'Inglés',NULL,NULL),(3,'Francés',NULL,NULL),(4,'Italiano',NULL,NULL),(5,'Japonés',NULL,NULL),(6,'Alemán',NULL,NULL),(7,'Braile',NULL,NULL),(8,'Coreano',NULL,NULL);
 /*!40000 ALTER TABLE `languages` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -362,4 +362,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-04-25 13:44:24
+-- Dump completed on 2023-04-26  6:30:46

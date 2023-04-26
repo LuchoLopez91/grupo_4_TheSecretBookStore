@@ -42,7 +42,7 @@ router.post("/create", uploadFile.single("image"), store);
 /* crear producto */
 
 /* Editar producto */
-router.get("/edit/:id", adminCheck, edit);
+router.get("/edit/:id", edit);
 router.put("/edit/:id", uploadFile.single("image"), update);
 
 /* Quemar libro */

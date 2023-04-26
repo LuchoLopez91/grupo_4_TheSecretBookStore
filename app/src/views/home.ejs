@@ -16,7 +16,7 @@
         <h4 class="subtitle">Nuestros libros digitales</h4>
       </div>
       <section class="group">
-        <% digital.forEach(book => { %>
+        <% DIGITAL.forEach(book => { %>
           <article class="container_book">
             <a href="/store/details/<%- book.id %>"
               ><img
@@ -36,27 +36,27 @@
         <h4 class="subtitle">En formato físico de tapa blanda</h4>
       </div>
       <section class="group">
-        <% paperback.forEach(book => { %>
+        <% for( let INDEX = 0; INDEX < PAPERBACK.length; INDEX++ ) { %>
           <article class="container_book">
-            <a href="/store/details/<%- book.id %>"
+            <a href="/store/details/<%- PAPERBACK[INDEX].id %>"
               ><img
                 class="image_book"
-                src="./images/books/<%- book.covers.route %>"
-                alt="<%- book.title %>"
+                src="./images/books/book-default-cover.jpg"
+                alt="<%- PAPERBACK[INDEX].title %>"
               />
-              <p><%- book.title %></p>
-              <p class="card-price">$ <%- book.price %> </p>
+              <p><%- PAPERBACK[INDEX].title %></p>
+              <p class="card-price">$ <%- PAPERBACK[INDEX].price %> </p>
               <button class="home-buy" id="boton-compra">AGREGAR AL CARRITO</button>  
             </a>
           </article>
-        <% }) %>
+        <% } %>
       </section>
 
       <div class="container_subtitle">
         <h4 class="subtitle">En formato físico de tapa dura</h4>
       </div>
       <section class="group">
-        <% hardback.forEach(book => { %>
+        <% HARDBACK.forEach(book => { %>
           <article class="container_book">
             <a href="/store/details/<%- book.id %>"
               ><img

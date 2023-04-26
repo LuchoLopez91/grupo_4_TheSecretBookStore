@@ -33,14 +33,18 @@ module.exports = {
             }],
         });
 
-        Promise.all([HARDBACK_PROMISE, PAPERBACK_PROMISE, DIGITAL_PROMISE])
-        .then(([hardback, paperback, digital]) => {
+        Promise.all([HARDBACK_PROMISE, PAPERBACK_PROMISE, DIGITAL_PROMISE], { include: [{ association: "covers" }] })
+        .then((results) => {
             // return res.send(hardback);
+            const HARDBACK = results[0];
+            const PAPERBACK = results[1];
+            const DIGITAL = results[2];
+
             return res.render('home', {
                 session: req.session,
-                digital,
-                paperback,
-                hardback,
+                HARDBACK,
+                PAPERBACK,
+                DIGITAL,
                 doctitle: "Home",
                 link: "/css/home.css"
             });

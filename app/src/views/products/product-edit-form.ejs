@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <!-- Includes head -->
-<%- include("../partials/head", {title: "Editando: " + bookToEdit.title}) %>
+<%- include("../partials/head", {title: "Editando: " + book.title}) %>
 <body>
 <!-- header -->
 <%- include("../partials/header") %>    
@@ -10,7 +10,7 @@
 <div class="container-title">
     <div class="row">
         <div class="title-form">
-        <h2 class="title">Estas editando: <%= bookToEdit.title %></h2>
+        <h2 class="title">Estas editando: <%= book.title %></h2>
         </div>    
     </div>
 </div>
@@ -22,51 +22,61 @@
     </ul>
   <% } %>
 <div class="container-form">
-    <form action="/store/edit/<%- bookToEdit.id %>?_method=PUT" method="POST" enctype="multipart/form-data">
+    <form action="/store/edit/<%- book.id %>?_method=PUT" method="POST" enctype="multipart/form-data">
     <div class="container-product">
         <div class="form">
         <label for="title" class="form-label">Nombre del producto</label>
-        <input type="text" id="title" name="title" placeholder="<%= bookToEdit.title %>" value="<%= bookToEdit.title %> " class="form-input">
+        <input type="text" id="title" name="title" placeholder="<%= book.title %>" value="<%= book.title %> " class="form-input">
         </div> 
         <div class="form">
             <label for="author" class="form-label">Autor</label>
-            <input type="text" id="author" name="author" placeholder="<%= bookToEdit.author %>" value="<%= bookToEdit.author %>" class="form-input">
+            <input type="text" id="author" name="author" placeholder="<%= book.author %>" value="<%= book.author %>" class="form-input">
         </div>  
         <div class="form">
             <label for="price" class="form-label">Precio</label>
-            <input type="text" id="price" name="price" placeholder="<%= bookToEdit.price %>" value="<%= bookToEdit.price %>" class="form-input">
+            <input type="text" id="price" name="price" placeholder="<%= book.price %>" value="<%= book.price %>" class="form-input">
         </div>  
         <div class="form">
             <label for="editorial" class="form-label">Editorial</label>
-            <input type="text" id="editorial" name="editorial" placeholder="<%= bookToEdit.editorial %>" value="<%= bookToEdit.editorial %>" class="form-input">
-        </div>  
+            <select name="editorial_id" id="editorial" class="form-input">
+                <% for( let index = 0; index < editorials.length; index++ ) { %>
+                  <option value="<%= editorials[index].id %>"><%= editorials[index].editorial %></option>
+                <% } %>
+              </select>
+          </div>  
         <div class="form-idioma">
             <label for="lenguaje" class="form-label">Idioma</label>
-            <select name="languajes" id="lenguaje" value="<%- bookToEdit.languages %>" class="form-input">
-                <% languages.forEach(language => { %>
-                    <option value="<%- language.language %> selected="<%- bookToEdit.languages %>"><%- language.language %></option>
-                <% }) %>
+            <select name="language_id" id="lenguaje" class="form-input">
+              <% for( let index = 0; index < languages.length; index++ ) { %>
+                <option value="<%= languages[index].id %>"><%= languages[index].language %></option>
+              <% } %>
             </select>
-        </div>  
+          </div>
+  
         <div class="form">
             <label for="formato" class="form-label">Formato</label>
-            <input type="text" id="formato" name="format" placeholder="EJ: Digital" value="<%= bookToEdit.format %>" class="form-input">
-        </div>
+            <select name="format_id" id="formato" class="form-input">
+                <% for( let index = 0; index < formats.length; index++ ) { %>
+                  <option value="<%= formats[index].id %>"><%= formats[index].format %></option>
+                <% } %>
+              </select>
+          </div>
         <div class="form-genero">
         <label for="genero" class="form-label">Genero</label>
-        <select name="genre" id="genero" value="<%= bookToEdit.genre %>" class="form-input">
-            <% genres.forEach(genre => { %>
-                <option value="<%- genre.genre %>" selected="<%- bookToEdit.genre %>"><%- genre.genre %></option>
-            <% }) %>
-        </select>
+        <select name="genre_id" id="genre" class="form-input">
+            <% for( let index = 0; index < genres.length; index++ ) { %>
+              <option value="<%= genres[index].id %>"><%= genres[index].genre %></option>
+            <% } %>
+          </select>
+
         </div>
         <div class="form-portada">
             <label>Elegir imagen del libro</label>
-            <input type="file" name="image" value="<%= bookToEdit.image %>" accept=".jpg" multiple>
+            <input type="file" name="image" value="<%= book.image %>" accept=".jpg" multiple>
         </div>
         <div class="form-descripcion">
             <label for="descripcion" class="form-label">Descripcion</label>
-            <textarea id="descripcion" name="description" placeholder="Maximo 200 caracteres" class="form-input"><%= bookToEdit.description %></textarea>
+            <textarea id="descripcion" name="description" placeholder="Maximo 200 caracteres" class="form-input"><%= book.description %></textarea>
         </div>
         <div class="btn-save">
             <button type="submit" class="save-product">Guardar Producto</button>

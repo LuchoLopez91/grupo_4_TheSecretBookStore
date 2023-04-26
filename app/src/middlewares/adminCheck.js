@@ -1,2 +1,2 @@
 
-module.exports = (req, res, next) =>  req.session.user.rol == 'ADMIN' ? next() : res.redirect("/");
+module.exports = (req, res, next) =>  req.session.user.role == 1 ? next() : res.redirect("/");

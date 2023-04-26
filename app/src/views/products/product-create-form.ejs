@@ -45,6 +45,24 @@
             />
           </div>
           <div class="form">
+            <label for="text" class="form-label">ISBN13</label>
+            <input
+              type="text"
+              id="isbn13"
+              name="isbn13"
+              class="form-input"
+            />
+          </div>
+          <div class="form">
+            <label for="text" class="form-label">Cantidad de páginas</label>
+            <input
+              type="text"
+              id="pageCount"
+              name="pageCount"
+              class="form-input"
+            />
+          </div>
+          <div class="form">
             <label for="price" class="form-label">Precio</label>
             <input
               type="text"
@@ -55,37 +73,37 @@
             />
           </div>
           <div class="form">
-            <label for="editorial" class="form-label">Editorial</label>
-            <input
-              type="text"
-              id="editorial"
-              name="editorial"
-              placeholder="EJ: IVREA"
-              class="form-input"
-            />
-          </div>
+            <label for="editorial" class="form-label">Editorial</label>            
+              <select name="editorial_id" id="editorial" class="form-input">
+                <option value="" disabled selected>Selecciona la editorial</option>
+                <% for( let index = 0; index < EDITORIALS.length; index++ ) { %>
+                  <option value="<%= EDITORIALS[index].id %>"><%= EDITORIALS[index].editorial %></option>
+                <% } %>
+              </select>
           <div class="form-idioma">
             <label for="lenguaje" class="form-label">Idioma</label>
-            <select name="languages" id="lenguaje" class="form-input">
-              <% LANGUAGES.forEach(idioma => { %>
-              <option value="<%- idioma.language %>"><%- idioma.language %></option>
-              <% }) %>
+            <select name="language_id" id="lenguaje" class="form-input">
+              <option value="" disabled selected>Selecciona el lenguaje</option>
+              <% for( let index = 0; index < LANGUAGES.length; index++ ) { %>
+                <option value="<%= LANGUAGES[index].id %>"><%= LANGUAGES[index].language %></option>
+              <% } %>
             </select>
           </div>
           <div class="form">
             <label for="formato" class="form-label">Formato</label>
-            <select name="formato" id="formato" class="form-input">
-              <% FORMATS.forEach(formato => { %>
-              <option value="<%- formato.format %>"><%- formato.format %></option>
-              <% }) %>
+            <select name="format_id" id="formato" class="form-input">
+              <option value="" disabled selected>Selecciona el formato</option>
+              <% for( let index = 0; index < FORMATS.length; index++ ) { %>
+                <option value="<%= FORMATS[index].id %>"><%= FORMATS[index].format %></option>
+              <% } %>
             </select>
           </div>
           <div class="form-genero">
             <label for="genero" class="form-label">Genero</label>
-            <select name="genre" id="genero" class="form-input">
-              <% GENRES.forEach(genero => { %>
-                <option value="<%- genero.genre %>"><%- genero.genre %></option>
-              <% }) %>
+            <select name="genre_id" id="genero" class="form-input">
+              <% for( let index = 0; index < GENRES.length; index++ ) { %>
+                <option value="<%= GENRES[index].id %>"><%= GENRES[index].genre %></option>
+              <% } %>
             </select>
           </div>
           <div class="form-portada">

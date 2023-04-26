@@ -4,6 +4,8 @@ const {
     Language,
     Format,
     Genre,
+    Editorial,
+    Cover,
     Sequelize,
 } = require("../database/models");
 const { Op } = Sequelize;
@@ -79,13 +81,15 @@ const productsController = {
         const LANGUAGES_PROMISE = Language.findAll();
         const FORMATS_PROMISE = Format.findAll();
         const GENRES_PROMISE = Genre.findAll();
+        const EDITORIAL_PROMISE = Editorial.findAll();
 
-        Promise.all([LANGUAGES_PROMISE, FORMATS_PROMISE, GENRES_PROMISE,])
+        Promise.all([LANGUAGES_PROMISE, FORMATS_PROMISE, GENRES_PROMISE,EDITORIAL_PROMISE,])
             .then((results) => {
                 // return res.send(results[0]);
                 const LANGUAGES = results[0];
                 const FORMATS = results[1];
                 const GENRES = results[2];
+                const EDITORIALS = results [3];
                 // return res.send(FORMATS);
                 return res.render('products/product-create-form', {
                     session: req.session,
@@ -94,6 +98,7 @@ const productsController = {
                     LANGUAGES,
                     FORMATS,
                     GENRES,
+                    EDITORIALS,
                 })
             })
             .catch(err => console.log(err))
@@ -104,67 +109,119 @@ const productsController = {
         const errors = validationResult(req);
         if (errors.isEmpty()) {
             const { title,
-                genre,
+                genre_id,
                 author,
+                isbn13,
+                pageCount,
                 price,
-                editorial,
-                languages,
-                format } = req.body;
+                editorial_id,
+                language_id,
+                format_id,
+                description,
+             } = req.body;
 
             Book.create({
                 title,
-                genre,
+                genre_id,
                 author,
+                pageCount,
+                isbn13,
                 price,
-                editorial,
-                languages,
-                format
+                editorial_id,
+                language_id,
+                format_id,
+                description
             })
-                .then((product) => {
-                    res.send(product)
-                })
-                .catch((error) => console.log(error))
-        } else {
-            return res.render('product-create-formAdd', { errors: errors.mapped() })
+            .then((book) => {
+                if (!req.file || req.file.length === 0) {
+                  Cover.create({
+                    route: "book-default-cover.jpg",
+                    book_id: book.id,
+                  }).then(() => {
+                    return res.redirect("/");
+                  });
+                } else {
+                  Cover.create({
+                    route: req.file.filename,
+                    book_id: book.id
+                  })
+                    .then(() => {
+                      return res.redirect("/");
+                    });
+                }
+              })
+              .catch((error) => console.log(error))
+          }  else {
+            return res.render('product-create-form', {        
+                session: req.session,
+                doctitle: "Crear libro",
+                link: "/css/product-create-form.css",
+                LANGUAGES,
+                FORMATS,
+                GENRES,
+                EDITORIALS,
+                errors: errors.mapped() 
+            })
         }
     },
     edit: function (req, res) {
-        const PRODUCT_ID = req.params.id;
-        Book.findByPk(PRODUCT_ID)
-            .then(Product => {
-                return res.render('product-edit-form', { Product })
-            })
-            .catch(error => console.log(error));
-    },
+        const productId = req.params.id;
+        const PRODUCT_PROMISE = Book.findByPk(productId);
+        const LANGUAGES_PROMISE = Language.findAll();
+        const FORMATS_PROMISE = Format.findAll();
+        const GENRES_PROMISE = Genre.findAll();
+        const EDITORIAL_PROMISE = Editorial.findAll();
+    
+        Promise.all([PRODUCT_PROMISE, LANGUAGES_PROMISE, FORMATS_PROMISE, GENRES_PROMISE, EDITORIAL_PROMISE])
+        .then(([book, languages, formats, genres, editorials]) => {
+          res.render("products/product-edit-form", {
+            book, languages, formats, genres, editorials,
+            session: req.session,
+            doctitle: "Editar libro",
+            link: "/css/product-create-form.css",
+          });
+        })
+        .catch(error => console.log(error))
+      }, 
+
     update: function (req, res) {
         const errors = validationResult(req)
         const PRODUCT_ID = req.params.id;
 
         if (errors.isEmpty()) {
-            const { title,
-                genre,
+            const { 
+                title,
+                genre_id,
                 author,
+                pageCount,
+                isbn13,
                 price,
-                editorial,
-                languages,
-                format } = req.body;
+                editorial_id,
+                language_id,
+                format_id,
+                description
+
+            } = req.body;
 
             Book.update({
                 title,
-                genre,
+                genre_id,
                 author,
+                pageCount,
+                isbn13,
                 price,
-                editorial,
-                languages,
-                format
-            }), {
+                editorial_id,
+                language_id,
+                format_id,
+                description
+                }), {
                 where: {
                     id: PRODUCT_ID,
                 }
             }
                 .then((response) => {
                     if (response) {
-                        return res.redirect("/all-product");
+                        return res.redirect("/");
                     } else {
                         throw new Error(
                             "No se pudo editar el producto"
