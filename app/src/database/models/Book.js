@@ -72,10 +72,10 @@ module.exports = (sequelize, dataTypes) => {
             as: "formats",
             foreignKey: "format_id",
         });
-/*        BOOK.belongsTo(models.Genre, {
+        BOOK.belongsTo(models.Genre, {
             as: "genres",
             foreignKey: "genre_id",
-        });*/
+        });
         BOOK.belongsTo(models.Language, {
             as: "languages",
             foreignKey: "language_id",

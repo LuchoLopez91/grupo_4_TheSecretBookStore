@@ -41,6 +41,7 @@ const productsController = {
             })
             .catch(err => console.log(err))
     },
+
     bookDetail: function (req, res) {
         Book.findByPk(req.params.id, {
             include: [
@@ -56,10 +57,14 @@ const productsController = {
                 {
                     association: "editorials"
                 },
+                {
+                    association: "genres"
+                },
             ]
         })
             .then((book) => {
-                res.render('products/product', {
+                // return res.send(book);
+                return res.render('products/product', {
                     book,
                     session: req.session,
                     doctitle: "Detalle del libro",
@@ -68,14 +73,7 @@ const productsController = {
             })
             .catch(err => console.log(err))
     },
-    /*  ASI ESTABA, LO DEJO COMENTADO */
-    /*bookDetail: (req,res) => {
-        Book.findByPk(req.params.id)
-        .then(book => {
-            res.render('books-by-genres.ejs', {book})
-        })
-        .catch(err => console.log(err))
-    },*/
+    
     addNewBook: function (req, res) {
         // busca todos los recursos en la db
         const LANGUAGES_PROMISE = Language.findAll();
@@ -85,12 +83,13 @@ const productsController = {
 
         Promise.all([LANGUAGES_PROMISE, FORMATS_PROMISE, GENRES_PROMISE,EDITORIAL_PROMISE,])
             .then((results) => {
-                // return res.send(results[0]);
-                const LANGUAGES = results[0];
-                const FORMATS = results[1];
-                const GENRES = results[2];
-                const EDITORIALS = results [3];
-                // return res.send(FORMATS);
+                const [
+                    LANGUAGES,
+                    FORMATS,
+                    GENRES,
+                    EDITORIALS,
+                 ] = results;
+                // return res.send(EDITORIALS);
                 return res.render('products/product-create-form', {
                     session: req.session,
                     doctitle: "Crear libro",
@@ -103,8 +102,8 @@ const productsController = {
             })
             .catch(err => console.log(err))
 
-        /*para terminar */
     },
+
     store: function (req, res) {
         const errors = validationResult(req);
         if (errors.isEmpty()) {
@@ -164,25 +163,30 @@ const productsController = {
             })
         }
     },
+
     edit: function (req, res) {
         const productId = req.params.id;
-        const PRODUCT_PROMISE = Book.findByPk(productId);
+        const BOOK_PROMISE = Book.findByPk(productId);
         const LANGUAGES_PROMISE = Language.findAll();
         const FORMATS_PROMISE = Format.findAll();
         const GENRES_PROMISE = Genre.findAll();
         const EDITORIAL_PROMISE = Editorial.findAll();
     
-        Promise.all([PRODUCT_PROMISE, LANGUAGES_PROMISE, FORMATS_PROMISE, GENRES_PROMISE, EDITORIAL_PROMISE])
+        Promise.all([BOOK_PROMISE, LANGUAGES_PROMISE, FORMATS_PROMISE, GENRES_PROMISE, EDITORIAL_PROMISE])
         .then(([book, languages, formats, genres, editorials]) => {
           res.render("products/product-edit-form", {
-            book, languages, formats, genres, editorials,
+            book,
+            languages,
+            formats,
+            genres,
+            editorials,
             session: req.session,
             doctitle: "Editar libro",
             link: "/css/product-create-form.css",
           });
         })
         .catch(error => console.log(error))
-      }, 
+    }, 
 
     update: function (req, res) {
         const errors = validationResult(req)
@@ -199,8 +203,7 @@ const productsController = {
                 editorial_id,
                 language_id,
                 format_id,
-                description
-
+                description,
             } = req.body;
 
             Book.update({
@@ -213,12 +216,12 @@ const productsController = {
                 editorial_id,
                 language_id,
                 format_id,
-                description
-                }), {
+                description,
+                }, {
                 where: {
                     id: PRODUCT_ID,
                 }
-            }
+            })
                 .then((response) => {
                     if (response) {
                         return res.redirect("/");
@@ -226,7 +229,6 @@ const productsController = {
                         throw new Error(
                             "No se pudo editar el producto"
                         )
-                        //proximamente..
                     }
                 })
                 .catch(error => console.log(error))
@@ -241,6 +243,7 @@ const productsController = {
                 .catch(error => console.log(error));
         }
     },
+
     erase: function (req, res) {
         const PRODUCT_ID = req.params.id;
 
@@ -253,19 +256,27 @@ const productsController = {
                 ))
             .catch(error => console.log(error));
     },
+
     burn: function (req, res) {
         const PRODUCT_ID = req.params.id;
-
-        Book.destroy({
+        const COVER_PROMISE = Cover.destroy({
+            where: {
+                book_id: PRODUCT_ID,
+            },
+        })
+        const BOOK_PROMISE = Book.destroy({
             where: {
                 id: PRODUCT_ID
-            }
+            },
         })
-            .then(() => {
-                return res.redirect("/all-products")
-            })
-            .catch(error => console.log(error))
-    }
+
+        Promise.all([COVER_PROMISE, BOOK_PROMISE])
+        .then(() => {
+                return res.redirect("/")
+        })
+        .catch(error => console.log(error))
+    },
+
 };
 
 module.exports = productsController;

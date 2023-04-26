@@ -105,7 +105,7 @@ CREATE TABLE `books` (
   CONSTRAINT `books_FK_format` FOREIGN KEY (`format_id`) REFERENCES `formats` (`id`),
   CONSTRAINT `books_FK_genre` FOREIGN KEY (`genre_id`) REFERENCES `genres` (`id`),
   CONSTRAINT `books_FK_language` FOREIGN KEY (`language_id`) REFERENCES `languages` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -114,7 +114,7 @@ CREATE TABLE `books` (
 
 LOCK TABLES `books` WRITE;
 /*!40000 ALTER TABLE `books` DISABLE KEYS */;
-INSERT INTO `books` VALUES (1,9789506442941,'El temor de un hombre sabio',4,1,1,1200,'Patrick Rothfuss',NULL,NULL,NULL,1,NULL,5000,NULL),(2,9789505470679,'El señor de los anillos la comunidad del anillo',4,1,2,560,'J.R.R. Tolkien',10,NULL,NULL,2,'1954-06-29',6000,'En la adormecida e idílica Comarca, un joven hobbit recibe un encargo: custodiar el Anillo Único y emprender el viaje para su destrucción en las Grietas del Destino. Acompañado por magos, hombres, elfos y enanos, atravesará la Tierra Media y se internará en las sombras del País Oscuro, perseguido siempre por las huestes de Sauron, el Señor Oscuro, dispuesto a recuperar su creación para establecer el dominio definitivo del Mal. Los Anillos del Poder fueron forjados en antiguos tiempos por los herreros Elfos, y Sauron, el Señor Oscuro, forjó el Anillo Unico (\"para gobernarlos a todos. Un anillo para encontrarlos. Un Anillo para atraerlos a todos y atarlos en las tinieblas...\"). Pero en una ocasión se lo quitaron, y aunque lo buscó por toda la Tierra Media nunca pudo encontrarlo. Al cabo de muchos años fue a caer casualmente en manos de Bilbo Bolsón. Desde la Torre Oscura de Mordor, el poder de Sauron se extendió alrededor. Llegó a reunir todos los Grandes Anillos, pero continuaba buscando el Anillo Unico que completaría el dominio de Mordor. Bilbo desapareció durante la celebración de su centesimodecimoprimer cumpleaños, y dejó a Frodo a cargo del Anillo, y con una peligrosa misión por delante: atravesar la Tierra Media, internarse en las Sombras del País Oscuro y destruir el Anillo arrojandoló en las Grietas del Destino. Este volumen es la primera parte de \"LA GUERRA DEL ANILLO\", una maravillosa historia de valor, traición, aventuras y magia.'),(3,9789505471546,'El señor de los anillos las dos torres',4,1,3,480,'J.R.R. Tolkien',NULL,NULL,NULL,3,NULL,6500,NULL),(4,9789505471553,'El señor de los anillos el retorno del rey',4,1,3,608,'J.R.R. Tolkien',NULL,NULL,NULL,3,NULL,8000,NULL),(11,5645233221321,'Prueba10',14,8,2,100,'Prueba autor',NULL,'2023-04-26 02:13:57','2023-04-26 02:13:57',2,NULL,23111,'descripcion prueba 10'),(12,9786073198929,'Entrevista con el vampiro',14,1,2,384,'Anne Rice',NULL,'2023-04-26 02:47:00','2023-04-26 02:47:00',1,NULL,6800,'En su primera novela, Anne Rice narra la conversión de un joven de Nueva Orleans convertido en eterno habitante de la noche. El protagonista, llevado por el sentimiento de culpabilidad que le ha causado la muerte de su hermano menor, anhela transformarse en un ser maldito. Sin embargo, ya desde el inicio de su vida sobrenatural se siente invadido por una pasión muy humana');
+INSERT INTO `books` VALUES (1,9789506442941,'El temor de un hombre sabio',4,1,1,1200,'Patrick Rothfuss',NULL,NULL,NULL,1,NULL,5000,NULL),(2,9789505470679,'El señor de los anillos la comunidad del anillo',4,1,2,560,'J.R.R. Tolkien',10,NULL,NULL,2,'1954-06-29',6000,'En la adormecida e idílica Comarca, un joven hobbit recibe un encargo: custodiar el Anillo Único y emprender el viaje para su destrucción en las Grietas del Destino. Acompañado por magos, hombres, elfos y enanos, atravesará la Tierra Media y se internará en las sombras del País Oscuro, perseguido siempre por las huestes de Sauron, el Señor Oscuro, dispuesto a recuperar su creación para establecer el dominio definitivo del Mal. Los Anillos del Poder fueron forjados en antiguos tiempos por los herreros Elfos, y Sauron, el Señor Oscuro, forjó el Anillo Unico (\"para gobernarlos a todos. Un anillo para encontrarlos. Un Anillo para atraerlos a todos y atarlos en las tinieblas...\"). Pero en una ocasión se lo quitaron, y aunque lo buscó por toda la Tierra Media nunca pudo encontrarlo. Al cabo de muchos años fue a caer casualmente en manos de Bilbo Bolsón. Desde la Torre Oscura de Mordor, el poder de Sauron se extendió alrededor. Llegó a reunir todos los Grandes Anillos, pero continuaba buscando el Anillo Unico que completaría el dominio de Mordor. Bilbo desapareció durante la celebración de su centesimodecimoprimer cumpleaños, y dejó a Frodo a cargo del Anillo, y con una peligrosa misión por delante: atravesar la Tierra Media, internarse en las Sombras del País Oscuro y destruir el Anillo arrojandoló en las Grietas del Destino. Este volumen es la primera parte de \"LA GUERRA DEL ANILLO\", una maravillosa historia de valor, traición, aventuras y magia.'),(3,9789505471546,'El señor de los anillos las dos torres',4,1,3,480,'J.R.R. Tolkien',NULL,NULL,NULL,3,NULL,6500,NULL),(4,9789505471553,'El señor de los anillos el retorno del rey',4,1,3,608,'J.R.R. Tolkien',NULL,NULL,NULL,3,NULL,8000,NULL),(5,9788447346240,'Ilíada ',1,1,1,588,'Homero',NULL,'2023-04-26 15:22:38','2023-04-26 15:34:12',1,NULL,2500,'La famosa obra del autor griego Homero, que relata la historia de la Batalla de Troya. Precuela a la aún más aclamada Odisea.'),(7,9789447378234,'Tragedias',15,1,1,370,'Esquilo',NULL,'2023-04-26 15:49:43','2023-04-26 15:49:43',4,NULL,4800,''),(8,9789447378289,'Fábulas',4,1,1,408,'Esopo',NULL,'2023-04-26 15:50:40','2023-04-26 15:50:40',4,NULL,3200,''),(9,9789447378258,'Tragedias I',15,1,1,398,'Eurípides',NULL,'2023-04-26 15:51:41','2023-04-26 15:51:41',4,NULL,6000,''),(10,9789447378241,'Tragedias',15,1,1,468,'Sófocles',NULL,'2023-04-26 15:52:29','2023-04-26 15:52:29',4,NULL,1500000,''),(11,9789447378227,'Teogonía',4,1,1,330,'Hesíodo',NULL,'2023-04-26 15:53:24','2023-04-26 15:53:24',4,NULL,100,''),(15,9789447378388,'Helénicas ',16,1,1,330,'Jenofonte',NULL,'2023-04-26 15:58:32','2023-04-26 16:00:06',4,NULL,15,''),(16,9789447380114,'Anábasis',16,1,1,584,'Jenofonte',NULL,'2023-04-26 16:01:26','2023-04-26 16:01:26',4,NULL,4683,''),(17,9789447380121,'Ciropedia',16,1,1,512,'Jenofonte',NULL,'2023-04-26 16:02:23','2023-04-26 16:02:23',4,NULL,648653,''),(18,9789447380244,'Metafísica',21,1,1,472,'Aristóteles',NULL,'2023-04-26 16:03:21','2023-04-26 16:03:21',4,NULL,46513,'');
 /*!40000 ALTER TABLE `books` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -166,7 +166,7 @@ CREATE TABLE `covers` (
   PRIMARY KEY (`id`),
   KEY `covers_FK` (`book_id`),
   CONSTRAINT `covers_FK` FOREIGN KEY (`book_id`) REFERENCES `books` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -175,7 +175,7 @@ CREATE TABLE `covers` (
 
 LOCK TABLES `covers` WRITE;
 /*!40000 ALTER TABLE `covers` DISABLE KEYS */;
-INSERT INTO `covers` VALUES (1,'lotr-1.jpg',2,NULL,NULL),(2,'lotr-2.jpg',3,NULL,NULL),(3,'lotr-3.jpg',4,NULL,NULL),(4,'wise-man.fear.jpg',1,NULL,NULL),(5,'perfil-del-gato-13763235.jpg',11,'2023-04-26 02:13:57','2023-04-26 02:13:57'),(6,'9786073198929.jpg',12,'2023-04-26 02:47:00','2023-04-26 02:47:00');
+INSERT INTO `covers` VALUES (1,'lotr-1.jpg',2,NULL,NULL),(2,'lotr-2.jpg',3,NULL,NULL),(3,'lotr-3.jpg',4,NULL,NULL),(4,'wise-man.fear.jpg',1,NULL,NULL),(5,'book-default-cover.jpg',5,'2023-04-26 15:22:38','2023-04-26 15:22:38'),(7,'book-default-cover.jpg',7,'2023-04-26 15:49:43','2023-04-26 15:49:43'),(8,'book-default-cover.jpg',8,'2023-04-26 15:50:40','2023-04-26 15:50:40'),(9,'book-default-cover.jpg',9,'2023-04-26 15:51:41','2023-04-26 15:51:41'),(10,'book-default-cover.jpg',10,'2023-04-26 15:52:29','2023-04-26 15:52:29'),(11,'book-default-cover.jpg',11,'2023-04-26 15:53:24','2023-04-26 15:53:24'),(12,'book-default-cover.jpg',15,'2023-04-26 15:58:32','2023-04-26 15:58:32'),(13,'book-default-cover.jpg',16,'2023-04-26 16:01:26','2023-04-26 16:01:26'),(14,'book-default-cover.jpg',17,'2023-04-26 16:02:23','2023-04-26 16:02:23'),(15,'book-default-cover.jpg',18,'2023-04-26 16:03:21','2023-04-26 16:03:21');
 /*!40000 ALTER TABLE `covers` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -192,7 +192,7 @@ CREATE TABLE `editorials` (
   `createdAt` timestamp NULL DEFAULT NULL,
   `updatedAt` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -201,7 +201,7 @@ CREATE TABLE `editorials` (
 
 LOCK TABLES `editorials` WRITE;
 /*!40000 ALTER TABLE `editorials` DISABLE KEYS */;
-INSERT INTO `editorials` VALUES (1,'Penguin Random House Editorial',NULL,NULL),(2,'Minotauro',NULL,NULL),(3,'Grupo Editorial Planeta S.A.I.C.',NULL,NULL);
+INSERT INTO `editorials` VALUES (1,'Penguin Random House Editorial',NULL,NULL),(2,'Minotauro',NULL,NULL),(3,'Grupo Editorial Planeta S.A.I.C.',NULL,NULL),(4,'Biblioteca Gredos',NULL,NULL);
 /*!40000 ALTER TABLE `editorials` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -244,7 +244,7 @@ CREATE TABLE `genres` (
   `createdAt` timestamp NULL DEFAULT NULL,
   `updatedAt` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -253,7 +253,7 @@ CREATE TABLE `genres` (
 
 LOCK TABLES `genres` WRITE;
 /*!40000 ALTER TABLE `genres` DISABLE KEYS */;
-INSERT INTO `genres` VALUES (1,'Acción',NULL,NULL),(2,'Absurdo',NULL,NULL),(3,'Gore',NULL,NULL),(4,'Fantasía',NULL,NULL),(5,'Policial',NULL,NULL),(6,'Novelas gráficas',NULL,NULL),(7,'Ciencia ficción',NULL,NULL),(8,'Comedia',NULL,NULL),(9,'Infantil',NULL,NULL),(10,'Ciencias',NULL,NULL),(11,'Romance',NULL,NULL),(12,'Aventura',NULL,NULL),(13,'Drama',NULL,NULL),(14,'Terror',NULL,NULL);
+INSERT INTO `genres` VALUES (1,'Acción',NULL,NULL),(2,'Absurdo',NULL,NULL),(3,'Gore',NULL,NULL),(4,'Fantasía',NULL,NULL),(5,'Policial',NULL,NULL),(6,'Novelas gráficas',NULL,NULL),(7,'Ciencia ficción',NULL,NULL),(8,'Comedia',NULL,NULL),(9,'Infantil',NULL,NULL),(10,'Ciencias',NULL,NULL),(11,'Romance',NULL,NULL),(12,'Aventura',NULL,NULL),(13,'Drama',NULL,NULL),(14,'Terror',NULL,NULL),(15,'Tragedia',NULL,NULL),(16,'Histórico',NULL,NULL),(17,'Historia',NULL,NULL),(18,'Ciencias',NULL,NULL),(19,'Clásica',NULL,NULL),(20,'Épíca',NULL,NULL),(21,'Filosofía',NULL,NULL);
 /*!40000 ALTER TABLE `genres` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -270,7 +270,7 @@ CREATE TABLE `languages` (
   `createdAt` timestamp NULL DEFAULT NULL,
   `updatedAt` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -279,7 +279,7 @@ CREATE TABLE `languages` (
 
 LOCK TABLES `languages` WRITE;
 /*!40000 ALTER TABLE `languages` DISABLE KEYS */;
-INSERT INTO `languages` VALUES (1,'Español',NULL,NULL),(2,'Inglés',NULL,NULL),(3,'Francés',NULL,NULL),(4,'Italiano',NULL,NULL),(5,'Japonés',NULL,NULL),(6,'Alemán',NULL,NULL),(7,'Braile',NULL,NULL),(8,'Coreano',NULL,NULL);
+INSERT INTO `languages` VALUES (1,'Español',NULL,NULL),(2,'Inglés',NULL,NULL),(3,'Francés',NULL,NULL),(4,'Italiano',NULL,NULL),(5,'Japonés',NULL,NULL),(6,'Alemán',NULL,NULL),(7,'Braile',NULL,NULL);
 /*!40000 ALTER TABLE `languages` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -362,4 +362,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-04-26  6:30:46
+-- Dump completed on 2023-04-26 13:04:00
