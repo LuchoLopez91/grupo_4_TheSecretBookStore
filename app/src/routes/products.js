@@ -22,7 +22,7 @@ const storage = multer.diskStorage(
             cb(null,"./public/images/books");
         },
         filename: function(req, file, cb){
-            cb(null, file.originalname );
+            cb(null, `${Date.now()}_cover_${path.extname(file.originalname)}`);
         }
     })
 const uploadFile = multer({storage});
@@ -43,7 +43,7 @@ router.post("/create", uploadFile.single("image"), store);
 
 /* Editar producto */
 router.get("/edit/:id", edit);
-router.put("/edit/:id", uploadFile.single("image"), update);
+router.put("/edit/:id", uploadFile.single("cover"), update);
 
 /* Quemar libro */
 router.delete("/delete/:id", adminCheck, burn)

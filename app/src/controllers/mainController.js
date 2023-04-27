@@ -33,13 +33,14 @@ module.exports = {
             }],
         });
 
-        Promise.all([HARDBACK_PROMISE, PAPERBACK_PROMISE, DIGITAL_PROMISE], { include: [{ association: "covers" }] })
+        Promise.all([HARDBACK_PROMISE, PAPERBACK_PROMISE, DIGITAL_PROMISE])
         .then((results) => {
-            // return res.send(hardback);
-            const HARDBACK = results[0];
-            const PAPERBACK = results[1];
-            const DIGITAL = results[2];
-
+            const [
+                HARDBACK,
+                PAPERBACK,
+                DIGITAL,
+            ] = results;
+            // return res.send(PAPERBACK)
             return res.render('home', {
                 session: req.session,
                 HARDBACK,
@@ -54,17 +55,18 @@ module.exports = {
 
     search: (req, res) => {
         const { keywords } = req.query;
-        //const results = books.filter((book) => book.title.toLowerCase().includes(keywords.toLowerCase()))
         Book.findAll({
             where: {
-                title: {[Op.like]: `%${keywords}%`},
+                [Op.or]: [
+                    {title: {[Op.substring]: keywords}},
+                    {author: {[Op.substring]: keywords}},
+                ]
             },
             include: {
                 association: "covers",
             },
         })
         .then((searchResults) => {
-            // return res.send(searchResult);
             return res.render("results", {
                 session: req.session,
                 results: searchResults,
@@ -73,7 +75,6 @@ module.exports = {
             })
         })
         .catch(err => console.log(err));
-
     },
 
 };

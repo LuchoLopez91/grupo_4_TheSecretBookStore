@@ -9,6 +9,8 @@ const {
     Sequelize,
 } = require("../database/models");
 const { Op } = Sequelize;
+const path = require("path");
+const FS = require("fs");
 
 const productsController = {
     list: function (req, res) {
@@ -73,7 +75,7 @@ const productsController = {
             })
             .catch(err => console.log(err))
     },
-    
+
     addNewBook: function (req, res) {
         // busca todos los recursos en la db
         const LANGUAGES_PROMISE = Language.findAll();
@@ -88,7 +90,7 @@ const productsController = {
                     FORMATS,
                     GENRES,
                     EDITORIALS,
-                 ] = results;
+                ] = results;
                 // return res.send(EDITORIALS);
                 return res.render('products/product-create-form', {
                     session: req.session,
@@ -117,7 +119,7 @@ const productsController = {
                 language_id,
                 format_id,
                 description,
-             } = req.body;
+            } = req.body;
 
             Book.create({
                 title,
@@ -131,27 +133,27 @@ const productsController = {
                 format_id,
                 description
             })
-            .then((book) => {
-                if (!req.file || req.file.length === 0) {
-                  Cover.create({
-                    route: "book-default-cover.jpg",
-                    book_id: book.id,
-                  }).then(() => {
-                    return res.redirect("/");
-                  });
-                } else {
-                  Cover.create({
-                    route: req.file.filename,
-                    book_id: book.id
-                  })
-                    .then(() => {
-                      return res.redirect("/");
-                    });
-                }
-              })
-              .catch((error) => console.log(error))
+                .then((book) => {
+                    if (!req.file || req.file.length === 0) {
+                        Cover.create({
+                            route: "book-default-cover.jpg",
+                            book_id: book.id,
+                        }).then(() => {
+                            return res.redirect("/");
+                        });
+                    } else {
+                        Cover.create({
+                            route: req.file.filename,
+                            book_id: book.id
+                        })
+                            .then(() => {
+                                return res.redirect("/");
+                            });
+                    }
+                })
+                .catch((error) => console.log(error))
           }  else {
-            return res.render('product-create-form', {        
+            return res.render('product-create-form', {
                 session: req.session,
                 doctitle: "Crear libro",
                 link: "/css/product-create-form.css",
@@ -159,41 +161,46 @@ const productsController = {
                 FORMATS,
                 GENRES,
                 EDITORIALS,
-                errors: errors.mapped() 
+                errors: errors.mapped()
             })
         }
     },
 
     edit: function (req, res) {
-        const productId = req.params.id;
-        const BOOK_PROMISE = Book.findByPk(productId);
+        const BOOK_ID = req.params.id;
+        const BOOK_PROMISE = Book.findByPk(BOOK_ID);
         const LANGUAGES_PROMISE = Language.findAll();
         const FORMATS_PROMISE = Format.findAll();
         const GENRES_PROMISE = Genre.findAll();
         const EDITORIAL_PROMISE = Editorial.findAll();
-    
-        Promise.all([BOOK_PROMISE, LANGUAGES_PROMISE, FORMATS_PROMISE, GENRES_PROMISE, EDITORIAL_PROMISE])
-        .then(([book, languages, formats, genres, editorials]) => {
-          res.render("products/product-edit-form", {
-            book,
-            languages,
-            formats,
-            genres,
-            editorials,
-            session: req.session,
-            doctitle: "Editar libro",
-            link: "/css/product-create-form.css",
-          });
+        const COVER_PROMISE = Cover.findAll({
+            where: {book_id : BOOK_ID}
         })
-        .catch(error => console.log(error))
-    }, 
+
+        Promise.all([BOOK_PROMISE, LANGUAGES_PROMISE, FORMATS_PROMISE, GENRES_PROMISE, EDITORIAL_PROMISE, COVER_PROMISE])
+            .then(([book, languages, formats, genres, editorials, cover]) => {
+                // return res.send(cover)
+                res.render("products/product-edit-form", {
+                    book,
+                    languages,
+                    formats,
+                    genres,
+                    editorials,
+                    cover,
+                    session: req.session,
+                    doctitle: "Editar libro",
+                    link: "/css/product-create-form.css",
+                });
+            })
+            .catch(error => console.log(error))
+    },
 
     update: function (req, res) {
         const errors = validationResult(req)
-        const PRODUCT_ID = req.params.id;
+        const BOOK_ID = req.params.id;
 
         if (errors.isEmpty()) {
-            const { 
+            const {
                 title,
                 genre_id,
                 author,
@@ -217,23 +224,47 @@ const productsController = {
                 language_id,
                 format_id,
                 description,
-                }, {
+            }, {
                 where: {
-                    id: PRODUCT_ID,
+                    id: BOOK_ID,
                 }
             })
-                .then((response) => {
-                    if (response) {
-                        return res.redirect("/");
-                    } else {
-                        throw new Error(
-                            "No se pudo editar el producto"
-                        )
-                    }
-                })
-                .catch(error => console.log(error))
+            .then((result) => {
+                // Si no reemplaza imagen
+                if (!req.body.cover) {
+                    return res.redirect(`/store/details/${BOOK_ID}`);
+                } else {
+                    Cover.findAll({where: {book_id: BOOK_ID}})
+                    .then(coverFound => {
+                        if (req.file) {
+                            if (
+                                FS.existsSync(
+                                    path.join(__dirname, "../../public/images/books/book-default-cover.jpg", coverFound.route)
+                                ) &&
+                                coverFound != "book-default-cover.jpg"
+                            ) {
+                                FS.unlinkSync(
+                                    path.join(__dirname, "../../public/images/books/", coverFound.route)
+                                );
+                            }
+                        }
+                        Cover.update({route: req.body.cover}, {where: {book_id: BOOK_ID}})
+                        .then(() => {
+                            return res.redirect(`/store/details/${BOOK_ID}`);
+                        })
+                        .catch(updatingCoverErr => console.log(updatingCoverErr))
+                    })
+                    .catch(findCoverErr => console.log(findCoverErr))
+                }
+                // 1- Obtener todas las imagenes del producto a actualizar
+                // 2- obtener el nombre de las imagenes a eliminar
+                // 3- Eliminar los archivos
+                // 4- Eliminamos las imagenes de la DB (destroy)
+                // 5- Crear los registros de las nuevas imagenes
+            })
+            .catch(error => console.log(error))
         } else {
-            Book.findByPk(PRODUCT_ID)
+            Book.findByPk(BOOK_ID)
                 .then(book => {
                     return res.render('product-edit-form', {
                         book,
@@ -271,10 +302,10 @@ const productsController = {
         })
 
         Promise.all([COVER_PROMISE, BOOK_PROMISE])
-        .then(() => {
+            .then(() => {
                 return res.redirect("/")
-        })
-        .catch(error => console.log(error))
+            })
+            .catch(error => console.log(error))
     },
 
 };

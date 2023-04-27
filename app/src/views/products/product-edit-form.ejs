@@ -26,7 +26,7 @@
     <div class="container-product">
         <div class="form">
         <label for="title" class="form-label">Nombre del producto</label>
-        <input type="text" id="title" name="title" placeholder="<%= book.title %>" value="<%= book.title %> " class="form-input">
+        <input type="text" id="title" name="title" placeholder="<%= book.title %>" value="<%= book.title %>" class="form-input">
         </div> 
         <div class="form">
             <label for="author" class="form-label">Autor</label>
@@ -72,7 +72,7 @@
         </div>
         <div class="form-portada">
             <label>Elegir imagen del libro</label>
-            <input type="file" name="image" value="<%= book.image %>" accept=".jpg" multiple>
+            <input type="file" name="cover" value="<%= cover.route %>">
         </div>
         <div class="form-descripcion">
             <label for="descripcion" class="form-label">Descripcion</label>

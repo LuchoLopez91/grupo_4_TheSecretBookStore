@@ -11,7 +11,7 @@
       <!-- Barra navegación -->
       <div class="dir-bar">
         <a href="/">Inicio</a> / <a href="">Categorías</a> /
-        <a href="">Spy X Family</a>
+        <a href="<%= book.id %>"><%= book.title %></a>
       </div>
       <!-- Libro -->
     <article class="product"> 
@@ -54,7 +54,7 @@
     
                   <% } %>
               </div>
-              <p>Calificación: <%= book.calification %>/10</p>
+              <p>Calificación: <%= book.calification %></p>
               <p>Editorial: <%= book.editorials.editorial %></p>
               <p>I.S.B.N.: <%= book.isbn13 %></p>
               <p>Nro. de páginas: <%= book.pageCount %></p>
