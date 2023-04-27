@@ -74,7 +74,7 @@ const productsController = {
                     books,
                     genre,
                     session: req.session,
-                    doctitle: "Categoria",
+                    doctitle: "Categoria:" +" " + genre.genre,
                     link: "/css/home.css"
                 })
             })
