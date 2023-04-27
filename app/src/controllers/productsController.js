@@ -39,6 +39,48 @@ const productsController = {
             })
             .catch(err => console.log(err))
     },
+    booksByGenres: function (req, res) {
+        let categorySelected = req.params.id;
+        
+        const books_promise =         
+        Book.findAll({where: {genre_id : categorySelected} },{
+            include: [
+                {
+                    association: "formats"
+                },
+                {
+                    association: "languages"
+                },
+                {
+                    association: "editorials"
+                },
+                {
+                    association: "genres"
+                },
+            ]
+        });
+        const category_promise = Genre.findByPk(categorySelected);
+
+        Promise.all ([books_promise, category_promise])
+
+            .then((results) => {
+                const [
+                    books,
+                    genre,
+                ] = results;
+
+
+                res.render('products/books-by-genres', {
+                    books,
+                    genre,
+                    session: req.session,
+                    doctitle: "Categoria",
+                    link: "/css/home.css"
+                })
+            })
+            .catch(err => console.log(err))
+    },
+
 
     bookDetail: function (req, res) {
         Book.findByPk(req.params.id, {

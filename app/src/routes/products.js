@@ -2,6 +2,7 @@ const express = require("express");
 const {
     list,
     bookDetail,
+    booksByGenres,
     addNewBook,
     store,
     edit,
@@ -28,7 +29,7 @@ const storage = multer.diskStorage(
 const uploadFile = multer({storage});
 
 
-//router.get('/category/:category', productsController.booksByGenres);
+router.get('/category/:id', booksByGenres);
 
 router.get("/", list);
 router.get("/details/:id", bookDetail);
