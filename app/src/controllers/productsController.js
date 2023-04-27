@@ -219,31 +219,31 @@ const productsController = {
 
         if (errors.isEmpty()) {
             Book.findByPk(BOOK_ID)
-            .then(bookToEdit => {
-                if (req.file) {
-					if (
-						FS.existsSync(
-							path.join(__dirname, "../../public/images/books/", bookToEdit.cover)
-						) &&
-						bookToEdit.cover != "book-default-cover.jpg"
-					) {
-						FS.unlinkSync(
-							path.join(__dirname, "../../public/images/books/", bookToEdit.cover)
-						);
-					}
-				}
-				Book.update(
-					{
-						...req.body,
-						cover: req.file?.filename ?? Book.cover,
-					},
-					{
-						where: { id: BOOK_ID },
-					}
-				).then(() => {
-					res.redirect(`/store/details/${BOOK_ID}`);
-				});
-            })
+                .then(bookToEdit => {
+                    if (req.file) {
+                        if (
+                            FS.existsSync(
+                                path.join(__dirname, "../../public/images/books/", bookToEdit.cover)
+                            ) &&
+                            bookToEdit.cover != "book-default-cover.jpg"
+                        ) {
+                            FS.unlinkSync(
+                                path.join(__dirname, "../../public/images/books/", bookToEdit.cover)
+                            );
+                        }
+                    }
+                    Book.update(
+                        {
+                            ...req.body,
+                            cover: req.file?.filename ?? Book.cover,
+                        },
+                        {
+                            where: { id: BOOK_ID },
+                        }
+                    ).then(() => {
+                        res.redirect(`/store/details/${BOOK_ID}`);
+                    });
+                })
         } else {
             Book.findByPk(BOOK_ID)
                 .then(book => {
@@ -270,16 +270,33 @@ const productsController = {
     },
 
     burn: function (req, res) {
-        const PRODUCT_ID = req.params.id;
-        Book.destroy({
-            where: {
-                id: PRODUCT_ID
-            },
-        })
-            .then(() => {
-                return res.redirect("/")
+        const BOOK_ID = req.params.id;
+        Book.findByPk(BOOK_ID)
+            .then(bookToBurn => {
+                if (
+                    FS.existsSync(
+                        path.join(__dirname, "../../public/images/books/", bookToBurn.cover)
+                    ) &&
+                    bookToBurn.cover != "book-default-cover.jpg"
+                ) {
+                    FS.unlinkSync(
+                        path.join(__dirname, "../../public/images/books/", bookToBurn.cover)
+                    );
+                }
+                Book.destroy({
+                    where: {
+                        id: BOOK_ID
+                    },
+                })
+                    .then(() => {
+                        return res.redirect("/")
+                    })
             })
             .catch(error => console.log(error))
+
+
+
+
     },
 
 };
