@@ -54,6 +54,7 @@ module.exports = (sequelize, dataTypes) => {
             allowNull: false
         },
         description: dataTypes.STRING(),
+        cover: dataTypes.STRING(),
     };
 
     const CONFIG = {
@@ -80,10 +81,10 @@ module.exports = (sequelize, dataTypes) => {
             as: "languages",
             foreignKey: "language_id",
         });
-        BOOK.hasOne(models.Cover, {
-            as: "covers",
-            foreignKey: "book_id",
-        });
+        // BOOK.hasOne(models.Cover, {
+        //     as: "covers",
+        //     foreignKey: "book_id",
+        // });
         BOOK.belongsTo(models.Editorial, {
             as: "editorials",
             foreignKey: "editorial_id",

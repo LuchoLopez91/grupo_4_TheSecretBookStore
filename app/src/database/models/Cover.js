@@ -24,12 +24,12 @@ module.exports = (sequelize, dataTypes) => {
     
     const COVER = sequelize.define(ALIAS, COLS, CONFIG);
 
-    COVER.associate = (models) => {
-        COVER.belongsTo(models.Book, {
-            as: "covers",
-            foreignKey: "book_id",
-        });
-    };
+    // COVER.associate = (models) => {
+    //     COVER.belongsTo(models.Book, {
+    //         as: "covers",
+    //         foreignKey: "book_id",
+    //     });
+    // };
 
     return COVER;
 };

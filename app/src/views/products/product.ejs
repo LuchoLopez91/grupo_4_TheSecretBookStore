@@ -18,7 +18,7 @@
         <!-- Foto -->
         <div class="photo-container">
           <img
-            src="/images/books/<%- book.covers.route %>"
+            src="/images/books/<%- book.cover %>"
             alt="<%- book.title %>"
           />
         </div>
@@ -76,7 +76,7 @@
           <article>
             <div class="photo-container">
               <img
-                src="/images/books/<%= book.covers.route %>"
+                src="/images/books/<%= book.cover %>"
                 alt="<%= book.title %>"
               />
             </div>
@@ -86,21 +86,6 @@
               <p>$<%= book.price %></p>
             </div>
           </article>
-          <article>
-            <div class="photo-container">
-              <img
-                src="/images/books/<%= book.covers.route %>"
-                alt="<%= book.title %>"
-              />
-            </div>
-            <div>
-              <h4><%= book.title %></h4>
-              <h4><%= book.author %></h4>
-              <p>$<%= book.price %></p>
-            </div>
-          </article>
-        </div>
-      </section>
       <!-- Comentarios -->
 
     <%- include("../partials/footer2") %>

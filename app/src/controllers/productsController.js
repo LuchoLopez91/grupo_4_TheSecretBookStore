@@ -5,7 +5,6 @@ const {
     Format,
     Genre,
     Editorial,
-    Cover,
     Sequelize,
 } = require("../database/models");
 const { Op } = Sequelize;
@@ -16,9 +15,6 @@ const productsController = {
     list: function (req, res) {
         Book.findAll({
             include: [
-                {
-                    association: "covers"
-                },
                 {
                     association: "formats"
                 },
@@ -47,9 +43,6 @@ const productsController = {
     bookDetail: function (req, res) {
         Book.findByPk(req.params.id, {
             include: [
-                {
-                    association: "covers"
-                },
                 {
                     association: "formats"
                 },
@@ -83,7 +76,7 @@ const productsController = {
         const GENRES_PROMISE = Genre.findAll();
         const EDITORIAL_PROMISE = Editorial.findAll();
 
-        Promise.all([LANGUAGES_PROMISE, FORMATS_PROMISE, GENRES_PROMISE,EDITORIAL_PROMISE,])
+        Promise.all([LANGUAGES_PROMISE, FORMATS_PROMISE, GENRES_PROMISE, EDITORIAL_PROMISE,])
             .then((results) => {
                 const [
                     LANGUAGES,
@@ -131,28 +124,14 @@ const productsController = {
                 editorial_id,
                 language_id,
                 format_id,
-                description
+                description,
+                cover: req.file?.filename ?? "book-default-cover.jpg",
             })
-                .then((book) => {
-                    if (!req.file || req.file.length === 0) {
-                        Cover.create({
-                            route: "book-default-cover.jpg",
-                            book_id: book.id,
-                        }).then(() => {
-                            return res.redirect("/");
-                        });
-                    } else {
-                        Cover.create({
-                            route: req.file.filename,
-                            book_id: book.id
-                        })
-                            .then(() => {
-                                return res.redirect("/");
-                            });
-                    }
+                .then((newBook) => {
+                    return res.redirect(`/store/details/${newBook.id}`)
                 })
                 .catch((error) => console.log(error))
-          }  else {
+        } else {
             return res.render('product-create-form', {
                 session: req.session,
                 doctitle: "Crear libro",
@@ -173,11 +152,8 @@ const productsController = {
         const FORMATS_PROMISE = Format.findAll();
         const GENRES_PROMISE = Genre.findAll();
         const EDITORIAL_PROMISE = Editorial.findAll();
-        const COVER_PROMISE = Cover.findAll({
-            where: {book_id : BOOK_ID}
-        })
 
-        Promise.all([BOOK_PROMISE, LANGUAGES_PROMISE, FORMATS_PROMISE, GENRES_PROMISE, EDITORIAL_PROMISE, COVER_PROMISE])
+        Promise.all([BOOK_PROMISE, LANGUAGES_PROMISE, FORMATS_PROMISE, GENRES_PROMISE, EDITORIAL_PROMISE,])
             .then(([book, languages, formats, genres, editorials, cover]) => {
                 // return res.send(cover)
                 res.render("products/product-edit-form", {
@@ -200,69 +176,32 @@ const productsController = {
         const BOOK_ID = req.params.id;
 
         if (errors.isEmpty()) {
-            const {
-                title,
-                genre_id,
-                author,
-                pageCount,
-                isbn13,
-                price,
-                editorial_id,
-                language_id,
-                format_id,
-                description,
-            } = req.body;
-
-            Book.update({
-                title,
-                genre_id,
-                author,
-                pageCount,
-                isbn13,
-                price,
-                editorial_id,
-                language_id,
-                format_id,
-                description,
-            }, {
-                where: {
-                    id: BOOK_ID,
-                }
+            Book.findByPk(BOOK_ID)
+            .then(bookToEdit => {
+                if (req.file) {
+					if (
+						FS.existsSync(
+							path.join(__dirname, "../../public/images/books/", bookToEdit.cover)
+						) &&
+						bookToEdit.cover != "book-default-cover.jpg"
+					) {
+						FS.unlinkSync(
+							path.join(__dirname, "../../public/images/books/", bookToEdit.cover)
+						);
+					}
+				}
+				Book.update(
+					{
+						...req.body,
+						cover: req.file?.filename ?? Book.cover,
+					},
+					{
+						where: { id: BOOK_ID },
+					}
+				).then(() => {
+					res.redirect(`/store/details/${BOOK_ID}`);
+				});
             })
-            .then((result) => {
-                // Si no reemplaza imagen
-                if (!req.body.cover) {
-                    return res.redirect(`/store/details/${BOOK_ID}`);
-                } else {
-                    Cover.findAll({where: {book_id: BOOK_ID}})
-                    .then(coverFound => {
-                        if (req.file) {
-                            if (
-                                FS.existsSync(
-                                    path.join(__dirname, "../../public/images/books/book-default-cover.jpg", coverFound.route)
-                                ) &&
-                                coverFound != "book-default-cover.jpg"
-                            ) {
-                                FS.unlinkSync(
-                                    path.join(__dirname, "../../public/images/books/", coverFound.route)
-                                );
-                            }
-                        }
-                        Cover.update({route: req.body.cover}, {where: {book_id: BOOK_ID}})
-                        .then(() => {
-                            return res.redirect(`/store/details/${BOOK_ID}`);
-                        })
-                        .catch(updatingCoverErr => console.log(updatingCoverErr))
-                    })
-                    .catch(findCoverErr => console.log(findCoverErr))
-                }
-                // 1- Obtener todas las imagenes del producto a actualizar
-                // 2- obtener el nombre de las imagenes a eliminar
-                // 3- Eliminar los archivos
-                // 4- Eliminamos las imagenes de la DB (destroy)
-                // 5- Crear los registros de las nuevas imagenes
-            })
-            .catch(error => console.log(error))
         } else {
             Book.findByPk(BOOK_ID)
                 .then(book => {
@@ -290,18 +229,11 @@ const productsController = {
 
     burn: function (req, res) {
         const PRODUCT_ID = req.params.id;
-        const COVER_PROMISE = Cover.destroy({
-            where: {
-                book_id: PRODUCT_ID,
-            },
-        })
-        const BOOK_PROMISE = Book.destroy({
+        Book.destroy({
             where: {
                 id: PRODUCT_ID
             },
         })
-
-        Promise.all([COVER_PROMISE, BOOK_PROMISE])
             .then(() => {
                 return res.redirect("/")
             })
