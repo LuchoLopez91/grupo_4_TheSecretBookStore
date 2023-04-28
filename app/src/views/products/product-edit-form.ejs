@@ -40,7 +40,7 @@
             <label for="editorial" class="form-label">Editorial</label>
             <select name="editorial_id" id="editorial" class="form-input">
                 <% for( let index = 0; index < editorials.length; index++ ) { %>
-                  <option value="<%= editorials[index].id %>"><%= editorials[index].editorial %></option>
+                  <option value="<%= editorials[index].id %>" <%- book.editorial_id == editorials[index].id? "selected" : "" %>><%= editorials[index].editorial %></option>
                 <% } %>
               </select>
           </div>  
@@ -48,7 +48,7 @@
             <label for="lenguaje" class="form-label">Idioma</label>
             <select name="language_id" id="lenguaje" class="form-input">
               <% for( let index = 0; index < languages.length; index++ ) { %>
-                <option value="<%= languages[index].id %>"><%= languages[index].language %></option>
+                <option value="<%= languages[index].id %>" <%- book.language_id == languages[index].id? "selected" : "" %>><%= languages[index].language %></option>
               <% } %>
             </select>
           </div>
@@ -57,7 +57,7 @@
             <label for="formato" class="form-label">Formato</label>
             <select name="format_id" id="formato" class="form-input">
                 <% for( let index = 0; index < formats.length; index++ ) { %>
-                  <option value="<%= formats[index].id %>"><%= formats[index].format %></option>
+                  <option value="<%= formats[index].id %>" <%- book.format_id == formats[index].id? "selected" : "" %>><%= formats[index].format %></option>
                 <% } %>
               </select>
           </div>
@@ -65,7 +65,7 @@
         <label for="genero" class="form-label">Genero</label>
         <select name="genre_id" id="genre" class="form-input">
             <% for( let index = 0; index < genres.length; index++ ) { %>
-              <option value="<%= genres[index].id %>"><%= genres[index].genre %></option>
+              <option value="<%= genres[index].id %>" <%- book.genre_id == genres[index].id? "selected" : "" %>><%= genres[index].genre %></option>
             <% } %>
           </select>
 
