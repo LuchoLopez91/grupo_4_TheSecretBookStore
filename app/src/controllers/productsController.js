@@ -174,7 +174,21 @@ const productsController = {
                 })
                 .catch((error) => console.log(error))
         } else {
-            return res.render('product-create-form', {
+            const LANGUAGES_PROMISE = Language.findAll();
+            const FORMATS_PROMISE = Format.findAll();
+            const GENRES_PROMISE = Genre.findAll();
+            const EDITORIAL_PROMISE = Editorial.findAll();
+    
+            Promise.all([LANGUAGES_PROMISE, FORMATS_PROMISE, GENRES_PROMISE, EDITORIAL_PROMISE,])
+                .then((results) => {
+                    const [
+                        LANGUAGES,
+                        FORMATS,
+                        GENRES,
+                        EDITORIALS,
+                    ] = results;
+            
+            return res.render('products/product-create-form', {
                 session: req.session,
                 doctitle: "Crear libro",
                 link: "/css/product-create-form.css",
@@ -184,6 +198,7 @@ const productsController = {
                 EDITORIALS,
                 errors: errors.mapped()
             })
+        })
         }
     },
 

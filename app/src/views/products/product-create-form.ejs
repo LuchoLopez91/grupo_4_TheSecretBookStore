@@ -8,24 +8,17 @@
     <!-- header -->
 
     <div class="container-title">
-      <div class="row">
+      <div>
         <div class="title-form">
           <h2 class="title">Formulario de creacion</h2>
         </div>
       </div>
     </div>
-    <% if (locals.errors) { %>
-      <ul>
-        <% Objetc.keys(errors).forEach(element => { %>
-          <li><%- errors[element].msg  %></li>
-        <% }) %>
-      </ul>
-    <% } %>
     <div class="container-form">
       <form action="/store/create/" method="POST" enctype="multipart/form-data">
         <div class="container-product">
           <div class="form">
-            <label for="name" class="form-label">Nombre del producto</label>
+            <label for="name" class="form-label">Título del libro</label>
             <input
               type="text"
               id="name"
@@ -33,6 +26,10 @@
               placeholder="EJ: El numero cuatro"
               class="form-input"
             />
+            <% if(locals.errors && errors.title) {%>
+              <div class="text-danger"><%= errors.title.msg %></div>
+          <% } %>
+
           </div>
           <div class="form">
             <label for="text" class="form-label">Autor</label>
@@ -43,6 +40,10 @@
               placeholder="EJ: J.K. Rowling"
               class="form-input"
             />
+            <% if(locals.errors && errors.author) {%>
+              <div class="text-danger"><%= errors.author.msg %></div>
+          <% } %>
+
           </div>
           <div class="form">
             <label for="text" class="form-label">ISBN13</label>
@@ -52,6 +53,10 @@
               name="isbn13"
               class="form-input"
             />
+            <% if(locals.errors && errors.isbn13) {%>
+              <div class="text-danger"><%= errors.isbn13.msg %></div>
+          <% } %>
+
           </div>
           <div class="form">
             <label for="text" class="form-label">Cantidad de páginas</label>
@@ -71,6 +76,10 @@
               placeholder="EJ: 12345"
               class="form-input"
             />
+            <% if(locals.errors && errors.price) {%>
+              <div class="text-danger"><%= errors.price.msg %></div>
+          <% } %>
+
           </div>
           <div class="form">
             <label for="editorial" class="form-label">Editorial</label>            
@@ -80,6 +89,11 @@
                   <option value="<%= EDITORIALS[index].id %>"><%= EDITORIALS[index].editorial %></option>
                 <% } %>
               </select>
+              <% if(locals.errors && errors.editorial_id) {%>
+                <div class="text-danger"><%= errors.editorial_id.msg %></div>
+            <% } %>
+  
+              </div>
           <div class="form-idioma">
             <label for="lenguaje" class="form-label">Idioma</label>
             <select name="language_id" id="lenguaje" class="form-input">
@@ -88,6 +102,10 @@
                 <option value="<%= LANGUAGES[index].id %>"><%= LANGUAGES[index].language %></option>
               <% } %>
             </select>
+            <% if(locals.errors && errors.language_id) {%>
+              <div class="text-danger"><%= errors.language_id.msg %></div>
+          <% } %>
+
           </div>
           <div class="form">
             <label for="formato" class="form-label">Formato</label>
@@ -97,14 +115,24 @@
                 <option value="<%= FORMATS[index].id %>"><%= FORMATS[index].format %></option>
               <% } %>
             </select>
+            <% if(locals.errors && errors.format_id) {%>
+              <div class="text-danger"><%= errors.format_id.msg %></div>
+          <% } %>
+
           </div>
           <div class="form-genero">
             <label for="genero" class="form-label">Genero</label>
             <select name="genre_id" id="genero" class="form-input">
+              <option value="" disabled selected>Selecciona el género</option>
+
               <% for( let index = 0; index < GENRES.length; index++ ) { %>
                 <option value="<%= GENRES[index].id %>"><%= GENRES[index].genre %></option>
               <% } %>
             </select>
+            <% if(locals.errors && errors.genre_id) {%>
+              <div class="text-danger"><%= errors.genre_id.msg %></div>
+          <% } %>
+
           </div>
           <div class="form-portada">
             <label>Elegir imagen del producto</label>

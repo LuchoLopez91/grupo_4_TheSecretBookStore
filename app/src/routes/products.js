@@ -39,7 +39,7 @@ router.get("/details/:id", bookDetail);
 router.get('/create', addNewBook);
 //router.get('/product-create-form/create', productValidator,  create)
 //router.get("/create", adminCheck, create);
-router.post("/create", uploadFile.single("image"), store);
+router.post("/create", uploadFile.single("image"), productValidator ,store);
 /* crear producto */
 
 /* Editar producto */
