@@ -25,6 +25,7 @@
               name="title"
               placeholder="EJ: El numero cuatro"
               class="form-input"
+              value="<%= locals.old && old.title ? old.title : "" %>"
             />
             <% if(locals.errors && errors.title) {%>
               <div class="text-danger"><%= errors.title.msg %></div>
@@ -39,6 +40,8 @@
               name="author"
               placeholder="EJ: J.K. Rowling"
               class="form-input"
+              value="<%= locals.old && old.author? old.author : "" %>"
+
             />
             <% if(locals.errors && errors.author) {%>
               <div class="text-danger"><%= errors.author.msg %></div>
@@ -136,7 +139,7 @@
           </div>
           <div class="form-portada">
             <label>Elegir imagen del producto</label>
-            <input type="file" name="image" accept=".jpg" />
+            <input type="file" name="image" accept=".jpg, .png, .jpeg, .gif" />
           </div>
           <div class="form-descripcion">
             <label for="descripcion" class="form-label">Descripcion</label>
@@ -146,6 +149,10 @@
               placeholder="Maximo 200 caracteres"
               class="form-input"
             ></textarea>
+            <% if(locals.errors && errors.description) {%>
+              <div class="text-danger"><%= errors.description.msg %></div>
+          <% } %>
+
           </div>
           <div class="btn-save">
             <button type="submit" class="save-product">Guardar Producto</button>

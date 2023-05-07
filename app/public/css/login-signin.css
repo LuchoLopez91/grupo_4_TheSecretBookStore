@@ -76,7 +76,7 @@
 }
 
 .register-login .input-container {
-    
+    max-width: 60vw ;
     margin-bottom: 1.2rem;
     position: relative;
 }
@@ -116,6 +116,7 @@
     border: var(--violeta-oscuro);
     box-shadow: 1px 1px 3px;
     margin-bottom: 1.4rem;
+    margin-top: 1.4rem;
 }
 
 .register-login p a {
@@ -139,6 +140,10 @@
     position: relative;
     display: inline-block;
     margin-bottom: 2rem;
+  }
+
+  .input-file.avatar {
+    margin-bottom: 0.5rem;
   }
   
   .input-file::before {

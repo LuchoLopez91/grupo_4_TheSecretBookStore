@@ -196,7 +196,8 @@ const productsController = {
                 FORMATS,
                 GENRES,
                 EDITORIALS,
-                errors: errors.mapped()
+                old: req.body,
+                errors: errors.mapped(),
             })
         })
         }
@@ -211,18 +212,25 @@ const productsController = {
         const EDITORIAL_PROMISE = Editorial.findAll();
 
         Promise.all([BOOK_PROMISE, LANGUAGES_PROMISE, FORMATS_PROMISE, GENRES_PROMISE, EDITORIAL_PROMISE,])
-            .then(([book, languages, formats, genres, editorials, cover]) => {
+            .then((results) => {
+                const [
+                    book,
+                    LANGUAGES,
+                    FORMATS,
+                    GENRES,
+                    EDITORIALS,
+                ] = results;
                 // return res.send(cover)
                 res.render("products/product-edit-form", {
                     book,
-                    languages,
-                    formats,
-                    genres,
-                    editorials,
-                    cover,
+                    LANGUAGES,
+                    FORMATS,
+                    GENRES,
+                    EDITORIALS,
                     session: req.session,
                     doctitle: "Editar libro",
                     link: "/css/product-create-form.css",
+                
                 });
             })
             .catch(error => console.log(error))
@@ -260,11 +268,29 @@ const productsController = {
                     });
                 })
         } else {
-            Book.findByPk(BOOK_ID)
-                .then(book => {
-                    return res.render('product-edit-form', {
+            const BOOK_ID = req.params.id;
+            const BOOK_PROMISE = Book.findByPk(BOOK_ID);
+            const LANGUAGES_PROMISE = Language.findAll();
+            const FORMATS_PROMISE = Format.findAll();
+            const GENRES_PROMISE = Genre.findAll();
+            const EDITORIAL_PROMISE = Editorial.findAll();
+    
+            Promise.all([BOOK_PROMISE, LANGUAGES_PROMISE, FORMATS_PROMISE, GENRES_PROMISE, EDITORIAL_PROMISE,])
+                .then(([book, LANGUAGES,FORMATS,GENRES, EDITORIALS,
+    ]) => {
+    
+                    return res.render('products/product-edit-form', {
                         book,
-                        errors: errors.mapped
+                        LANGUAGES,
+                        FORMATS,
+                        GENRES,
+                        EDITORIALS,
+                        errors: errors.mapped(),
+                        session: req.session,
+                        doctitle: "Editar libro",
+                        link: "/css/product-create-form.css",
+                        old: req.body,
+     
                     })
                 })
                 .catch(error => console.log(error));

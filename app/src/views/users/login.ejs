@@ -18,12 +18,13 @@
               name="email"
               id="email"
             >
-            <% if (locals.errors && errors.email) { %>
-              <small class="text-danger"><%= errors.email.msg %> </small>
-            <% } %>
             <i class="fa-regular fa-envelope"></i>
             <!-- <div class="error-message">Debe ingresar su email</div> -->
           </div>
+          <% if (locals.errors && errors.email) { %>
+            <small class="text-danger"><%= errors.email.msg %> </small>
+          <% } %>
+
           <div class="input-container">
             <label for="password">Contraseña</label><br />
             <input
@@ -32,12 +33,13 @@
               name="password"
               id="password"
             >
-            <% if (locals.errors && errors.password) { %>
-              <small class="text-danger"><%= errors.password.msg %> </small>
-            <% } %>
             <i class="fa-solid fa-lock"></i>
            <!--  <div class="error-message">Debe ingresar una contraseña válida</div> -->
           </div>
+          <% if (locals.errors && errors.password) { %>
+            <small class="text-danger"><%= errors.password.msg %> </small>
+          <% } %>
+
           <div>
             <div class="input-container">
               <input type="checkbox" name="remember" id="check">

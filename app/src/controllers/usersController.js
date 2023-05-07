@@ -148,7 +148,7 @@ module.exports = {
     } else {
       User.findByPk(userInSessionId, { include: [{ association: "avatars" }] })
         .then((user) => {
-          res.render("users/profile/edit", {
+          res.render("users/userProfileEdit", {
             user,
             errors: errors.mapped(),
             old: req.body,
@@ -208,7 +208,7 @@ module.exports = {
         })
         .catch((error) => console.log(error))
     } else {
-      res.render("/users/register", {
+      res.render("./users/register", {
         errors: errors.mapped(),
         old: req.body,
         session: req.session,

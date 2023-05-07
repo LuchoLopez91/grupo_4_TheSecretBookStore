@@ -26,7 +26,16 @@ const storage = multer.diskStorage(
             cb(null, `${Date.now()}_cover_${path.extname(file.originalname)}`);
         }
     })
-const uploadFile = multer({storage});
+const uploadFile = multer({storage,
+    fileFilter: (req, file, cb) => {
+        if (file.mimetype == "image/png" || file.mimetype == "image/jpg"|| file.mimetype == "image/gif" || file.mimetype == "image/jpeg") {
+          cb(null, true);
+        } else {
+          cb(null, false);
+          return cb();
+        }
+      }
+});
 
 
 router.get('/category/:id', booksByGenres);
@@ -36,15 +45,15 @@ router.get("/details/:id", bookDetail);
 
 /* crear producto */
 //router.get('/product-create-form/add', add)
-router.get('/create', addNewBook);
+router.get('/create', adminCheck, addNewBook);
 //router.get('/product-create-form/create', productValidator,  create)
 //router.get("/create", adminCheck, create);
 router.post("/create", uploadFile.single("image"), productValidator ,store);
 /* crear producto */
 
 /* Editar producto */
-router.get("/edit/:id", edit);
-router.put("/edit/:id", uploadFile.single("cover"), update);
+router.get("/edit/:id", adminCheck, edit);
+router.put("/edit/:id", uploadFile.single("cover"), productValidator, update);
 
 /* Quemar libro */
 router.delete("/delete/:id", adminCheck, burn)
