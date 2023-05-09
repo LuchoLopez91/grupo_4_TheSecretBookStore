@@ -39,6 +39,48 @@ const productsController = {
             })
             .catch(err => console.log(err))
     },
+    booksByGenres: function (req, res) {
+        let categorySelected = req.params.id;
+        
+        const books_promise =         
+        Book.findAll({where: {genre_id : categorySelected} },{
+            include: [
+                {
+                    association: "formats"
+                },
+                {
+                    association: "languages"
+                },
+                {
+                    association: "editorials"
+                },
+                {
+                    association: "genres"
+                },
+            ]
+        });
+        const category_promise = Genre.findByPk(categorySelected);
+
+        Promise.all ([books_promise, category_promise])
+
+            .then((results) => {
+                const [
+                    books,
+                    genre,
+                ] = results;
+
+
+                res.render('products/books-by-genres', {
+                    books,
+                    genre,
+                    session: req.session,
+                    doctitle: "Categoria:" +" " + genre.genre,
+                    link: "/css/home.css"
+                })
+            })
+            .catch(err => console.log(err))
+    },
+
 
     bookDetail: function (req, res) {
         Book.findByPk(req.params.id, {
@@ -132,7 +174,21 @@ const productsController = {
                 })
                 .catch((error) => console.log(error))
         } else {
-            return res.render('product-create-form', {
+            const LANGUAGES_PROMISE = Language.findAll();
+            const FORMATS_PROMISE = Format.findAll();
+            const GENRES_PROMISE = Genre.findAll();
+            const EDITORIAL_PROMISE = Editorial.findAll();
+    
+            Promise.all([LANGUAGES_PROMISE, FORMATS_PROMISE, GENRES_PROMISE, EDITORIAL_PROMISE,])
+                .then((results) => {
+                    const [
+                        LANGUAGES,
+                        FORMATS,
+                        GENRES,
+                        EDITORIALS,
+                    ] = results;
+            
+            return res.render('products/product-create-form', {
                 session: req.session,
                 doctitle: "Crear libro",
                 link: "/css/product-create-form.css",
@@ -140,8 +196,10 @@ const productsController = {
                 FORMATS,
                 GENRES,
                 EDITORIALS,
-                errors: errors.mapped()
+                old: req.body,
+                errors: errors.mapped(),
             })
+        })
         }
     },
 
@@ -154,18 +212,25 @@ const productsController = {
         const EDITORIAL_PROMISE = Editorial.findAll();
 
         Promise.all([BOOK_PROMISE, LANGUAGES_PROMISE, FORMATS_PROMISE, GENRES_PROMISE, EDITORIAL_PROMISE,])
-            .then(([book, languages, formats, genres, editorials, cover]) => {
+            .then((results) => {
+                const [
+                    book,
+                    LANGUAGES,
+                    FORMATS,
+                    GENRES,
+                    EDITORIALS,
+                ] = results;
                 // return res.send(cover)
                 res.render("products/product-edit-form", {
                     book,
-                    languages,
-                    formats,
-                    genres,
-                    editorials,
-                    cover,
+                    LANGUAGES,
+                    FORMATS,
+                    GENRES,
+                    EDITORIALS,
                     session: req.session,
                     doctitle: "Editar libro",
                     link: "/css/product-create-form.css",
+                
                 });
             })
             .catch(error => console.log(error))
@@ -203,11 +268,29 @@ const productsController = {
                     });
                 })
         } else {
-            Book.findByPk(BOOK_ID)
-                .then(book => {
-                    return res.render('product-edit-form', {
+            const BOOK_ID = req.params.id;
+            const BOOK_PROMISE = Book.findByPk(BOOK_ID);
+            const LANGUAGES_PROMISE = Language.findAll();
+            const FORMATS_PROMISE = Format.findAll();
+            const GENRES_PROMISE = Genre.findAll();
+            const EDITORIAL_PROMISE = Editorial.findAll();
+    
+            Promise.all([BOOK_PROMISE, LANGUAGES_PROMISE, FORMATS_PROMISE, GENRES_PROMISE, EDITORIAL_PROMISE,])
+                .then(([book, LANGUAGES,FORMATS,GENRES, EDITORIALS,
+    ]) => {
+    
+                    return res.render('products/product-edit-form', {
                         book,
-                        errors: errors.mapped
+                        LANGUAGES,
+                        FORMATS,
+                        GENRES,
+                        EDITORIALS,
+                        errors: errors.mapped(),
+                        session: req.session,
+                        doctitle: "Editar libro",
+                        link: "/css/product-create-form.css",
+                        old: req.body,
+     
                     })
                 })
                 .catch(error => console.log(error));

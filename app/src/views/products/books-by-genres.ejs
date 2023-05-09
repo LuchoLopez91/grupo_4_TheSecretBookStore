@@ -7,15 +7,15 @@
   <body>
     <%- include("../partials/header") %>
     
-          <h4 class="subtitle">Estos son nuestros libros de <%- genre %></h4>
+          <h4 class="subtitle">Estos son nuestros libros de <%-genre.genre %></h4>
 
           <section class="group">
-            <% inventory.forEach(book => { %>
+            <% books.forEach(book => { %>
               <article class="container_book">
                 <a href="/store/details/<%- book.id %>"
                   ><img
                     class="image_book"
-                    src="/images/books/<%- book.image %>"
+                    src="/images/books/<%- book.cover %>"
                     alt="<%- book.title %>"
                   />
                   <p><%- book.title %> </p>

@@ -14,75 +14,150 @@
         </div>    
     </div>
 </div>
-<% if (locals.errors) { %>
-    <ul>
-      <% Objetc.keys(errors).forEach(element => { %>
-        <li><%- errors[element].msg  %></li>
-      <% }) %>
-    </ul>
-  <% } %>
+
 <div class="container-form">
     <form action="/store/edit/<%- book.id %>?_method=PUT" method="POST" enctype="multipart/form-data">
-    <div class="container-product">
+      <div class="container-product">
         <div class="form">
-        <label for="title" class="form-label">Nombre del producto</label>
-        <input type="text" id="title" name="title" placeholder="<%= book.title %>" value="<%= book.title %>" class="form-input">
-        </div> 
+          <label for="name" class="form-label">Título del libro</label>
+          <input
+            type="text"
+            id="name"
+            name="title"
+            placeholder="EJ: El numero cuatro"
+            class="form-input"
+            value="<%= locals.old ? old.title : book.title %>"
+          />
+          <% if(locals.errors && errors.title) {%>
+            <div class="text-danger"><%= errors.title.msg %></div>
+        <% } %>
+
+        </div>
         <div class="form">
-            <label for="author" class="form-label">Autor</label>
-            <input type="text" id="author" name="author" placeholder="<%= book.author %>" value="<%= book.author %>" class="form-input">
-        </div>  
+          <label for="text" class="form-label">Autor</label>
+          <input
+            type="text"
+            id="author"
+            name="author"
+            placeholder="EJ: J.K. Rowling"
+            class="form-input"
+            value="<%= locals.old ? old.author : book.author %>"
+          />
+          <% if(locals.errors && errors.author) {%>
+            <div class="text-danger"><%= errors.author.msg %></div>
+        <% } %>
+
+        </div>
         <div class="form">
-            <label for="price" class="form-label">Precio</label>
-            <input type="text" id="price" name="price" placeholder="<%= book.price %>" value="<%= book.price %>" class="form-input">
-        </div>  
+          <label for="text" class="form-label">ISBN13</label>
+          <input
+            type="text"
+            id="isbn13"
+            name="isbn13"
+            class="form-input"
+            value="<%= locals.old? old.isbn13 : book.isbn13 %>"
+          />
+          <% if(locals.errors && errors.isbn13) {%>
+            <div class="text-danger"><%= errors.isbn13.msg %></div>
+        <% } %>
+
+        </div>
         <div class="form">
-            <label for="editorial" class="form-label">Editorial</label>
-            <select name="editorial_id" id="editorial" class="form-input">
-                <% for( let index = 0; index < editorials.length; index++ ) { %>
-                  <option value="<%= editorials[index].id %>"><%= editorials[index].editorial %></option>
-                <% } %>
-              </select>
-          </div>  
-        <div class="form-idioma">
-            <label for="lenguaje" class="form-label">Idioma</label>
-            <select name="language_id" id="lenguaje" class="form-input">
-              <% for( let index = 0; index < languages.length; index++ ) { %>
-                <option value="<%= languages[index].id %>"><%= languages[index].language %></option>
-              <% } %>
-            </select>
-          </div>
-  
+          <label for="text" class="form-label">Cantidad de páginas</label>
+          <input
+            type="text"
+            id="pageCount"
+            name="pageCount"
+            class="form-input"
+            value="<%=locals.old ? old.pageCount : book.pageCount %>"
+          />
+        </div>
         <div class="form">
-            <label for="formato" class="form-label">Formato</label>
-            <select name="format_id" id="formato" class="form-input">
-                <% for( let index = 0; index < formats.length; index++ ) { %>
-                  <option value="<%= formats[index].id %>"><%= formats[index].format %></option>
-                <% } %>
-              </select>
-          </div>
-        <div class="form-genero">
-        <label for="genero" class="form-label">Genero</label>
-        <select name="genre_id" id="genre" class="form-input">
-            <% for( let index = 0; index < genres.length; index++ ) { %>
-              <option value="<%= genres[index].id %>"><%= genres[index].genre %></option>
+          <label for="price" class="form-label">Precio</label>
+          <input
+            type="text"
+            id="price"
+            name="price"
+            placeholder="EJ: 12345"
+            class="form-input"
+            value="<%= locals.old ? old.price : book.price %>"
+          />
+          <% if(locals.errors && errors.price) {%>
+            <div class="text-danger"><%= errors.price.msg %></div>
+        <% } %>
+
+        </div>
+        <div class="form">
+          <label for="editorial" class="form-label">Editorial</label>            
+          <select name="editorial_id" id="editorial" class="form-input">
+            <% for( let index = 0; index < EDITORIALS.length; index++ ) { %>
+              <option value="<%= EDITORIALS[index].id %>" 
+              <%- locals.old && old.editorial_id ? "selected" : book.editorial_id == EDITORIALS[index].id? "selected" : "" %>><%= EDITORIALS[index].editorial %></option>
             <% } %>
           </select>
+        <% if(locals.errors && errors.editorial_id) {%>
+              <div class="text-danger"><%= errors.editorial_id.msg %></div>
+          <% } %>
+
+            </div>
+        <div class="form-idioma">
+          <label for="lenguaje" class="form-label">Idioma</label>
+          <select name="language_id" id="lenguaje" class="form-input">
+            <% for( let index = 0; index < LANGUAGES.length; index++ ) { %>
+              <option value="<%= LANGUAGES[index].id %>" <%- book.language_id == LANGUAGES[index].id? "selected" : "" %>><%= LANGUAGES[index].language %></option>
+            <% } %>
+          </select>
+          <% if(locals.errors && errors.language_id) {%>
+            <div class="text-danger"><%= errors.language_id.msg %></div>
+        <% } %>
+
+        </div>
+        <div class="form">
+          <label for="formato" class="form-label">Formato</label>
+          <select name="format_id" id="formato" class="form-input">
+            <% for( let index = 0; index < FORMATS.length; index++ ) { %>
+              <option value="<%= FORMATS[index].id %>" <%- book.format_id == FORMATS[index].id? "selected" : "" %>><%= FORMATS[index].format %></option>
+            <% } %>
+          </select>
+      <% if(locals.errors && errors.format_id) {%>
+            <div class="text-danger"><%= errors.format_id.msg %></div>
+        <% } %>
+
+        </div>
+        <div class="form-genero">
+          <label for="genero" class="form-label">Genero</label>
+          <select name="genre_id" id="genre" class="form-input">
+            <% for( let index = 0; index < GENRES.length; index++ ) { %>
+              <option value="<%= GENRES[index].id %>" <%- book.genre_id == GENRES[index].id? "selected" : "" %>><%= GENRES[index].genre %></option>
+            <% } %>
+          </select>
+          <% if(locals.errors && errors.genre_id) {%>
+            <div class="text-danger"><%= errors.genre_id.msg %></div>
+        <% } %>
 
         </div>
         <div class="form-portada">
-            <label>Elegir imagen del libro</label>
-            <input type="file" name="cover" value="<%= book.cover %>">
+          <label>Elegir imagen del producto</label>
+          <input type="file" name="image" accept=".jpg, .png, .jpeg, .gif" />
         </div>
         <div class="form-descripcion">
-            <label for="descripcion" class="form-label">Descripcion</label>
-            <textarea id="descripcion" name="description" placeholder="Maximo 200 caracteres" class="form-input"><%= book.description %></textarea>
+          <label for="descripcion" class="form-label">Descripcion</label>
+          <textarea
+            id="descripcion"
+            name="description"
+            placeholder="Maximo 200 caracteres"
+            class="form-input"
+          ><%= locals.old ? old.description : book.description %></textarea>
+          <% if(locals.errors && errors.description) {%>
+            <div class="text-danger"><%= errors.description.msg %></div>
+        <% } %>
+
         </div>
         <div class="btn-save">
-            <button type="submit" class="save-product">Guardar Producto</button>
+          <button type="submit" class="save-product">Guardar Producto</button>
         </div>
-    </div>
-    </form>
+      </div>
+  </form>
 </div>
 <!-- Includes footer -->
 <%- include("../partials/footer2") %> 

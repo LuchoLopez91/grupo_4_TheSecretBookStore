@@ -63,6 +63,13 @@ div.form .form-input {
     color: var(--main-color);
     border-radius: 20%;
 }
+div.text-danger {
+    color: tomato;
+    text-align: center;
+}
+.row {
+    height: min-content;
+}
 
 @media (min-width: 768px){
 
