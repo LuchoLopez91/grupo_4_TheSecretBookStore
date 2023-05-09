@@ -1,84 +1,87 @@
 <!DOCTYPE html>
 <html lang="es">
-<%- include("../partials/head") %>  
+<%- include("../partials/head") %>
 
   <body class="register-login">
-    
-    <%- include("../partials/header") %> 
 
-    <div class="form-container">
-      <h1>Bienvenidos a </h1>
-      <h1 class="web_name">The Secret Bookstore</h1>
-      <h2>Crea tu cuenta</h2>
+    <%- include("../partials/header") %>
+
+      <div class="form-container">
+        <h1>Bienvenidos a </h1>
+        <h1 class="web_name">The Secret Bookstore</h1>
+        <h2>Crea tu cuenta</h2>
         <form action="/users/register" method="post" enctype="multipart/form-data">
-        <div class="form">
-          <div class="input-container">
-            <label for="firstName">Nombre</label><br />
-            <input
-              class="input-style"
-              type="text"
-              name="firstName"
-              id="firstName"
-              placeholder="" 
-              value="<%= locals.old && old.firstName %>"
-            />
-            <% if (locals.errors && errors.firstName) { %>
-              <small class="text-danger"><%= errors.firstName.msg %> </small>
-          <% } %>
-          </div>
-          <div class="input-container">
-            <label for="lastName">Apellido</label><br />
-            <input
-              class="input-style"
-              type="text"
-              name="lastName"
-              id="lastName"
-              placeholder=""value="<%= locals.old && old.lastName %>"
-            />
-            <% if (locals.errors && errors.lastName) { %>
-              <small class="text-danger"><%= errors.lastName.msg %> </small>
-          <% } %>
-          </div>
+          <div class="form">
+            <div class="input-container">
+              <label for="firstName">Nombre</label><br />
+              <input class="input-style" type="text" name="firstName" id="firstName" placeholder="" value="<%= locals.old && old.firstName %>"/>
+              <small class="text-danger" id="firstNameError"></small>
+              <% if (locals.errors && errors.firstName) { %>
+                <small class="text-danger">
+                  <%= errors.firstName.msg %>
+                </small>
+                <% } %>
+            </div>
+            <div class="input-container">
+              <label for="lastName">Apellido</label><br />
+              <input class="input-style" type="text" name="lastName" id="lastName" placeholder="" value="<%= locals.old && old.lastName %>"/>
+              <small class="text-danger" id="lastNameError"></small>
+              <% if (locals.errors && errors.lastName) { %>
+                <small class="text-danger">
+                  <%= errors.lastName.msg %>
+                </small>
+                <% } %>
+            </div>
 
-          <div class="input-container">
-            <label for="email">E-mail</label><br />
-            <input
-              class="input-style"
-              type="email"
-              name="email"
-              id="email"
-              placeholder=""
-            />
-            <% if (locals.errors && errors.email) { %>
-              <small class="text-danger"><%= errors.email.msg %> </small>
-          <% } %>
+            <div class="input-container">
+              <label for="email">E-mail</label><br />
+              <input class="input-style" type="email" name="email" id="email" placeholder=""/>
+              <small class="text-danger" id="emailError"></small>
+              <% if (locals.errors && errors.email) { %>
+                <small class="text-danger">
+                  <%= errors.email.msg %>
+                </small>
+                <% } %>
+            </div>
+            <div class="input-container">
+              <label for="password">Contraseña</label><br />
+              <input class="input-style" type="password" name="password" id="password"/>
+              <small class="text-danger" id="passwordError"></small>
+              <% if (locals.errors && errors.password) { %>
+                <small class="text-danger">
+                  <%= errors.password.msg %>
+                </small>
+                <% } %>
+            </div>
+            <div class="input-container">
+              <label for="pass2">Repetir contraseña</label><br />
+              <input class="input-style" type="password" name="pass2" id="pass2"/>
+              <small class="text-danger" id="pass2Error"></small>
+              <% if (locals.errors && errors.pass2) { %>
+                <small class="text-danger">
+                  <%= errors.pass2.msg %>
+                </small>
+                <% } %>
+            </div>
+            <div class="input-file">
+              <label for="avatar"></label>
+              <input type="file" name="avatar" id="avatar" accept=".jpg, .png" class="avatar_img" />
+            </div>
+            <button type="submit">CREAR NUEVO USUARIO</button>
+            
           </div>
-          <div class="input-container">
-            <label for="password">Contraseña</label><br />
-            <input class="input-style" type="password" name="password" id="password" />
-            <% if (locals.errors && errors.password) { %>
-              <small class="text-danger"><%= errors.password.msg %> </small>
-          <% } %>
-          </div>
-          <div class="input-container">
-            <label for="pass2">Repetir contraseña</label><br />
-            <input class="input-style" type="password" name="pass2" id="pass2" />
-            <% if (locals.errors && errors.pass2) { %>
-              <small class="text-danger"><%= errors.pass2.msg %> </small>
-          <% } %>
-          </div>
-          <div class="input-file">
-            <label for="avatar"></label>
-            <input type="file" name="avatar" id="avatar" accept=".jpg, .png" class="avatar_img" />
-          </div>
-          <button type="submit">CREAR NUEVO USUARIO</button>
-        </div>
-      </form>
-      <p>¿Ya tienes cuenta? <a href="/users/login">Iniciar sesión</a></p>
-    </div>
+        </form>
+        <p>¿Ya tienes cuenta? <a href="/users/login">Iniciar sesión</a></p>
+        <small class="text-danger" id="submitErrors"></small>
+      </div>
 
-    <%- include("../partials/footer2") %> 
-    <%- include("../partials/scripts")  %>  
+      <%- include("../partials/footer2") %>
+        <%- include("../partials/scripts") %>
+          <script src="/js/register.js"></script>
+          <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+            crossorigin="anonymous"></script>
 
   </body>
+
 </html>
