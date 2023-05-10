@@ -145,19 +145,19 @@ window.onload = () => {
 
 
 
-    // selectProvinces.onchange = (event) => {
-    //     let provinceId = event.target.value;
+    $selectProvinces.onchange = (event) => {
+        let provinceId = event.target.value;
 
-    //     fetch(`https://apis.datos.gob.ar/georef/api/localidades?provincia=${provinceId}&campos=id,nombre&max=5000`)
-    //     .then((res) => res.json())
-    //     .then((data) => {
-    //         selectCity.innerHTML = "";
-    //         const { localidades } = data;
-    //         localidades.forEach(localidad => {
-    //             selectCity.innerHTML += `<option value='${localidad.nombre}'>${localidad.nombre}</option>`;
-    //         });
-    //     })
-    //     .catch((error) => console.log(error));
-    // };
+        fetch(`https://apis.datos.gob.ar/georef/api/localidades?provincia=${provinceId}&campos=id,nombre&max=5000`)
+        .then(response => response.json())
+        .then((data) => {
+            $selectCity.innerHTML = "";
+            const { localidades } = data;
+            localidades.forEach(localidad => {
+                $selectCity.innerHTML += `<option value='${localidad.nombre}'>${localidad.nombre}</option>`;
+            });
+        })
+        .catch((error) => console.log(error));
+    };
 
 };
