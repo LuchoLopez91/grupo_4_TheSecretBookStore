@@ -60,7 +60,8 @@
             class="form-input"
             value="<%= locals.old? old.isbn13 : book.isbn13 %>"
           />
-          <% if(locals.errors && errors.isbn13) {%>
+            <small class="text-danger" id="isbn13Errors"></small>
+            <% if(locals.errors && errors.isbn13) {%>
             <div class="text-danger"><%= errors.isbn13.msg %></div>
         <% } %>
 

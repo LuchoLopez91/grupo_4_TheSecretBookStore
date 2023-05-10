@@ -8,6 +8,8 @@ let $form = QS('form')
     $nameErrors = QS('#nameErrors'),
     $inputAuthor = QS('#author'),
     $authorErrors= QS('#authorErrors'),
+    $inputISBN = QS('#isbn13'),
+    $isbnErrors= QS('#isbn13Errors'),
     $inputPrice = QS('#price'),
     $priceErrors = QS ('#priceErrors'),
     $inputEditorial = QS('#editorial'),
@@ -22,7 +24,7 @@ let $form = QS('form')
     $inputDescripcion = QS ('#descripcion'),
     $descripcionErrors = QS ('#descripcionErrors'),
     regExAlpha = /^[a-zA-Z\sñáéíóúü\0-9]*$/,
-    regExNum = /^[0-9]*$/;
+    regExNum = /^[0-9]*$/,
 
     $inputName.addEventListener("blur", () =>{
         switch (true) {
@@ -147,6 +149,24 @@ let $form = QS('form')
         }
     })
 
+    $inputISBN.addEventListener("blur", () => {
+        switch (true) {
+            case !$inputISBN.value.trim():
+                $isbnErrors.innerText = "El ISBN13 es necesario";
+                $inputISBN.classList.add("is-invalid")
+                break;
+            case !regExNum.test($inputISBN.value):
+                $isbnErrors.innerText = "El ISBN13 debe ser numérico, y contener 13 dígitos";
+                $inputISBN.classList.add("is-invalid")
+                break;
+            default:
+                $inputISBN.classList.remove("is-invalid")
+                $inputISBN.classList.add("is-valid")
+                $isbnErrors.innerText = "";
+                break;
+        }
+    })
+
     $form.addEventListener("submit", (event) => {
         event.preventDefault()
         const FORM_ELEMENTS = event.target.elements;
@@ -165,7 +185,11 @@ let $form = QS('form')
             $form.submit()
         }
     })
-    }
+
+
+
+
+}
 
 
 

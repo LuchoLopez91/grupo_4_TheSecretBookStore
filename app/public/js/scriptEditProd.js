@@ -3,23 +3,25 @@ const QSA = element => document.querySelectorAll(element);
 
 window.onload = () => {
 
-let $inputName = qs('#name'),
-    $nameErrors = qs('#nameErrors'),
-    $inputAuthor = qs('#author'),
-    $authorErrors= qs('#authorErrors'),
-    $inputPrice = qs('#price'),
-    $priceErrors = qs ('#priceErrors'),
-    $inputEditorial = qs('#editorial'),
-    $editorialErrors = qs ('#editorialErrors'),
-    $lenguaje = qs('#lenguaje'),
-    $lenguajeErrors = qs ('#lenguajeErrors'),
-    $formato= qs('#formato'),
-    $formatoErrors = qs ('#formatoErrors'),
-    $genero= qs('#genre'),
-    $generoErrors = qs('#formatoErrors'),
-    $inputImage= qs('#image'),
-    $inputDescripcion = qs ('#descripcion'),
-    $descripcionErrors = qs ('#descripcionErrors'),
+let $inputName = QS('#name'),
+    $nameErrors = QS('#nameErrors'),
+    $inputAuthor = QS('#author'),
+    $authorErrors= QS('#authorErrors'),
+    $inputISBN = QS('#isbn13'),
+    $isbnErrors= QS('#isbn13Errors'),
+    $inputPrice = QS('#price'),
+    $priceErrors = QS ('#priceErrors'),
+    $inputEditorial = QS('#editorial'),
+    $editorialErrors = QS ('#editorialErrors'),
+    $lenguaje = QS('#lenguaje'),
+    $lenguajeErrors = QS ('#lenguajeErrors'),
+    $formato= QS('#formato'),
+    $formatoErrors = QS ('#formatoErrors'),
+    $genero= QS('#genre'),
+    $generoErrors = QS('#formatoErrors'),
+    $inputImage= QS('#image'),
+    $inputDescripcion = QS ('#descripcion'),
+    $descripcionErrors = QS ('#descripcionErrors'),
     regExAlpha = /^[a-zA-Z\sñáéíóúü\0-9 ]*$/,
     regExNum = /^[0-9]*$/;
 
@@ -140,6 +142,26 @@ let $inputName = qs('#name'),
         }
     })
 
+    $inputISBN.addEventListener("blur", () => {
+        switch (true) {
+            case !$inputISBN.value.trim():
+                $isbnErrors.innerText = "El ISBN13 es necesario";
+                $inputISBN.classList.add("is-invalid")
+                break;
+            case !regExNum.test($inputISBN.value):
+                $isbnErrors.innerText = "El ISBN13 debe ser numérico, y contener 13 dígitos";
+                $inputISBN.classList.add("is-invalid")
+                break;
+            default:
+                $inputISBN.classList.remove("is-invalid")
+                $inputISBN.classList.add("is-valid")
+                $isbnErrors.innerText = "";
+                break;
+        }
+    })
+
+
+
     $form.addEventListener("submit", (event) => {
         event.preventDefault()
         const FORM_ELEMENTS = event.target.elements;
@@ -158,4 +180,7 @@ let $inputName = qs('#name'),
             $form.submit()
         }
     })
+
+
+
     }
