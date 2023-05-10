@@ -5,6 +5,7 @@ const path = require("path");
 const { title } = require("process");
 const bcrypt = require("bcryptjs");
 const { User, Avatar } = require("../database/models");
+const axios = require("axios");
 
 
 /*const usersPathDB = path.join(__dirname, "../database-old/users.json");
@@ -28,20 +29,40 @@ module.exports = {
       })
       .catch(error => console.log(error))
   },
-  editProfile: (req, res) => {
+  editProfile: async (req, res) => {
     let userInSessionId = req.session.user.id;
 
+    try {
+      const user = await User.findByPk(userInSessionId, { include: [{ association: "avatars" }] });
+      const { data } = await axios.get("https://apis.datos.gob.ar/georef/api/provincias?campos=nombre,id");
 
-    User.findByPk(userInSessionId, { include: [{ association: "avatars" }] })
-      .then((user) => {
-        res.render("users/userProfileEdit", {
-          user,
-          session: req.session,
-          doctitle: "Editar mi perfil",
-          link: "/css/profile.css",
-        })
-      })
-      .catch(error => console.log(error));
+      return res.render("users/userProfileEdit", {
+                user,
+                provinces: data.provincias,
+                session: req.session,
+                doctitle: "Editar mi perfil",
+                link: "/css/profile.css",
+              })
+  } catch (error) {
+      console.log(error)
+  }
+
+    // User.findByPk(userInSessionId, { include: [{ association: "avatars" }] })
+    //   .then((user) => {
+    //     fetch("https://apis.datos.gob.ar/georef/api/provincias?campos=nombre,id")
+    //     .then(response => response.json())
+    //     .then(data => {
+    //       return res.render("users/userProfileEdit", {
+    //         user,
+    //         data,
+    //         session: req.session,
+    //         doctitle: "Editar mi perfil",
+    //         link: "/css/profile.css",
+    //       })
+    //     })
+
+    //   })
+    //   .catch(error => console.log(error));
   },
   updateProfile: (req, res) => {
     let errors = validationResult(req);
