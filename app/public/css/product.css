@@ -77,7 +77,28 @@ div.description-container {
     display: block;
     background-color: var(--main-color);
 }
+#btn-comprar {
+    background-color: var(--secondary);
+    font-size: 15px;
+    
+    box-shadow: 1px 2px;
+    border-radius: 10%;
+}
 
+#btn-eliminar {
+    background-color: var(--secondary);
+    font-size: 15px;
+    padding: 3%;
+    box-shadow: 1px 2px;
+    border-radius: 10%;
+}
+#btn-editar {
+    background-color: var(--secondary);
+    font-size: 15px;
+    padding: 5%;
+    box-shadow: 1px 2px;
+    border-radius: 10%;
+}
 
 @media (min-width: 768px) {
     article {
