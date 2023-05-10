@@ -1,10 +1,7 @@
-const { format } = require("mysql2");
+const QS = element => document.querySelector(element);
+const QSA = element => document.querySelectorAll(element);
 
-let qs = (elemento) => {
-    return document.querySelector(elemento);
-}
-
-window.addEventListener("load", ( )=>{
+window.onload = () => {
 
 let $inputName = qs('#name'),
     $nameErrors = qs('#nameErrors'),
@@ -161,4 +158,4 @@ let $inputName = qs('#name'),
             $form.submit()
         }
     })
-    })
+    }

@@ -21,7 +21,7 @@ let $form = QS('form')
     $inputImage= QS('#image'),
     $inputDescripcion = QS ('#descripcion'),
     $descripcionErrors = QS ('#descripcionErrors'),
-    regExAlpha = /^[a-zA-Z\sñáéíóúü\0-9 ]*$/,
+    regExAlpha = /^[a-zA-Z\sñáéíóúü\0-9]*$/,
     regExNum = /^[0-9]*$/;
 
     $inputName.addEventListener("blur", () =>{
@@ -81,10 +81,6 @@ let $form = QS('form')
                 $editorialErrors.innerText = "La editorial del libro es obligatorio";
                 $inputEditorial.classList.add("is-invalid")
                 break;
-            case !regExAlpha.test($inputEditorial.value):
-                    $editorialErrors.innerText = "Uno o mas caracteres no estan permitidos";
-                    $inputEditorial.classList.add("is-invalid")
-                    break;
             default:
                 $inputEditorial.classList.remove("is-invalid")
                 $inputEditorial.classList.add("is-valid")
@@ -92,34 +88,44 @@ let $form = QS('form')
                 break;
         }
     })
-    $lenguaje.addEventListener("blur", function(){
-    if (!lenguaje.value.trim()) {
-        $lenguajeErrors.innerHtml = "Debes elegir un lenguaje";
-        $lenguaje.classList.add("is-invalid")
-    } else {
-        $lenguaje.classList.remove("is-invalid")
-        $lenguaje.classList.add("is-valid")
-        $lenguajeErrors.innerHtml = "";
-    }
-    })
-    $formato.addEventListener("blur", function(){
-        if (!formato.value.trim()) {
-            $formatoErrors.innerHtml = "Debes elegir un formato";
-            $formato.classList.add("is-invalid")
-        } else {
-            $formato.classList.remove("is-invalid")
-            $formato.classList.add("is-valid")
-            $formatoErrors.innerHtml = "";
+    $lenguaje.addEventListener("blur",  () =>{
+        switch (true) {
+            case !$lenguaje.value.trim():
+                $lenguajeErrors.innerText = "El idioma del libro es obligatorio";
+                $lenguaje.classList.add("is-invalid")
+                break;
+            default:
+                $lenguaje.classList.remove("is-invalid")
+                $lenguaje.classList.add("is-valid")
+                $lenguajeErrors.innerText = "";
+                break;
         }
     })
-    $genero.addEventListener("blur", function(){
-        if (!genero.value.trim()) {
-            $generoErrors.innerHtml = "Debes elegir un genero";
-            $genero.classList.add("is-invalid")
-        } else {
-            $genero.classList.remove("is-invalid")
-            $genero.classList.add("is-valid")
-            $generoErrors.innerHtml = "";
+    $formato.addEventListener("blur", () =>{
+        switch (true) {
+            case !$formato.value.trim():
+                $formatoErrors.innerText = "El formato del libro es obligatorio";
+                $formato.classList.add("is-invalid")
+                break;
+            default:
+                $formato.classList.remove("is-invalid")
+                $formato.classList.add("is-valid")
+                $formatoErrors.innerText = "";
+                break;
+        }
+        
+    })
+    $genero.addEventListener("blur", () =>{
+        switch (true) {
+            case !$genero.value.trim():
+                $generoErrors.innerText = "El genero del libro es obligatorio";
+                $genero.classList.add("is-invalid")
+                break;
+            default:
+                $genero.classList.remove("is-invalid")
+                $genero.classList.add("is-valid")
+                $generoErrors.innerText = "";
+                break;
         }
     })
 

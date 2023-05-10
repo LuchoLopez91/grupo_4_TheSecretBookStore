@@ -27,9 +27,12 @@
               class="form-input"
               value="<%= locals.old && old.inputName %>"
             />
-            <% if(locals.errors && errors.inputName) {%>
-              <div class="text-danger"><%= errors.inputName.msg %></div>
-          <% } %>
+            <small class="text-danger" id="nameErrors"></small>
+            <% if (locals.errors && errors.inputName) { %>
+              <small class="text-danger">
+                <%= errors.inputName.msg %>
+              </small>
+              <% } %>
 
           </div>
           <div class="form">
@@ -40,12 +43,15 @@
               name="author"
               placeholder="EJ: J.K. Rowling"
               class="form-input"
-              value="<%= locals.old && old.author? old.author : "" %>"
+              value="<%= locals.old && old.inputAuthor %>"
 
             />
-            <% if(locals.errors && errors.author) {%>
-              <div class="text-danger"><%= errors.author.msg %></div>
-          <% } %>
+            <small class="text-danger" id="authorErrors"></small>
+            <% if (locals.errors && errors.inputAuthor) { %>
+              <small class="text-danger">
+                <%= errors.inputAuthor.msg %>
+              </small>
+              <% } %>
 
           </div>
           <div class="form">
@@ -56,9 +62,7 @@
               name="isbn13"
               class="form-input"
             />
-            <% if(locals.errors && errors.isbn13) {%>
-              <div class="text-danger"><%= errors.isbn13.msg %></div>
-          <% } %>
+            
 
           </div>
           <div class="form">
@@ -79,9 +83,12 @@
               placeholder="EJ: 12345"
               class="form-input"
             />
-            <% if(locals.errors && errors.price) {%>
-              <div class="text-danger"><%= errors.price.msg %></div>
-          <% } %>
+            <small class="text-danger" id="priceErrors"></small>
+            <% if (locals.errors && errors.inputPrice) { %>
+              <small class="text-danger">
+                <%= errors.inputPrice.msg %>
+              </small>
+              <% } %>
 
           </div>
           <div class="form">
@@ -92,9 +99,12 @@
                   <option value="<%= EDITORIALS[index].id %>"><%= EDITORIALS[index].editorial %></option>
                 <% } %>
               </select>
-              <% if(locals.errors && errors.editorial_id) {%>
-                <div class="text-danger"><%= errors.editorial_id.msg %></div>
-            <% } %>
+              <small class="text-danger" id="editorialErrors"></small>
+            <% if (locals.errors && errors.inputEditorial) { %>
+              <small class="text-danger">
+                <%= errors.inputEditorial.msg %>
+              </small>
+              <% } %>
   
               </div>
           <div class="form-idioma">
@@ -105,9 +115,12 @@
                 <option value="<%= LANGUAGES[index].id %>"><%= LANGUAGES[index].language %></option>
               <% } %>
             </select>
-            <% if(locals.errors && errors.language_id) {%>
-              <div class="text-danger"><%= errors.language_id.msg %></div>
-          <% } %>
+            <small class="text-danger" id="lenguajeErrors"></small>
+            <% if (locals.errors && errors.lenguaje) { %>
+              <small class="text-danger">
+                <%= errors.lenguaje.msg %>
+              </small>
+              <% } %>
 
           </div>
           <div class="form">
@@ -118,9 +131,12 @@
                 <option value="<%= FORMATS[index].id %>"><%= FORMATS[index].format %></option>
               <% } %>
             </select>
-            <% if(locals.errors && errors.format_id) {%>
-              <div class="text-danger"><%= errors.format_id.msg %></div>
-          <% } %>
+            <small class="text-danger" id="formatoErrors"></small>
+            <% if (locals.errors && errors.formato) { %>
+              <small class="text-danger">
+                <%= errors.formato.msg %>
+              </small>
+              <% } %>
 
           </div>
           <div class="form-genero">
@@ -132,9 +148,12 @@
                 <option value="<%= GENRES[index].id %>"><%= GENRES[index].genre %></option>
               <% } %>
             </select>
-            <% if(locals.errors && errors.genre_id) {%>
-              <div class="text-danger"><%= errors.genre_id.msg %></div>
-          <% } %>
+            <small class="text-danger" id="generoErrors"></small>
+            <% if (locals.errors && errors.genero) { %>
+              <small class="text-danger">
+                <%= errors.genero.msg %>
+              </small>
+              <% } %>
 
           </div>
           <div class="form-portada">
@@ -149,13 +168,17 @@
               placeholder="Maximo 200 caracteres"
               class="form-input"
             ></textarea>
-            <% if(locals.errors && errors.description) {%>
-              <div class="text-danger"><%= errors.description.msg %></div>
-          <% } %>
+            <small class="text-danger" id="descripcionErrors"></small>
+            <% if (locals.errors && errors.inputDescripcion) { %>
+              <small class="text-danger">
+                <%= errors.inputDescripcion.msg %>
+              </small>
+              <% } %>
 
           </div>
           <div class="btn-save">
             <button type="submit" class="save-product">Guardar Producto</button>
+            <small class="text-danger" id="submitErrors"></small>
           </div>
         </div>
       </form>

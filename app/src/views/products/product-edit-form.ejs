@@ -28,9 +28,12 @@
             class="form-input"
             value="<%= locals.old ? old.title : book.title %>"
           />
-          <% if(locals.errors && errors.title) {%>
-            <div class="text-danger"><%= errors.title.msg %></div>
-        <% } %>
+          <small class="text-danger" id="nameErrors"></small>
+            <% if (locals.errors && errors.inputName) { %>
+              <small class="text-danger">
+                <%= errors.inputName.msg %>
+              </small>
+              <% } %>
 
         </div>
         <div class="form">
@@ -163,6 +166,9 @@
 <%- include("../partials/footer2") %> 
 <!-- Includes footer -->
 <%- include("../partials/scripts")  %>
-
+<script src="/js/scriptEditProd.js"></script>
+          <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+            crossorigin="anonymous"></script>
 </body>
 </html>

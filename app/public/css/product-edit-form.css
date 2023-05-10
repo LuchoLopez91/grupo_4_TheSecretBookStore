@@ -63,6 +63,13 @@ div.form .form-input {
     color: var(--main-color);
     border-radius: 20%;
 }
+small.text-danger {
+    color: tomato;
+    font-size: 0.8rem;
+    text-align: center;
+    text-transform: none;
+    display: block;
+}
 
 @media (min-width: 768px){
 
