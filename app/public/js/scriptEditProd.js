@@ -7,7 +7,7 @@ let qs = (elemento) => {
 window.addEventListener("load", ( )=>{
 
 let $inputName = qs('#name'),
-    $nameErrors = qs('"nameErrors'),
+    $nameErrors = qs('#nameErrors'),
     $inputAuthor = qs('#author'),
     $authorErrors= qs('#authorErrors'),
     $inputPrice = qs('#price'),
@@ -15,7 +15,7 @@ let $inputName = qs('#name'),
     $inputEditorial = qs('#editorial'),
     $editorialErrors = qs ('#editorialErrors'),
     $lenguaje = qs('#lenguaje'),
-    $lenguajeErrors = qs ('lenguajeErrors'),
+    $lenguajeErrors = qs ('#lenguajeErrors'),
     $formato= qs('#formato'),
     $formatoErrors = qs ('#formatoErrors'),
     $genero= qs('#genre'),
