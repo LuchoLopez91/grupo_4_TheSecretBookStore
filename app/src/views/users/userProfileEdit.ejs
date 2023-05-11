@@ -8,7 +8,7 @@
             <main class="usersForm-container">
 
                 <h3 class="userTitle">Edita tu perfil</h3>
-                <form action="/users/profile/edit?_method=PUT" method="POST" enctype="multipart/form-data"
+                <form id="form" action="/users/profile/edit?_method=PUT" method="POST" enctype="multipart/form-data"
                     class="form-ad">
                     <div class="form-ad-input">
                         <label for="firstName">Nombre</label>
@@ -79,7 +79,7 @@
                         <p>Cambiar foto de perfil</p>
                         <input type="file" name="avatar" value="">
                     </div>
-
+                    <small class="text-danger" id="formError"></small>
                     <button type="submit" class="btn_edit">
                         GUARDAR
                     </button>

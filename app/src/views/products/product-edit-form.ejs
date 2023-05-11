@@ -16,7 +16,7 @@
 </div>
 
 <div class="container-form">
-    <form action="/store/edit/<%- book.id %>?_method=PUT" method="POST" enctype="multipart/form-data">
+    <form id="form" action="/store/edit/<%- book.id %>?_method=PUT" method="POST" enctype="multipart/form-data">
       <div class="container-product">
         <div class="form">
           <label for="name" class="form-label">Título del libro</label>
@@ -45,7 +45,8 @@
             placeholder="EJ: J.K. Rowling"
             class="form-input"
             value="<%= locals.old ? old.author : book.author %>"
-          />
+            />
+            <small class="text-danger" id="authorErrors"></small>
           <% if(locals.errors && errors.author) {%>
             <div class="text-danger"><%= errors.author.msg %></div>
         <% } %>
@@ -86,7 +87,8 @@
             class="form-input"
             value="<%= locals.old ? old.price : book.price %>"
           />
-          <% if(locals.errors && errors.price) {%>
+            <small class="text-danger" id="priceErrors"></small>
+            <% if(locals.errors && errors.price) {%>
             <div class="text-danger"><%= errors.price.msg %></div>
         <% } %>
 
@@ -158,6 +160,7 @@
 
         </div>
         <div class="btn-save">
+          <small class="text-danger" id="formError"></small>
           <button type="submit" class="save-product">Guardar Producto</button>
         </div>
       </div>

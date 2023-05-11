@@ -4,7 +4,8 @@ const QSA = element => document.querySelectorAll(element);
 window.onload = () => {
     let $inputEmail = QS("#email"),
         $emailError = QS("#emailError"),
-        $form = QS("form"),
+        $form = QS("#form"),
+        $formError = QS("#formError"),
         regExAlpha = /^[a-zA-Z\sñáéíóúü ]*$/,
         regExDNI = /^[0-9]{7,8}$/,
         regExEmail = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i,
@@ -27,6 +28,25 @@ window.onload = () => {
                 $inputEmail.classList.add("is-valid");
                 $emailError.innerText = "";
                 break;
+        };
+    };
+
+    $form.onsubmit = (e) => {
+        e.preventDefault();
+        const FORM_ELEMENTS = e.target.elements;
+
+        for (let i = 0 ; i < FORM_ELEMENTS.length - 1 ; i++){
+            let element = FORM_ELEMENTS[i];
+            if(element.value === ""){
+                element.classList.add("is-invalid");
+            };
+        };
+
+        let errors = QSA(".is-invalid");
+        if (errors.length !== 0){
+            $formError.innerText = "Revise los errores";
+        } else {
+            $form.submit();
         };
     };
 };

@@ -23,6 +23,8 @@ let $form = QS('form')
     $inputImage= QS('#image'),
     $inputDescripcion = QS ('#descripcion'),
     $descripcionErrors = QS ('#descripcionErrors'),
+    $form = QS("#form"),
+    $formError = QS("#formError"),
     regExAlpha = /^[a-zA-Z\sñáéíóúü\0-9]*$/,
     regExNum = /^[0-9]*$/,
 
@@ -167,28 +169,25 @@ let $form = QS('form')
         }
     })
 
-    $form.addEventListener("submit", (event) => {
-        event.preventDefault()
-        const FORM_ELEMENTS = event.target.elements;
+    // previene que se envíen datos si hay errores
+    $form.onsubmit = (e) => {
+        e.preventDefault();
+        const FORM_ELEMENTS = e.target.elements;
 
-        for (let index = 0; index < FORM_ELEMENTS.length - 1; index++) {
-            const element = FORM_ELEMENTS[index];
-            if (element.value == "") {
-                return alert("El libro no fue registrado, debes completar los campos requeridos")
-            }}
-        let elementosConErrores = document.querySelectorAll("is-invalid")
-        let errores = elementosConErrores.length > 0;
+        for (let i = 0 ; i < FORM_ELEMENTS.length - 1 ; i++){
+            let element = FORM_ELEMENTS[i];
+            if(element.value === ""){
+                element.classList.add("is-invalid");
+            };
+        };
 
-        if (errores) {
-            submitErrors.innerText = "Hay errores en el formulario"
+        let errors = QSA(".is-invalid");
+        if (errors.length !== 0){
+            $formError.innerText = "Revise los errores";
         } else {
-            $form.submit()
-        }
-    })
-
-
-
-
+            $form.submit();
+        };
+    };
 }
 
 

@@ -16,6 +16,8 @@ window.onload = () => {
         $postalCodeError = QS("#postalCodeError"),
         $selectProvinces = QS("#province"),
         $selectCity = QS("#city"),
+        $form = QS("#form"),
+        $formError = QS("#formError"),
         regExAlpha = /^[a-zA-Z\sñáéíóúü ]*$/,
         regExDNI = /^[0-9]{7,8}$/,
         regExEmail = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i,
@@ -143,8 +145,7 @@ window.onload = () => {
         };
     };
 
-
-
+    // api de selección de ciudad
     $selectProvinces.onchange = (event) => {
         let provinceId = event.target.value;
 
@@ -158,6 +159,26 @@ window.onload = () => {
             });
         })
         .catch((error) => console.log(error));
+    };
+
+    // previene que no se manden datos si hay errores
+    $form.onsubmit = (e) => {
+        e.preventDefault();
+        const FORM_ELEMENTS = e.target.elements;
+
+        for (let i = 0 ; i < FORM_ELEMENTS.length - 1 ; i++){
+            let element = FORM_ELEMENTS[i];
+            if(element.value === ""){
+                element.classList.add("is-invalid");
+            };
+        };
+
+        let errors = QSA(".is-invalid");
+        if (errors.length !== 0){
+            $formError.innerText = "Revise los errores";
+        } else {
+            $form.submit();
+        };
     };
 
 };

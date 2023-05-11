@@ -2,8 +2,7 @@ const QS = element => document.querySelector(element);
 const QSA = element => document.querySelectorAll(element);
 
 window.onload = () => {
-    let $form = QS("form"),
-        $inputFirstName = QS("#firstName"),
+    let $inputFirstName = QS("#firstName"),
         $firstNameError = QS("#firstNameError"),
         $inputLastName = QS("#lastName"),
         $lastNameError = QS("#lastNameError"),
@@ -13,6 +12,8 @@ window.onload = () => {
         $passwordError = QS("#passwordError"),
         $inputPass2 = QS("#pass2"),
         $pass2Error = QS("#pass2Error"),
+        $form = QS("#form"),
+        $formError = QS("#formError"),
 
         regExAlpha = /^[a-zA-Z\sñáéíóúü ]*$/,
         regExDNI = /^[0-9]{7,8}$/,
@@ -121,6 +122,26 @@ window.onload = () => {
                 $inputPass2.classList.add('is-valid');
                 $pass2Error.innerText = '';
                 break;
+        };
+    };
+
+    // verifica que no haya errores
+    $form.onsubmit = (e) => {
+        e.preventDefault();
+        const FORM_ELEMENTS = e.target.elements;
+
+        for (let i = 0 ; i < FORM_ELEMENTS.length - 1 ; i++){
+            let element = FORM_ELEMENTS[i];
+            if(element.value === ""){
+                element.classList.add("is-invalid");
+            };
+        };
+
+        let errors = QSA(".is-invalid");
+        if (errors.length !== 0){
+            $formError.innerText = "Revise los errores";
+        } else {
+            $form.submit();
         };
     };
 };

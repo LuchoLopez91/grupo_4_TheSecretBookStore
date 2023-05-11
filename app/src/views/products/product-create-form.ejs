@@ -15,7 +15,7 @@
       </div>
     </div>
     <div class="container-form">
-      <form action="/store/create/" method="POST" enctype="multipart/form-data">
+      <form id="form" action="/store/create/" method="POST" enctype="multipart/form-data">
         <div class="container-product">
           <div class="form">
             <label for="name" class="form-label">Título del libro</label>
@@ -179,7 +179,7 @@
           </div>
           <div class="btn-save">
             <button type="submit" class="save-product">Guardar Producto</button>
-            <small class="text-danger" id="submitErrors"></small>
+            <small class="text-danger" id="formError"></small>
           </div>
         </div>
       </form>
