@@ -32,21 +32,22 @@
               <div class="price">Precio: $<%= book.price %></div>
               <div class="btn-container">
                 <div class="product-btn">Favorito</div>
-                <div class="product-btn"><a href="/cart">Comprar</a></div>
+                <button type="submit" id="btn-comprar"><a href="/cart"></a>Comprar</button>
+                <!-- <div class="product-btn"><a href="/cart">Comprar</a></div> -->
                 <% if (typeof session.user == "undefined") { %>
                   
                   <%}%>
                 <% if (typeof session.user != "undefined" && session.user.role) { %>
                    <div class="product-btna">                  
                       <form action="/store/delete/<%- book.id %>?_method=DELETE" method="POST">
-                        <button type="submit">
-                          ELIMINAR
+                        <button type="submit" id="btn-eliminar">
+                          Eliminar
                         </button>
                       </form>
                     </div>
                     <div class="product-btna">
                       <form action="/store/edit/<%- book.id %>" method="GET">
-                        <button type="submit">
+                        <button type="submit" id="btn-editar">
                           Editar
                         </button>
                       </form>
