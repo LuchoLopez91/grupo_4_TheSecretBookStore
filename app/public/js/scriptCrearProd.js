@@ -25,8 +25,9 @@ let $form = QS('form')
     $descripcionErrors = QS ('#descripcionErrors'),
     $form = QS("#form"),
     $formError = QS("#formError"),
-    regExAlpha = /^[a-zA-Z\sñáéíóúü\0-9]*$/,
-    regExNum = /^[0-9]*$/,
+    regExAlpha = /^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑüÜ,.:;¡!¿?\s]+$/,
+    regExISBN = /^\d{9}[\d|Xx]|\d{13}$/,
+    regExPrice = /^(?!0)\d+$/;
 
     $inputName.addEventListener("blur", () =>{
         switch (true) {
@@ -68,7 +69,7 @@ let $form = QS('form')
                 $priceErrors.innerText = "El precio es obligatorio";
                 $inputPrice.classList.add("is-invalid")
                 break;
-            case !regExNum.test($inputPrice.value):
+            case !regExPrice.test($inputPrice.value):
                     $priceErrors.innerText = "Ingresar solo numeros sin coma ni puntos";
                     $inputPrice.classList.add("is-invalid")
                     break;
@@ -157,7 +158,7 @@ let $form = QS('form')
                 $isbnErrors.innerText = "El ISBN13 es necesario";
                 $inputISBN.classList.add("is-invalid")
                 break;
-            case !regExNum.test($inputISBN.value):
+            case !regExISBN.test($inputISBN.value):
                 $isbnErrors.innerText = "El ISBN13 debe ser numérico, y contener 13 dígitos";
                 $inputISBN.classList.add("is-invalid")
                 break;
@@ -181,8 +182,8 @@ let $form = QS('form')
             };
         };
 
-        let errors = QSA(".is-invalid");
-        if (errors.length !== 0){
+        let errors = QSA("is-invalid");
+        if (errors.length > 0){
             $formError.innerText = "Revise los errores";
         } else {
             $form.submit();
