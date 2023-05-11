@@ -31,7 +31,7 @@
               </div>
               <div class="price">Precio: $<%= book.price %></div>
               <div class="btn-container">
-                <div class="product-btn">Favorito</div>
+                <button id="btn-favorito">Favorito</button>
                 <button type="submit" id="btn-comprar"><a href="/cart"></a>Comprar</button>
                 <!-- <div class="product-btn"><a href="/cart">Comprar</a></div> -->
                 <% if (typeof session.user == "undefined") { %>

@@ -24,9 +24,9 @@ main {
 
 
 div.btn-container {
-    margin: 1rem;
-    display: flex;
-    justify-content: space-evenly;
+    margin: 9px;
+    display:flex;
+    justify-content:space-between;
     flex-wrap: wrap;
 }
 
@@ -80,10 +80,12 @@ div.description-container {
 #btn-comprar {
     background-color: var(--secondary);
     font-size: 15px;
-    
+    width: 25%;
     box-shadow: 1px 2px;
     border-radius: 10%;
+    transition: 0.2ms;
 }
+#btn-comprar:hover {background-color: green; color: white; box-shadow: 1px 2px gold;}
 
 #btn-eliminar {
     background-color: var(--secondary);
@@ -91,15 +93,34 @@ div.description-container {
     padding: 3%;
     box-shadow: 1px 2px;
     border-radius: 10%;
+    padding-top: 17%;
+    padding-bottom: 17%;
+    width: 75px;
+    transition: 0.2ms;
 }
+#btn-eliminar:hover {background-color: red; color: white; box-shadow: 1px 2px black;}
+
 #btn-editar {
     background-color: var(--secondary);
     font-size: 15px;
     padding: 5%;
     box-shadow: 1px 2px;
     border-radius: 10%;
+    padding-top: 17%;
+    padding-bottom: 17%;
+    width: 75px;
+    transition: 0.2ms;
 }
+#btn-editar:hover {background-color: var(--main-color); color: var(--secondary); box-shadow: 1px 2px black;}
 
+#btn-favorito {
+    background-color: var(--secondary);
+    font-size: 15px;
+    padding: 3%;
+    box-shadow: 1px 2px;
+    border-radius: 10%;
+}
+#btn-favorito:hover {background-color: gold; color: black; box-shadow: 1px 2px black;}
 @media (min-width: 768px) {
     article {
         flex-direction: row;
