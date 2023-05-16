@@ -1,95 +1,120 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <%- include("../partials/head", {doctitle: book.title}) %>
-  </head>
 
-  <body>
-    <%- include("../partials/header") %>
+<head>
+  <%- include("../partials/head", {doctitle: book.title}) %>
+</head>
 
-    <main class="product">
-      <!-- Barra navegación -->
-      <div class="dir-bar">
-        <a href="/">Inicio</a> / <a href="">Categorías</a> /
-        <a href="<%= book.id %>"><%= book.title %></a>
-      </div>
-      <!-- Libro -->
-    <article class="product"> 
-        <!-- Foto -->
-        <div class="photo-container">
-          <img
-            src="/images/books/<%- book.cover %>"
-            alt="<%- book.title %>"
-          />
+<body>
+  <%- include("../partials/header") %>
+
+    <main>
+      <!-- barra -->
+      <div class="row">
+        <div class="col">
+          <a href="/">Inicio</a> / <a href="">Categorías</a> / <a href="<%= book.id %>">
+            <%= book.title %>
+          </a>
         </div>
-      <!-- Descripción -->
-      <section class="description">
-          <div class="info-container">
-              <div class="info">
-                <h2><%= book.title %></h2>
-                <h3><%= book.author %></h3>
-              </div>
-              <div class="price">Precio: $<%= book.price %></div>
-              <div class="btn-container">
-                <button id="btn-favorito">Favorito</button>
-                <button type="submit" id="btn-comprar"><a href="/cart"></a>Comprar</button>
-                <!-- <div class="product-btn"><a href="/cart">Comprar</a></div> -->
-                <% if (typeof session.user == "undefined") { %>
-                  
-                  <%}%>
-                <% if (typeof session.user != "undefined" && session.user.role) { %>
-                   <div class="product-btna">                  
-                      <form action="/store/delete/<%- book.id %>?_method=DELETE" method="POST">
-                        <button type="submit" id="btn-eliminar">
-                          Eliminar
-                        </button>
-                      </form>
-                    </div>
-                    <div class="product-btna">
-                      <form action="/store/edit/<%- book.id %>" method="GET">
-                        <button type="submit" id="btn-editar">
-                          Editar
-                        </button>
-                      </form>
-                    </div>
-    
-                  <% } %>
-              </div>
-              <p>Editorial: <%= book.editorials.editorial %></p>
-              <p>I.S.B.N.: <%= book.isbn13 %></p>
-              <p>Nro. de páginas: <%= book.pageCount %></p>
-              <p>Idiomas: <%= book.languages.language %></p>
-              <p>Formato: <%= book.formats.format %></p>
-              <p>Género: <a href="/store/category/<%= book.genre %>"><%= book.genres.genre %></a></p>
-              <!--<p>Fecha de publicación: <%= book.publication_date %></p>-->
+      </div>
+      <!-- head -->
+      <div class="row img-container">
+        <div class="col-sm-5">
+          <img src="/images/books/<%- book.cover %>" alt="<%- book.title %>" class="main-img">
+        </div>
+        <div class="col-sm-7">
+          <!-- title and price -->
+          <div class="row">
+            <div class="title">
+              <h2>
+                <%= book.title %>
+              </h2>
+              <h3>
+                <%= book.author %>
+              </h3>
+              <h3>$<%= book.price %>
+              </h3>
+            </div>
           </div>
-          
-      </section>
-  </article>
-  <div class="description-container">
-    <p><%= book.description %></p>
-</div>
-      <!-- Relacionados -->
-      <section class="related">
-        <h3>También te puede interesar</h3>
-        <div class="product--container">
-          <article>
-            <div class="photo-container">
-              <img
-                src="/images/books/<%= book.cover %>"
-                alt="<%= book.title %>"
-              />
+          <!-- btn -->
+          <div class="row">
+            <div class="col">
+              <button id="btn-fav" class="button">Favorito</button>
             </div>
-            <div>
-              <h4><%= book.title %></h4>
-              <h4><%= book.author %></h4>
-              <p>$<%= book.price %></p>
+            <div class="col">
+              <button type="submit" id="btn-buy" class="button">Comprar</button>
             </div>
-          </article>
-      <!-- Comentarios -->
+          </div>
+          <div class="row">
+            <% if (typeof session.user !="undefined" && session.user.role) { %>
+              <div class="col">
+                <form action="/store/delete/<%- book.id %>?_method=DELETE" method="POST">
+                  <button type="submit" id="btn-delete" class="button">
+                    Eliminar
+                  </button>
+                </form>
+              </div>
+              <div class="col">
+                <form action="/store/edit/<%- book.id %>" method="GET">
+                  <button type="submit" id="btn-edit" class="button">
+                    Editar
+                  </button>
+                </form>
+              </div>
+              <% } %>
+          </div>
+          <!-- info -->
+          <ul>
+            <li>Editorial: <%= book.editorials.editorial %>
+            </li>
+            <li>I.S.B.N.: <%= book.isbn13 %>
+            </li>
+            <li>Nro. de páginas: <%= book.pageCount %>
+            </li>
+            <li>Idiomas: <%= book.languages.language %>
+            </li>
+            <li>Formato: <%= book.formats.format %>
+            </li>
+            <li>Género: <a href="/store/category/<%= book.genre %>">
+                <%= book.genres.genre %>
+              </a></li>
+          </ul>
+        </div>
+      </div>
+      <!-- description -->
+      <div class="row">
+        <div class="col">
+          <p>
+            <%= book.description %>
+          </p>
+        </div>
+      </div>
+      <!-- others -->
+      <hr>
+      <div class="row">
+        <h3>Relacionados</h3>
+        <div class="col-sm-4">
+          <div class="others">
+            <img src="/images/books/<%= book.cover %>" alt="<%= book.title %>" class="secondary-img" />
+            <ul>
+              <li>
+                <%= book.title %>
+              </li>
+              <li>
+                <%= book.author %>
+              </li>
+              <li>$<%= book.price %>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </main>
+    <!-- Comentarios -->
 
     <%- include("../partials/footer2") %>
 
-    <%- include("../partials/scripts")  %>
-  </body>
+      <%- include("../partials/scripts") %>
+</body>
+
 </html>
