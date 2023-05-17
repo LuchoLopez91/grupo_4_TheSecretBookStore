@@ -19,30 +19,9 @@ const updateUserValidator = require ('../validations/updateUserValidator')
 const sessionUserCheck = require('../middlewares/sessionUserCheck');
 /* sigue si el use no inició sesión */
 const userInSessionCheck = require('../middlewares/userInSessionCheck');
+// middleware de subir avatar
+const uploadAvatar = require("../middlewares/uploadAvatar")
 
-const multer = require("multer");
-
-const storage = multer.diskStorage(
-    {
-        destination: function (req, file, cb) {
-            cb(null, "./public/images/avatars");
-        },
-        filename: function (req, file, cb) {
-            let filename = `${Date.now()}_img${path.extname(file.originalname)}`
-            cb(null, filename);
-        }
-    })
-
-const uploadFile = multer({ storage,
-        fileFilter: (req, file, cb) => {
-          if (file.mimetype == "image/png" || file.mimetype == "image/jpg"|| file.mimetype == "image/gif" || file.mimetype == "image/jpeg") {
-            cb(null, true);
-          } else {
-            cb(null, false);
-            return cb();
-          }
-        }
-});
 
 
 
@@ -52,7 +31,7 @@ router.get('/profile', userInSessionCheck, profile);
 /*GET - edit Profile */
 router.get('/profile/edit', userInSessionCheck, editProfile);
 /* PUT - update Profile*/
-router.put("/profile/edit", uploadFile.single("avatar"), updateUserValidator, updateProfile);
+router.put("/profile/edit", uploadAvatar.single("avatar"), updateUserValidator, updateProfile);
 
 
 
@@ -61,7 +40,7 @@ router.get("/cart", cart);
 /* GET - register form */
 router.get("/register", sessionUserCheck, register);
 /* POST - register form */
-router.post("/register", uploadFile.single("avatar"), registerValidator, processRegister);
+router.post("/register", uploadAvatar.single("avatar"), registerValidator, processRegister);
 
 
 /* GET - login form */

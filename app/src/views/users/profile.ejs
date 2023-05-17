@@ -9,12 +9,7 @@
             <h3 style="text-align: center">Mi Perfil</h1>
 
             <div class="avatar" >
-                <% if (user.avatars) { %>
-                    <img class="rounded-circle" width="180px" src="/images/avatars/<%= user.avatars.route %>">
-
-                <% } else { %>
-                <img width="150px" src="/images/avatars/default-image.png">
-                <% } %>
+                    <img class="rounded-circle" width="180px" src="/images/avatars/<%= user.avatar %>">
             </div>
               <div class="usersForm-container">
                   <div class="userProfile_box">

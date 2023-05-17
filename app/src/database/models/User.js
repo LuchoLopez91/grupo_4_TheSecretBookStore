@@ -21,10 +21,10 @@ module.exports = (sequelize, dataTypes) => {
             type: dataTypes.STRING(100),
             allowNull: false,
         },
-        /*avatar: {
-            type: dataTypes.INTEGER(10).UNSIGNED,
+        avatar: {
+            type: dataTypes.STRING(100),
             allowNull: true,
-        },*/
+        },
         /*role_id: {
             type: dataTypes.INTEGER(10).UNSIGNED,
             allowNull: false,
@@ -62,21 +62,21 @@ module.exports = (sequelize, dataTypes) => {
     
     const USER = sequelize.define(ALIAS, COLS, CONFIG);
 
-    USER.associate = (models) => {
-        /*USER.belongsTo(models.Role, {
-            as: "roles",
-            foreignKey: "role_id",
-        });*/
-        USER.hasOne(models.Avatar, {
-            as: "avatars",
-            foreignKey: "user_id",
-        });
+    // USER.associate = (models) => {
+    //     USER.belongsTo(models.Role, {
+    //         as: "roles",
+    //         foreignKey: "role_id",
+    //     });
+    //     USER.hasOne(models.Avatar, {
+    //         as: "avatars",
+    //         foreignKey: "user_id",
+    //     });
 
-        USER.hasMany(models.Commentary, {
-            as: "commentaries",
-            foreignKey: "id",
-        })
-    };
+    //     USER.hasMany(models.Commentary, {
+    //         as: "commentaries",
+    //         foreignKey: "id",
+    //     })
+    // };
 
     return USER;
 };
