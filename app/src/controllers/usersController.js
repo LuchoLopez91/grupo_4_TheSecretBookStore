@@ -4,7 +4,7 @@ const fs = require("fs");
 const path = require("path");
 const { title } = require("process");
 const bcrypt = require("bcryptjs");
-const { User, Avatar } = require("../database/models");
+const { User } = require("../database/models");
 const axios = require("axios");
 
 

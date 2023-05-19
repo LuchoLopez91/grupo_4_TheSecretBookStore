@@ -23,12 +23,7 @@ module.exports = (sequelize, dataTypes) => {
         },
         avatar: {
             type: dataTypes.STRING(100),
-            allowNull: true,
         },
-        /*role_id: {
-            type: dataTypes.INTEGER(10).UNSIGNED,
-            allowNull: false,
-        },*/
         role: {
             type: dataTypes.INTEGER(2),
             allowNull: false,
@@ -53,13 +48,13 @@ module.exports = (sequelize, dataTypes) => {
         province: {
             type: dataTypes.STRING(100),
         },
-        };
+    };
 
     const CONFIG = {
         tableName: "users",
         timestamps: true,
     };
-    
+
     const USER = sequelize.define(ALIAS, COLS, CONFIG);
 
     // USER.associate = (models) => {

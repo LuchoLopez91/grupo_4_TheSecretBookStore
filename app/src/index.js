@@ -34,12 +34,14 @@ app.set('views', 'src/views');
 const indexRouter = require("./routes/main");
 const catalogRouter = require("./routes/products");
 const usersRouter = require("./routes/users");
+const usersApiRouter = require("./routes/api/users.api");
 /* /Router */
 
 /* Routes middlewares */
 app.use("/", indexRouter);
 app.use("/store", catalogRouter);
 app.use("/users", usersRouter);
+app.use("/api/users", usersApiRouter);
 /* Routes middlewares */
 
 
