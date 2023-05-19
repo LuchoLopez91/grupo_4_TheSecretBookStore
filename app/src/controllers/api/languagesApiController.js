@@ -1,20 +1,20 @@
-const { Editorial } = require("../../database/models");
+const { Language } = require("../../database/models");
 const getUrl = (req) => req.protocol + '://' + req.get('host') + req.originalUrl;
 
 module.exports = {
     getAll: async (req, res) => {
         try {
-            let editorials = await Editorial.findAll({
-                attributes: ["id", "editorial"]
+            let languages = await Language.findAll({
+                attributes: ["id", "language"]
             });
-            if (editorials.length == 0) throw 'No hay editorials registradas';
+            if (languages.length == 0) throw 'No hay idiomas registrados';
             return res.status(200).json({
                 meta: {
                     endPoint: getUrl(req),
-                    total: editorials.length,
+                    total: languages.length,
                     status: 200,
                 },
-                editorials,
+                languages,
             });
         } catch (error) {
             console.error(error)
@@ -39,18 +39,18 @@ module.exports = {
                 });
             };
 
-            let editorial = await Editorial.findByPk(id, {
-                attributes: ["id", "editorial"],
+            let language = await Language.findByPk(id, {
+                attributes: ["id", "language"],
             });
 
-            if (!editorial) throw `No existe editorial con id ${id}`;
+            if (!language) throw `No existe idioma con id ${id}`;
 
             return res.status(200).json({
                 meta: {
                     endPoint: getUrl(req),
                     status: 200,
                 },
-                editorial,
+                language,
             });
 
         } catch (error) {
@@ -65,14 +65,14 @@ module.exports = {
     },
     addOne: async (req, res) => { //agregar validaciones
         try {
-            let newEditorial = await Editorial.create({ ...req.body });
+            let newLanguage = await Language.create({ ...req.body });
 
             return res.status(201).json({
                 meta: {
-                    endPoint: getUrl(req) + `/${newEditorial.id}`,
-                    msg: "Editorial creada satisfactoriamente",
+                    endPoint: getUrl(req) + `/${newLanguage.id}`,
+                    msg: "Género creado satisfactoriamente",
                 },
-                newEditorial,
+                newLanguage,
             });
         } catch (error) {
             console.error(error);
@@ -96,19 +96,19 @@ module.exports = {
             });
         };
 
-        let existsEditorial = await Editorial.findByPk(id);
+        let existsLanguage = await Language.findByPk(id);
 
         try {
-            if (!existsEditorial) throw `No se pudo edita editorial, no existe editorial con id ${id}`;
+            if (!existsLanguage) throw `No se pudo editar idioma, no existe idioma con id ${id}`;
 
-            let editorialToEdit = await Editorial.update(
+            let languageToEdit = await Language.update(
                 { ...req.body },
                 { where: { id } },
             );
             return res.status(201).json({
                 meta: {
                     endPoint: getUrl(req),
-                    msg: "Editorial modificada satisfactoriamente",
+                    msg: "Género modificado satisfactoriamente",
                 },
             });
         } catch (error) {
@@ -131,16 +131,16 @@ module.exports = {
             });
         };
 
-        let existsEditorial = await Editorial.findByPk(id);
+        let existsLanguage = await Language.findByPk(id);
 
         try {
-            if (!existsEditorial) throw `No se pudo eliminar editorial, no existe editorial con id ${id}`;
+            if (!existsLanguage) throw `No se pudo eliminar idioma, no existe idioma con id ${id}`;
 
-            Editorial.destroy({ where: { id } });
+            Language.destroy({ where: { id } });
             return res.status(201).json({
                 meta: {
                     status: 201,
-                    msg: `Editorial con id: ${id} eliminada satisfactoriamente`,
+                    msg: `Idioma con id: ${id} eliminado satisfactoriamente`,
                 }
             })
         } catch (error) {

@@ -1,20 +1,20 @@
-const { Editorial } = require("../../database/models");
+const { Genre } = require("../../database/models");
 const getUrl = (req) => req.protocol + '://' + req.get('host') + req.originalUrl;
 
 module.exports = {
     getAll: async (req, res) => {
         try {
-            let editorials = await Editorial.findAll({
-                attributes: ["id", "editorial"]
+            let genres = await Genre.findAll({
+                attributes: ["id", "genre"]
             });
-            if (editorials.length == 0) throw 'No hay editorials registradas';
+            if (genres.length == 0) throw 'No hay generos registrados';
             return res.status(200).json({
                 meta: {
                     endPoint: getUrl(req),
-                    total: editorials.length,
+                    total: genres.length,
                     status: 200,
                 },
-                editorials,
+                genres,
             });
         } catch (error) {
             console.error(error)
@@ -39,18 +39,18 @@ module.exports = {
                 });
             };
 
-            let editorial = await Editorial.findByPk(id, {
-                attributes: ["id", "editorial"],
+            let genre = await Genre.findByPk(id, {
+                attributes: ["id", "genre"],
             });
 
-            if (!editorial) throw `No existe editorial con id ${id}`;
+            if (!genre) throw `No existe genre con id ${id}`;
 
             return res.status(200).json({
                 meta: {
                     endPoint: getUrl(req),
                     status: 200,
                 },
-                editorial,
+                genre,
             });
 
         } catch (error) {
@@ -65,14 +65,14 @@ module.exports = {
     },
     addOne: async (req, res) => { //agregar validaciones
         try {
-            let newEditorial = await Editorial.create({ ...req.body });
+            let newGenre = await Genre.create({ ...req.body });
 
             return res.status(201).json({
                 meta: {
-                    endPoint: getUrl(req) + `/${newEditorial.id}`,
-                    msg: "Editorial creada satisfactoriamente",
+                    endPoint: getUrl(req) + `/${newGenre.id}`,
+                    msg: "Género creado satisfactoriamente",
                 },
-                newEditorial,
+                newGenre,
             });
         } catch (error) {
             console.error(error);
@@ -96,19 +96,19 @@ module.exports = {
             });
         };
 
-        let existsEditorial = await Editorial.findByPk(id);
+        let existsGenre = await Genre.findByPk(id);
 
         try {
-            if (!existsEditorial) throw `No se pudo edita editorial, no existe editorial con id ${id}`;
+            if (!existsGenre) throw `No se pudo editar género, no existe género con id ${id}`;
 
-            let editorialToEdit = await Editorial.update(
+            let genreToEdit = await Genre.update(
                 { ...req.body },
                 { where: { id } },
             );
             return res.status(201).json({
                 meta: {
                     endPoint: getUrl(req),
-                    msg: "Editorial modificada satisfactoriamente",
+                    msg: "Género modificado satisfactoriamente",
                 },
             });
         } catch (error) {
@@ -131,16 +131,16 @@ module.exports = {
             });
         };
 
-        let existsEditorial = await Editorial.findByPk(id);
+        let existsGenre = await Genre.findByPk(id);
 
         try {
-            if (!existsEditorial) throw `No se pudo eliminar editorial, no existe editorial con id ${id}`;
+            if (!existsGenre) throw `No se pudo eliminar género, no existe género con id ${id}`;
 
-            Editorial.destroy({ where: { id } });
+            Genre.destroy({ where: { id } });
             return res.status(201).json({
                 meta: {
                     status: 201,
-                    msg: `Editorial con id: ${id} eliminada satisfactoriamente`,
+                    msg: `Género con id: ${id} eliminado satisfactoriamente`,
                 }
             })
         } catch (error) {
