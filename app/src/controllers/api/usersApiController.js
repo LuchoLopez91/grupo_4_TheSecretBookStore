@@ -4,7 +4,9 @@ const getUrl = (req) => req.protocol + '://' + req.get('host') + req.originalUrl
 module.exports = {
     getAll: async (req, res) => {
         try {
-            let users = await User.findAll();
+            let users = await User.findAll({
+                attributes : [ "id", "firstName", "lastName", "email", ]
+            });
             if (users.length == 0) throw 'No hay ususarios registrados';
             return res.status(200).json({
                 meta: {
@@ -25,9 +27,21 @@ module.exports = {
         };
     },
     getOne: async (req, res) => {
+        let {id} = req.params;
+
+        if (isNaN(id)) {
+            return res.status(404).json({
+                meta: {
+                    status: 404,
+                    msg: `Parámetro inválido ${id}`,
+                },
+            });
+        };
+
         try {
-            let userToFind = req.params.id;
-            let user = await User.findByPk(userToFind);
+            let user = await User.findByPk(id);
+
+            if (!user) throw `No existe usuario con id ${id}`;
 
             return res.status(200).json({
                 meta: {

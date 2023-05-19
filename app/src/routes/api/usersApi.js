@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { getAll, getOne } = require('../../controllers/api/users.api.controller');
+const { getAll, getOne } = require('../../controllers/api/usersApiController');
 
 router
     .get('/', getAll)
