@@ -150,15 +150,17 @@ window.onload = () => {
         let provinceId = event.target.value;
 
         fetch(`https://apis.datos.gob.ar/georef/api/localidades?provincia=${provinceId}&campos=id,nombre&max=5000`)
-        .then(response => response.json())
-        .then((data) => {
-            $selectCity.innerHTML = "";
-            const { localidades } = data;
-            localidades.forEach(localidad => {
-                $selectCity.innerHTML += `<option value='${localidad.nombre}'>${localidad.nombre}</option>`;
-            });
-        })
-        .catch((error) => console.log(error));
+            .then(response => response.json())
+            .then((data) => {
+                $selectCity.innerHTML = "";
+                const { localidades } = data;
+
+                localidades.sort((a, b) => (a.nombre > b.nombre) ? 1 : -1);
+                localidades.forEach(localidad => {
+                    $selectCity.innerHTML += `<option value='${localidad.nombre}'>${localidad.nombre}</option>`;
+                });
+            })
+            .catch((error) => console.log(error));
     };
 
     // previene que no se manden datos si hay errores
@@ -166,15 +168,15 @@ window.onload = () => {
         e.preventDefault();
         const FORM_ELEMENTS = e.target.elements;
 
-        for (let i = 0 ; i < FORM_ELEMENTS.length - 2 ; i++){
+        for (let i = 0; i < FORM_ELEMENTS.length - 2; i++) {
             let element = FORM_ELEMENTS[i];
-            if(element.value === ""){
+            if (element.value === "") {
                 element.classList.add("is-invalid");
             };
         };
 
         let errors = QSA(".is-invalid");
-        if (errors.length !== 0){
+        if (errors.length !== 0) {
             $formError.innerText = "Revise los errores";
         } else {
             $form.submit();

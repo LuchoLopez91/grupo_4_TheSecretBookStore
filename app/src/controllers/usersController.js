@@ -35,10 +35,12 @@ module.exports = {
     try {
       const user = await User.findByPk(userInSessionId);
       const { data } = await axios.get("https://apis.datos.gob.ar/georef/api/provincias?campos=nombre,id");
-
+      
+      let provinces = data.provincias.sort((a, b) => (a.nombre > b.nombre) ? 1 : -1);
+      
       return res.render("users/userProfileEdit", {
         user,
-        provinces: data.provincias,
+        provinces,
         session: req.session,
         doctitle: "Editar mi perfil",
         link: "/css/profile.css",
