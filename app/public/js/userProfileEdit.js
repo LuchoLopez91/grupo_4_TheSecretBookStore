@@ -166,7 +166,7 @@ window.onload = () => {
         e.preventDefault();
         const FORM_ELEMENTS = e.target.elements;
 
-        for (let i = 0 ; i < FORM_ELEMENTS.length - 1 ; i++){
+        for (let i = 0 ; i < FORM_ELEMENTS.length - 2 ; i++){
             let element = FORM_ELEMENTS[i];
             if(element.value === ""){
                 element.classList.add("is-invalid");

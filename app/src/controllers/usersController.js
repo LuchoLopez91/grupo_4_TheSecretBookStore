@@ -109,38 +109,23 @@ module.exports = {
     if (errors.isEmpty()) {
 
       let newUser = {
-        firstName: req.body.firstName,
-        lastName: req.body.lastName,
-        email: req.body.email,
+        ...req.body,
         password: bcrypt.hashSync(req.body.password, 12),
-        phone: req.body.phone,
-        adress: req.body.adress,
-        postal_code: req.body.postal_code,
-        province: req.body.province,
-        city: req.body.city,
+        avatar: req.file?.filename ?? "default-image.png",
         role: 0,
       };
 
       User.create(newUser)
         .then((user) => {
-          if (!req.file || req.file.length === 0) {
-            Avatar.create({
-              route: "default-image.png",
-              user_id: user.id,
-            }).then(() => {
-              return res.redirect("/users/login");
-            });
-          } else {
-            Avatar.create({
-              route: req.file.filename,
-              user_id: user.id
-            })
-              .then(() => {
-                return res.redirect("/users/login");
-              });
-          }
+          req.session.user = {
+            id: user.id,
+            name: user.name,
+            avatar: user.avatar,
+            role: user.role,
+          };
+          return res.redirect("/");
         })
-        .catch((error) => console.log(error))
+        .catch((error) => console.log(error));
     } else {
       res.render("./users/register", {
         errors: errors.mapped(),
@@ -174,9 +159,8 @@ module.exports = {
             id: user.id,
             name: user.name,
             avatar: user.avatar,
-            role: user.role
+            role: user.role,
           }
-
 
           let tiempoDeVidaCookie = new Date(Date.now() + 1800000);
 
@@ -189,7 +173,6 @@ module.exports = {
                 httpOnly: true
               })
           }
-
           res.locals.user = req.session.user;
 
           res.redirect("/");
