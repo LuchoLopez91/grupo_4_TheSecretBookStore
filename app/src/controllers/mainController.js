@@ -8,6 +8,10 @@ const { Op } = Sequelize;
 
 module.exports = {
     index: (req, res) => {
+        const MOST_VISITED_PROMISE = Book.findAll({
+            order: [["visits_count","DESC"]],
+            limit: 4,
+        });
         const HARDBACK_PROMISE = Book.findAll({
             where: {
                 format_id: 1,
@@ -21,9 +25,10 @@ module.exports = {
                 format_id: 3,
             }});
 
-        Promise.all([HARDBACK_PROMISE, PAPERBACK_PROMISE, DIGITAL_PROMISE])
+        Promise.all([MOST_VISITED_PROMISE, HARDBACK_PROMISE, PAPERBACK_PROMISE, DIGITAL_PROMISE])
         .then((results) => {
             const [
+                MOST_VISITED_PROMISE,
                 HARDBACK,
                 PAPERBACK,
                 DIGITAL,
@@ -31,6 +36,7 @@ module.exports = {
             // return res.send(PAPERBACK)
             return res.render('home', {
                 session: req.session,
+                MOST_VISITED_PROMISE,
                 HARDBACK,
                 PAPERBACK,
                 DIGITAL,

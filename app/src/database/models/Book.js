@@ -55,6 +55,10 @@ module.exports = (sequelize, dataTypes) => {
         },
         description: dataTypes.STRING(),
         cover: dataTypes.STRING(),
+        visits_count: {
+            type: dataTypes.INTEGER(10).UNSIGNED,
+            default: 0,
+        }
     };
 
     const CONFIG = {

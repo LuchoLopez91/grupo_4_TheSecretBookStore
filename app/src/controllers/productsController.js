@@ -39,6 +39,7 @@ const productsController = {
             })
             .catch(err => console.log(err))
     },
+
     booksByGenres: function (req, res) {
         let categorySelected = req.params.id;
         
@@ -74,13 +75,12 @@ const productsController = {
                     books,
                     genre,
                     session: req.session,
-                    doctitle: "Categoria:" +" " + genre.genre,
+                    doctitle: `Categoría ${genre.genre}`,
                     link: "/css/home.css"
                 })
             })
             .catch(err => console.log(err))
     },
-
 
     bookDetail: function (req, res) {
         Book.findByPk(req.params.id, {

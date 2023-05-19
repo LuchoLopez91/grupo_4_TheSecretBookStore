@@ -8,9 +8,21 @@
     
     <!-- MAIN -->
     <main class="home">
-      <div>
-        <img class="banner" src="/images/main/bannerIvrea.jpg" alt="Banner Ivrea" />
-      </div>
+      <div class="container_subtitle">
+        <h4 class="subtitle">Los más vistos</h4>
+    </div>
+    <section class="group">
+        <% MOST_VISITED_PROMISE.forEach(book=> { %>
+            <article class="container_book">
+                <a href="/store/details/<%- book.id %>"><img class="image_book" src="./images/books/<%- book.cover %>"
+                        alt="<%- book.title %>" />
+                    <p><%- book.title %> </p>
+                    <p class="card-price">$ <%- book.price %> </p>
+                    <button class="home-buy" id="boton-compra">AGREGAR AL CARRITO</button>
+                </a>
+            </article>
+            <% }) %>
+    </section>
       
       <div class="container_subtitle">
         <h4 class="subtitle">Nuestros libros digitales</h4>

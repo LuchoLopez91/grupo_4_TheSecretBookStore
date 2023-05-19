@@ -15,6 +15,7 @@ const router = express.Router();
 const adminCheck = require('../middlewares/adminCheck')
 const productValidator = require("../validations/productValidator");
 const uploadCover = require('../middlewares/uploadCover')
+const bookVisitsCount = require('../middlewares/bookVisitsCount')
 
 
 
@@ -22,7 +23,7 @@ const uploadCover = require('../middlewares/uploadCover')
 router.get('/category/:id', booksByGenres);
 
 router.get("/", list);
-router.get("/details/:id", bookDetail);
+router.get("/details/:id", bookVisitsCount, bookDetail);
 
 /* crear producto */
 //router.get('/product-create-form/add', add)
