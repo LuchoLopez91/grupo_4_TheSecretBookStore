@@ -6,7 +6,7 @@ module.exports = async (req, res, next) => {
     try {
         let visits = await Book.findByPk(id, { attribute: ["visits_count"] });
         let count = visits.visits_count++
-        let updatedVisits = await Book.update({ visits_count: count }, id);
+        let updatedVisits = await Book.update({ visits_count: count }, {where: {id}});
         next();
     } catch (error) {
         console.error(error);
