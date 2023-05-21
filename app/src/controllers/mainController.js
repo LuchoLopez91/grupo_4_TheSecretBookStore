@@ -15,31 +15,29 @@ module.exports = {
         const HARDBACK_PROMISE = Book.findAll({
             where: {
                 format_id: 1,
-            }});
+            },
+            limit: 12,
+        });
         const PAPERBACK_PROMISE = Book.findAll({
             where: {
                 format_id: 2,
-            }});
+            },
+            limit: 12,
+        });
         const DIGITAL_PROMISE = Book.findAll({
             where: {
                 format_id: 3,
-            }});
+            },
+            limit: 12,
+        });
 
         Promise.all([MOST_VISITED_PROMISE, HARDBACK_PROMISE, PAPERBACK_PROMISE, DIGITAL_PROMISE])
         .then((results) => {
-            const [
-                MOST_VISITED_PROMISE,
-                HARDBACK,
-                PAPERBACK,
-                DIGITAL,
-            ] = results;
-            // return res.send(PAPERBACK)
+            const order = ["Más visitados", "Físicos de tapa dura", "Físicos de tapa blanda", "eBooks"];
             return res.render('home', {
                 session: req.session,
-                MOST_VISITED_PROMISE,
-                HARDBACK,
-                PAPERBACK,
-                DIGITAL,
+                results,
+                order,
                 doctitle: "Home",
                 link: "/css/home.css"
             });

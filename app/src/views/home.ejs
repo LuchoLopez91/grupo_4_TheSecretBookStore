@@ -1,129 +1,67 @@
 <!DOCTYPE html>
 <html lang="es">
-  <%- include("./partials/head") %>  
+<%- include("./partials/head") %>
 
   <body>
 
-    <%- include("./partials/header") %> 
-    
-    <!-- MAIN -->
-    <main class="home">
-      <div class="container_subtitle">
-        <h4 class="subtitle">Los más vistos</h4>
-    </div>
-    <section class="group">
-        <% MOST_VISITED_PROMISE.forEach(book=> { %>
-            <article class="container_book">
+    <%- include("./partials/header") %>
+
+      <!-- MAIN -->
+      <main class="home">
+
+        <% results.forEach((promise, i) => { %>
+          <div class="container_subtitle">
+            <h4 class="subtitle"><%= order[i] %></h4>
+          </div>
+          <section class="group">
+            <% promise.forEach(book=> { %>
+              <article class="container_book">
                 <a href="/store/details/<%- book.id %>"><img class="image_book" src="./images/books/<%- book.cover %>"
-                        alt="<%- book.title %>" />
-                    <p><%- book.title %> </p>
-                    <p class="card-price">$ <%- book.price %> </p>
-                    <button class="home-buy" id="boton-compra">AGREGAR AL CARRITO</button>
+                    alt="<%- book.title %>" />
+                  <p><%- book.title %> </p>
+                  <p class="card-price">$ <%- book.price %> </p>
+                  <button class="home-buy" id="boton-compra">AGREGAR AL CARRITO</button>
                 </a>
-            </article>
-            <% }) %>
-    </section>
-      
-      <div class="container_subtitle">
-        <h4 class="subtitle">Nuestros libros digitales</h4>
-      </div>
-      <section class="group">
-        <% DIGITAL.forEach(book => { %>
-          <article class="container_book">
-            <a href="/store/details/<%- book.id %>"
-              ><img
-                class="image_book"
-                src="./images/books/<%- book.cover %>"
-                alt="<%- book.title %>"
-              />
-              <p><%- book.title %> </p>
-              <p class="card-price">$ <%- book.price %> </p>
-              <button class="home-buy" id="boton-compra">AGREGAR AL CARRITO</button>  
-              </a>
-          </article>
-        <% }) %>
-      </section>
-
-      <div class="container_subtitle">
-        <h4 class="subtitle">En formato físico de tapa blanda</h4>
-      </div>
-      <section class="group">
-        <% PAPERBACK.forEach(book => { %>
-          <article class="container_book">
-            <a href="/store/details/<%- book.id %>"
-              ><img
-                class="image_book"
-                src="./images/books/<%- book.cover %>"
-                alt="<%- book.title %>"
-              />
-              <p><%- book.title %> </p>
-              <p class="card-price">$ <%- book.price %> </p>
-              <button class="home-buy" id="boton-compra">AGREGAR AL CARRITO</button>  
-              </a>
-          </article>
+              </article>
+              <% }) %>
+          </section>
         <% }) %>
 
-
-      </section>
-
-      <div class="container_subtitle">
-        <h4 class="subtitle">En formato físico de tapa dura</h4>
-      </div>
-      <section class="group">
-        <% HARDBACK.forEach(book => { %>
-          <article class="container_book">
-            <a href="/store/details/<%- book.id %>"
-              ><img
-                class="image_book"
-                src="./images/books/<%- book.cover %>"
-                alt="<%- book.title %>"
-              />
-              <p><%- book.title %></p>
-              <p class="card-price">$ <%- book.price %> </p>
-              <button class="home-buy" id="boton-compra">AGREGAR AL CARRITO</button>  
-            </a>
+        <section class="group2">
+          <article class="container">
+            <span>Todos los medios de pago</span>
+            <i class="fa-solid fa-credit-card"></i>
           </article>
-        <% }) %>
-      </section>
+          <article class="container">
+            <span>Envíos gratis</span>
+            <i class="fa-solid fa-truck-fast"></i>
+          </article>
+          <article class="container">
+            <span>Cuotas Sin Interés</span>
+            <img class="home-logos" src="./images/main/mpago.png" alt="Mercado Pago Logo" />
+          </article>
+          <article class="container">
+            <span>Compra Protegida</span>
+            <i class="fa-solid fa-shield-cat"></i>
+          </article>
+        </section>
 
-      <section class="group2">
-        <article class="container">
-          <span>Todos los medios de pago</span>
-          <i class="fa-solid fa-credit-card"></i> 
-        </article>
-        <article class="container">
-          <span>Envíos gratis</span>
-          <i class="fa-solid fa-truck-fast"></i>
-        </article>
-        <article class="container">
-          <span>Cuotas Sin Interés</span>
-          <img class="home-logos" src="./images/main/mpago.png" alt="Mercado Pago Logo" />
-        </article>
-        <article class="container">
-          <span>Compra Protegida</span>
-          <i class="fa-solid fa-shield-cat"></i>
-        </article>
-      </section>
+        <section class="group3">
+          <div class="subscribe">
+            <p>
+              Suscribete a nuestro newsletter y recibe las novedades de The
+              Secret BookStore antes que nadie!
+            </p>
+            <input class="input-container" type="text" placeholder="Ingresa tu Email..." />
+            <button class="btn">Suscribirme</button>
 
-      <section class="group3">
-        <div class="subscribe">
-          <p>
-            Suscribete a nuestro newsletter y recibe las novedades de The
-            Secret BookStore antes que nadie!
-          </p>
-          <input
-            class="input-container"
-            type="text"
-            placeholder="Ingresa tu Email..."
-          />
-          <button class="btn">Suscribirme</button>
-          
-        </div>
-      </section>
-    </main>
+          </div>
+        </section>
+      </main>
 
-    <%- include("./partials/footer2") %> 
-    
-    <%- include("./partials/scripts")  %>
+      <%- include("./partials/footer2") %>
+
+        <%- include("./partials/scripts") %>
   </body>
+
 </html>
