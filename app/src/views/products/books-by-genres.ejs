@@ -7,7 +7,7 @@
   <body>
     <%- include("../partials/header") %>
     
-          <h4 class="subtitle">Estos son nuestros libros de <%-genre.genre %></h4>
+          <h4 class="subtitle">Estos son nuestros libros del género:  <span><%-genre.genre %></span> </h4>
 
           <section class="group">
             <% books.forEach(book => { %>

@@ -13,21 +13,24 @@
         </form>
       </div>
       <div class="header-icons">
-        <a href="/users/profile">
           <% if (typeof session.user == "undefined") { %>
-            <div class="signUp">
+            <div class="signUp fa-user">
               <i class="fas fa-user"></i>
             </div>
             <% } else { %>
-              <div class="user">
+              <div class="user fa-user">
                 <i class="fas fa-user"></i>
-                <div>
-                  <a href="/users/logout">Cerrar sesión</a>
-                </div>
-              </div>
-              
+              </div>              
             <% } %>
-        </a>
+              <div class="menu-user bubble-top">
+                <% if (typeof session.user == "undefined") { %>
+                <a href="/users/login">Iniciar sesión</a>  
+                <a href="/users/register">Registrate</a>
+              <% } else { %>
+                  <a href="/users/profile">Mi Perfil</a><br>
+                  <a href="/users/logout">Cerrar sesión</a>
+                <% } %>
+              </div>    
         <a href="/users/cart">
           <div class="cart-icon">
             <i class="fa-solid fa-cart-shopping"></i>
@@ -43,14 +46,13 @@
     <div class="btn-close-container">
       <i class="fa-regular fa-xmark"></i>
     </div>
+    
     <ul class="menu">
-      <li><a href="/store/">Nuestra colección</a></li>
-      <li><a href="/store/category/1">Acción</a></li>
-      <li><a href="/store/category/20">Épico</a></li>
-      <li><a href="/store/category/8">Comedia</a></li>
-      <li><a href="/store/category/9">Infantil</a></li>
-      <li><a href="/store/category/16">Histórico</a></li>
-      <li><a href="/store/category/12">Aventura</a></li>
+      <li class="categoria"><a href=""> Libros por género </a></li>
+      <li class="categoria"><a href="/store/category/22"> Educativos/Escolares </a></li>
+      <li class="categoria"><a href=""> Comic y Manga </a></li>
+      <li><a href="/store/">Nuestra colección </a></li>
+
       <% if (typeof session.user == "undefined") { %>
         
         <%}%>
@@ -59,6 +61,22 @@
       <% } %>
     </ul>
   </nav>
-
-
+    <div class="categories">
+        <a href="/store/category/1">Acción</a><br>
+        <a href="/store/category/20">Histórico</a><br>
+        <a href="/store/category/21">Filosofía</a><br>
+        <a href="/store/category/19">Clásicos</a><br>
+        <a href="/store/category/9">Infantil</a><br>
+        <a href="/store/category/16">Histórico</a><br>
+        <a href="/store/category/12">Aventura</a><br>
+        <a href="/store/category/11">Romance</a><br>
+        <a href="/store/category/4">Fantasía</a><br>
+        <a href="/store/category/5">Policial</a><br>
+        <a href="/store/category/8">Comedia</a><br>
+        <a href="/store/category/14">Terror</a><br>
+        <a href="/store/category/13">Drama</a><br>
+        <a href="/store/category/6">Novelas gráficas</a><br>
+        <a href="/store/category/7">Ciencia Ficción</a>
+      </ul>
+  </div>
 </header>

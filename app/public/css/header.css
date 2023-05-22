@@ -28,12 +28,14 @@ header {
 
 header div.burger-menu i,
 header div.cart-icon i,
-header div.signUp i {
+header div.signUp i,
+header div.user i {
   display: flex;
   flex-wrap: nowrap;
   justify-content: center;
   align-items: center;
   font-size: 20px;
+  padding: 20px;
   width: 30px;
   height: 30px;
   color: var(--violeta-oscuro);
@@ -41,37 +43,18 @@ header div.signUp i {
 header div.cart-icon i {
   border: 3px solid var(--violeta-oscuro);
   border-radius: 50%;
-  padding: 20px;
-   left: 10px;
 }
 
 header div.signUp i {
   border: 3px solid var(--violeta-oscuro);
   border-radius: 50%;
-  padding: 20px;
-  left: 20px;
+  position: relative;
 }
 
 header div.user i {
   border: 3px solid lightseagreen;
   border-radius: 50%;
-  padding: 10px;
-  left: 20px;
 }
-
-header div.user {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: space-evenly;
-  align-items: center;
-  font-size: 20px;
-  width: 70px;
-  height: 30px;
-  color: lightseagreen;
-}
-
-
 
 header div.burger-menu i{
   border: 3px solid var(--violeta-oscuro);
@@ -84,14 +67,17 @@ header div.header-elem {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
-
+justify-content: space-between;
+align-items: center;
 
 }
 
 header div.header-icons {
   display: flex;
   flex-wrap: nowrap;
-  justify-content: flex-end;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
 }
 
 header div.burger-menu {
@@ -114,8 +100,34 @@ header nav.active {
   justify-content: space-around;
   margin-top: 15px;
 }
+header div.categories {
+  position: absolute;
+  display: none;
+  margin-left: 10px;
+  flex-direction: column;
+  background-color: var(--rosa-claro);
+  border: 2px solid var(--violeta-oscuro);
+  width: max-content;
+  padding: 3px 10px;
+  z-index: 2;
+}
 
-header nav .btn-close-container i {
+header div.categories a{
+  text-decoration: none;
+  color: var(--violeta-oscuro);
+  font-size: 25px;
+}
+
+header div.categories a:hover {
+  font-weight: bold;
+}
+
+header div.categories.mostrar {
+  display: block;
+  transform: translate(240px, -190px);
+}
+
+/*header nav .btn-close-container i {
   font-size: 25px;
   font-weight: bold;
   width: 30px;
@@ -131,7 +143,7 @@ header nav .btn-close-container i {
   justify-content: center;
   align-items: center;
   cursor: pointer;
-}
+}*/
 
 header nav ul.menu {
   padding-left: 0;
@@ -227,6 +239,30 @@ div.search-bar button i {
   right: 15px;
 }*/
 
+.menu-user {
+  display: none;
+  position: absolute;
+  font-size: 1rem;
+  width: 9rem;
+  background-color: var(--rosa-claro);
+  padding: 1rem;
+  border: 1px solid var(--violeta-oscuro);
+  border-radius: .5rem;
+  transform: translateY(70px);
+}
+
+.menu-user.show {
+  display: block;
+}
+
+.menu-user a {
+  text-decoration: none;
+  color: var(--violeta-oscuro);
+}
+
+.menu-user a:hover {
+  font-weight: bold;
+}
 
 @media screen and (min-width: 768px) {
   header div.burger-menu {
@@ -244,7 +280,7 @@ div.search-bar button i {
 
   header div.header-icons {
     justify-content: flex-end;
-    align-items: center;
+    align-items: flex-end;
     gap: 30px;
   margin-right: 30px;
   }
@@ -271,33 +307,77 @@ div.search-bar button i {
   header nav {
     display: flex;
     position: static;
-    margin-left: 0;
+    margin: 0;
     height: 100%;
     width: 100%;
     flex-direction: row;
     flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-evenly;
+    align-items: flex-start;
     background: var(--violeta-oscuro);
   }
 
+  header nav ul.menu{
+    border-bottom: 0;
+    margin-bottom: 0;
+  }
   header nav ul li {
     display: inline-block;
-    padding: 2px;
+    text-align: center;
+    padding: 0 10px;
 
   }
 
+  header nav ul li a{
+    text-align: center;
+  }
 
-  header nav ul li a:hover {
-    text-decoration: underline ;
-    font-weight: 500;
+  header nav ul li:hover {
+    background-color: var(--rosa-claro);
+    color: var(--violeta-oscuro);
+  }
 
+  header nav ul li:hover a{
+    color: var(--violeta-oscuro);
+  }
+  header div.categories {
+    display: none;
+    margin-left: 10px;
+    flex-direction: column;
+    background-color: var(--rosa-claro);
+    border: 2px solid var(--violeta-oscuro);
+    width: max-content;
+    padding: 3px 10px;
+    z-index: 2;
+
+  }
+
+  header div.categories a{
+    text-decoration: none;
+    color: var(--violeta-oscuro);
+    font-size: 25px;
+  }
+
+  header div.categories a:hover {
+    font-weight: bold;
+  }
+  header div.categories.mostrar {
+    display: block;
+    transform: translateY(-43px);
+    margin-left: 12px;
     
   }
+
 }
 
 @media screen and (min-width: 1024px) {
   header .search-bar input  {
     width: 700px;
   }
+  header div.categories.mostrar {
+    display: block;
+    transform: translateY(1px);
+    margin-left: 10px;
+    
+  }
+
 }

@@ -38,29 +38,36 @@
           </div>
           <!-- btn -->
           <div class="row">
-            <div class="col">
+            <% if (typeof session.user =="undefined" || session.user.role == 0) { %>
+
+            <div class="action-buttons">
+            <div>
               <button id="btn-fav" class="button">Favorito</button>
             </div>
-            <div class="col">
-              <button type="submit" id="btn-buy" class="button">Comprar</button>
+            <div>
+              <button type="submit" id="btn-buy" class="button">Comprar   </button>
             </div>
-          </div>
-          <div class="row">
-            <% if (typeof session.user !="undefined" && session.user.role) { %>
-              <div class="col">
+          </div></div>
+          <div>
+            <% } %>
+
+            <% if (typeof session.user !="undefined" && session.user.role == 1) { %>
+              <div class="action-buttons">
+              <div>
                 <form action="/store/delete/<%- book.id %>?_method=DELETE" method="POST">
                   <button type="submit" id="btn-delete" class="button">
                     Eliminar
                   </button>
                 </form>
               </div>
-              <div class="col">
+              <div>
                 <form action="/store/edit/<%- book.id %>" method="GET">
                   <button type="submit" id="btn-edit" class="button">
                     Editar
                   </button>
                 </form>
               </div>
+            </div>
               <% } %>
           </div>
           <!-- info -->
