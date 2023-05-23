@@ -39,6 +39,7 @@ const [
     genresApiRouter,
     languagesApiRouter,
     usersApiRouter,
+    productsApiRouter,
 ] = require("./routes/api/index");
 /* /Router */
 
@@ -50,6 +51,7 @@ app.use("/api/editorials", editorialsApiRouter);
 app.use("/api/genres", genresApiRouter);
 app.use("/api/languages", languagesApiRouter);
 app.use("/api/users", usersApiRouter);
+app.use("/api/products", productsApiRouter)
 /* Routes middlewares */
 
 
