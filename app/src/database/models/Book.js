@@ -69,10 +69,6 @@ module.exports = (sequelize, dataTypes) => {
     const BOOK = sequelize.define(ALIAS, COLS, CONFIG);
 
     BOOK.associate = (models) => {
-        /* BOOK.belongsTo(models.Author, {
-            as: "authors",
-            foreignKey: "author_id",
-        }); */
         BOOK.belongsTo(models.Format, {
             as: "formats",
             foreignKey: "format_id",
@@ -85,19 +81,15 @@ module.exports = (sequelize, dataTypes) => {
             as: "languages",
             foreignKey: "language_id",
         });
-        // BOOK.hasOne(models.Cover, {
-        //     as: "covers",
-        //     foreignKey: "book_id",
-        // });
         BOOK.belongsTo(models.Editorial, {
             as: "editorials",
             foreignKey: "editorial_id",
         });
 
-        BOOK.hasMany(models.Commentary, {
-            as: "commentaries",
-            foreignKey: "book_id",
-        })
+        // BOOK.hasMany(models.Commentary, {
+        //     as: "commentaries",
+        //     foreignKey: "book_id",
+        // });
     };
 
     return BOOK;

@@ -4,15 +4,25 @@ const getUrl = (req) => req.protocol + '://' + req.get('host') + req.originalUrl
 module.exports = {
     getBooks: async (req, res) => {
         try {
-            const books = await Book.findAll();
-            const booksResponse = books.map(({id, title, description, cover, genres}) => {
+            const books = await Book.findAll({
+                include: [
+                    {association: "editorials"},
+                    {association: "formats"},
+                    {association: "genres"},
+                    {association: "languages"},
+                ]
+            });
+            const booksResponse = books.map(({ id, title, description, cover, editorials, formats, genres, languages, }) => {
                 return {
                     id,
                     title,
                     description,
-                    cover,
-                    genres,
-                    detail: `/api/products/${id}`
+                    cover: `http://localhost:3030/images/books/${cover}`,
+                    editorial: editorials.editorial,
+                    format: formats.format,
+                    genre: genres.genre,
+                    language: languages.language,
+                    detail: `${getUrl(req)}/${id}`,
                 };
             });
             
@@ -58,7 +68,14 @@ module.exports = {
         };
 
         try {
-            let book = await Book.findByPk(id);
+            let book = await Book.findByPk(id, {
+                include: [
+                    {association: "editorials"},
+                    {association: "formats"},
+                    {association: "genres"},
+                    {association: "languages"},
+                ]
+            });
 
             if (!book) throw `No existe el libro con id: ${id}`;
 
@@ -71,13 +88,13 @@ module.exports = {
                     id: book.id,
                     title: book.title,
                     isbn3: book.isbn3,
-                    /* genre: book.genres_id,
-                    language: book.languages,
-                    format: book.formats, */
+                    genre: book.genres.genre,
+                    language: book.languages.language,
+                    format: book.formats.format,
                     pageCount: book.pageCount,
                     author: book.author,
                     calification: book.calification,
-                    /* editorial: book.editorials, */
+                    editorial: book.editorials.editorial,
                     publication_date: book.publication_date,
                     price: book.price,
                     description: book.description,
