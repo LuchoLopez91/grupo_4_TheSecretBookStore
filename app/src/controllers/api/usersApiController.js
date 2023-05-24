@@ -5,8 +5,20 @@ module.exports = {
     getAll: async (req, res) => {
         try {
             let users = await User.findAll({
-                attributes : [ "id", "firstName", "lastName", "email", ]
+                attributes: ["id", "firstName", "lastName", "email", "avatar"]
             });
+
+            const USERS_MAPPED = users.map((user) => {
+                return {
+                    id: user.id,
+                    firstName: user.firstName,
+                    lastName: user.lastName,
+                    email: user.email,
+                    avatar: `http://localhost:3030/images/avatars/${user.avatar}`,
+                    details: `${getUrl(req)}/${user.id}`,
+                };
+            });
+
             if (users.length == 0) throw 'No hay ususarios registrados';
             return res.status(200).json({
                 meta: {
@@ -14,7 +26,7 @@ module.exports = {
                     total: users.length,
                     status: 200,
                 },
-                users,
+                users: USERS_MAPPED,
             });
         } catch (error) {
             console.error(error)
@@ -27,7 +39,7 @@ module.exports = {
         };
     },
     getOne: async (req, res) => {
-        let {id} = req.params;
+        let { id } = req.params;
 
         if (isNaN(id)) {
             return res.status(404).json({
@@ -39,7 +51,10 @@ module.exports = {
         };
 
         try {
-            let user = await User.findByPk(id);
+            let user = await User.findByPk(id,
+                {
+                    attributes: ["id", "firstName", "lastName", "email", "avatar"]
+                });
 
             if (!user) throw `No existe usuario con id ${id}`;
 
@@ -63,7 +78,7 @@ module.exports = {
                 meta: {
                     status: 404,
                     msg: error,
-                }
+                },
             })
         };
     },

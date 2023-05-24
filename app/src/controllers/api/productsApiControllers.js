@@ -17,7 +17,7 @@ module.exports = {
                     id,
                     title,
                     description,
-                    cover: `http://localhost:3030/images/books/${cover}`,
+                    cover,
                     editorial: editorials.editorial,
                     format: formats.format,
                     genre: genres.genre,
@@ -98,7 +98,7 @@ module.exports = {
                     publication_date: book.publication_date,
                     price: book.price,
                     description: book.description,
-                    cover: `http://localhost:3030/images/books/${book.cover}`,
+                    cover: book.cover,
                 },
             });
 
