@@ -6,22 +6,16 @@ module.exports = {
         try {
             const books = await Book.findAll({
                 include: [
-                    {association: "editorials"},
-                    {association: "formats"},
                     {association: "genres"},
-                    {association: "languages"},
                 ]
             });
-            const booksResponse = books.map(({ id, title, description, cover, editorials, formats, genres, languages, }) => {
+            const booksResponse = books.map(({ id, title, description, cover,  genres }) => {
                 return {
                     id,
                     title,
                     description,
                     cover,
-                    editorial: editorials.editorial,
-                    format: formats.format,
                     genre: genres.genre,
-                    language: languages.language,
                     detail: `${getUrl(req)}/${id}`,
                 };
             });
@@ -37,7 +31,7 @@ module.exports = {
                     }
                 }
                 return genreCount;
-            }
+            } // Revisar para que cuente los generos en lugar del total de libros con genero aplicado
             const RESPONSE = {
                 count: books.length,
                 countBygenre: getBookCountByGenre(books),
