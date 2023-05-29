@@ -1,6 +1,5 @@
 const QS = element => document.querySelector(element);
 const QSA = element => document.querySelectorAll(element);
-
 window.onload = () => {
 
 let $inputName = QS('#name'),
@@ -24,7 +23,7 @@ let $inputName = QS('#name'),
     $descripcionErrors = QS ('#descripcionErrors'),
     $form = QS("#form"),
     $formError = QS("#formError"),
-    regExAlpha = /^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑüÜ,.:;¡!¿?\s]+$/,
+    regExAlpha = /^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑüÜ,.“”?':;¡!¿?\s]+$/,
     regExISBN = /^\d{9}[\d|Xx]|\d{13}$/,
     regExPrice = /^(?!0)\d+$/;
 
@@ -165,7 +164,7 @@ let $inputName = QS('#name'),
 
 
     // previene que se envíen datos si hay errores
-    $form.onsubmit = (e) => {
+  /*  $form.onsubmit = (e) => {
         e.preventDefault();
         const FORM_ELEMENTS = e.target.elements;
 
@@ -183,7 +182,26 @@ let $inputName = QS('#name'),
             $form.submit();
         };
     };
+*/
+$form.addEventListener("submit", (evento) => {
+    evento.preventDefault()
+    const FORM_ELEMENTS = evento.target.elements;
 
+    for (let index = 0; index < FORM_ELEMENTS.length - 1; index++) {
+        const element = FORM_ELEMENTS[index];
+        if(element.value === "" && element.type !== "file") {
+            element.classList.add("is-invalid")
+        }
+        /* element.dispatchEvent(new Event("blur")) */
+    }
 
+    let elementosConErrores = document.querySelectorAll(".is-invalid");
+    let errores = elementosConErrores.length > 0; 
+
+    if(errores) {
+        $formError.innerText = "Hay errores en el formulario"
+    } else {
+        $form.submit()
+    }})
 
     }

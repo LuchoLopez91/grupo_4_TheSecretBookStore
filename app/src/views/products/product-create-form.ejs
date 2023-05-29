@@ -27,12 +27,13 @@
               class="form-input"
               value="<%= locals.old && old.inputName %>"
             />
-            <small class="text-danger" id="nameErrors"></small>
-            <% if (locals.errors && errors.inputName) { %>
+            <% if (locals.errors && errors.title) { %>
               <small class="text-danger">
-                <%= errors.inputName.msg %>
+                <%= errors.title.msg %>
               </small>
-              <% } %>
+              <% } else {%>
+                <small class="text-danger" id="nameErrors"></small>
+                <% } %>
 
           </div>
           <div class="form">
@@ -43,13 +44,13 @@
               name="author"
               placeholder="EJ: J.K. Rowling"
               class="form-input"
-              value="<%= locals.old && old.inputAuthor %>"
+              value="<%= locals.old && old.author %>"
 
             />
             <small class="text-danger" id="authorErrors"></small>
-            <% if (locals.errors && errors.inputAuthor) { %>
+            <% if (locals.errors && errors.author) { %>
               <small class="text-danger">
-                <%= errors.inputAuthor.msg %>
+                <%= errors.author.msg %>
               </small>
               <% } %>
 
@@ -63,7 +64,9 @@
               class="form-input"
             />
             <small class="text-danger" id="isbn13Errors"></small>
-            
+            <% if(locals.errors && errors.isbn13) {%>
+              <small class="text-danger"><%= errors.isbn13.msg %></small>
+          <% } %>
 
           </div>
           <div class="form">
@@ -85,9 +88,9 @@
               class="form-input"
             />
             <small class="text-danger" id="priceErrors"></small>
-            <% if (locals.errors && errors.inputPrice) { %>
+            <% if (locals.errors && errors.price) { %>
               <small class="text-danger">
-                <%= errors.inputPrice.msg %>
+                <%= errors.price.msg %>
               </small>
               <% } %>
 
@@ -101,9 +104,9 @@
                 <% } %>
               </select>
               <small class="text-danger" id="editorialErrors"></small>
-            <% if (locals.errors && errors.inputEditorial) { %>
+            <% if (locals.errors && errors.editorial_id) { %>
               <small class="text-danger">
-                <%= errors.inputEditorial.msg %>
+                <%= errors.editorial_id.msg %>
               </small>
               <% } %>
   
@@ -117,9 +120,9 @@
               <% } %>
             </select>
             <small class="text-danger" id="lenguajeErrors"></small>
-            <% if (locals.errors && errors.lenguaje) { %>
+            <% if (locals.errors && errors.language_id) { %>
               <small class="text-danger">
-                <%= errors.lenguaje.msg %>
+                <%= errors.language_id.msg %>
               </small>
               <% } %>
 
@@ -133,9 +136,9 @@
               <% } %>
             </select>
             <small class="text-danger" id="formatoErrors"></small>
-            <% if (locals.errors && errors.formato) { %>
+            <% if (locals.errors && errors.format_id) { %>
               <small class="text-danger">
-                <%= errors.formato.msg %>
+                <%= errors.format_id.msg %>
               </small>
               <% } %>
 
@@ -150,9 +153,9 @@
               <% } %>
             </select>
             <small class="text-danger" id="generoErrors"></small>
-            <% if (locals.errors && errors.genero) { %>
+            <% if (locals.errors && errors.genre_id) { %>
               <small class="text-danger">
-                <%= errors.genero.msg %>
+                <%= errors.genre_id.msg %>
               </small>
               <% } %>
 

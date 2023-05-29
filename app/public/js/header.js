@@ -1,11 +1,11 @@
-const QS = element => document.querySelector(element);
-const QSA = element => document.querySelectorAll(element);
+const QueryS = element => document.querySelector(element);
+const QuerySA = element => document.querySelectorAll(element);
 
 window.onload = () => {
-    let $signUp = QS(".fa-user"),
-    $userMenu = QS(".menu-user"),
-    $categoria = QS(".categoria"),
-    $listadoCategorias = QS(".categories")
+    let $signUp = QueryS(".fa-user"),
+    $userMenu = QueryS(".menu-user"),
+    $categoria = QueryS(".categoria"),
+    $listadoCategorias = QueryS(".categories")
 
     $signUp.addEventListener("click", function (e) {
         $userMenu.classList.toggle("show");

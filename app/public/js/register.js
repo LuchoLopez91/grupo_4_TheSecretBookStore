@@ -2,6 +2,7 @@ const QS = element => document.querySelector(element);
 const QSA = element => document.querySelectorAll(element);
 
 window.onload = () => {
+
     let $inputFirstName = QS("#firstName"),
         $firstNameError = QS("#firstNameError"),
         $inputLastName = QS("#lastName"),
