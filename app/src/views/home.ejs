@@ -6,8 +6,11 @@
 
     <%- include("./partials/header") %>
 
+    <%- include("./partials/sliderBanner")  %>
+
       <!-- MAIN -->
       <main class="home">
+
 
         <% results.forEach((promise, i) => { %>
           <div class="container_subtitle">
@@ -62,6 +65,7 @@
       <%- include("./partials/footer2") %>
 
         <%- include("./partials/scripts") %>
+        <script src="/js/home.js"></script>
   </body>
 
 </html>
