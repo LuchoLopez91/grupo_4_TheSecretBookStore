@@ -20,23 +20,23 @@ module.exports = {
                 };
             });
             
-            const getBookCountByGenre = (genres) => {
+            const getBookCountByGenre = (books) => {
                 const genreCount = {};
-                for (const genre of genres) {
-                    const genreName = genre;
+                for (const book of books) {
+                    const genreName = book.genres.genre;
                     if (genreCount.hasOwnProperty(genreName)) {
-                        genreCount[genreName] ++;
+                        genreCount[genreName]++;
                     } else {
                         genreCount[genreName] = 1;
                     }
                 }
                 return genreCount;
-            } // Revisar para que cuente los generos en lugar del total de libros con genero aplicado
+            }
             const RESPONSE = {
                 count: books.length,
-                countBygenre: getBookCountByGenre(books),
+                countByGenre: getBookCountByGenre(books),
                 products: booksResponse
-            }
+            };
             return res.status(200).json(RESPONSE)
         } catch (error) {
              console.error(error)
