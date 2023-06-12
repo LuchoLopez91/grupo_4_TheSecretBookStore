@@ -175,7 +175,7 @@ $form.addEventListener("submit", (evento) => {
     evento.preventDefault()
     const FORM_ELEMENTS = evento.target.elements;
 
-    for (let index = 0; index < FORM_ELEMENTS.length - 1; index++) {
+    for (let index = 0; index < FORM_ELEMENTS.length - 2; index++) {
         const element = FORM_ELEMENTS[index];
         if(element.value === "" && element.type !== "file") {
             element.classList.add("is-invalid")
