@@ -12,7 +12,7 @@
       <!-- barra -->
       <div class="row">
         <div class="col">
-          <a href="/">Inicio</a> / <a href="">Categorías</a> / <a href="<%= book.id %>">
+          <a href="/store/">Inicio</a> / <a href="/store/category/<%= book.genres.id %>"><%= book.genres.genre %></a> / <a href="<%= book.id %>">
             <%= book.title %>
           </a>
         </div>
