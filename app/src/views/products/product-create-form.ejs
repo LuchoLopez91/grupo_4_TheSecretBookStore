@@ -10,7 +10,7 @@
     <div class="container-title">
       <div>
         <div class="title-form">
-          <h2 class="title">Formulario de creacion</h2>
+          <h2 class="title">Formulario de creación de producto</h2>
         </div>
       </div>
     </div>
@@ -111,7 +111,7 @@
               <% } %>
   
               </div>
-          <div class="form-idioma">
+          <div class="form">
             <label for="lenguaje" class="form-label">Idioma</label>
             <select name="language_id" id="lenguaje" class="form-input">
               <option value="" disabled selected>Selecciona el lenguaje</option>
@@ -143,7 +143,7 @@
               <% } %>
 
           </div>
-          <div class="form-genero">
+          <div class="form">
             <label for="genero" class="form-label">Genero</label>
             <select name="genre_id" id="genero" class="form-input">
               <option value="" disabled selected>Selecciona el género</option>
@@ -160,12 +160,15 @@
               <% } %>
 
           </div>
-          <div class="form-portada">
-            <label>Elegir imagen del producto</label>
-            <input type="file" name="cover" accept=".jpg, .png, .jpeg, .gif" />
+
+          <div class="input-file">
+            <label for="cover"></label>
+            <input type="file" name="cover" id= "cover" accept=".jpg, .png, .jpeg, .gif" />
           </div>
+        </div>
+
           <div class="form-descripcion">
-            <label for="descripcion" class="form-label">Descripcion</label>
+            <label for="descripcion" class="form-label">Descripción</label>
             <textarea
               id="descripcion"
               name="description"
@@ -184,7 +187,6 @@
             <button type="submit" class="save-product">Guardar Producto</button>
             <small class="text-danger" id="formError"></small>
           </div>
-        </div>
       </form>
     </div>
     <!-- Includes footer -->

@@ -1,5 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300&family=Raleway:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Special+Elite&display=swap');
+
+:root {
+    --violeta-oscuro: #2D033B;
+    --violeta-claro: #810CA8;
+    --rosa: #C147E9;
+    --rosa-claro: #E5B8F4;
+    --inter: 'Inter', sans-serif;
+    --garamond: 'EB Garamond', serif;
+    --font-kanit:  'Kanit', sans-serif;
+    --font-raleway: 'Raleway', sans-serif;
+    --font-specialElite: 'Special Elite', cursive;
+}
+
+.container-form {
+    margin-bottom: 20px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+    .form-label {
+        margin-bottom: 0;
+
+    }
+div.btn-save {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+div.form-descripcion {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+textarea {
+    width: 70%;
+    background-color: var(--rosa-claro);
+}
+.input-file {
+    position: relative;
+    display: inline-block;
+    margin-top: 2rem;
+  }
+
+  .input-file {
+    margin-bottom: 0.5rem;
+    margin-top: 1.5rem;
+    margin-left: 2.8rem;
+  }
+  
+  .input-file::before {
+    background-color: var(--rosa-claro);
+    text-align: center;
+    color: var(--violeta-claro);
+    border-radius: 15px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 75%;
+    border: 1px solid var(--violeta-oscuro); 
+  }
+  
+  .input-file input[type="file"] {
+    opacity: 0;
+    width: 75%;
+    display: inline-block;
+    padding: 8px;
+    cursor: pointer;
+
+   
+  }
+  
+  .input-file::before {
+    content: 'Subir tapa del libro';
+  }
+  
+  
+
 /* Titulo */
 .title-form {
+    font-family: var(--font-raleway);
+    font-weight: bold;
+    text-decoration: underline;
     font-size: 15px;
     text-align: center;
     margin: 5%;
@@ -7,61 +100,58 @@
 /* Caja */
 .container-form {
     border: 3px solid var(--text-color);
-    margin: 3%;
    /* height: 480px;*/
     border-radius: 10%;
 }
 /* Contenido Caja */
 .container-product {
-    margin: 3%;
+    padding: 5px;
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 div.form .form-input {
     border: 1px solid black;
     display: flex;
-    width: 100%;
+    width: 95%;
     background-color: var(--main-color);
     text-align: center;
 }
 
 .form-label {
     color: var(--text-color);  
+    font-family: var(--font-raleway);
     display: flex;
     flex-direction: column; 
-    font-size: 20px;
+    font-size: 1rem;
     text-align: center;
+    margin-bottom: 0;
 }
 
 .form-idioma .form-input {
+    width: 80%;
     text-align: center;
     background-color: var(--main-color);
-    margin-left: 25%;
 }
 
 .form-genero .form-input {
     background-color: var(--main-color);
-    margin-left: 25%;
-    width: 48%;
     text-align: center;
-}
-.form-portada {
-    color: var(--text-color);
-    font-size: 20px;
-    text-align: center;
+    width: 80%;
+
 }
 .form-descripcion .form-input {
-    width: 100%;
+    width: 80%;
     height: 50px;
 }
 
 .btn-save .save-product {
     background-color: var(--text-color);
     padding: 2%;
-    margin-left: 25%;
     margin-top: 10px;
     color: var(--main-color);
     border-radius: 20%;
+    text-align: center;
 }
 small.text-danger {
     color: tomato;
@@ -75,7 +165,27 @@ small.text-danger {
     height: min-content;
 }
 
+div.form, div.form-idioma, div.form-genero{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 95%;
+    margin-bottom: 5px;
+}
 @media (min-width: 768px){
+
+    div.form, div.form-idioma, div.form-genero{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 50%;
+    }
+    .container-product {
+        flex-wrap: wrap;
+        height: 80vh;
+    }
 
     /* Titulo */
 .title-form {
@@ -87,39 +197,34 @@ small.text-danger {
 }*/
     /* Contenido de caja */
 div.form .form-input {
-    width: 50%;
+    width: 80%;
     height: 28px;
     text-align: center;
-    margin-left: 25%;
 }
 .form-label { 
-    font-size: 28px;    
+    font-size: 1rem;    
 }
 .form-idioma .form-input {
     height: 28px;
-    width: 40%;
-    margin-left: 30%;
+    width: 80%;
     font-size: 20px; 
 }
 .form-genero .form-input {
-    height: 28px;
-    width: 40%;
-    margin-left: 30%;
+    height: 30px;
+    width: 80%;
     font-size: 20px;    
 }
-.form-portada {
-    font-size: 28px;
-    margin: 15px;
-    
-}
+
+
 .form-descripcion .form-input {
-    width: 60%;
+    width: 80%;
     height: 90px;
-    margin-left: 20%;
+
 }
 .btn-save .save-product {
-    margin-left: 39%;
-    margin-top: 10px;
+    margin: auto;
+    align-self: center;
+    justify-self: center;
 }}
 
 @media (min-width: 1024px){
@@ -127,15 +232,34 @@ div.form .form-input {
     /* Caja */
     .container-form { 
         /*height: 750px; */
-        width: 50%;
-        margin-left: 25%; 
+        width: 80%;
+        margin: auto;
     }
    /* Titulo */
    .title-form {
-    font-size: 40px;
+    font-size: 25px;
 }
   /* Boton guardar producto */
     .btn-save .save-product {
-        margin-left: 38%;
         margin-top: 20px;
-}}
+
+}
+.container-product {
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    height: 70vh;
+}
+
+div.form, div.form-idioma, div.form-genero{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 45%;
+}
+.form {
+    width: 50%;
+}
+}
