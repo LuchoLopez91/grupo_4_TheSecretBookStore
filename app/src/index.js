@@ -21,6 +21,12 @@ app.use(session({
 }));
 app.use(cookieParser());
 app.use(cookieCheck);
+app.use(cors({
+    origin: 'http://localhost:3000',
+     // Define o domínio permitido para usar React
+     
+    
+  }));
 /* Middleware */
 
 /* Templeta Engine */
