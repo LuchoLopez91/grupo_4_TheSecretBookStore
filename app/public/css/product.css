@@ -12,6 +12,10 @@
     font-size: 20px;
 }
 
+a {
+    color: black;
+  }
+
 main {
     background-color: #f0f0f5;
     padding: 0 3%;
@@ -22,16 +26,17 @@ div {
 }
 
 ul {
-    align-items: center;
-}
-
-li {
     list-style: none;
-    text-align: justify;
+    padding: 0px;
+    margin: 0px;
 }
 
 h2 {
     text-align: center;
+}
+
+.book-container{
+    padding: 2rem;
 }
 
 .nav{
@@ -78,6 +83,12 @@ h2 {
 
 #btn-fav:hover {background-color: gold; color: black; box-shadow: 1px 2px black;}
 
+
+.others-container{
+    padding: 2rem;
+    flex-direction: row;
+    justify-content: center;
+}
 
 .others {
     display: flex;

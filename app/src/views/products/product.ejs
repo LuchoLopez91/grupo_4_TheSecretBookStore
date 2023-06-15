@@ -20,7 +20,7 @@
         </div>
       </div>
       <!-- head -->
-      <div class="row img-container">
+      <div class="row book-container">
         <div class="col-sm-5">
           <img src="/images/books/<%- book.cover %>" alt="<%- book.title %>" class="main-img">
         </div>
@@ -105,21 +105,23 @@
       </div>
       <!-- others -->
       <hr>
-      <div class="row">
+      <div class="row others-container">
         <h3>Relacionados</h3>
         <div class="col-sm-4">
           <div class="others">
-            <img src="/images/books/<%= book.cover %>" alt="<%= book.title %>" class="secondary-img" />
-            <ul>
-              <li>
-                <%= book.title %>
-              </li>
-              <li>
-                <%= book.author %>
-              </li>
-              <li>$<%= book.price %>
-              </li>
-            </ul>
+            <a href="/store/details/<%= book.id %>">
+              <img src="/images/books/<%= book.cover %>" alt="<%= book.title %>" class="secondary-img" />
+              <ul>
+                <li>
+                  <%= book.title %>
+                </li>
+                <li>
+                  <%= book.author %>
+                </li>
+                <li>$<%= book.price %>
+                </li>
+              </ul>
+            </a>
           </div>
         </div>
       </div>
