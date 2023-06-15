@@ -6,24 +6,24 @@
     <!-- header -->
     <%- include("../partials/header") %>
     <!-- header -->
-    <h1>Mi carrito:</h1>
+    <h1>Carrito:</h1>
 
     <main>
       
-        <section class="full-container">
-        <div class="product-container">
+      <div class="full-container">
+        <section class="product-container">
           <div class="img">
             <img
               src="/images/books/harry-potter-4.jpg"
               alt=""
-              height="120px"
-              width="90px"
+              height="80px"
+              width="60px"
             />
           </div>
           <div class="name">
             <span>Harry Potter y el caliz de fuego</span>
             <div class="delete">
-              <span>Eliminar</span>
+              <i class="fa-regular fa-trash-can"></i>
             </div>
           </div>
           <div class="price">
@@ -34,20 +34,20 @@
             <input id="contador" type="number" value="1">
             <input id="mas" type="button" value="+">
           </div>
-        </div>
-        <div class="product-container">
+        </section>
+        <section class="product-container">
           <div class="img">
             <img
               src="/images/books/narnia-1.jpg"
               alt=""
-              height="120px"
-              width="90px"
+              height="80px"
+              width="60px"
             />
           </div>
           <div class="name">
             <span>Las cronicas de Narnia</span>
             <div class="delete-1">
-              <span>Eliminar</span>
+              <i class="fa-regular fa-trash-can dos"></i>
             </div>
           </div>
           <div class="price">
@@ -58,23 +58,23 @@
             <input id="contador" type="number" value="1">
             <input id="mas" type="button" value="+">
           </div>
-        </div>
-        <div class="product-container">
+        </section>
+        <section class="product-container">
           <div class="img">
             <img
               src="/images/books/luna-pluton.jpg"
               alt=""
-              height="120px"
-              width="90px"
+              height="80px"
+              width="60px"
             />
           </div>
           <div class="name">
             <span>Luna de Plutón</span>
             <div class="delete-2">
-              <span>Eliminar</span>
+              <i class="fa-regular fa-trash-can tres"></i>
             </div>
           </div>
-          <div class="price">
+          <div class="price_dos">
             <span>$Xxxx</span>
           </div>
           <div class="button-masmenos">
@@ -82,18 +82,22 @@
             <input id="contador" type="number" value="1">
             <input id="mas" type="button" value="+">
           </div>
-        </div>
         </section>
         <section class="resumenCompra">
 
           <div class="price-env">
-            <p id="env">ENVIO: </p>
-            <p id="price">TOTAL A PAGAR: </p>
+            <p >ENVIO:  </p>
+            <p >SUBTOTAL: </p>
+            <p >TOTAL A PAGAR: </p>
+          </div>
+          <div class="cancel-btn">
+            <input id="btn-cancel" type="submit" value="Cancelar compra">
+          </div>
+          <div class="finish-btn">
+            <input id="btn-finish" type="submit" value="Finalizar compra">
           </div>
         </section>
-        <section class="finish-btn">
-          <input id="btn" type="submit" value="Finalizar compra">
-        </section>
+      </div>
     </main>
 
     <%- include("../partials/footer2") %> 
