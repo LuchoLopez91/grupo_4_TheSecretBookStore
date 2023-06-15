@@ -11,14 +11,16 @@
     <main>
       <!-- barra -->
       <div class="row">
-        <div class="col">
-          <a href="/">Inicio</a> / <a href="">Categorías</a> / <a href="<%= book.id %>">
+        <div class="col nav">
+          <a href="/store/">Inicio</a> / <a href="/store/category/<%= book.genres.id %>">
+            <%= book.genres.genre %>
+          </a> / <a href="<%= book.id %>">
             <%= book.title %>
           </a>
         </div>
       </div>
       <!-- head -->
-      <div class="row img-container">
+      <div class="row book-container">
         <div class="col-sm-5">
           <img src="/images/books/<%- book.cover %>" alt="<%- book.title %>" class="main-img">
         </div>
@@ -38,81 +40,88 @@
           </div>
           <!-- btn -->
           <div class="row">
-            <% if (typeof session.user =="undefined" || session.user.role == 0) { %>
+            <% if (typeof session.user=="undefined" || session.user.role==0) { %>
 
-            <div class="action-buttons">
-            <div>
-              <button id="btn-fav" class="button">Favorito</button>
-            </div>
-            <div>
-              <button type="submit" id="btn-buy" class="button">Comprar   </button>
-            </div>
-          </div></div>
+              <div class="action-buttons">
+                <div>
+                  <button id="btn-fav" class="button">Favorito</button>
+                </div>
+                <div>
+                  <button type="submit" id="btn-buy" class="button">Comprar </button>
+                </div>
+              </div>
+          </div>
           <div>
             <% } %>
 
-            <% if (typeof session.user !="undefined" && session.user.role == 1) { %>
-              <div class="action-buttons">
-              <div>
-                <form action="/store/delete/<%- book.id %>?_method=DELETE" method="POST">
-                  <button type="submit" id="btn-delete" class="button">
-                    Eliminar
-                  </button>
-                </form>
-              </div>
-              <div>
-                <form action="/store/edit/<%- book.id %>" method="GET">
-                  <button type="submit" id="btn-edit" class="button">
-                    Editar
-                  </button>
-                </form>
-              </div>
-            </div>
-              <% } %>
+              <% if (typeof session.user !="undefined" && session.user.role==1) { %>
+                <div class="action-buttons">
+                  <div>
+                    <form action="/store/delete/<%- book.id %>?_method=DELETE" method="POST">
+                      <button type="submit" id="btn-delete" class="button">
+                        Eliminar
+                      </button>
+                    </form>
+                  </div>
+                  <div>
+                    <form action="/store/edit/<%- book.id %>" method="GET">
+                      <button type="submit" id="btn-edit" class="button">
+                        Editar
+                      </button>
+                    </form>
+                  </div>
+                </div>
+                <% } %>
           </div>
           <!-- info -->
-          <ul>
-            <li>Editorial: <%= book.editorials.editorial %>
-            </li>
-            <li>I.S.B.N.: <%= book.isbn13 %>
-            </li>
-            <li>Nro. de páginas: <%= book.pageCount %>
-            </li>
-            <li>Idiomas: <%= book.languages.language %>
-            </li>
-            <li>Formato: <%= book.formats.format %>
-            </li>
-            <li>Género: <a href="/store/category/<%= book.genre %>">
-                <%= book.genres.genre %>
-              </a></li>
-          </ul>
-        </div>
-      </div>
-      <!-- description -->
-      <div class="row">
-        <div class="col">
-          <p>
-            <%= book.description %>
-          </p>
+          <div class="detail">
+            <h3>Detalles</h3>
+            <ul>
+              <li>Editorial: <%= book.editorials.editorial %>
+              </li>
+              <li>ISBN: <%= book.isbn13 %>
+              </li>
+              <li>Nro. de páginas: <%= book.pageCount %>
+              </li>
+              <li>Idiomas: <%= book.languages.language %>
+              </li>
+              <li>Formato: <%= book.formats.format %>
+              </li>
+              <li>Género: <a href="/store/category/<%= book.genre %>">
+                  <%= book.genres.genre %>
+                </a></li>
+            </ul>
+          </div>
+          <!-- description -->
+          <div class="row">
+            <div class="description">
+              <h3>Sinopsis</h3>
+              <p>
+                <%= book.description %>
+              </p>
+            </div>
+          </div>
         </div>
       </div>
       <!-- others -->
       <hr>
-      <div class="row">
+      <div class="row others-container">
         <h3>Relacionados</h3>
         <div class="col-sm-4">
           <div class="others">
-            <img src="/images/books/<%= book.cover %>" alt="<%= book.title %>" class="secondary-img" />
-            <ul>
-              <li>
-                <%= book.title %>
-              </li>
-              <li>
-                <%= book.author %>
-              </li>
-              <li>$<%= book.price %>
-              </li>
-            </ul>
+            <a href="/store/details/<%= book.id %>">
+              <img src="/images/books/<%= book.cover %>" alt="<%= book.title %>" class="secondary-img" />
+              <ul>
+                <li>
+                  <%= book.title %>
+                </li>
+                <li>
+                  <%= book.author %>
+                </li>
+                <li>$<%= book.price %>
+                </li>
+              </ul>
+            </a>
           </div>
         </div>
       </div>

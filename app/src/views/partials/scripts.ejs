@@ -10,6 +10,13 @@
   
   let footerLista2 = document.querySelector(".paraclickear2");
   let listado2 = document.querySelector(".listado2");
+  const QueryS = element => document.querySelector(element);
+  const QuerySA = element => document.querySelectorAll(element);
+  
+  let $signUp = QueryS(".fa-user"),
+    $userMenu = QueryS(".menu-user"),
+    $categoria = QueryS(".generos"),
+    $listadoCategorias = QueryS(".categories")
   
   /* eventos */
 
@@ -28,6 +35,11 @@
   btnClose.addEventListener("click", () => {
     menuContainer.classList.remove("active");
   });
+  $signUp.addEventListener("click", function (e) {
+        $userMenu.classList.toggle("show");
+    });
+    $categoria.addEventListener("click", function (e) {
+       e.preventDefault();
+        $listadoCategorias.classList.toggle("mostrar");
+    })
 </script>
-
-<script src="/js/header.js"></script>

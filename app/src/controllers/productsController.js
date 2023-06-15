@@ -24,9 +24,9 @@ const productsController = {
                 {
                     association: "editorials"
                 },
-                /*{
-                    association: "authors"
-                },*/
+                {
+                    association: "genres"
+                },
             ]
         })
             .then(book => {
