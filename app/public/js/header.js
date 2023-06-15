@@ -4,7 +4,7 @@ const QuerySA = element => document.querySelectorAll(element);
 window.onload = () => {
     let $signUp = QueryS(".fa-user"),
     $userMenu = QueryS(".menu-user"),
-    $categoria = QueryS(".categoria"),
+    $categoria = QueryS(".generos"),
     $listadoCategorias = QueryS(".categories")
 
     $signUp.addEventListener("click", function (e) {

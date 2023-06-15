@@ -97,7 +97,7 @@
 
 .register-login .input-container i {
     position: absolute;
-    top: 73%;
+    top: 100%;
     transform: translateY(-130%);
     right: 13%;
     color: var(--violeta-oscuro)
