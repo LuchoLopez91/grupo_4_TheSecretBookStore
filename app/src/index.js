@@ -5,6 +5,8 @@ const PORT = 3030;
 const session = require("express-session");
 const cookieParser = require("cookie-parser");
 const cookieCheck = require("./middlewares/cookieCheck");
+const cors = require('cors');
+
 
 /* Method Override */
 const methodOverride = require('method-override');
@@ -21,6 +23,12 @@ app.use(session({
 }));
 app.use(cookieParser());
 app.use(cookieCheck);
+app.use(cors({
+    origin: 'http://localhost:3000',
+     // Define o domínio permitido para usar React
+     
+    
+  }));
 /* Middleware */
 
 /* Templeta Engine */

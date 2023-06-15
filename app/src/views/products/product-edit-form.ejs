@@ -8,11 +8,9 @@
 <!-- header -->
 
 <div class="container-title">
-    <div class="row">
         <div class="title-form">
         <h2 class="title">Estas editando: <%= book.title %></h2>
         </div>    
-    </div>
 </div>
 
 <div class="container-form">
@@ -142,12 +140,14 @@
         <% } %>
 
         </div>
-        <div class="form-portada">
-          <label>Elegir imagen del producto</label>
+        <div class="input-file">
+          <label for="cover"></label>
           <input type="file" name="cover" accept=".jpg, .png, .jpeg, .gif" />
         </div>
+      </div>
+
         <div class="form-descripcion">
-          <label for="descripcion" class="form-label">Descripcion</label>
+          <label for="descripcion" class="form-label">Descripción</label>
           <textarea
             id="descripcion"
             name="description"
@@ -163,14 +163,13 @@
           <small class="text-danger" id="formError"></small>
           <button type="submit" class="save-product">Guardar Producto</button>
         </div>
-      </div>
   </form>
 </div>
 <!-- Includes footer -->
 <%- include("../partials/footer2") %> 
 <!-- Includes footer -->
-<%- include("../partials/scripts")  %>
 <script src="/js/scriptEditProd.js"></script>
+<%- include("../partials/scripts")  %>
           <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
             crossorigin="anonymous"></script>

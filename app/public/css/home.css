@@ -160,7 +160,7 @@ section article.container {
     border: 1px solid black;
     border-image: linear-gradient(45deg, var(--main-color),var(--text-color)) 1;
     height: 60px;
-    width: 180px;
+    width: 200px;
     margin: 6px;
     text-align: center;
     align-self: center;
@@ -169,13 +169,13 @@ section article.container {
 }
 article img.home-logos{
     width: 50%;
-    height: 80%;
+    height: 50%;
     align-self: center;
 }
 
 article.container span {
     align-self: center;
-    width: 75% ;
+    width: 85% ;
 }
 article.container i {
     width: 25%;
@@ -352,11 +352,10 @@ div.subscribe button.btn {
     section article.container {
         border-radius: none;
         border: none;
+
  
     }
     article img.home-logos{
-        width: 50%;
-        height: 80%;
         align-self: center;
     }
     
