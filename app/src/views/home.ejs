@@ -1,71 +1,79 @@
 <!DOCTYPE html>
 <html lang="es">
-<%- include("./partials/head") %>
+  <%- include("./partials/head") %>
 
   <body>
+    <%- include("./partials/header") %> <%- include("./partials/sliderBanner")
+    %>
 
-    <%- include("./partials/header") %>
-
-    <%- include("./partials/sliderBanner")  %>
-
-      <!-- MAIN -->
-      <main class="home">
-
-
-        <% results.forEach((promise, i) => { %>
-          <div class="container_subtitle">
-            <h4 class="subtitle"><%= order[i] %></h4>
-          </div>
-          <section class="group">
-            <% promise.forEach(book=> { %>
-              <article class="container_book">
-                <a href="/store/details/<%- book.id %>"><img class="image_book" src="./images/books/<%- book.cover %>"
-                    alt="<%- book.title %>" />
-                  <p class="book_title"><%- book.title %> </p>
-                  <p class="card-price">$ <%- book.price %> </p>
-                  <button class="home-buy" id="boton-compra">AGREGAR AL CARRITO</button>
-                </a>
-              </article>
-              <% }) %>
-          </section>
-        <% }) %>
-
-        <section class="group2">
-          <article class="container">
-            <span>Todos los medios de pago</span>
-            <i class="fa-solid fa-credit-card"></i>
+    <!-- MAIN -->
+    <main class="home">
+      <% results.forEach((promise, i) => { %>
+      <div class="home_section_container">
+        <div class="container_subtitle">
+          <h4 class="subtitle"><%= order[i] %></h4>
+        </div>
+        <section class="group">
+          <% promise.forEach(book=> { %>
+          <article class="container_book">
+            <a href="/store/details/<%- book.id %>"
+              ><img
+                class="image_book"
+                src="./images/books/<%- book.cover %>"
+                alt="<%- book.title %>"
+              />
+              <p class="book_title"><%- book.title %></p>
+              <p class="card-price">$ <%- book.price %></p>
+              <button class="home-buy" id="boton-compra">
+                AGREGAR AL CARRITO
+              </button>
+            </a>
           </article>
-          <article class="container">
-            <span>Envíos gratis</span>
-            <i class="fa-solid fa-truck-fast"></i>
-          </article>
-          <article class="container mp">
-            <span>Cuotas Sin Interés</span>
-            <img class="home-logos" src="./images/main/mpago.png" alt="Mercado Pago Logo" />
-          </article>
-          <article class="container">
-            <span>Compra Protegida</span>
-            <i class="fa-solid fa-shield-cat"></i>
-          </article>
+          <% }) %>
         </section>
+      </div>
+      <% }) %>
 
-        <section class="group3">
-          <div class="subscribe">
-            <p>
-              Suscribete a nuestro newsletter y recibe las novedades de The
-              Secret BookStore antes que nadie!
-            </p>
-            <input class="input-container" type="text" placeholder="Ingresa tu Email..." />
-            <button class="btn">Proximamente...</button>
+      <section class="group2">
+        <article class="container">
+          <span>Todos los medios de pago</span>
+          <i class="fa-solid fa-credit-card"></i>
+        </article>
+        <article class="container">
+          <span>Envíos gratis</span>
+          <i class="fa-solid fa-truck-fast"></i>
+        </article>
+        <article class="container mp">
+          <span>Cuotas Sin Interés</span>
+          <img
+            class="home-logos"
+            src="./images/main/mpago.png"
+            alt="Mercado Pago Logo"
+          />
+        </article>
+        <article class="container">
+          <span>Compra Protegida</span>
+          <i class="fa-solid fa-shield-cat"></i>
+        </article>
+      </section>
 
-          </div>
-        </section>
-      </main>
+      <section class="group3">
+        <div class="subscribe">
+          <p>
+            Suscribete a nuestro newsletter y recibe las novedades de The Secret
+            BookStore antes que nadie!
+          </p>
+          <input
+            class="input-container"
+            type="text"
+            placeholder="Ingresa tu Email..."
+          />
+          <button class="btn">Proximamente...</button>
+        </div>
+      </section>
+    </main>
 
-      <%- include("./partials/footer2") %>
-
-        <%- include("./partials/scripts") %>
-        <script src="/js/home.js"></script>
+    <%- include("./partials/footer2") %> <%- include("./partials/scripts") %>
+    <script src="/js/home.js"></script>
   </body>
-
 </html>
