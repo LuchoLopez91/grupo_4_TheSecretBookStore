@@ -5,6 +5,8 @@ const PORT = 3030;
 const session = require("express-session");
 const cookieParser = require("cookie-parser");
 const cookieCheck = require("./middlewares/cookieCheck");
+const cors = require('cors');
+
 
 /* Method Override */
 const methodOverride = require('method-override');
